@@ -32,7 +32,7 @@ setup(name='Products.ATVocabularyManager',
       packages=['Products', 'Products.ATVocabularyManager'],
       include_package_data = True,
       zip_safe=False,
-      install_requires=['setuptools'],
+      install_requires=['setuptools', 'imsvdex'],
       namespace_packages=['Products'],
 
       )
