@@ -14,7 +14,7 @@ __docformat__ = 'plaintext'
 
 import csv
 from StringIO import StringIO
-
+from zope.interface import implements
 from Products.ATVocabularyManager.config import *
 if HAS_LINGUA_PLONE:
     from Products.LinguaPlone.public import *
@@ -24,7 +24,7 @@ else:
 from AccessControl import ClassSecurityInfo
 from Products.CMFCore.permissions import AddPortalContent
 from Products.CMFCore.utils import getToolByName
-from Products.Archetypes.interfaces.vocabulary import IVocabulary
+from Products.Archetypes.interfaces import IVocabulary
 from Products.Archetypes.utils import make_uuid
 from Products.Archetypes.utils import DisplayList
 from Products.Archetypes.utils import OrderedDict
@@ -36,21 +36,10 @@ from Products.ATVocabularyManager.config import TOOL_NAME as VOCABTOOL_NAME
 
 class SimpleVocabulary(OrderedBaseFolder):
 
-    __implements__ = getattr(OrderedBaseFolder,'__implements__',()) + (IVocabulary,)
+    implements(IVocabulary)
 
     security = ClassSecurityInfo()
-    portal_type = meta_type = 'SimpleVocabulary'
-    archetype_name          = 'Simple Vocabulary'
-
-    factory_type_information = {
-        'allowed_content_types':tuple() ,
-        'allow_discussion': 0,
-        'immediate_view':'base_view',
-        'global_allow':0,
-        'filter_content_types':1,
-        }
-
-    _at_rename_after_creation = True
+    meta_type = 'SimpleVocabulary'
 
     schema=BaseFolderSchema  + Schema((
         StringField('id',
@@ -99,12 +88,6 @@ class SimpleVocabulary(OrderedBaseFolder):
             vocabulary = VOCABULARY_SORT_ORDERS
         ),        
     ))
-
-    aliases = { 
-        '(Default)' : 'base_view', 
-        'view' : 'base_view', 
-        'edit' : 'base_edit', 
-    }
     
     # Methods for fti modification - better make a mixin class from it?
 

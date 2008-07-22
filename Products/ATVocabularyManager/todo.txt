@@ -15,13 +15,11 @@ tasks:
     [hf] this would allow us to differentiate hierarchical vocabularies by their interface
          we'd should to make namedvocbaulary.getKeyPathForTerms aware of this too then...
 
-  - [jens] make vdex vocabulary implement IVocabulayTerm interface too
-
-  - (missing in vdex and alias) mark methods getVocabularyValue and getVocabularyKey as deprecated
+  - (missing in alias) mark methods getVocabularyValue and getVocabularyKey as deprecated
     and use the methods getTermValue and getTermKey instead
     [jens] XXX
 
-  - use zope3 interfaces for vocabularies and terms
+  - use zope3 interfaces for terms
     useful for example in NamedVocabulary.getKeyPathForTerms (see comment there)
 
   - resolve TODOs (XXX, FIXME) marked in the code ;-)
@@ -86,6 +84,8 @@ basic idea:
     and term too 
     [jens] decision needed: use vdex, some own xml or better atxml from marshall 
            or just simple Excel importable CSV?)
+           
+    Jens decision is: vdex (implemented import) or csv (todo). 
 
 
 mixins:

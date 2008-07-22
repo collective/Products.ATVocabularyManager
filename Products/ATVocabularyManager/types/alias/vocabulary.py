@@ -14,7 +14,7 @@ __docformat__ = 'plaintext'
 
 import csv
 from StringIO import StringIO
-
+from zope.interface import implements
 from Products.ATVocabularyManager.config import *
 if HAS_LINGUA_PLONE:
     from Products.LinguaPlone.public import *
@@ -23,26 +23,16 @@ else:
 
 from AccessControl import ClassSecurityInfo
 from Products.CMFCore.utils import getToolByName
-from Products.Archetypes.interfaces.vocabulary import IVocabulary
+from Products.Archetypes.interfaces import IVocabulary
 from Products.ATVocabularyManager.tools import registerVocabularyContainer
 from Products.ATVocabularyManager.config import TOOL_NAME as VOCABTOOL_NAME
 
 class AliasVocabulary(BaseContent):
 
-    __implements__ = getattr(BaseContent,'__implements__',()) + (IVocabulary,)
+    implements(IVocabulary)
 
     security = ClassSecurityInfo()
-    portal_type = meta_type = 'AliasVocabulary'
-    archetype_name          = 'Alias Vocabulary'
-
-    factory_type_information = {
-        'allowed_content_types':tuple() ,
-        'allow_discussion': 0,
-        'immediate_view':'base_view',
-        'global_allow':0,
-        'filter_content_types':1,
-        }
-
+    meta_type = 'AliasVocabulary'
 
     schema=BaseFolderSchema  + Schema((
         StringField('id',

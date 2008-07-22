@@ -19,7 +19,6 @@ from AccessControl import ClassSecurityInfo
 from Products.CMFCore.permissions import AddPortalContent
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import base_hasattr
-from Products.Archetypes.interfaces.vocabulary import IVocabulary
 from Products.Archetypes.utils import OrderedDict
 try:
     from Products.Archetypes.lib.vocabulary import DisplayList
@@ -47,9 +46,8 @@ class TreeVocabulary(SimpleVocabulary):
 
     schema = schema
 
-    portal_type = meta_type = 'TreeVocabulary'
-    archetype_name = 'Tree Vocabulary'   #this name appears in the 'add' box
-
+    meta_type = 'TreeVocabulary'
+    
     def getDisplayList(self, instance, display_parents='tree'):
         """ returns an object of class DisplayList as defined in
             Products.Archetypes.utils

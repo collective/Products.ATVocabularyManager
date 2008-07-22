@@ -21,9 +21,9 @@ try:
 except ImportError:
     from Products.ATVocabularyManager.backports import IVocabularyTerm
 
+from zope.interface import noLongerProvides
 from Products.Archetypes.debug import deprecated
 from Products.Archetypes.interfaces.vocabulary import IVocabulary
-
 from Products.ATVocabularyManager.tools import registerVocabularyContainer
 from Products.ATVocabularyManager.tools import registerVocabularyTerm
 from Products.ATVocabularyManager.types.simple import SimpleVocabularyTerm
@@ -35,22 +35,9 @@ class TreeVocabularyTerm(TreeVocabulary, SimpleVocabularyTerm):
     """
 
     __implements__ = getattr(TreeVocabulary,'__implements__',()) + (IVocabularyTerm,)
-
-
-    # take away IVocabulary since this is
-    # should be no interface for a term
-    # i makes terms addable in the vocabulary
-    # tool too
-    # http://plone.org/products/atvocabularymanager/issues/26
-    withoutIVocabulary = list(__implements__)
-    withoutIVocabulary.remove(IVocabulary)
-    __implements__ = tuple(withoutIVocabulary)
     
     security = ClassSecurityInfo()
-    portal_type = meta_type = 'TreeVocabularyTerm'
-    archetype_name = 'Tree Vocabulary Term'   #this name appears in the 'add' box
-    allowed_content_types  = 'TreeVocabularyTerm'
-    filter_content_types = 1
+    meta_type = 'TreeVocabularyTerm'
 
     schema = BaseSchema + Schema((
         StringField('id',
@@ -82,11 +69,6 @@ class TreeVocabularyTerm(TreeVocabulary, SimpleVocabularyTerm):
         )),
     )
     
-    aliases = { 
-        '(Default)' : 'base_view', 
-        'view' : 'base_view', 
-        'edit' : 'base_edit', 
-    }    
 
     # Methods
     # methods from Interface IVocabularyTerm

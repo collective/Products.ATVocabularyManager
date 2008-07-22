@@ -13,6 +13,7 @@ provides VDEX compliant vocabulary - using imsvdex python package
 __author__  = '''Jens Klein <jens@bluedynamics.com>'''
 __docformat__ = 'plaintext'
 
+from zope.interface import implements
 from StringIO import StringIO
 from types import StringTypes
 from AccessControl import ClassSecurityInfo
@@ -20,7 +21,7 @@ from Products.PlacelessTranslationService.Negotiator import getLangPrefs
 from Products.CMFCore  import permissions
 from Products.CMFCore.utils import getToolByName
 from Products.Archetypes.atapi import *
-from Products.Archetypes.interfaces.vocabulary import IVocabulary
+from Products.Archetypes.interfaces import IVocabulary
 from Products.ATVocabularyManager.tools.vocabularylib import registerVocabularyContainer
 from Products.ATVocabularyManager.config import *
 from zope.interface import implements
@@ -74,20 +75,10 @@ IMSVDEXVocabularySchema = Schema((
 class IMSVDEXVocabulary(BaseContent):
     """Content type for handling of VDEX compliant vocabulary.
     """
-    __implements__ = getattr(BaseContent, '__implements__', ()) + (IVocabulary,)
+    implements(IVocabulary)
     security = ClassSecurityInfo()
-    portal_type = meta_type = 'VdexFileVocabulary'
-    archetype_name          = 'IMS VDEX Vocabulary File'
-    immediate_view          = 'base_view'
-    suppl_views              = ['base_view']
-    global_allow            = False
-    _at_rename_after_creation = True
-    schema = BaseSchema.copy() + IMSVDEXVocabularySchema.copy()
-    aliases = { 
-        '(Default)' : 'base_view', 
-        'view' : 'base_view', 
-        'edit' : 'base_edit', 
-    }    
+    meta_type = 'VdexFileVocabulary'
+    schema = BaseSchema.copy() + IMSVDEXVocabularySchema.copy()  
 
     security.declareProtected(permissions.View, 'Title')
     def Title(self):
