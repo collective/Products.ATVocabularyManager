@@ -4,7 +4,7 @@ This is a small 'wrapper' to access a named vocabulary from
 portal_vocabularytool and to fetch its DisplayList
 
 """
-# Copyright (c) 2004-2006 by BlueDynamics Tyrol - Klein & Partner KEG, Austria
+# Copyright (c) 2004-2008 by BlueDynamics Alliance, Klein & Partner KEG, Austria
 #
 # BSD-like licence, see LICENCE.txt
 #
@@ -12,23 +12,18 @@ __author__  = 'Jens Klein <jens@bluedynamics.com>'
 __docformat__ = 'plaintext'
 
 import Missing
+from zope.interface import implements
 from AccessControl import ClassSecurityInfo
 from Products.CMFCore.utils import getToolByName
-from Products.Archetypes.interfaces.vocabulary import IVocabulary
+from Products.Archetypes.interfaces import IVocabulary
 from Products.ATVocabularyManager.types.tree.vocabulary import TreeVocabulary
-
-try:
-    from Products.Archetypes.interfaces.vocabulary import IVocabularyTerm
-except ImportError:
-    from Products.ATVocabularyManager.backports import IVocabularyTerm
-
 from config import TOOL_NAME
 
-class NamedVocabulary:
+class NamedVocabulary(object):
+
+    implements(IVocabulary)
 
     vocab_name= None
-
-    __implements__ = (IVocabulary,)
 
     security = ClassSecurityInfo()
     security.setDefaultAccess('allow')
@@ -124,7 +119,6 @@ class NamedVocabulary:
                 # term is given as termkey/uid
                 key = term
             else:
-                #XXX could ask for implements IVocabularyTerm here
                 key = term.getTermKey()
 
             result = uc(UID=key)
