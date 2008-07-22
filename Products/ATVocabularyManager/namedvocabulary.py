@@ -84,7 +84,7 @@ class NamedVocabulary(object):
         if vocab is None:
             raise KeyError('Vocabulary id not found in '+\
                              'portal_vocabularies : %s' % self.vocab_name)        
-        assert(IVocabulary.isImplementedBy(vocab))
+        assert(IVocabulary.providedBy(vocab))
         return vocab
 
     def getKeyPathForTerms(self, instance, terms=()):

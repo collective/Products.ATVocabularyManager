@@ -130,7 +130,7 @@ class IMSVDEXVocabulary(BaseContent):
         if manager is None:
             return { self.getId(): 'no or corrupt vocabulary with name %s' % \
                                     self.getId()}
-        vdict = manager.getVocabularyDict()
+        vdict = manager.getVocabularyDict(lang=self._getLanguage())
         vtool.cacheVocabularyDict(self, vdict)
         return vdict        
 
@@ -141,7 +141,7 @@ class IMSVDEXVocabulary(BaseContent):
         manager = self._getManager()
         if manager is None:
             return ''
-        return manager.getTermCaptionById(key)
+        return manager.getTermCaptionById(key, lang=self._getLanguage())
 
     security.declareProtected(permissions.View, 'isFlat')
     def isFlat(self):
@@ -159,7 +159,7 @@ class IMSVDEXVocabulary(BaseContent):
             vocabularies it defines if only leafs should be displayed/selectable,
             or knots and leafs.
         """
-        # not provided by vdex
+        # not provided by vdex - or better: depends on type
         return False
 
     security.declarePrivate('_getManager')
@@ -174,7 +174,7 @@ class IMSVDEXVocabulary(BaseContent):
         data = field.getRaw(self)
         lang = self._getLanguage()
         try:
-            manager = VDEXManager(str(data), lang=lang)
+            manager = VDEXManager(str(data), lang='en', fallback=True)
         except VDEXError, e:
             if not returnerror:                
                 return None
