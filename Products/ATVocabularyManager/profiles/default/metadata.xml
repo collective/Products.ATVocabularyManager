@@ -1,4 +1,5 @@
 <?xml version="1.0"?>
 <metadata>
-  <version>1.4.2</version>
+  <description>A central pluggable vocabulary library for use within Plone.</description>
+  <version>1.5-alpha</version>
 </metadata>

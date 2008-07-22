@@ -1,6 +1,6 @@
 import os
+from xml.dom.minidom import parse
 from setuptools import setup, find_packages
-
 
 CLASSIFIERS = [
     'Programming Language :: Python',
@@ -8,26 +8,28 @@ CLASSIFIERS = [
     'Framework :: Plone',
 ]
 
-version_file = os.path.join('Products', 'ATVocabularyManager', 'version.txt')
-version = open(version_file).read().strip()
-
-readme_file= os.path.join('Products', 'ATVocabularyManager', 'README.txt')
-desc = open(readme_file).read().strip()
-changes_file = os.path.join('Products', 'ATVocabularyManager', 'HISTORY.txt')
-changes = open(changes_file).read().strip()
-
-long_description = desc + '\n\nCHANGES\n=======\n\n' +  changes 
+mdfile = os.path.join(os.path.dirname(__file__), 'Products', 
+                      'ATVocabularyManager', 'profiles', 'default', 
+                      'metadata.xml')
+metadata = parse(mdfile)
+assert metadata.documentElement.tagName == "metadata"
+version =  metadata.getElementsByTagName("version")[0].childNodes[0].data
+shortdesc = metadata.getElementsByTagName("description")[0].childNodes[0].data
+readme = open(os.path.join(os.path.dirname(__file__), 'README.txt')).read()
+changes = open(os.path.join(os.path.dirname(__file__), 
+                            'HISTORY.txt')).read().strip()
+long_description = readme + '\n\nCHANGES\n=======\n\n' +  changes 
 
 setup(name='Products.ATVocabularyManager',
       version=version,
       author='Jens Klein',
-      author_email='jens.klein@bluedynamics.com',
+      author_email='jens@bluedynamics.com',
       maintainer='Jens Klein',
-      maintainer_email='jens.klein@bluedynamics.com',
+      maintainer_email='jens@bluedynamics.com',
       classifiers=CLASSIFIERS,
       keywords='Plone Vocabulary Manager Zope',
       url='http://plone.org/products/atvocabularymanager',
-      description='A central pluggable vocabulary library for use with Archetypes based products',
+      description=shortdesc,
       long_description=long_description,
       packages=['Products', 'Products.ATVocabularyManager'],
       include_package_data = True,

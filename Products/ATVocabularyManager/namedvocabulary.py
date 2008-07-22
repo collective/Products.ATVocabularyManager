@@ -3,13 +3,12 @@
 This is a small 'wrapper' to access a named vocabulary from
 portal_vocabularytool and to fetch its DisplayList
 
-RCS-ID $Id: NamedVocabulary.py 3172 2004-10-13 21:18:00Z yenzenz $
 """
 # Copyright (c) 2004-2006 by BlueDynamics Tyrol - Klein & Partner KEG, Austria
 #
 # BSD-like licence, see LICENCE.txt
 #
-__author__  = 'Jens Klein <jens.klein@bluedynamics.com>'
+__author__  = 'Jens Klein <jens@bluedynamics.com>'
 __docformat__ = 'plaintext'
 
 import Missing
