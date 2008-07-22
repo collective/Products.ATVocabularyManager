@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<import-steps>
+	<import-step id="atvm-vocabularies" version="20080722-01"
+		handler="Products.ATVocabularyManager.importexport.importVocabularies"
+		title="Vocabularies (ATVM)">
+		<dependency step="toolset" />
+		Import vocabularies
+	</import-step>
+	<import-step id="atvocabularymanager-various"
+		title="ATVocabularyManager various"
+		handler=".setuphandlers.importVarious">
+		<depends name="toolset" />
+		Additional import steps
+	</import-step>
+</import-steps>

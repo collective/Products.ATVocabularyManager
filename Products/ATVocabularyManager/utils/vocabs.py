@@ -1,6 +1,7 @@
 import types
 from Products.ATVocabularyManager.config import TOOL_NAME as ATVOCABULARYTOOL
 from Products.CMFCore.utils import getToolByName
+from imsvdex.vdex import VDEXManager
 
 def fetchValueByKeyFromVocabularyDict(searchedkey, vdict):
     """recursive find of a key in the vocabulary dictionary tree."""
@@ -104,4 +105,28 @@ def createHierarchicalVocabs(atvm, hierarchicalVocabDictionary):
             if not hasattr(vocab, id):
                 createVocabularyTerms(vocab, id, title, value)                                                             
         vocab.reindexObject()
-                  
+        
+def loadVdexVocabs(site, directory, files, remove=True):
+    atvm = getToolByName(site, 'portal_vocabularies')
+    for filename in files:
+        # load file
+        vdexpath = os.path.join(directory, filename)
+        if not (os.path.exists(vdexpath) and os.path.isfile(vdexpath)):
+            raise ValueError, \
+                  'No valid VDEX import file provided at %s.' % vdexpath
+        try:
+            data = open(vdexpath, 'r').read()
+        except Exception, e:
+            raise ValueError, 'Problems while reading VDEX import file ' +\
+                              'provided at %s\n%s\n.' % (vdexpath, str(e))
+        vdex = VDEXManager(data)
+        vocabname = vdex.getVocabIdentifier()
+        if vocabname in atvm.contentIds():
+           if remove:
+               atvm.manage_delObjects([vocabname])
+           else:
+               # logging here?
+               continue
+        atvm.invokeFactory('VdexFileVocabulary', vocabname)
+        atvm[vocabname].importXMLBinding(data) 
+    

@@ -71,6 +71,8 @@ Dependencies
 
 - Archetypes 1.5.x 
 
+- Targets with Plone 3.1+
+
 - imsvdex (usally it get fetched automatically as dependency, otherwise 
   easy_install imsvdex - )
 
