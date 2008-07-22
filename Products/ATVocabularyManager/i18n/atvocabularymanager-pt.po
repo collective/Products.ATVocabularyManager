@@ -1,0 +1,238 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2006-08-21 12:28+0000\n"
+"PO-Revision-Date: 2007-02-09 HO:MI +ZONE\n"
+"Last-Translator: Ricardo Alves <rsa@eurotux.com>\n"
+"Language-Team: Eurotux Development Team <udp@eurotux.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: pt\n"
+"Language-Name: Português\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: atvocabularymanager\n"
+
+#. Default: "Add New Vocabulary"
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+msgid "Add New Vocabulary"
+msgstr "Adicionar novo vocabulário"
+
+msgid "Alias Vocabulary"
+msgstr "Vocabulário Atalho"
+
+#. Default: "Delete"
+#: ../skins/ATVocabularyManager/simplevocabulary_view.pt
+msgid "Delete"
+msgstr "Apagar"
+
+msgid "IMS VDEX Vocabulary"
+msgstr "Vocabulário IMS VDEX"
+
+#. Default: "Import"
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+msgid "Import"
+msgstr "Importar"
+
+#. Default: "New"
+#: ../skins/ATVocabularyManager/simplevocabulary_view.pt
+msgid "New"
+msgstr "Novo"
+
+#. Default: "Save"
+#: ../skins/ATVocabularyManager/simplevocabulary_view.pt
+msgid "Save"
+msgstr "Guardar"
+
+msgid "Simple Vocabulary"
+msgstr "Vocabulário Simples"
+
+msgid "Simple Vocabulary Term"
+msgstr "Termo de Vocabulário Simples"
+
+msgid "Sorted Simple Vocabulary"
+msgstr "Vocabulário Simples Ordenado"
+
+msgid "Tree Vocabulary"
+msgstr "Vocabulário Hierárquico"
+
+msgid "Tree Vocabulary Term"
+msgstr "Termo de Vocabulário Hierárquico"
+
+#. Default: "Vocabulary Libary"
+#: tools/vocabularylib.py
+msgid "Vocabulary Library"
+msgstr "Biblioteca de Vocabulários"
+
+#. Default: "There are currently no terms in this folder."
+#: ../skins/ATVocabularyManager/simplevocabulary_view.pt
+msgid "description_no_terms_in_folder"
+msgstr "Não existem termos nesta pasta."
+
+#. Default: "There are currently no vocabularies in this library."
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+msgid "description_no_vocabularies_in_library"
+msgstr "Não há vocabulários nesta biblioteca."
+
+#. Default: "Here you can upload <strong>IMS Vocabulary Definition Exchange</strong> compliant XML-files. Read more about <a href=\"http://www.imsglobal.org/\">IMS</a> and the <a href=\"http://www.imsglobal.org/\">VDEX-Specifications</a>."
+#: ../skins/ATVocabularyManager/vdex_upload.cpt
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+msgid "description_vdex_upload"
+msgstr "Aqui pode fazer o upload de ficheiros XML compatíveis com <strong>IMS  Vocabulary Definition Exchange</strong>. Leia mais sobre a <a href=\"http://www.imsglobal.org/\">IMS</a> e a <a href=\"http://www.imsglobal.org/\">especificação VDEX</a>."
+
+#. Default: "This page lists the custom vocabularies."
+#: ../skins/ATVocabularyManager/simplevocabulary_view.pt
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+msgid "description_vocabulary_tool"
+msgstr "Esta página apresenta os vocabulários definidos."
+
+#. Default: "Currently defined Key/value pairs:"
+#: ../skins/ATVocabularyManager/simplevocabulary_view.pt
+msgid "heading_defined_pairs"
+msgstr "Pares valor/chave definidos actualmente."
+
+#. Default: "Listed vocabularies:"
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+msgid "heading_listed_vocabularies"
+msgstr "Vocabulários disponíveis"
+
+#. Default: "Upload new VDEX"
+#: ../skins/ATVocabularyManager/vdex_upload.cpt
+msgid "heading_vdex_upload"
+msgstr "Carregar novo VDEX"
+
+#. Default: "Should not contain spaces, underscores or mixed case."
+#: types/simple/term.py
+msgid "help_key"
+msgstr "Não deve conter espaços sub-traços ou mistura de maiúsculas e minúsculas."
+
+#. Default: "Check to show only leaves in this vocabulary."
+#: types/tree/vocabulary.py
+msgid "help_show_leaves_only"
+msgstr "Seleccione para mostrar apenas as folhas neste vocabulário."
+
+#. Default: "Sort method used for displaying vocabulary terms"
+#: ../types/simple/vocabulary.py
+msgid "help_sort_method"
+msgstr "Método de ordenação para apresentação dos termos do vocabulário."
+
+#. Default: "Select target vocabulary."
+#: ../types/alias/vocabulary.py
+msgid "help_target"
+msgstr "Seleccione o vocabulário de destino."
+
+#. Default: "Should not contain spaces, underscores or mixed case."
+#: types/alias/vocabulary.py
+msgid "help_vocab_name"
+msgstr "Não deve conter espaços sub-traços ou mistura de maiúsculas e minúsculas."
+
+#. Default: "Key"
+#: types/simple/term.py
+msgid "label_key"
+msgstr "Chave"
+
+#. Default: "Select"
+#: ../skins/ATVocabularyManager/simplevocabulary_view.pt
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+msgid "label_select"
+msgstr "Seleccionar"
+
+#. Default: "Select all items"
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+msgid "label_select_all_items"
+msgstr "Seleccionar todos"
+
+#. Default: "Select type"
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+msgid "label_select_type"
+msgstr "Seleccionar tipo"
+
+#. Default: "Show Leaves Only"
+#: types/tree/vocabulary.py
+msgid "label_show_leaves_only"
+msgstr "Mostrar apenas folhas"
+
+#. Default: "Sort method"
+#: ../types/simple/vocabulary.py
+msgid "label_sort_method"
+msgstr "Método de ordenação"
+
+#. Default: "Target"
+#: ../types/alias/vocabulary.py
+msgid "label_target"
+msgstr "Destino"
+
+#. Default: "Up to Vocabulary Manager Overview"
+#: ../skins/ATVocabularyManager/simplevocabulary_view.pt
+msgid "label_up_to_vocabulary_manager_overview"
+msgstr "Subir para Página Principal da Biblioteca de Vocabulários"
+
+#. Default: "Value"
+#: types/simple/term.py
+msgid "label_value"
+msgstr "Valor"
+
+#. Default: "VDEX-Upload"
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+msgid "label_vdex_upload"
+msgstr "Carregar VDEX"
+
+#. Default: "Vocabulary name"
+#: types/alias/vocabulary.py
+msgid "label_vocab_name"
+msgstr "Nome do vocabulário"
+
+#. Default: "Add new vocabulary"
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+msgid "legend_add_vocabulary"
+msgstr "Adicionar novo vocabulário"
+
+#. Default: "Import"
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+msgid "legent_import"
+msgstr "Importar"
+
+#. Default: "ID"
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+msgid "listingheader_id"
+msgstr "Identificador"
+
+#. Default: "Title"
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+msgid "listingheader_title"
+msgstr "Título"
+
+#. Default: "Type"
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+msgid "listingheader_type"
+msgstr "Tipo"
+
+#. Default: "Vocabulary Folder Order"
+#: ../config.py
+msgid "sort_method_folder_order"
+msgstr "Ordem da pasta do vocabulário"
+
+#. Default: "Lexicographic sort by keys"
+#: ../config.py
+msgid "sort_method_lexi_keys"
+msgstr "Ordenação lexicográfica de chaves"
+
+#. Default: "Lexicographic sort by values"
+#: ../config.py
+msgid "sort_method_lexi_value"
+msgstr "Ordenação lexicográfica de valores"
+
+#. Default: "submit"
+#: ../skins/ATVocabularyManager/vdex_upload.cpt
+msgid "submit"
+msgstr "Submeter"
+
+#. Default: "Content listing"
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+msgid "summary_content_listing"
+msgstr "Listagem de conteúdos"
+

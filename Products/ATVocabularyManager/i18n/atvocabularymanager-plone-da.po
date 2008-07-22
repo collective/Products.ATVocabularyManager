@@ -1,0 +1,40 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2005-10-06 21:07+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: da\n"
+"Language-Name: Danish\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: plone\n"
+
+msgid "Simple Vocabulary"
+msgstr "Simpel emneordsliste"
+
+msgid "Sorted Simple Vocabulary"
+msgstr "Sorteret emneordsliste"
+
+msgid "Alias Vocabulary"
+msgstr "Alias emneordsliste"
+
+msgid "IMS VDEX Vocabulary"
+msgstr "IMS VDEX emneordsliste"
+
+msgid "Tree Vocabulary"
+msgstr "Emneordsliste i træ"
+
+msgid "Tree Vocabulary Term"
+msgstr "Emneord i træ"
+
+msgid "Vocabulary Library"
+msgstr "Emneordslister"
+

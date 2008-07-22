@@ -1,0 +1,55 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+           xmlns:five="http://namespaces.zope.org/five">
+
+  <five:deprecatedManageAddDelete
+      class=".tools.vocabularylib.VocabularyLibrary" />
+
+  <five:deprecatedManageAddDelete
+      class=".types.alias.vocabulary.AliasVocabulary" />
+
+  <five:deprecatedManageAddDelete
+      class=".types.simple.vocabulary.SimpleVocabulary" />
+
+  <five:deprecatedManageAddDelete
+      class=".types.simple.term.SimpleVocabularyTerm" />
+
+  <five:deprecatedManageAddDelete
+      class=".types.simple.sortedvocabulary.SortedSimpleVocabulary" />
+
+  <five:deprecatedManageAddDelete
+      class=".types.tree.vocabulary.TreeVocabulary" />
+
+  <five:deprecatedManageAddDelete
+      class=".types.vdex.vocabulary.VdexVocabulary" />
+
+  <five:deprecatedManageAddDelete
+      class=".types.vdex.langstring.VdexLangstring" />
+
+  <five:deprecatedManageAddDelete
+      class=".types.vdex.term.VdexTerm" />
+
+  <subscriber
+      for=".types.simple.term.SimpleVocabularyTerm
+           zope.app.container.interfaces.IObjectRemovedEvent"
+      handler=".event.term_removed_handler"
+      />
+
+    <genericsetup:registerProfile
+      name="default"
+      title="ATVocabularyManager"
+      directory="profiles/default"
+      description=""
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+    <!-- -*- extra stuff goes here -*- -->
+    <genericsetup:importStep
+          name="atvocabularymanager_import_steps"
+          title="ATVocabularyManager import steps"
+          description="Additional import steps"
+          handler=".setuphandlers.importVarious">
+        <depends name="toolset" />
+    </genericsetup:importStep>
+    
+</configure> 

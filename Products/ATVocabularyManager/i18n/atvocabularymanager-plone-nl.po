@@ -1,0 +1,41 @@
+# Translation to Dutch
+# Sander van Geloven <info@atopia.nl>, 2006.
+msgid ""
+msgstr ""
+"Project-Id-Version: atvocabularymanager-plone-cs\n"
+"POT-Creation-Date: 2005-10-06 21:07+0000\n"
+"PO-Revision-Date: 2006-03-22 18:28+0100\n"
+"Last-Translator: Sander van Geloven <info@atopia.nl>\n"
+"Language-Team: Sander van Geloven <info@atopia.nl>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: nl\n"
+"Language-Name: Nederlands\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: plone\n"
+"X-Poedit-Language: Dutch\n"
+"X-Is-Fallback-For: nl-be\n"
+
+msgid "Alias Vocabulary"
+msgstr "Alias Vocabulaire"
+
+msgid "IMS VDEX Vocabulary"
+msgstr "IMS VDEX Vocabulaire"
+
+msgid "Simple Vocabulary"
+msgstr "Eenvoudig Vocabulaire"
+
+msgid "Sorted Simple Vocabulary"
+msgstr "Eenvoudig Gesorteerd Vocabulaire"
+
+msgid "Tree Vocabulary"
+msgstr "Boom Vocabulaire"
+
+msgid "Tree Vocabulary Term"
+msgstr "Boom Vocabulaire Term"
+
+msgid "Vocabulary Library"
+msgstr "Vocabulaire Bibliotheek"
+

@@ -1,0 +1,70 @@
+var i=0;
+var newTerms = 0;
+var isChanged = 0;
+var ChangedElementsType = new Array(50);
+var ChangedElementsName = new Array(50);
+var ChangedElementsValue = new Array(50);
+var j = 0;
+
+function addTerm()
+{
+    newTerms++;
+    var mytable=document.getElementById("vocab_terms");
+    var new_row=document.createElement("TR");
+	var new_cell=document.createElement("TD");
+	var newButton   = document.createElement("input");
+    newButton.type  = "text";
+    newButton.id  = "key"+newTerms;
+    newButton.name  = "key"+newTerms;
+    new_cell.appendChild(newButton);
+	new_row.appendChild(new_cell);
+	var new_cell2=document.createElement("TD");
+	var newButton2   = document.createElement("input");
+    newButton2.type  = "text";
+    newButton2.id  = "value"+newTerms;
+    newButton2.name  = "value"+newTerms;
+    new_cell2.appendChild(newButton2);
+	new_row.appendChild(new_cell2);
+    mytable.appendChild(new_row);
+}
+
+function changeTerm(obj)
+{
+    if(obj.name!=obj.value)
+    {
+        isChanged = 1;
+        ChangedElementsType[i] = obj.id;
+        ChangedElementsName[i] = obj.name;
+        ChangedElementsValue[i++] = obj.value;
+        t = document.getElementById("debug1");
+        t.value = "New value: " + obj.value;
+    }
+}
+
+function saveTerm()
+{
+    if(newTerms>0)
+    {
+        url = document.getElementById("abs_url").value;
+        server = XMLRPC.getService(url);
+        server.add('createChild','FcreateChild');
+
+        for(l=1;l<=newTerms;l++)
+        {
+            keystr = document.getElementById("key"+l).value;
+            valuestr = document.getElementById("value"+l).value;
+            //term_url = url + "/" + keystr;
+            server.FcreateChild(id=keystr, title=valuestr);
+        }
+    }
+}
+
+function deleteTerm(id, i)
+{
+    var mytable=document.getElementById("vocab_terms");
+    mytable.deleteRow(i);
+    url = document.getElementById("abs_url").value;
+    server = XMLRPC.getService(url);
+    server.add('manage_delObjects','delObject');
+    result = server.delObject(id);
+}

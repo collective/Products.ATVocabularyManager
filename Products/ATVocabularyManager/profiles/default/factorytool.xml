@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<object name="portal_factory">
+ <factorytypes>
+  <type portal_type="AliasVocabulary"/>
+  <type portal_type="SimpleVocabulary"/>
+  <type portal_type="SimpleVocabularyTerm"/>
+  <type portal_type="SortedSimpleVocabulary"/>
+  <type portal_type="TreeVocabulary"/>
+  <type portal_type="TreeVocabularyTerm"/>
+  <type portal_type="VdexFileVocabulary"/>
+  <type portal_type="VdexLangstring"/>
+  <type portal_type="VdexMediaDescriptor"/>
+  <type portal_type="VdexRelationEndPoint"/>
+  <type portal_type="VdexTerm"/>
+  <type portal_type="VdexVocabulary"/>
+  <type portal_type="VocabularyLibrary"/>
+ </factorytypes>
+</object>

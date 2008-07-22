@@ -1,0 +1,168 @@
+Searches on hierarchical vocabularies
+=====================================
+
+This tests demonstrates how ATVM enables you to make your contenttype
+searchable using a treevocabulary field.
+
+imagine the following vocabulary:
+
+ engine-type
+ 
+   * electrical
+   * mechanical
+     * otto engine
+     * diesel engine    
+
+a search for engine==mechanical should return all entries
+for otto and diesel engines
+
+You can skip this tutorial if you are no developer and simply
+want to learn how to do hierarchy-aware searches on your content type.
+This is demonstrated in the Product ATVocabularyManagerExample_
+
+::
+_ATVocabularyManagerExample: https://svn.plone.org/svn/archetypes/ATVocabularyManagerExample/trunk
+
+
+
+Setup Vocabulary
+----------------
+
+let's create our vocabulary using the utility methods
+provided by ATVM::
+
+
+  >>> from Products.CMFCore.utils import getToolByName
+  >>> atvm = getToolByName(self.portal, 'portal_vocabularies')    
+  >>> from Products.ATVocabularyManager.utils.vocabs import createHierarchicalVocabs
+  
+  >>> dictionary = {
+  ...     ('electrical', 'electrical engines'): {},
+  ...     ('mechanical', 'mechanial engines'): {
+  ...        ('otto', 'ottomotor'): {},
+  ...        ('diesel', 'diesel engine'): {}
+  ...     }
+  ... }  
+  >>> hierarchicalVocabs = {}
+  >>> hierarchicalVocabs[('enginetypes', 'Diffetent types of engines')] = dictionary
+  >>> createHierarchicalVocabs(atvm, hierarchicalVocabs)
+  
+  
+
+now we've got our vocabulary available::
+
+  >>> engines = atvm.getVocabularyByName('enginetypes')
+  >>> engines
+  <TreeVocabulary at /plone/portal_vocabularies/enginetypes>
+
+
+
+Background Information
+----------------------
+
+This small section tells you how ATMV achieves that an ottomotor is
+recognized as a mechanical engine too.
+
+
+The key of a vocabulary term is the UID of the canonical object
+(in case the vocabulary is translated into different languages)
+and can be obtained using the method ``getTermKey``
+
+  >>> ottomotor = engines.mechanical.otto
+  >>> ottomotor.getTermKey() == ottomotor.UID()
+  True
+  
+
+A ``TreeVocabularyTerm`` implements the method ``getTermKeyPath``
+that returns a list of vocabularyterm-keys of the term itself
+and all the terms in the hierarchy above it.
+
+  >>> ottoPath = ottomotor.getTermKeyPath()
+  >>> engines.mechanical.getTermKey() in ottoPath
+  True
+  
+
+
+Each VocabularyTerm is indexed using a KeywordIndex on
+``getTermKeyPath`` in uid_catalog.
+
+The keypath is is available as a metadata-column in uid_catalog,
+so it can be fetched for via a catalog query without invoking real objects.
+
+our ottomotor term can be found searching for the ottomotor uid::
+
+  >>> uid_catalog = getToolByName(self.portal, 'uid_catalog')
+  >>> uid_catalog(getTermKeyPath=ottomotor.UID())[0].getObject()
+  <TreeVocabularyTerm at .../enginetypes/mechanical/otto>
+  
+a search for a machanical engine returns 3 vocabularies:
+the ottomotor, the dieselengine and the term for mechanicalengine too::
+  
+  >>> result = uid_catalog(getTermKeyPath=engines.mechanical.UID())
+  >>> [brain.id for brain in result]
+  ['mechanical', 'diesel', 'otto']
+
+
+a change in the hierarchy of our vocabulary will reindex all vocabularies
+below the changed term.
+
+  XXX make new term below engines: 'fossil'' and move
+  mechanical there. after that the otto and diesel
+  should be available under fossil too
+
+
+
+Make your content type searchable
+---------------------------------
+
+To be able to search for content types assiciated to terms
+not only directly but also down the hierarchy we need to index
+our object under the TermKeyPath(s) of the associated vocabularyterm(s).
+
+ATVM provides a fast implemented utility method for this purpose
+that is working only on the catalog.
+
+You can utilize ``getKeyPathForTerms`` in ``NamedVocabulary``::
+
+  >>> from Products.ATVocabularyManager import NamedVocabulary
+  >>> nv = NamedVocabulary('engines')
+  >>> keyPath = nv.getKeyPathForTerms(self.portal, ottomotor.getTermKey())
+  >>> engines.mechanical.getTermKey() in keyPath
+  True
+  >>> ottomotor.getTermKey() in keyPath
+  True
+
+
+All you need to do is to implement a method that uses the
+``getKeyPathForTerms`` method and define it as index method::
+
+  # .. somewhere in the schemadefinition
+  
+  ReferenceField(
+    name='myfield',
+    widget=...
+    vocabulary=NamedVocabulary("""myvocab"""),
+    index="KeywordIndex",
+    index_method="someIndexMethod"
+  ),
+
+  # .. somewhere in your content type definition
+  
+  define someIndexMethod(self):
+    """used to index myfield
+    """
+    # all we have to know is the field name of the field this
+    # index method belongs to
+    fieldName = 'myfield'
+
+    # the following code need not be touched
+    termUID = self.getField(fieldName).get(self)
+    return self.getField(fieldName).vocabulary.getKeyPathForTerms(self, termUID)
+
+
+
+See ATVocabularyManagerExample_ for a more detailed explanation how
+to use ATVocabularyManager  in your content type.
+
+
+_ATVocabularyManagerExample: https://svn.plone.org/svn/archetypes/ATVocabularyManagerExample/

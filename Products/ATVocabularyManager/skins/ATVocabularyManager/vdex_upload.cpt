@@ -1,0 +1,32 @@
+ <html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en-us"
+      lang="en-us"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="atvocabularymanager">
+  <head><title></title></head>
+  <body>
+    <div metal:fill-slot="main">
+      <h1 class="firstHeading" i18n:translate="heading_vdex_upload">Upload new VDEX</h1>
+        <p i18n:translate="description_vdex_upload">Here you can upload <strong>IMS Vocabulary Definition Exchange</strong> compliant
+           XML-files. Read more about <a href="http://www.imsglobal.org/">IMS</a> and the <a href="http://www.imsglobal.org/">VDEX-Specifications</a>.</p>
+        <form tal:define="errors options/state/getErrors"
+              enctype="multipart/form-data"
+              tal:attributes="action string:${here/absolute_url}/${template/id};"
+              method="post">
+           <input type="hidden" name="form.submitted" value="1" />
+           <p tal:define="err errors/foo|nothing" tal:condition="err" tal:content="err" />
+
+           <input type="file" 
+                  id="vdex" 
+                  name="vdex" 
+                  size="20"
+           />
+
+           <input type="submit" name="submit" value="submit" i18n:attributes="value" />
+        </form>
+    </div>
+  </body>
+</html>

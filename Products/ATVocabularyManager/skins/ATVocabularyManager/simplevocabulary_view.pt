@@ -1,0 +1,134 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/prefs_main_template/macros/master"
+      i18n:domain="atvocabularymanager">
+
+<body>
+
+    <div metal:fill-slot="prefs_configlet_main"
+         tal:define="contentTypes python: here.getAllowedTypes();
+                     contentTypeIds python:[t.getId() for t in contentTypes];
+                     num_types python: len(contentTypes)">
+
+        <h1 tal:content="here/title_or_id" class="documentFirstHeading">
+            Title or id
+        </h1>
+        <script type="text/javascript"
+            tal:attributes="src string:$portal_url/vcXMLRPC.js">
+        </script>
+
+        <script type="text/javascript"
+            tal:attributes="src string:$portal_url/atvm.js">
+        </script>
+
+        <a href=""
+           class="link-parent"
+           tal:attributes="href string: $portal_url/atvocabulary_manager"
+           i18n:translate="label_up_to_vocabulary_manager_overview">
+        Up to Vocabulary Manager Overview
+        </a>
+
+        <p i18n:translate="description_vocabulary_tool">
+            This page lists the custom vocabularies.
+        </p>
+
+         <div tal:define="types contentTypes">
+          <form name="vocabularyForm"
+                method="post"
+                action="folder_object"
+                tal:attributes="action here_url"
+                tal:define="batch python:here.batchedFolderContents(suppressHiddenFiles=1);">
+
+            <select id="select_add_term"
+                    name="type_name"
+                    tabindex=""
+                    tal:condition="python: num_types > 1"
+                    tal:attributes="tabindex tabindex/next|nothing">
+
+              <option value="Select" i18n:translate="label_select">Select</option>
+              <metal:block tal:repeat="ctype types">
+                <option value="Document"
+                        tal:define="Id ctype/getId"
+                        tal:attributes="value ctype/getId"
+                        tal:content="ctype/Title"
+                        i18n:translate="">Document</option>
+              </metal:block>
+            </select>
+            <input type="hidden"
+                   name="type_name"
+                   value="Content Type Id"
+                   tal:condition="python: num_types==1"
+                   tal:attributes="value python:types[0].getId()" />
+            <input type="hidden"
+                   id="abs_url"
+                   value=""
+                   tal:attributes="value python:here.absolute_url()" />
+
+
+       <input class="standalone"
+                   type="submit"
+                   name="folder_factories:method"
+                   value="Add New Term"
+                   tabindex=""
+                   tal:define="ttype python: num_types==1 and here.translate(types[0].Title())"
+                   tal:condition="python: num_types"
+                   tal:attributes="tabindex tabindex/next|nothing;
+                                   value python:ttype and here.translate('Add New ${type}', {'type': ttype}) or
+                                                          here.translate('label_add_new_term', default='Add New Term')" />
+               <input type="button" name="new" value="New" onClick="addTerm()" i18n:attributes="value" />
+               <input type="button" name="save" value="Save" onClick="saveTerm()" i18n:attributes="value" />
+               
+            </form>
+          </div>
+
+        <h2 i18n:translate="heading_defined_pairs">Currently defined Key/value pairs:</h2>
+
+        <metal:listingmacro define-macro="listing">
+        <tal:foldercontents define="folderContents python:here.getFolderContents(suppressHiddenFiles=1)">
+        <tal:listing condition="folderContents"
+                     define="global getObjSize nocall:here/getObjSize;
+                             global toPortalTime nocall:here/toPortalTime;">
+        <form name="vocab_terms" action="here/absolute_url" method="post">
+          <table tal:define="idx python:Iterator(pos=-1)" id="vocab_terms">
+	       <tbody> 
+           <tal:entry tal:repeat="obj folderContents">
+                 <tr>
+                  <td><input id="key" type="text"
+                             name="id"
+                             value="value"
+                             tal:attributes="value obj/id;
+                                             name obj/id"
+                             onBlur="changeTerm(this)" />
+                  </td>
+                  <td><input id="value" type="text"
+                             name="title"
+                             value="value"
+                             tal:attributes="value obj/Title;
+                                             name obj/Title"
+                             onBlur="changeTerm(this)" />
+                  </td>
+                  <td><input type="button" name="delete" value="Delete" onClick=""
+                             tal:attributes="onClick string:deleteTerm('${obj/id}', ${idx/next})" 
+                             i18n:attributes="value" />
+                  </td>
+                </tr>
+            </tal:entry>
+            </tbody>
+          </table>
+        </form>
+        </tal:listing>
+ 
+        <br />
+        <input type="text" id="debug1" /> <br />
+        <input type="text" id="debug2" /> <br />
+        <p class="discreet"
+           tal:condition="not: folderContents" i18n:translate="description_no_terms_in_folder">
+         There are currently no terms in this folder.
+        </p>
+
+        </tal:foldercontents>
+        </metal:listingmacro>
+    </div>
+
+</body>
+</html>

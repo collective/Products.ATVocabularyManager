@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<object name="portal_properties">
+ <object name="navtree_properties">
+  <property name="metaTypesNotToList" type="lines" purge="False">
+   <element value="VocabularyLibrary"/> 
+  </property>
+ </object>
+ <object name="site_properties">
+    <property name="use_folder_contents" type="lines" purge="False">
+        <element value="SimpleVocabulary"/>
+        <element value="SortedSimpleVocabulary"/>
+        <element value="TreeVocabulary"/>
+        <element value="TreeVocabularyTerm"/>
+        <element value="VdexTerm"/>
+        <element value="VdexTerm"/>
+        <element value="VdexMediaDescriptor"/>
+        <element value="VocabularyLibrary"/>
+    </property>
+  <property name="types_not_searched" type="lines" purge="False">
+      <element value="AliasVocabulary"/>
+      <element value="SimpleVocabulary"/>
+      <element value="SimpleVocabularyTerm"/>
+      <element value="SortedSimpleVocabulary"/>
+      <element value="TreeVocabulary"/>
+      <element value="TreeVocabularyTerm"/>
+      <element value="VdexFileVocabulary"/>
+      <element value="VdexLangstring"/>
+      <element value="VdexMediaDescriptor"/>
+      <element value="VdexRelationEndPoint"/>
+      <element value="VdexTerm"/>
+      <element value="VdexVocabulary"/>
+      <element value="VocabularyLibrary"/>
+  </property>    
+ </object>
+</object>

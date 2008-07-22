@@ -1,0 +1,152 @@
+=================
+Simple Vocabulary
+=================
+
+Simple vocabularies are flat vocabularies.
+
+
+Creating a simple vocabulary
+============================
+
+SimpleVocabularies can be created in the vocabulary library:
+
+  >>> atvm = self.portal.portal_vocabularies
+  >>> self.setRoles(['Manager'])
+  >>> _ = atvm.invokeFactory('SimpleVocabulary', 'testvocab', title="test vocabulary")
+  
+You can fetch a vocabulary calling ``getVocabularyByName`` on
+the vocabulary library
+
+  >>> simple = atvm.getVocabularyByName('testvocab')
+  >>> simple
+  <SimpleVocabulary at /plone/portal_vocabularies/testvocab>
+  >>> simple.Title()
+  'test vocabulary'
+
+
+Creating simple vocabulary terms
+================================
+
+Simple vocabularies can only contain SimpleVocabularyTerms.
+ 
+  >>> simple.allowedContentTypes()
+  [<FactoryTypeInformation at /plone/portal_types/SimpleVocabularyTerm>]
+  
+  
+You can add terms using ``invokeFactory`` or the method
+``addTerm``::
+
+  >>> _ = simple.invokeFactory('SimpleVocabularyTerm', 'term1')
+  >>> simple.addTerm('term2', 'first time')
+  True
+
+addTerm can ignore duplicate keys, and returns whether adding
+has been successfull.
+
+  >>> simple.addTerm('term2', 'second time', silentignore=True)
+  False
+  >>> simple.getDisplayList(self)
+  <DisplayList [('term1', ''), ('term2', 'first time')] at ...>
+  
+
+
+Batch creation
+--------------
+
+For creating simple vocabularies in python code you can use 
+a convenience method atvm provides for you:
+
+  >>> from Products.ATVocabularyManager.utils.vocabs import createSimpleVocabs
+  
+This needs to be fed with a dictionary in the following format::
+
+  >>> testvocabs = {}
+  >>> testvocabs['sorting'] = (
+  ...     ('c', u'Alpha'),
+  ...     ('a', u'Zeppelin'),
+  ...     ('y', u'Charly'))
+  >>> createSimpleVocabs(atvm, testvocabs)
+  >>> sorting = atvm.getVocabularyByName('sorting')
+  >>> sorting.contentIds()
+  ['c', 'a', 'y']
+
+
+
+         
+
+Sorting
+=======
+
+You can define the sort order of the vocabularyterms within a
+simplevocabulary by choosing one of the values in `Sort method`.
+
+The default sort order is alphabetically by Vales (Title)::
+
+  >>> sorting.getField('sortMethod').vocabulary.keys()
+  ['getObjPositionInParent', 'lexicographic_values', 'lexicographic_keys']
+  >>> sorting.getSortMethod()
+  'lexicographic_values'
+  
+
+Sorting by Values
+
+  >>> sorting.getDisplayList(self)
+  <DisplayList [('c', 'Alpha'), ('y', 'Charly'), ('a', 'Zeppelin')] at ...>
+
+Sorting by keys
+
+  >>> from Products.ATVocabularyManager.config import SORT_METHOD_LEXICO_KEYS
+  >>> sorting.setSortMethod(SORT_METHOD_LEXICO_KEYS)
+  >>> sorting.getDisplayList(self)
+  <DisplayList [('a', 'Zeppelin'), ('c', 'Alpha'), ('y', 'Charly')] at ...>
+  
+Sorting by folder position
+
+  >>> sorting.listFolderContents()
+  [<SimpleVocabularyTerm .../sorting/c>, <SimpleVocabularyTerm .../sorting/a>, <SimpleVocabularyTerm .../sorting/y>]
+  >>> from Products.ATVocabularyManager.config import SORT_METHOD_FOLDER_ORDER
+  >>> sorting.setSortMethod(SORT_METHOD_FOLDER_ORDER)
+  >>> sorting.getDisplayList(self)
+  <DisplayList [('c', 'Alpha'), ('a', 'Zeppelin'), ('y', 'Charly')] ...>
+
+
+Linguaplone Support
+===================
+
+Simple vocabularies have full Linguaplone Support, but also work
+w/o having Linguaplone installed::
+
+  >>> self.portal.portal_quickinstaller.isProductInstalled('LinguaPlone')
+  False
+
+If Linguaplone is not installed, our vocabulary works
+without causing troubles
+
+  >>> self._createTestVocabulary()
+  >>> vocab = self.atvm.teststates
+  >>> vocab.getVocabularyDict(vocab)
+  {'ger': 'Germany', 'fin': 'Finland', 'aut': 'Austria', 'nor': 'Norway'}
+
+
+If Linguaplone is installed, the simplevocabulary is fully
+supporting translated vocabularyterms:
+
+XXX go on porting the tests/testSimpleVocabulary testTranslations here
+
+
+Sorting
+-------
+
+Also sorting on translated vocabularies works as excepted:
+XXX write tests for the following 
+* keys are the same for every language, so sorting by key should 
+  result in the same order in every language
+  
+* sorting on title might result in completely differnt order
+
+* sorting on position in folder might be differnt to, since translations have their separate order
+
+
+
+
+  

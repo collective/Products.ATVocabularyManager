@@ -1,0 +1,4 @@
+[validators]
+
+[actions]
+action.success = traverse_to:string:vdex_processupload

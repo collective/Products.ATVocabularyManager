@@ -1,0 +1,7 @@
+
+Test existence of tool
+----------------------
+
+    >>> self.portal.portal_vocabularies
+    <VocabularyLibrary at /plone/portal_vocabularies>
+

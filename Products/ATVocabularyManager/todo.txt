@@ -1,0 +1,129 @@
+tasks:
+========
+      
+  - create an issue: simplevocabs do not get alphabetically ordered,
+    nore do they use the order defined by getObjectPositionInParent
+    (see issue #4)
+
+  - drop the try
+    from Products.Archetypes.interfaces.vocabulary import IVocabularyTerm
+
+  - we should add the parameter 'lang' to IVocabularyTerm.getTermValue
+    [jens] agrees, but we should make it optional (normally translations should happen transparently)
+
+  - move getTermPath to separate hierarchicalvocabulary interface?
+    [hf] this would allow us to differentiate hierarchical vocabularies by their interface
+         we'd should to make namedvocbaulary.getKeyPathForTerms aware of this too then...
+
+  - [jens] make vdex vocabulary implement IVocabulayTerm interface too
+
+  - (missing in vdex and alias) mark methods getVocabularyValue and getVocabularyKey as deprecated
+    and use the methods getTermValue and getTermKey instead
+    [jens] XXX
+
+  - use zope3 interfaces for vocabularies and terms
+    useful for example in NamedVocabulary.getKeyPathForTerms (see comment there)
+
+  - resolve TODOs (XXX, FIXME) marked in the code ;-)
+
+
+ideas for features:
+=====================
+
+
+selection-depth
+-------------------
+
+basic idea:
+    fields can specify selection depth (0 unlimited, 1 first level, 2 seconde level, etc)
+    that gets displayed in the Displaylist.
+
+why do we need that:
+    if a certain field does not need the fine-grained selection possibilities
+    a vocabulary offers, no new vocabulary has to be defined.
+
+
+variable displaylists
+----------------------
+
+basic idea:
+	field can specify which attribute of the vocabularyterms is used for the
+	displaylist.
+
+why could we need that:
+	in certain cases the same vocabulary is needed, but another field or field
+	combination should be used for display in the selection.
+
+risks/drawbacks:
+	more complicated handling of cached displaylists (different dictionaries have
+	to be handeled, not just one)
+
+
+caching displaylists
+----------------------
+
+basic idea:
+    caching of displaylists and vocabularydicts using ZCacheable (the only thing we'd
+    have to care about is invalidating the cache when a term gets moved or changed)
+
+why do we need that:
+    fetching vocabulary displaylists costs a lot.
+    at the moment the displaylist for the whole vocab gets fetched
+    everytime a content type that uses the vocabulary is edited and even VIEWED!
+
+
+[jens] will implement this for the vdex vocabulary in the near future: DONE
+       open tasks: Invalidate cache after upload of a vdex.
+                   (Auto?)-Assign to a ram-cache-manager.
+
+
+
+generic setup support
+----------------------
+
+basic idea:
+    vdex already can be ex and imported to xml. we shoud realize it for simple 
+    and term too 
+    [jens] decision needed: use vdex, some own xml or better atxml from marshall 
+           or just simple Excel importable CSV?)
+
+
+mixins:
+-------
+    common hierarchic functionality of vdex and tree and possibly other types
+    should be coded in a mixin.
+    code and test once, use everywhere
+
+
+catalog updates
+----------------
+
+current limitation:
+
+    every change on the structure of a vocabulary
+    (eg: moving a term up the hierarchy)
+    has to trigger not only the invalidation of the cache but also
+    the reindexing of all terms down the hierarchy
+    (uid_catalog search on getTermUidPath,
+    catalog.manage_reindexIndex(ids=('getTermUidPath',)))
+
+    currently this is a limitation of treevocabulary.
+    vdex dont need to get cataloged
+
+
+need to reindex objects in uid_catalog and portal_catalog:
+    Which method do we need to hook?
+
+
+in portal_catalog for indexes used by content types
+    the worse problem is to reindex the objects that define custom
+    indexes on their path-methods.
+    we don't know which catalog they use (could be portal_catalog, but
+    also any other)
+
+    brainstorming:
+
+      - store catalog and index in vocab or the atvmtool
+      - provide a hook somewhere that can be implemented
+      - maybe use references instead of text-linefields
+        to be able to find out which content uses a certain term.

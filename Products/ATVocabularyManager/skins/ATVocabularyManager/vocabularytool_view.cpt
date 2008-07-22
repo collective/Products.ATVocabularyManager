@@ -1,0 +1,234 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/prefs_main_template/macros/master"
+      i18n:domain="atvocabularymanager">
+
+<body>
+
+    <div metal:fill-slot="prefs_configlet_main"
+         tal:define="contentTypes python: here.getAllowedTypes();
+                     contentTypeIds python:[t.getId() for t in contentTypes];
+                     num_types python: len(contentTypes)">
+
+        <h1 tal:content="here/title_or_id" class="documentFirstHeading"
+            i18n:translate="">
+            Title or id
+        </h1>
+
+        <a href=""
+           class="link-parent"
+           tal:attributes="href string: $portal_url/plone_control_panel"
+           i18n:translate="label_up_to_plone_setup"
+           i18n:domain="plone">
+        Up to Plone Setup
+        </a>
+
+        <p class="description" i18n:translate="description_vocabulary_tool">
+            This page lists the custom vocabularies.
+        </p>
+
+         <div tal:define="types contentTypes">
+         <fieldset id="vocab-add-new">
+          <legend i18n:translate="legend_add_vocabulary">Add new vocabulary</legend>
+          <form name="vocabularyForm"
+                method="post"
+                action="folder_object"
+                tal:attributes="action here_url">
+
+            <!-- Add Term pulldown -->
+            <div class="field">
+            <label for="select_add_term">
+              <span class="hiddenLabel" i18n:translate="label_select_type">Select type</span>
+            </label>
+
+            <select id="select_add_term"
+                    name="type_name"
+                    tabindex=""
+                    tal:condition="python: num_types > 1"
+                    tal:attributes="tabindex tabindex/next|nothing">
+
+              <option value="Select" i18n:translate="label_select">Select</option>
+              <metal:block tal:repeat="ctype types">
+                <option value="Document"
+                        tal:define="Id ctype/getId"
+                        tal:attributes="value ctype/getId"
+                        tal:content="ctype/Title"
+                        i18n:translate="">Document</option>
+              </metal:block>
+            </select>
+            </div>
+            <input type="hidden"
+                   name="type_name"
+                   value="Content Type Id"
+                   tal:condition="python: num_types==1"
+                   tal:attributes="value python:types[0].getId()" />
+
+            <input class="standalone"
+                   type="submit"
+                   name="folder_factories:method"
+                   value="Add New Vocabulary"
+                   tabindex=""
+                   i18n:attributes="value"  
+                   tal:define="ttype python: num_types==1 and here.translate(types[0].Title())"
+                   tal:condition="python: num_types"
+                   tal:attributes="tabindex tabindex/next|nothing;" />
+            </form>
+        </fieldset>
+        <fieldset id="vocab-import">
+            <legend i18n:translate="legent_import">Import</legend>
+            <form tal:define="errors options/state/getErrors"
+              enctype="multipart/form-data"
+              tal:attributes="action string:${here/absolute_url}/${template/id};"
+              method="post">
+              <input type="hidden" name="form.submitted" value="1" />
+              <div class="field">
+                <label i18n:translate="label_vdex_upload">VDEX-Upload</label>
+        <div class="formHelp" i18n:translate="description_vdex_upload">Here you can upload <strong>IMS Vocabulary Definition Exchange</strong> compliant
+           XML-files. Read more about <a href="http://www.imsglobal.org/">IMS</a> and the <a href="http://www.imsglobal.org/">VDEX-Specifications</a>.</div>
+                <input type="file" 
+                       id="vdex" 
+                       name="vdex" 
+                       size="20"
+                />
+               </div>
+               <input type="submit" 
+                      class="standalone"
+                      name="submit" 
+                      id="submit"
+                      i18n:attributes="value"
+                      value="Import" />
+            </form>
+        </fieldset>
+        </div>
+
+        <h2 i18n:translate="heading_listed_vocabularies">Listed vocabularies:</h2>
+        <form   name="folderContentsForm"
+                method="post"
+                action="folder_object"
+                tal:attributes="action here_url">
+
+        <metal:listing define-macro="folder_listing"
+                       tal:define="canModifyFolderContent is_editable;
+                                   batch python:context.getFolderContents({'sort_on': 'getId'});">
+          <table class="listing"
+                 summary="Content listing"
+                 i18n:attributes="summary summary_content_listing;"
+          >
+            <thead>
+              <metal:block tal:condition="batch|not:standalone|nothing">
+                <tr>
+                  <th class="nosort">
+                      <input class="noborder"
+                             type="checkbox"
+                             src="select_all_icon.gif"
+                             name="selectButton"
+                             title="Select all items"
+                             onClick="toggleSelect(this,'paths:list');"
+                             tal:attributes="src string:$portal_url/select_all_icon.gif"
+                             alt="Select all items"
+                             i18n:attributes="title label_select_all_items; alt label_select_all_items;"
+                  />
+                  </th>
+                  <th class="nosort"
+                      >&nbsp;<tal:id i18n:translate="listingheader_id"
+                      >ID</tal:id>&nbsp;</th>
+                  <th class="nosort"
+                      >&nbsp;<tal:title i18n:translate="listingheader_title"
+                      >Title</tal:title>&nbsp;</th>
+                  <th class="nosort"
+                      >&nbsp;<tal:type i18n:translate="listingheader_type"
+                      >Type</tal:type>&nbsp;</th>
+                    
+                </tr>
+              </metal:block>
+            </thead>
+            <metal:block tal:condition="batch|not:standalone|nothing">
+            <tbody tal:define="arrowUp portal/arrowUp.gif;
+                               arrowDown portal/arrowDown.gif;
+                               getRelativeContentURL nocall:utool/getRelativeContentURL
+                               ">
+                <tal:items tal:repeat="item batch">
+                   <tr tal:define="oddrow               repeat/item/odd;
+                                   item_url             item/getURL|item/absolute_url;
+                                   item_id              item/getId;
+                                   item_path            item/getPath|python:'/'.join(item.getPhysicalPath());
+                                   item_title           item/Title|python:'(not available)';
+                                   item_description     item/Description;
+                                   item_type            item/Type;
+                                   item_type_class      python:'contenttype-' + normalizeString(item_type);
+                                   item_wf_state        item/review_state|python: wtool.getInfoFor(item, 'review_state', '');
+                                   item_state_title     python:wtool.getTitleForStateOnType(item_wf_state, item_type);
+                                   item_wf_state_class  python:'state-' + normalizeString(item_wf_state);
+                                   hasGetUrl            python:hasattr(item.aq_explicit, 'getURL');
+                                   item_rel_url         python:hasGetUrl and item.getURL(relative=1) or getRelativeContentURL(item);
+                                  "
+                       tal:attributes="class python:test(oddrow, 'even', 'odd')" >
+
+                       <tal:comment replace="nothing">
+                            * We have to check if the browserDefault stuff is really necessary
+                            * Create title_or_id metadata in the catalog (why not just use item.Title or item.getId? (alecm))
+                       </tal:comment>
+
+                       <td>
+                           <input type="checkbox"
+                                  class="noborder"
+                                  name="paths:list" id="#"
+                                  value="#"
+                                  tal:attributes="value   item_path;
+                                                  id      string:cb_$item_id;
+                                                  checked python:test(request.get('ids_checked', False), 'checked', None);
+                                                  alt     string:Select $item_id;
+                                                  title   string:Select $item_id" />
+                      <input type="hidden" name="obj_paths:list" value="#"
+                             tal:attributes="value item_rel_url" />
+
+                    </td>
+                    <td tal:define="url python:item_url">
+                        <span tal:attributes="class item_type_class">
+                        <a href="#" tal:attributes="href  url;
+                                                  title string: $item_type: $item_description;
+                                                  class string:$item_wf_state_class visualIconPadding;">
+
+                        <span tal:content="item_id">id</span>
+                        </a>
+                        </span></td>
+                    <td>
+                        <span tal:content="item_title">
+                          Item Title
+                        </span>
+                    </td>
+                    <td i18n:translate="" tal:content="item_type"></td>
+                   </tr>
+                </tal:items>
+            </tbody>
+            </metal:block>
+            </table>
+
+        <input type="hidden" name="orig_template"
+               tal:attributes="value template_id"/>
+        <tal:buttons i18n:domain="plone" tal:repeat="button actions/folder_buttons|nothing">
+          <input class="context"
+                 type="submit"
+                 name=""
+                 value=""
+                 tabindex=""
+                 tal:condition="python:(button['id'] != 'change_state' and batch) or (here.cb_dataValid and button['id'] == 'paste')"
+                 i18n:attributes="value"
+                 tal:attributes="value button/name;
+                                 name button/url;
+                                 tabindex tabindex/next;
+                                 class python:test((button['id'] == 'paste'), 'standalone', 'context')" />
+        </tal:buttons>
+      
+
+        <p class="discreet"
+           tal:condition="not: batch"
+           i18n:translate="description_no_vocabularies_in_library">
+         There are currently no vocabularies in this library.
+        </p>
+        </metal:listing>
+      </form>
+    </div>
+
+</body>
+</html>

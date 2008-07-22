@@ -1,0 +1,191 @@
+# Translation of atvocabularymanager.pot to French
+# Gettext Message File for ATVocabularyManager
+# Alexandre Sauvé <asauve at free dot fr>, 2006/03/09.
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0.0-beta2\n"
+"POT-Creation-Date: 2006-08-21 12:28+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: Alexandre Sauvé <asauve at free dot fr>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: fr\n"
+"Language-Name: French\n"
+"Preferred-Encodings: utf-8 latin9 latin1\n"
+"Domain: atvocabularymanager\n"
+"X-Is-Fallback-For: fr-fr fr-be fr-ca fr-lu fr-mc fr-ch\n"
+
+#. Default: "Add New Vocabulary"
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+msgid "Add New Vocabulary"
+msgstr "Ajouter un nouveau vocabulaire"
+
+msgid "Alias Vocabulary"
+msgstr "Alias sur un Vocabulaire"
+
+#. Default: "Delete"
+#: ../skins/ATVocabularyManager/simplevocabulary_view.pt
+msgid "Delete"
+msgstr "Supprimer"
+
+msgid "IMS VDEX Vocabulary"
+msgstr "Vocabulaire IMS VDEX"
+
+#. Default: "Import"
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+msgid "Import"
+msgstr "Importer"
+
+#. Default: "New"
+#: ../skins/ATVocabularyManager/simplevocabulary_view.pt
+msgid "New"
+msgstr "Nouveau"
+
+#. Default: "Save"
+#: ../skins/ATVocabularyManager/simplevocabulary_view.pt
+msgid "Save"
+msgstr "Sauver"
+
+msgid "Simple Vocabulary"
+msgstr "Vocabulaire Simple"
+
+msgid "Sorted Simple Vocabulary"
+msgstr "Vocabulaire Simple Trié"
+
+msgid "Tree Vocabulary"
+msgstr "Vocabulaire en Arbre"
+
+msgid "Tree Vocabulary Term"
+msgstr "Mot de Vocabulaire en Arbre"
+
+#. Default: "Vocabulary Libary"
+#: tools/vocabularylib.py
+msgid "Vocabulary Library"
+msgstr "Bibliothèque de Vocabulaires"
+
+#. Default: "There are currently no terms in this folder."
+#: ../skins/ATVocabularyManager/simplevocabulary_view.pt
+msgid "description_no_terms_in_folder"
+msgstr "Il n'y a aucun terme dans ce vocabulaire."
+
+#. Default: "There are currently no vocabularies in this library."
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+msgid "description_no_vocabularies_in_library"
+msgstr "Il n'y a pas de vocabulaires dans la bibliothèque."
+
+#. Default: "Here you can upload <strong>IMS Vocabulary Definition Exchange</strong> compliant XML-files. Read more about <a href=\"http://www.imsglobal.org/\">IMS</a> and the <a href=\"http://www.imsglobal.org/\">VDEX-Specifications</a>."
+#: ../skins/ATVocabularyManager/vdex_upload.cpt
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+msgid "description_vdex_upload"
+msgstr "Ici vous pouvez uploader des fichier XML au format <strong>IMS Vocabulary Definition Exchange</strong>. En lire plus au sujet d'<a href=\"http://www.imsglobal.org/\">IMS</a> et de la <a href=\"http://www.imsglobal.org/\">Spécification VDEX</a>"
+
+#. Default: "This page lists the custom vocabularies."
+#: ../skins/ATVocabularyManager/simplevocabulary_view.pt
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+msgid "description_vocabulary_tool"
+msgstr "Cette page liste les vocabulaires personnalisés."
+
+#. Default: "Currently defined Key/value pairs:"
+#: ../skins/ATVocabularyManager/simplevocabulary_view.pt
+msgid "heading_defined_pairs"
+msgstr "Paires clé/valeur définies actuellement:"
+
+#. Default: "Listed vocabularies:"
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+msgid "heading_listed_vocabularies"
+msgstr "Vocabulaires définis:"
+
+#. Default: "Upload new VDEX"
+#: ../skins/ATVocabularyManager/vdex_upload.cpt
+msgid "heading_vdex_upload"
+msgstr "Uploader un nouveau VDEX"
+
+#. Default: "Should not contain spaces, underscores or mixed case."
+#: types/simple/term.py
+msgid "help_key"
+msgstr "Ne devrait pas contenir d'espaces, de caractères souligné ni de mélanges majuscules/minuscules."
+
+#. Default: "Should not contain spaces, underscores or mixed case."
+#: types/alias/vocabulary.py
+msgid "help_vocab_name"
+msgstr "Ne devrait pas contenir d'espaces, de caractères souligné ni de mélanges majuscules/minuscules."
+
+#. Default: "Key"
+#: types/simple/term.py
+msgid "label_key"
+msgstr "Clé"
+
+#. Default: "Select"
+#: ../skins/ATVocabularyManager/simplevocabulary_view.pt
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+msgid "label_select"
+msgstr "Sélectionner"
+
+#. Default: "Select all items"
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+msgid "label_select_all_items"
+msgstr "Sélectionner tous"
+
+#. Default: "Select type"
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+msgid "label_select_type"
+msgstr "Sélectionner le type"
+
+#. Default: "Up to Vocabulary Manager Overview"
+#: ../skins/ATVocabularyManager/simplevocabulary_view.pt
+msgid "label_up_to_vocabulary_manager_overview"
+msgstr "Remonter à la gestion des vocabulaires"
+
+#. Default: "Value"
+#: types/simple/term.py
+msgid "label_value"
+msgstr "Valeur"
+
+#. Default: "VDEX-Upload"
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+msgid "label_vdex_upload"
+msgstr "Uploader un VDEX"
+
+#. Default: "Vocabulary name"
+#: types/alias/vocabulary.py
+msgid "label_vocab_name"
+msgstr "Nom du Vocabulaire"
+
+#. Default: "Add new vocabulary"
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+msgid "legend_add_vocabulary"
+msgstr "Ajouter un nouveau Vocabulaire"
+
+#. Default: "Import"
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+msgid "legent_import"
+msgstr "Importer"
+
+#. Default: "ID"
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+msgid "listingheader_id"
+msgstr "Id"
+
+#. Default: "Title"
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+msgid "listingheader_title"
+msgstr "Titre"
+
+#. Default: "Type"
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+msgid "listingheader_type"
+msgstr "Type"
+
+#. Default: "submit"
+#: ../skins/ATVocabularyManager/vdex_upload.cpt
+msgid "submit"
+msgstr "Soumettre"
+
+#. Default: "Content listing"
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+msgid "summary_content_listing"
+msgstr "Liste du contenu"
+

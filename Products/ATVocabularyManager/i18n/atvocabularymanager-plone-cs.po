@@ -1,0 +1,41 @@
+# translation of atvocabularymanager-plone-cs.po to Czech
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# Radim Novotny <r.novotny@elektrika.cz>, 2005.
+msgid ""
+msgstr ""
+"Project-Id-Version: atvocabularymanager-plone-cs\n"
+"POT-Creation-Date: 2005-10-06 21:07+0000\n"
+"PO-Revision-Date: 2007-02-09 08:23+0100\n"
+"Last-Translator: Radim Novotny <novotny.radim@gmail.com>\n"
+"Language-Team: Czech <info@surecase.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: cs\n"
+"Language-Name: Czech\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: plone\n"
+"X-Generator: KBabel 1.10.2\n"
+
+msgid "Alias Vocabulary"
+msgstr "Odkaz na jiný slovník"
+
+msgid "IMS VDEX Vocabulary"
+msgstr "Slovník IMS VDEX"
+
+msgid "Simple Vocabulary"
+msgstr "Jednoduchý slovník"
+
+msgid "Sorted Simple Vocabulary"
+msgstr "Jednoduchý setříděný slovník"
+
+msgid "Tree Vocabulary"
+msgstr "Stromový slovník"
+
+msgid "Tree Vocabulary Term"
+msgstr "Položka stromového slovníku"
+
+msgid "Vocabulary Library"
+msgstr "Správa slovníků"
+

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<object name="portal_workflow">
+ <bindings>
+  <type type_id="AliasVocabulary"/>
+  <type type_id="SimpleVocabulary"/>
+  <type type_id="SimpleVocabularyTerm"/>
+  <type type_id="SortedSimpleVocabulary"/>
+  <type type_id="TreeVocabulary"/>
+  <type type_id="TreeVocabularyTerm"/>
+  <type type_id="VdexFileVocabulary"/>
+  <type type_id="VdexLangstring"/>
+  <type type_id="VdexMediaDescriptor"/>
+  <type type_id="VdexRelationEndPoint"/>
+  <type type_id="VdexTerm"/>
+  <type type_id="VdexVocabulary"/>
+  <type type_id="VocabularyLibrary"/>
+ </bindings>
+</object>

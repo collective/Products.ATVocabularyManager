@@ -1,0 +1,43 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2005-10-06 21:07+0000\n"
+"PO-Revision-Date: 2007-02-09 HO:MI +ZONE\n"
+"Last-Translator: Ricardo Alves <rsa@eurotux.com>\n"
+"Language-Team: Eurotux Development Team <udp@eurotux.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: pt\n"
+"Language-Name: Português\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: plone\n"
+
+msgid "Alias Vocabulary"
+msgstr "Vocabulário Atalho"
+
+msgid "IMS VDEX Vocabulary"
+msgstr "Vocabulário IMX VDEX"
+
+msgid "Simple Vocabulary"
+msgstr "Vocabulário Simples"
+
+msgid "Simple Vocabulary Term"
+msgstr "Termo de Vocabulário Simples"
+
+msgid "Sorted Simple Vocabulary"
+msgstr "Vocabulário Simples Ordenado"
+
+msgid "Tree Vocabulary"
+msgstr "Vocabulário Hierárquico"
+
+msgid "Tree Vocabulary Term"
+msgstr "Termo de Vocabulário Hierárquico"
+
+msgid "Vocabulary Library"
+msgstr "Biblioteca de Vocabulários"
+

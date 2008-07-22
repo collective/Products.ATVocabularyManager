@@ -1,0 +1,234 @@
+========================================
+History for Products.ATVocabularyManager
+========================================
+
+2008-06-04 1.4.2
+================
+
+* added spanish translations provided by Diego Municio
+  (see http://plone.org/products/atvocabularymanager/issues/39)
+  
+* merged in Duke's patch for multilingual csv import for simple vocabularies
+  (see http://plone.org/products/atvocabularymanager/issues/53)
+  
+  [2008-06-02 fRiSi]
+  
+  
+* fixed test setup so ATVM is set up using the new GS profile 
+  added by naro. (tested with plone 3.1.1 buildout)
+  
+  this fixes http://plone.org/products/atvocabularymanager/issues/52
+  
+  also got rid of tests.framework
+  
+  [2008-06-04 fRiSi]
+
+  
+* added imsvdex as a required dependency in setup.py
+  which makes it unnecessary to ``easy_install imsvdex``
+  for people using buildout. 
+  
+  [2008-05-29 fRiSi <harald at webmeisterei(dot)com>]
+  
+
+* added GenericSetup profile, removed Install.py
+
+  [2008-05-21 naro <novotny.radim@gmail.com>]
+
+
+before 1.4
+==========
+
+2007-10-30 jensens <jens at bluedynamics (dot) com>
+  * workaround for  #46 Upload from Windows/IE creates wrong ID
+  * made new VdexFileVocabulary as default for upload form
+
+2007-10-15 jensens <jens at bluedynamics (dot) com>
+  * add alternative vdex vocabulary, much faster
+
+2007-08-24 jensens <jens at bluedynamics (dot) com>
+
+  * added convinience method to vocabulary library (tool) which returns
+  a dictionary with key=vocbaulary id and value=title of vocabulary (language
+  aware.
+
+2007-08-22 jensens <jens at bluedynamics (dot) com>
+
+  * added convinience function to make it easier to fetch a value from a 
+  vocabulary dictionary (utils.vocabs.fetchValueByKeyFromVocabularyDict).
+
+2007-05-24 andrewburkhalter <andrewb at onenw (dot) org>
+
+  * adding css handles to various elements of portal_vocabulary user 
+  interface, so that if desired, one can easily dumb down the user 
+  interface for less technical clients with css, but not override the template
+
+2007-06-08 jensens <jens at bluedynamics (dot) com>
+
+  * language negotation to make sure the cache is language aware.
+
+2007-03-02 fRiSi <harald  at webmeisterei (dot) com>
+
+  * types/simple/vocabulary.py
+    
+    applied patch of issue #4 (sorting of simple vocabularies)
+
+  * doc/simplevocabulary.txt
+    
+    doctest testing the sorting of simplevocabularies        
+    sorting might not yet work with translated vocabularies.
+    i added a section to test this, but did not yet write the tests there.
+    
+
+2006-12-23 rocky <rocky at serverzen (dot) com>
+
+  * event.py, configure.zcml, interfaces.py, types/simple/term.py
+    - "renamed events" are now fired when the title of any term is updated.
+    - "deleted events" are now fired when a term is deleted from a
+    vocabulary; this particular feature will only work when running on
+    Zope 2.9 or higher (note: this doesn't make ATVM dependent on Zope 2.9)
+
+
+2006-11-30 fRiSi <harald (dot) friessnegger at lovelysystems (dot) com>
+
+  * types/tree/vocabulary.py, types/simple/vocabulary.py
+  replaced ``if not instance is None:`` with a try-except.
+  if you are on a type that is not linguaplone enabled,
+  and using a vocabulary you got an error when creating an
+  object of this type because getLanguage raised an AttributeError.
+  
+  
+2006-11-15 fRiSi <harald (dot) friessnegger at lovelysystems (dot) com>
+
+  * types/tree/term.py
+  to fix http://plone.org/products/atvocabularymanager/issues/26
+  in the meantime i solved the problem with the "hack solution"
+  to take away the IVocabulary interface from the term that is
+  extending the vocabulary.
+  
+  (see the issue above for more information.)
+  
+  
+  * Makefile
+  added a new target `clean` that removes stale pyc files and *~ backup
+  files
+
+2006-10-23 fRiSi <harald (dot) friessnegger at lovelysystems (dot) com>
+  
+  * namedvocabulary.py
+  used to not add the keypath of a term if the search for a
+  term uid in uid-catalog returned more than one value.
+  proceeding and just taking the first result is better than
+  silently ignoring the path for this item.
+                    
+2006-09-11 fRiSi <harald (dot) friessnegger at lovelysystems (dot) com>
+
+ * Extensions/Install.py
+   - did a cleaner check for BadRequest Error in case the tool already
+   existed at install time (also added basic tests for installing/uninstalling/and
+   reinstalling the product.
+   
+   - self.portal.portal_properties.navtree_properties.metaTypesNotToList
+   is a tuple by default (on a freshly created plonesite)
+   ATVM creates a list at installation time and removes the tool from this list at
+   uninstallation. If other products get installed between installing
+   and uninstalling, they possibly change metaTypesNotToList back to a tuple again.
+   changed the installer and uninstaller to operate on and return a tuple here.
+   (should fix http://plone.org/products/atvocabularymanager/issues/10)
+   
+ * tests/testATVocabularyManager.py
+   tests for the installation and uninstallation of the product.
+   agreed with jens that we could do a zexp of the vocabularies at uninstallation
+   in case this was done by accident.
+   (http://plone.org/products/atvocabularymanager/issues/22/)
+   
+
+2006-08-31  jensens <jens at bluedynamics (dot) com>
+
+ * types/simple/term.py
+   - removed bug, which stops me from adding new terms.
+
+2006-08-28  fRiSi <harald (dot) friessnegger at lovelysystems (dot) com>
+
+ * types/simple/term.py
+   - SimpleVocabularyTerms now return the canoncial's id
+   as key. This differs from the current behaviour but is
+   essential for translated vocabularies.
+   
+   - getTermKeyPath now returns a list containing
+   the key of the term, not it's uid. This is consistent
+   with the interface.
+
+ * types/simple/vocabulary.py, types/tree/vocabulary.py
+   getVocabularyDict now uses instance.getLanguage in favour of
+   portal_lanuages.getPreferredLanguage (otherwhise passing instance
+   would be useless in most cases)
+      
+ * tests/testSimpleVocabulary.py
+   added a test that checks if translations return the same key
+   and if dictionaries are translated.
+   
+ * backports.py
+   - Improved the docstrings to be more explicit.
+   - getTermKey now states that all translations of a term
+   have the same key.
+   - getTermValue: now has an optional ``lang`` parameter
+   making **kwargs needless.
+   
+2006-08-21  gotcha <gotcha at bubblenet (dot) be>
+ * add sorted simple vocabulary
+
+ * run i18ndude and update fr and nl
+
+2006-08-03  fRiSi <harald (dot) friessnegger at lovelysystems (dot) com>
+
+ * merged branch supporting catalog searches on hierarchical vocabularies to trunk
+   (https://svn.plone.org/svn/archetypes/ATVocabularyManager/branches/treevocab-frisi)
+
+
+2006-07-25  fRiSi <harald (dot) friessnegger at lovelysystems (dot) com>
+
+ * merged current trunk into this branch
+
+ * utils/vocabs.py
+   utility methods for batch creating vocabularies
+
+ * types/simple/term.py types/tree/term.py
+   marked methods getVocabularyValue and getVocabularyKey as deprecated and used those
+   defined in IVocabularyTerm to make terms implement their interface.
+
+ * types/tree/vocabulary.py types/simple/vocabulary.py
+   improved linguaplone support.
+   also added a testcase
+
+ * tests/testTreeVocabulary.py
+   testing if treevocabulary is linguaplone aware
+
+ * doc/search_treevocabulary.txt
+   a doctest explaining how ATVM performs searches on hierarchical
+   vocabularies, and how to enable them for your content type.
+
+
+- Added dutch translations, thanks to Atopia
+  [jladage]
+
+- AllowedTypesByIface is broken, it seems - adding manual override to fix
+  this in ATVM.
+  [optilude]
+
+- removed workflows from ATVM types on installation
+  [ferri]
+
+- added brazilian portuguese translation and portal_vocabularies title i18n
+  support
+  [ferri]
+
+- added i18n and Czech translation
+  [naro]
+
+- uncommented code in Install.py to make portal_vocabularylib not show in the
+  navigation tree
+  [panjunyong]
+
+- use StringWidget instead of IDWidget for Simple vocaublary term
+  [panjunyong]
