@@ -43,7 +43,7 @@ class ATVMXMLAdapter(XMLAdapterBase):
                 vocabid = filename[:filename.rfind('.')]
                 self._logger.info('Import VDEX file %s with name %s as %s' % \
                                   (filename, vocabname, vocabid)) 
-                self.context.invokeFactory('VdexFileVocabulary', vocabide)
+                self.context.invokeFactory('VdexFileVocabulary', vocabid)
                 self.context[vocabid].importXMLBinding(data)
                 
             elif filename.endswith('.csv') or filename.endswith('.txt'):
