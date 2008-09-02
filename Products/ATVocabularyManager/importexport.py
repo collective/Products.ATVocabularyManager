@@ -12,6 +12,7 @@ from Products.GenericSetup.interfaces import ISetupEnviron
 from Products.GenericSetup.utils import XMLAdapterBase
 from Products.GenericSetup.utils import exportObjects
 from Products.GenericSetup.utils import importObjects
+from Products.CMFPlone.utils import normalizeString
 from interfaces import IATVocabularyLibrary
 
 class ATVMXMLAdapter(XMLAdapterBase):
@@ -39,11 +40,13 @@ class ATVMXMLAdapter(XMLAdapterBase):
             if filename.endswith('.vdex') or filename.endswith('.xml'):
                 # VDEX file
                 vdex = VDEXManager(data)
-                vocabname = vdex.getVocabIdentifier()
-                vocabid = filename[:filename.rfind('.')]
+                vocabid = vdex.getVocabIdentifier()
+                if not vocabid:
+                    vocabid = filename[:filename.rfind('.')]
+                vocabname = normalizeString(vocabid)
                 self._logger.info('Import VDEX file %s with name %s as %s' % \
                                   (filename, vocabname, vocabid)) 
-                self.context.invokeFactory('VdexFileVocabulary', vocabid)
+                self.context.invokeFactory('VdexFileVocabulary', vocabname)
                 self.context[vocabid].importXMLBinding(data)
                 
             elif filename.endswith('.csv') or filename.endswith('.txt'):
