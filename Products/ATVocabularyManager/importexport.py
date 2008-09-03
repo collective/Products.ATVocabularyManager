@@ -7,6 +7,7 @@ __docformat__ = 'plaintext'
 import os
 from imsvdex.vdex import VDEXManager
 from zope.component import adapts
+from zExceptions import BadRequest
 from Products.CMFCore.utils import getToolByName
 from Products.GenericSetup.interfaces import ISetupEnviron
 from Products.GenericSetup.utils import XMLAdapterBase
@@ -42,12 +43,19 @@ class ATVMXMLAdapter(XMLAdapterBase):
                 vdex = VDEXManager(data)
                 vocabid = vdex.getVocabIdentifier()
                 if not vocabid:
-                    vocabid = filename[:filename.rfind('.')]
-                vocabname = normalizeString(vocabid)
-                self._logger.info('Import VDEX file %s with name %s as %s' % \
-                                  (filename, vocabname, vocabid)) 
-                self.context.invokeFactory('VdexFileVocabulary', vocabname)
-                self.context[vocabid].importXMLBinding(data)
+                    vocabid = filename[:filename.rfind('.')]                
+                try:
+                    self._logger.info(
+                        'Import VDEX file %s with identifier %s' % \
+                        (filename, vocabid, vocabname)) 
+                    self.context.invokeFactory('VdexFileVocabulary', vocabname)
+                except BadRequest, e:
+                    self._logger.warn(
+                        'Import VDEX file %s with identifier %s renamed as %s' % \
+                        (filename, vocabid, vocabname)) 
+                    
+                    vocabname = normalizeString(vocabid, context=self.context)
+                    self.context[vocabname].importXMLBinding(data)
                 
             elif filename.endswith('.csv') or filename.endswith('.txt'):
                 # CSV file
