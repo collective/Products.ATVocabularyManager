@@ -130,7 +130,7 @@ class VocabularyLibrary(UniqueObject, OrderedBaseFolder, Cacheable):
         allowed = self.allowedContentTypesForContainer(containername)
         return [fti.content_meta_type for fti in allowed]
 
-    def getVocabularyByName(self,vocabname):
+    def getVocabularyByName(self, vocabname):
         """ returns a vocabulary or None if no vocab with this name found """
         if shasattr(self, vocabname):
             return self[vocabname]
