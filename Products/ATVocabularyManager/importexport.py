@@ -51,7 +51,7 @@ class ATVMXMLAdapter(XMLAdapterBase):
                         (filename, vocabname)) 
                     self.context.invokeFactory('VdexFileVocabulary', vocabname)
                 except BadRequest, e:
-                    self._logger.warn(
+                    self._logger.warning(
                         'Import VDEX file %s with identifier %s renamed as %s' % \
                         (filename, vocabid, vocabname))                     
                     vocabname = normalizeString(vocabid, context=self.context)
