@@ -50,6 +50,8 @@ class ATVMXMLAdapter(XMLAdapterBase):
                 if not vocabid:
                     vocabid = filename[:filename.rfind('.')]   
                 vocabname = vocabid             
+                if vocabname in self.context.objectIds():
+                    self.context.manage_delObjects([vocabname])
                 try:
                     self._logger.info(
                         'Import VDEX file %s with identifier %s' % \
@@ -58,8 +60,10 @@ class ATVMXMLAdapter(XMLAdapterBase):
                 except BadRequest, e:
                     self._logger.warning(
                         'Import VDEX file %s with identifier %s renamed as %s' % \
-                        (filename, vocabid, vocabname))                     
+                        (filename, vocabid, vocabname))  
                     vocabname = normalizeString(vocabid, context=self.context)
+                    if vocabname in self.context.objectIds():
+                        self.context.manage_delObjects([vocabname])
                     self.context.invokeFactory('VdexFileVocabulary', vocabname)
                 self.context[vocabname].importXMLBinding(data)                
             elif filename.endswith('.csv') or filename.endswith('.txt'):
