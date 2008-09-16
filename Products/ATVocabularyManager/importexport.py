@@ -6,6 +6,7 @@ __author__  = 'Jens Klein <jens@bluedynamics.com>'
 __docformat__ = 'plaintext'
 import os
 from imsvdex.vdex import VDEXManager
+from imsvdex.vdex import VDEXError
 from zope.component import adapts
 from zExceptions import BadRequest
 from Products.CMFCore.utils import getToolByName
@@ -40,7 +41,11 @@ class ATVMXMLAdapter(XMLAdapterBase):
             data = self.environ.readDataFile(filepath)
             if filename.endswith('.vdex') or filename.endswith('.xml'):
                 # VDEX file
-                vdex = VDEXManager(data)
+                try:
+                    vdex = VDEXManager(data)
+                except VDEXError, e:
+                    self._logger.error('Problem with vdex-file: %s' % filepath)
+                    raise
                 vocabid = vdex.getVocabIdentifier()
                 if not vocabid:
                     vocabid = filename[:filename.rfind('.')]   
