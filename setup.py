@@ -8,17 +8,17 @@ CLASSIFIERS = [
     'Framework :: Plone',
 ]
 
-mdfile = os.path.join(os.path.dirname(__file__), 'Products', 
-                      'ATVocabularyManager', 'profiles', 'default', 
+mdfile = os.path.join(os.path.dirname(__file__), 'Products',
+                      'ATVocabularyManager', 'profiles', 'default',
                       'metadata.xml')
 metadata = parse(mdfile)
 assert metadata.documentElement.tagName == "metadata"
 version =  metadata.getElementsByTagName("version")[0].childNodes[0].data
 shortdesc = metadata.getElementsByTagName("description")[0].childNodes[0].data
 readme = open(os.path.join(os.path.dirname(__file__), 'README.txt')).read()
-changes = open(os.path.join(os.path.dirname(__file__), 
+changes = open(os.path.join(os.path.dirname(__file__),
                             'HISTORY.txt')).read().strip()
-long_description = readme + '\n\nCHANGES\n=======\n\n' +  changes 
+long_description = readme + '\n\nCHANGES\n=======\n\n' +  changes
 
 setup(name='Products.ATVocabularyManager',
       version=version,
@@ -36,5 +36,8 @@ setup(name='Products.ATVocabularyManager',
       zip_safe=False,
       install_requires=['setuptools', 'imsvdex'],
       namespace_packages=['Products'],
+      extras_require = dict(
+          test = ['interlude', 'Products.LinguaPlone',],
+      ),
 
       )

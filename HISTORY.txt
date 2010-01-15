@@ -5,6 +5,14 @@ History for Products.ATVocabularyManager
 2008-07-22 1.5 DEV
 ==================
 
+* Fixed deprecated API call to registerType without Package Name. Works now for
+  Plone4.
+  [2010-01-15, thet]
+
+* Added Products.LinguaPlone as test dependency to extras_require and begun
+  fixing tests.
+  [2010-01-15, thet]
+
 * removed old slow VDEX implementation; added stub for import/export of vocabs
   with generixsetup; added support for vdex import with genericsetup.
   [2008-07-22, jensens]
@@ -14,29 +22,29 @@ History for Products.ATVocabularyManager
 
 * added spanish translations provided by Diego Municio
   (see http://plone.org/products/atvocabularymanager/issues/39)
-  
+
 * merged in Duke's patch for multilingual csv import for simple vocabularies
   (see http://plone.org/products/atvocabularymanager/issues/53)
-  
+
   [2008-06-02 fRiSi]
-  
-  
-* fixed test setup so ATVM is set up using the new GS profile 
+
+
+* fixed test setup so ATVM is set up using the new GS profile
   added by naro. (tested with plone 3.1.1 buildout)
-  
+
   this fixes http://plone.org/products/atvocabularymanager/issues/52
-  
+
   also got rid of tests.framework
-  
+
   [2008-06-04 fRiSi]
 
-  
+
 * added imsvdex as a required dependency in setup.py
   which makes it unnecessary to ``easy_install imsvdex``
-  for people using buildout. 
-  
+  for people using buildout.
+
   [2008-05-29 fRiSi <harald at webmeisterei(dot)com>]
-  
+
 
 * added GenericSetup profile, removed Install.py
 
@@ -63,13 +71,13 @@ before 1.4
 
 2007-08-22 jensens <jens at bluedynamics (dot) com>
 
-* added convinience function to make it easier to fetch a value from a 
+* added convinience function to make it easier to fetch a value from a
   vocabulary dictionary (utils.vocabs.fetchValueByKeyFromVocabularyDict).
 
 2007-05-24 andrewburkhalter <andrewb at onenw (dot) org>
 
-* adding css handles to various elements of portal_vocabulary user 
-  interface, so that if desired, one can easily dumb down the user 
+* adding css handles to various elements of portal_vocabulary user
+  interface, so that if desired, one can easily dumb down the user
   interface for less technical clients with css, but not override the template
 
 2007-06-08 jensens <jens at bluedynamics (dot) com>
@@ -79,12 +87,12 @@ before 1.4
 2007-03-02 fRiSi <harald  at webmeisterei (dot) com>
 
 * types/simple/vocabulary.py
-  
+
   applied patch of issue #4 (sorting of simple vocabularies)
 
 * doc/simplevocabulary.txt
-  
-  doctest testing the sorting of simplevocabularies        
+
+  doctest testing the sorting of simplevocabularies
   sorting might not yet work with translated vocabularies.
   i added a section to test this, but did not yet write the tests there.
 
@@ -114,7 +122,7 @@ before 1.4
   in the meantime i solved the problem with the "hack solution"
   to take away the IVocabulary interface from the term that is
   extending the vocabulary.
-  
+
   (see the issue above for more information.)
 
 * Makefile
@@ -122,13 +130,13 @@ before 1.4
   files
 
 2006-10-23 fRiSi <harald (dot) friessnegger at lovelysystems (dot) com>
-  
+
 * namedvocabulary.py
   used to not add the keypath of a term if the search for a
   term uid in uid-catalog returned more than one value.
   proceeding and just taking the first result is better than
   silently ignoring the path for this item.
-                    
+
 2006-09-11 fRiSi <harald (dot) friessnegger at lovelysystems (dot) com>
 
 * Extensions/Install.py
@@ -173,11 +181,11 @@ before 1.4
   getVocabularyDict now uses instance.getLanguage in favour of
   portal_lanuages.getPreferredLanguage (otherwhise passing instance
   would be useless in most cases)
-      
+
 * tests/testSimpleVocabulary.py
   added a test that checks if translations return the same key
   and if dictionaries are translated.
-   
+
 * backports.py
 
   * Improved the docstrings to be more explicit.
@@ -189,7 +197,7 @@ before 1.4
     making ``**kwargs`` needless.
 
 2006-08-21  gotcha <gotcha at bubblenet (dot) be>
- 
+
 * add sorted simple vocabulary
 * run i18ndude and update fr and nl
 

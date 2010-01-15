@@ -24,6 +24,7 @@ from Products.Archetypes.atapi import *
 from Products.Archetypes.interfaces import IVocabulary
 from Products.ATVocabularyManager.tools.vocabularylib import registerVocabularyContainer
 from Products.ATVocabularyManager.config import *
+from Products.ATVocabularyManager.config import PROJECTNAME
 from zope.interface import implements
 from imsvdex.vdex import VDEXManager, VDEXError
 
@@ -54,7 +55,7 @@ IMSVDEXVocabularySchema = Schema((
             label_msgid="label_description",
             description_msgid="help_description",
             i18n_domain="plone"),
-    ),    
+    ),
     FileField(
         name='vdex',
         allowable_content_types=["text/xml"],
@@ -78,25 +79,25 @@ class IMSVDEXVocabulary(BaseContent):
     implements(IVocabulary)
     security = ClassSecurityInfo()
     meta_type = 'VdexFileVocabulary'
-    schema = BaseSchema.copy() + IMSVDEXVocabularySchema.copy()  
+    schema = BaseSchema.copy() + IMSVDEXVocabularySchema.copy()
 
     security.declareProtected(permissions.View, 'Title')
     def Title(self):
         """return the title of the given vdex file"""
         manager = self._getManager()
         if manager is None:
-            return 'No or corrupt file uploaded.'        
+            return 'No or corrupt file uploaded.'
         return manager.getVocabName()
-    
+
     security.declareProtected(permissions.View, 'Title')
     def Description(self):
         """the description gives information about the state of the vdex"""
         manager = self._getManager(reset=True, returnerror=True)
         if type(manager) in StringTypes:
-            return manager        
+            return manager
         return manager.getVocabName()
-        
-        
+
+
     security.declareProtected(permissions.View, 'getDisplayList')
     def getDisplayList(self, instance):
         """ returns an object of class DisplayList as defined in
@@ -107,7 +108,7 @@ class IMSVDEXVocabulary(BaseContent):
         dl = DisplayList()
         self._appendToDisplayList(dl, self.getVocabularyDict(instance), None)
         return dl
-    
+
     def getVocabularyDict(self, instance):
         """ returns the vocabulary as a dictionary with a string key and a
             string value. If it is not a flat vocabulary, the value is a
@@ -132,7 +133,7 @@ class IMSVDEXVocabulary(BaseContent):
                                     self.getId()}
         vdict = manager.getVocabularyDict(lang=self._getLanguage())
         vtool.cacheVocabularyDict(self, vdict)
-        return vdict        
+        return vdict
 
     def getTermByKey(self, key):
         """ returns a term object implementing IVocabularyTerm
@@ -176,7 +177,7 @@ class IMSVDEXVocabulary(BaseContent):
         try:
             manager = VDEXManager(str(data), lang='en', fallback=True)
         except VDEXError, e:
-            if not returnerror:                
+            if not returnerror:
                 return None
             return str(e)
         self._v_manager = manager
@@ -196,9 +197,9 @@ class IMSVDEXVocabulary(BaseContent):
                lang = accepted[0]
             else:
                 # bummer, it cant determine a language
-                lang = 'neutral'     
+                lang = 'neutral'
         return lang and lang[:2] or None
-                
+
     security.declarePrivate('_appendToDisplayList')
     def _appendToDisplayList(self, displaylist, vdict, valueparent):
         """ append subtree to flat display list
@@ -217,20 +218,20 @@ class IMSVDEXVocabulary(BaseContent):
             if not self.showLeafsOnly() or subdict:
                 displaylist.add(key,value)
             if subdict:
-                self._appendToDisplayList(displaylist, subdict,value)   
+                self._appendToDisplayList(displaylist, subdict,value)
 
     def SearchableText(self):
         """dont find in live-search"""
-        return ''  
-    
+        return ''
+
     security.declareProtected(permissions.ModifyPortalContent,
                               'importXMLBinding')
     def importXMLBinding(self, data):
         """
         imports IMS VDEX compliant XML (BBB)
-        """    
+        """
         self.setVdex(data)
         self.reindexObject()
 
-registerType(IMSVDEXVocabulary)
+registerType(IMSVDEXVocabulary, PROJECTNAME)
 registerVocabularyContainer(IMSVDEXVocabulary)
