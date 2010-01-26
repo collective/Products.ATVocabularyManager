@@ -5,6 +5,9 @@ History for Products.ATVocabularyManager
 2008-07-22 1.5 DEV
 ==================
 
+* registerType needs PROJECTNAME as second parameter
+  [2010-01-26, thet]
+
 * removed old slow VDEX implementation; added stub for import/export of vocabs
   with generixsetup; added support for vdex import with genericsetup.
   [2008-07-22, jensens]
