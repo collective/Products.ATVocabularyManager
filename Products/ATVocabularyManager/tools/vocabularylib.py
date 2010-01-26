@@ -26,6 +26,7 @@ from Products.ATVocabularyManager.config import TOOL_NAME
 from Products.ATVocabularyManager.config import DEFAULT_VOCABULARY_CONTAINER
 from Products.ATVocabularyManager.interfaces import IATVocabularyLibrary
 from Products.Archetypes.utils import shasattr
+from Products.ATVocabularyManager.config import PROJECTNAME
 
 ### note: use Archetypes registry infrastructure in future
 _vocabterm_types = {}
@@ -152,13 +153,13 @@ class VocabularyLibrary(UniqueObject, OrderedBaseFolder, Cacheable):
         self.invokeFactory( 'VdexVocabulary', md5name )
 
         return self[md5name]
-    
+
     security.declareProtected(View, 'listVocabularies')
     def listVocabularies(self):
         res = {}
         for id in self.contentIds():
             res[id] = self[id].Title()
         return res
-            
 
-registerType(VocabularyLibrary)
+
+registerType(VocabularyLibrary, PROJECTNAME)

@@ -28,14 +28,14 @@ from Products.ATVocabularyManager.tools import registerVocabularyContainer
 from Products.ATVocabularyManager.tools import registerVocabularyTerm
 from Products.ATVocabularyManager.types.simple import SimpleVocabularyTerm
 from Products.ATVocabularyManager.types.tree import TreeVocabulary
-
+from Products.ATVocabularyManager.config import PROJECTNAME
 
 class TreeVocabularyTerm(TreeVocabulary, SimpleVocabularyTerm):
     """ Term inside of a TreeVocabulary or as an subterm
     """
 
     __implements__ = getattr(TreeVocabulary,'__implements__',()) + (IVocabularyTerm,)
-    
+
     security = ClassSecurityInfo()
     meta_type = 'TreeVocabularyTerm'
 
@@ -68,7 +68,7 @@ class TreeVocabularyTerm(TreeVocabulary, SimpleVocabularyTerm):
                 i18n_domain="atvocabularymanager"),
         )),
     )
-    
+
 
     # Methods
     # methods from Interface IVocabularyTerm
@@ -85,7 +85,7 @@ class TreeVocabularyTerm(TreeVocabulary, SimpleVocabularyTerm):
 
     def getTermValue(self, lang=None):
         """
-        """        
+        """
         if (not HAS_LINGUA_PLONE) or (lang is None):
             return self.Title()
         else:
@@ -119,7 +119,7 @@ class TreeVocabularyTerm(TreeVocabulary, SimpleVocabularyTerm):
     update = SimpleVocabularyTerm.update
 
 
-registerType(TreeVocabularyTerm)
+registerType(TreeVocabularyTerm, PROJECTNAME)
 registerVocabularyContainer(TreeVocabularyTerm)
 registerVocabularyTerm(TreeVocabularyTerm,'TreeVocabulary')
 registerVocabularyTerm(TreeVocabularyTerm,'TreeVocabularyTerm')

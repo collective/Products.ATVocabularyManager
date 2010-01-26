@@ -32,7 +32,7 @@ from Products.Archetypes.utils import OrderedDict
 
 from Products.ATVocabularyManager.tools import registerVocabularyContainer
 from Products.ATVocabularyManager.config import TOOL_NAME as VOCABTOOL_NAME
-
+from Products.ATVocabularyManager.config import PROJECTNAME
 
 class SimpleVocabulary(OrderedBaseFolder):
 
@@ -73,7 +73,7 @@ class SimpleVocabulary(OrderedBaseFolder):
               i18n_domain = "plone"
             ),
         ),
-        
+
         StringField("sortMethod",
             default   = SORT_METHOD_LEXICO_VALUES,
             required  = 0, # smooth upgrades from 1.0.0-beta2
@@ -86,9 +86,9 @@ class SimpleVocabulary(OrderedBaseFolder):
             i18n_domain = "atvocabularymanager",
             ),
             vocabulary = VOCABULARY_SORT_ORDERS
-        ),        
+        ),
     ))
-    
+
     # Methods for fti modification - better make a mixin class from it?
 
     def allowedContentTypes(self):
@@ -165,15 +165,15 @@ class SimpleVocabulary(OrderedBaseFolder):
                 # we retrieve the current language
                 langtool = getToolByName(self,'portal_languages')
                 lang = langtool.getPreferredLanguage()
-            return self._getTranslatedVocabularyDict(lang)         
+            return self._getTranslatedVocabularyDict(lang)
         else:
             # just return all terms
             vdict = OrderedDict()
             for obj in self.contentValues():
                 vdict[obj.getTermKey()] = obj.getTermValue()
             return vdict
-        
-    
+
+
     def _getTranslatedVocabularyDict(self, lang):
         vdict = OrderedDict()
         for obj in self.contentValues():
@@ -193,17 +193,17 @@ class SimpleVocabulary(OrderedBaseFolder):
     # some supporting methods
 
     def getSortedKeys(self):
-        """ returns a list of keys sorted accordingly to the 
+        """ returns a list of keys sorted accordingly to the
 
 	    selected sort method (may be unsorted if method = no sort)
     	"""
     	sortMethod = self.getSortMethod()
     	keys = [term.getVocabularyKey() for term in  self.contentValues()]
-    
+
     	if not hasattr(self, 'sortMethod'):
     	    # smooth upgrade from previous releases
     	    return keys
-    	
+
     	if sortMethod == SORT_METHOD_LEXICO_KEYS:
     	    keys.sort()
     	    return keys
@@ -214,7 +214,7 @@ class SimpleVocabulary(OrderedBaseFolder):
     	    return [term.getVocabularyKey() for term in terms]
     	if sortMethod == SORT_METHOD_FOLDER_ORDER:
     	    return keys
-    	
+
     	# fallback
     	return keys
 
@@ -306,6 +306,6 @@ class SimpleVocabulary(OrderedBaseFolder):
                             self[key].addTranslation(languages[col-1], title=row[col])
 
 
-registerType(SimpleVocabulary)
+registerType(SimpleVocabulary, PROJECTNAME)
 registerVocabularyContainer(SimpleVocabulary)
 # end of class SimpleVocabulary

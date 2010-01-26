@@ -1,7 +1,7 @@
 # File: sortedvocabulary.py
-# 
+#
 # GNU General Public Licence (GPL)
-# 
+#
 # This program is free software; you can redistribute it and/or modify it under
 # the terms of the GNU General Public License as published by the Free Software
 # Foundation; either version 2 of the License, or (at your option) any later
@@ -31,7 +31,7 @@ from Products.Archetypes.interfaces.vocabulary import IVocabulary
 from Products.ATVocabularyManager.tools import registerVocabularyContainer
 from Products.ATVocabularyManager.config import PROJECTNAME
 from Products.ATVocabularyManager.types.simple.vocabulary import SimpleVocabulary
-
+from Products.ATVocabularyManager.config import PROJECTNAME
 
 class SortedSimpleVocabulary(SimpleVocabulary):
     security = ClassSecurityInfo()
@@ -63,19 +63,15 @@ class SortedSimpleVocabulary(SimpleVocabulary):
             The instance of the content class is given as parameter.
         """
         vdict=self.getVocabularyDict(instance)
-        key_values = [] 
+        key_values = []
         for key in vdict.keys():
             key_values.append((key,vdict[key]))
         def cmp_second_term(item1, item2):
             return cmp(item1[1].upper(), item2[1].upper())
-        key_values.sort(cmp_second_term)    
-       
+        key_values.sort(cmp_second_term)
+
         dl = DisplayList(key_values)
         return dl
 
-registerType(SortedSimpleVocabulary)
+registerType(SortedSimpleVocabulary, PROJECTNAME)
 registerVocabularyContainer(SortedSimpleVocabulary)
-
-
-
-
