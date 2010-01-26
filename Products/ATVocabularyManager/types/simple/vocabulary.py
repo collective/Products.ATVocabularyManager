@@ -29,9 +29,10 @@ from Products.Archetypes.utils import make_uuid
 from Products.Archetypes.utils import DisplayList
 from Products.Archetypes.utils import OrderedDict
 
+
 from Products.ATVocabularyManager.tools import registerVocabularyContainer
 from Products.ATVocabularyManager.config import TOOL_NAME as VOCABTOOL_NAME
-from Products.ATVocabularyManager.config import PROJECTNAME
+
 
 class SimpleVocabulary(OrderedBaseFolder):
 
@@ -42,52 +43,52 @@ class SimpleVocabulary(OrderedBaseFolder):
 
     schema=BaseFolderSchema  + Schema((
         StringField('id',
-                    required=1, ## Still actually required, but
-                    ## the widget will supply the missing value
-                    ## on non-submits
-                    mode="rw",
-                    accessor="getId",
-                    mutator="setId",
-                    default='',
-                    widget=StringWidget(
-                        label="Vocabulary Name",
-                        label_msgid="label_vocab_name",
-                        description="Should not contain spaces, underscores or mixed case.",
-                        description_msgid="help_vocab_name",
-                        i18n_domain="atvocabularymanager"
-                        ),
-                    ),
+            required=1, ## Still actually required, but
+                        ## the widget will supply the missing value
+                        ## on non-submits
+            mode="rw",
+            accessor="getId",
+            mutator="setId",
+            default='',
+            widget=StringWidget(
+                label="Vocabulary Name",
+                label_msgid="label_vocab_name",
+                description="Should not contain spaces, underscores or mixed case.",
+                description_msgid="help_vocab_name",
+                i18n_domain="atvocabularymanager"
+            ),
+        ),
 
         TextField('description',
-                  default='',
-                  required=0,
-                  searchable=0,
-                  accessor="Description",
-                  storage=MetadataStorage(),
-                  widget = TextAreaWidget(description = "Enter a brief description",
-                                          description_msgid = "help_description",
-                                          label = "Description",
-                                          label_msgid = "label_description",
-                                          rows = 5,
-                                          i18n_domain = "plone"
-                                          ),
-                  ),
-
+            default='',
+            required=0,
+            searchable=0,
+            accessor="Description",
+            storage=MetadataStorage(),
+            widget = TextAreaWidget(description = "Enter a brief description",
+              description_msgid = "help_description",
+              label = "Description",
+              label_msgid = "label_description",
+              rows = 5,
+              i18n_domain = "plone"
+            ),
+        ),
+        
         StringField("sortMethod",
-                    default   = SORT_METHOD_LEXICO_VALUES,
-                    required  = 0, # smooth upgrades from 1.0.0-beta2
-                    searchable= 0,
-                    widget    = SelectionWidget(
-                        label = "Sort method",
-                        label_msgid = "label_sort_method",
-                        description = "Sort method used for displaying vocabulary terms",
-                        description_msgid = "help_sort_method",
-                        i18n_domain = "atvocabularymanager",
-                        ),
-                    vocabulary = VOCABULARY_SORT_ORDERS
-                    ),
+            default   = SORT_METHOD_LEXICO_VALUES,
+            required  = 0, # smooth upgrades from 1.0.0-beta2
+            searchable= 0,
+            widget    = SelectionWidget(
+                label = "Sort method",
+            label_msgid = "label_sort_method",
+            description = "Sort method used for displaying vocabulary terms",
+            description_msgid = "help_sort_method",
+            i18n_domain = "atvocabularymanager",
+            ),
+            vocabulary = VOCABULARY_SORT_ORDERS
+        ),        
     ))
-
+    
     # Methods for fti modification - better make a mixin class from it?
 
     def allowedContentTypes(self):
@@ -164,15 +165,15 @@ class SimpleVocabulary(OrderedBaseFolder):
                 # we retrieve the current language
                 langtool = getToolByName(self,'portal_languages')
                 lang = langtool.getPreferredLanguage()
-            return self._getTranslatedVocabularyDict(lang)
+            return self._getTranslatedVocabularyDict(lang)         
         else:
             # just return all terms
             vdict = OrderedDict()
             for obj in self.contentValues():
                 vdict[obj.getTermKey()] = obj.getTermValue()
             return vdict
-
-
+        
+    
     def _getTranslatedVocabularyDict(self, lang):
         vdict = OrderedDict()
         for obj in self.contentValues():
@@ -192,30 +193,30 @@ class SimpleVocabulary(OrderedBaseFolder):
     # some supporting methods
 
     def getSortedKeys(self):
-        """ returns a list of keys sorted accordingly to the
+        """ returns a list of keys sorted accordingly to the 
 
-        selected sort method (may be unsorted if method = no sort)
-        """
-        sortMethod = self.getSortMethod()
-        keys = [term.getVocabularyKey() for term in  self.contentValues()]
-
-        if not hasattr(self, 'sortMethod'):
-            # smooth upgrade from previous releases
-            return keys
-
-        if sortMethod == SORT_METHOD_LEXICO_KEYS:
-            keys.sort()
-            return keys
-        if sortMethod == SORT_METHOD_LEXICO_VALUES:
-            # returns keys sorted by lexicogarphic order of VALUES
-            terms = self.contentValues()
-            terms.sort(lambda x,y: cmp(x.getVocabularyValue(),y.getVocabularyValue()))
-            return [term.getVocabularyKey() for term in terms]
-        if sortMethod == SORT_METHOD_FOLDER_ORDER:
-            return keys
-
-        # fallback
-        return keys
+	    selected sort method (may be unsorted if method = no sort)
+    	"""
+    	sortMethod = self.getSortMethod()
+    	keys = [term.getVocabularyKey() for term in  self.contentValues()]
+    
+    	if not hasattr(self, 'sortMethod'):
+    	    # smooth upgrade from previous releases
+    	    return keys
+    	
+    	if sortMethod == SORT_METHOD_LEXICO_KEYS:
+    	    keys.sort()
+    	    return keys
+    	if sortMethod == SORT_METHOD_LEXICO_VALUES:
+    	    # returns keys sorted by lexicogarphic order of VALUES
+    	    terms = self.contentValues()
+    	    terms.sort(lambda x,y: cmp(x.getVocabularyValue(),y.getVocabularyValue()))
+    	    return [term.getVocabularyKey() for term in terms]
+    	if sortMethod == SORT_METHOD_FOLDER_ORDER:
+    	    return keys
+    	
+    	# fallback
+    	return keys
 
 
 
@@ -305,6 +306,6 @@ class SimpleVocabulary(OrderedBaseFolder):
                             self[key].addTranslation(languages[col-1], title=row[col])
 
 
-registerType(SimpleVocabulary, PROJECTNAME)
+registerType(SimpleVocabulary)
 registerVocabularyContainer(SimpleVocabulary)
 # end of class SimpleVocabulary

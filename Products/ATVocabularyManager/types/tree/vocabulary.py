@@ -27,8 +27,6 @@ except ImportError:
 
 from Products.ATVocabularyManager.tools import registerVocabularyContainer
 from Products.ATVocabularyManager.types.simple import SimpleVocabulary
-from Products.ATVocabularyManager.config import PROJECTNAME
-
 
 schema = SimpleVocabulary.schema + Schema((
     BooleanField('ShowLeavesOnly',
@@ -49,7 +47,7 @@ class TreeVocabulary(SimpleVocabulary):
     schema = schema
 
     meta_type = 'TreeVocabulary'
-
+    
     def getDisplayList(self, instance, display_parents='tree'):
         """ returns an object of class DisplayList as defined in
             Products.Archetypes.utils
@@ -90,7 +88,7 @@ class TreeVocabulary(SimpleVocabulary):
     def getVocabularyDict(self, instance=None):
         """returns a vocabulary dictionary as defined in the interface
         """
-
+        
         # see if we simply can return all objects and their
         # subtree, or if we have to use the correct translations
 
@@ -98,11 +96,11 @@ class TreeVocabulary(SimpleVocabulary):
             # find out the currently used Language
             try:
                 lang = instance.getLanguage()
-            except AttributeError:
+            except AttributeError:  
                 # we try to retrieve the current language
                 langtool = getToolByName(self,'portal_languages')
                 lang = langtool.getPreferredLanguage()
-
+                        
             return self._getTranslatedVocabularyDict(lang)
         else:
             # we don't need to care about languages, and can simply
@@ -114,13 +112,13 @@ class TreeVocabulary(SimpleVocabulary):
     def _getTranslatedVocabularyDict(self, lang):
         """returns a vocabulary dict using the titles of the
         translations for language ``lang``
-
+        
         Only canonical objects are used to build up this
         dictionary. If available, the translation's titles
         are used.
         """
         vdict = OrderedDict()
-
+        
         for obj in self.contentValues():
             if obj.isCanonical():
                 # we only add the canonical objects to this dict
@@ -130,7 +128,7 @@ class TreeVocabulary(SimpleVocabulary):
                 vsubdict=obj._getTranslatedVocabularyDict(lang)
                 vdict[key] = (obj.getTermValue(lang=lang), vsubdict)
         return vdict
-
+                
 
     def _getUntranslatedVocabularyDict(self):
         """returns a vocabulary dictionary as defined in the interface
@@ -144,12 +142,12 @@ class TreeVocabulary(SimpleVocabulary):
                 vsubdict
             )
         return vdict
-
+       
     # check for linguaplone
     def _isLinguaPloneInstalled(self):
         """ checks if LinguaPlone is installed """
         return self.portal_quickinstaller.isProductInstalled('LinguaPlone')
-
+        
     def showLeafsOnly(self):
         """ indicates if only leaves should be shown """
         if base_hasattr(self,'getShowLeavesOnly'):
@@ -162,6 +160,6 @@ class TreeVocabulary(SimpleVocabulary):
 
 
 
-registerType(TreeVocabulary, PROJECTNAME)
+registerType(TreeVocabulary)
 registerVocabularyContainer(TreeVocabulary)
 # end of class TreeVocabulary

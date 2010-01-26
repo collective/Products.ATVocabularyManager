@@ -23,20 +23,18 @@ from AccessControl import ClassSecurityInfo
 try:
     from Products.Archetypes.interfaces.vocabulary import IVocabularyTerm
 except ImportError:
-    from Products.ATVocabularyManager.backports import IVocabularyTerm
-
-from Products.Archetypes.debug import deprecated
+    from Products.ATVocabularyManager.backports import IVocabularyTerm    
+    
+from Products.Archetypes.debug import deprecated    
 from Products.ATVocabularyManager.tools import registerVocabularyTerm
 from Products.ATVocabularyManager.event import find_toplevel_vocab, TermRenamedEvent
-from Products.ATVocabularyManager.config import PROJECTNAME
-
 
 class SimpleVocabularyTerm(BaseContent):
     security = ClassSecurityInfo()
     portal_type = meta_type = 'SimpleVocabularyTerm'
     archetype_name = 'Simple Vocabulary Term'
     _at_rename_after_creation = True
-
+    
     __implements__ = getattr(BaseContent,'__implements__',()) + (IVocabularyTerm,)
 
     schema = BaseSchema + Schema((
@@ -67,15 +65,15 @@ class SimpleVocabularyTerm(BaseContent):
         )),
     )
 
-    aliases = {
-        '(Default)' : 'base_view',
-        'view' : 'base_view',
-        'edit' : 'base_edit',
+    aliases = { 
+        '(Default)' : 'base_view', 
+        'view' : 'base_view', 
+        'edit' : 'base_edit', 
     }
-
+        
     # Methods
     # methods from Interface IVocabularTerm
-
+    
 
     def getTermKey(self):
         """
@@ -84,7 +82,7 @@ class SimpleVocabularyTerm(BaseContent):
             return self.getId()
         else:
             return self.getCanonical().getId()
-
+    
     def getTermValue(self, lang=None):
         """
         """
@@ -95,12 +93,12 @@ class SimpleVocabularyTerm(BaseContent):
             # if not found, we return the title of the current term
             return trans and trans.Title() or self.Title()
         return self.Title()
-
+    
     def getTermKeyPath(self):
         # terms of flat vocabularies can savely return their key
         return [self.getTermKey(),]
 
-
+            
     def getVocabularyKey(self):
         ''' returns the key of the field '''
         deprecated("please use the IVocabularyTerm compatible method 'getTermKey'")
@@ -117,7 +115,7 @@ class SimpleVocabularyTerm(BaseContent):
 
         if values.has_key('title'):
             orig_title = self.Title()
-
+            
         BaseContent.processForm(self, data, metadata, REQUEST, values)
 
         if values.has_key('title'):
@@ -154,6 +152,6 @@ class SimpleVocabularyTerm(BaseContent):
           )
 
 
-registerType(SimpleVocabularyTerm, PROJECTNAME)
+registerType(SimpleVocabularyTerm)
 registerVocabularyTerm(SimpleVocabularyTerm,'SimpleVocabulary')
 registerVocabularyTerm(SimpleVocabularyTerm, 'SortedSimpleVocabulary')

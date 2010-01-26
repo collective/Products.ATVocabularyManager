@@ -2,12 +2,12 @@
 #
 # BSD-like licence, see LICENCE.txt
 #
-from zope.interface import Interface
+from Interface import Interface, Attribute
 
 class IVocabularyTerm(Interface):
     """A VocabularyTerm has a value (which is used to
     display the term) and a key that is used to identify
-    the term.
+    the term.    
     """
 
     def getTermKey(self):
@@ -17,7 +17,7 @@ class IVocabularyTerm(Interface):
 
     def getTermValue(self, lang=None):
         """Returns the string-value of the vocabulary.
-
+        
         This might be language sensitive.
         """
 

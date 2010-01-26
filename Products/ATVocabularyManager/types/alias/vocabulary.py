@@ -1,6 +1,6 @@
 # File: vocabulary.py
 """\
-A vocabulary is a container for key/value pairs. This AliasVocabulary can points
+A vocabulary is a container for key/value pairs. This AliasVocabulary can points 
 to any other registered vocabulary-type.
 
 RCS-ID $Id: SimpleVocabulary.py 3219 2004-10-29 00:49:03Z zworkb $
@@ -26,7 +26,6 @@ from Products.CMFCore.utils import getToolByName
 from Products.Archetypes.interfaces import IVocabulary
 from Products.ATVocabularyManager.tools import registerVocabularyContainer
 from Products.ATVocabularyManager.config import TOOL_NAME as VOCABTOOL_NAME
-from Products.ATVocabularyManager.config import PROJECTNAME
 
 class AliasVocabulary(BaseContent):
 
@@ -89,7 +88,7 @@ class AliasVocabulary(BaseContent):
         allowed = vlib.allowedContentTypes()
         allowed = [a.id for a in allowed if a.id != self.portal_type]
         return allowed
-
+        
 
     # Methods from Interface IVocabulary
 
@@ -122,6 +121,6 @@ class AliasVocabulary(BaseContent):
         target = self.getTarget()
         return target.showLeafsOnly()
 
-registerType(AliasVocabulary, PROJECTNAME)
+registerType(AliasVocabulary)
 registerVocabularyContainer(AliasVocabulary)
 # end of class AliasVocabulary
