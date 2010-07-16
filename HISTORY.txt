@@ -2,7 +2,7 @@
 History for Products.ATVocabularyManager
 ========================================
 
-2008-07-22 1.5 DEV
+2010-07-16 1.6.0a1
 ==================
 
 * Fixed deprecated API call to registerType without Package Name. Works now for
