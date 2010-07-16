@@ -24,9 +24,9 @@ from Products.Archetypes.atapi import *
 from Products.Archetypes.interfaces.vocabulary import IVocabulary
 from Products.ATVocabularyManager.config import TOOL_NAME
 from Products.ATVocabularyManager.config import DEFAULT_VOCABULARY_CONTAINER
+from Products.ATVocabularyManager.config import PROJECTNAME
 from Products.ATVocabularyManager.interfaces import IATVocabularyLibrary
 from Products.Archetypes.utils import shasattr
-from Products.ATVocabularyManager.config import PROJECTNAME
 
 ### note: use Archetypes registry infrastructure in future
 _vocabterm_types = {}

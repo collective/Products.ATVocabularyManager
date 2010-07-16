@@ -151,7 +151,7 @@ msgstr "VDEX Upload"
 #. Default: "Vocabulary name"
 #: types/alias/vocabulary.py
 msgid "label_vocab_name"
-msgstr "Name des Vokabulars"
+msgstr "Names des Vokabulars"
 
 #. Default: "Add new vocabulary"
 #: ../skins/ATVocabularyManager/vocabularytool_view.cpt

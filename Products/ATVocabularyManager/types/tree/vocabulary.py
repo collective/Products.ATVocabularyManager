@@ -29,6 +29,7 @@ from Products.ATVocabularyManager.tools import registerVocabularyContainer
 from Products.ATVocabularyManager.types.simple import SimpleVocabulary
 from Products.ATVocabularyManager.config import PROJECTNAME
 
+
 schema = SimpleVocabulary.schema + Schema((
     BooleanField('ShowLeavesOnly',
         widget=BooleanWidget(

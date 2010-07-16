@@ -30,6 +30,7 @@ from Products.ATVocabularyManager.types.simple import SimpleVocabularyTerm
 from Products.ATVocabularyManager.types.tree import TreeVocabulary
 from Products.ATVocabularyManager.config import PROJECTNAME
 
+
 class TreeVocabularyTerm(TreeVocabulary, SimpleVocabularyTerm):
     """ Term inside of a TreeVocabulary or as an subterm
     """

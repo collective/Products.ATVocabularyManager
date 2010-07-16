@@ -30,6 +30,7 @@ from Products.ATVocabularyManager.tools import registerVocabularyTerm
 from Products.ATVocabularyManager.event import find_toplevel_vocab, TermRenamedEvent
 from Products.ATVocabularyManager.config import PROJECTNAME
 
+
 class SimpleVocabularyTerm(BaseContent):
     security = ClassSecurityInfo()
     portal_type = meta_type = 'SimpleVocabularyTerm'

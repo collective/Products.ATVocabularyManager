@@ -24,9 +24,9 @@ from Products.Archetypes.atapi import *
 from Products.Archetypes.interfaces import IVocabulary
 from Products.ATVocabularyManager.tools.vocabularylib import registerVocabularyContainer
 from Products.ATVocabularyManager.config import *
+from Products.ATVocabularyManager.config import PROJECTNAME
 from zope.interface import implements
 from imsvdex.vdex import VDEXManager, VDEXError
-from Products.ATVocabularyManager.config import PROJECTNAME
 
 IMSVDEXVocabularySchema = Schema((
 

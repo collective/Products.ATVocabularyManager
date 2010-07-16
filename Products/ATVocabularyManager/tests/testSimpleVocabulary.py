@@ -24,7 +24,7 @@ class TestSimpleVocabulary(PloneTestCase.PloneTestCase):
         self.atvm.invokeFactory('SimpleVocabulary','svtest')
         self.atvm.svtest.setTitle('Test Vocabulary')
 
-        
+
     def setupSimpleVocabulary(self):
         self.setupSimpleVocabularyContainer()
         self.atvm.svtest.invokeFactory('SimpleVocabularyTerm', 'key1')
@@ -79,7 +79,7 @@ class TestSimpleVocabulary(PloneTestCase.PloneTestCase):
 "key2","value2en","value2fr"
 "","value3en","value3fr"
 """
-        
+
         svtest = self.atvm.svtest
         svtest.importCSV(csvdata, titlerow=True)
         vocab = svtest.getVocabularyDict()
@@ -88,13 +88,13 @@ class TestSimpleVocabulary(PloneTestCase.PloneTestCase):
             enKey = svtest[key].getTermKey()
             frKey = svtest[key].getTranslation('fr').getTermKey()
             self.assertEqual(enKey, frKey, "translations don't provide the same key")
-            
+
             if key == 'key1':
                 enTerm = svtest[key].getTermValue()
                 self.assertEqual(enTerm, 'value1en')
                 frTerm = svtest[key].getTermValue(lang='fr')
                 self.assertEqual(frTerm, 'value1fr')
-            
+
             elif key == 'key2':
                 enTerm = svtest[key].getTermValue()
                 self.assertEqual(enTerm, 'value2en')
@@ -107,7 +107,7 @@ class TestSimpleVocabulary(PloneTestCase.PloneTestCase):
                 frTerm = svtest[key].getTermValue(lang='fr')
                 self.assertEqual(frTerm, 'value3fr')
 
-    
+
     def testImportCSVMultilingualNoTitleRow(self):
 
         self.setupSimpleVocabularyContainer()
@@ -120,7 +120,7 @@ class TestSimpleVocabulary(PloneTestCase.PloneTestCase):
 "key2","value2en","value2fr"
 "","value3en","value3fr"
 """
-        
+
         svtest = self.atvm.svtest
         svtest.importCSV(csvdata, titlerow=False)
         vocab = svtest.getVocabularyDict()
@@ -133,7 +133,7 @@ class TestSimpleVocabulary(PloneTestCase.PloneTestCase):
             if key == 'key1':
                 enTerm = svtest[key].getTermValue()
                 self.assertEqual(enTerm, 'value1en')
-           
+
             elif key == 'key2':
                 enTerm = svtest[key].getTermValue()
                 self.assertEqual(enTerm, 'value2en')
@@ -148,7 +148,7 @@ class TestSimpleVocabulary(PloneTestCase.PloneTestCase):
         using the utlity methods provided by atvocabularymanager
         """
         from Products.ATVocabularyManager.utils.vocabs import createSimpleVocabs
-        
+
         self.loginAsPortalOwner()
         testvocabs = {}
         testvocabs['teststates'] = (
@@ -156,14 +156,14 @@ class TestSimpleVocabulary(PloneTestCase.PloneTestCase):
             ('ger', u'Germany'),
             ('nor', u'Norway'),
             ('fin', u'Finland'))
-            
+
         createSimpleVocabs(self.atvm, testvocabs)
 
 
     def testTranslations(self):
         """Test if SimpleVocabulary works with Linguaplone
         """
-          
+
         self._createTestVocabulary()
         vocab = self.atvm.teststates
         # we need to install 'LinguaPlone' to translate
@@ -174,13 +174,13 @@ class TestSimpleVocabulary(PloneTestCase.PloneTestCase):
         if not qi.isProductInstalled('LinguaPlone'):
             qi.installProduct('LinguaPlone')
 
-  
+
         # translate some of our testvocabularies
         vocab.aut.setLanguage('en')
-        vocab.aut.addTranslation('de', title='Oesterreich')       
+        vocab.aut.addTranslation('de', title='Oesterreich')
         vocab.ger.setLanguage('en')
         vocab.ger.addTranslation('de', title='Deutschland')
-        
+
         # a term and it's translation have to provide the same key
         aut = vocab.aut
         enKey = aut.getTermKey()
@@ -192,8 +192,8 @@ class TestSimpleVocabulary(PloneTestCase.PloneTestCase):
         deDict = vocab.getVocabularyDict(vocab['aut-de'])
         self.assertEqual('Oesterreich', deDict[enKey], "Vocab Title is not translated")
         enDict = vocab.getVocabularyDict(vocab.aut)
-        self.assertEqual('Austria', enDict[enKey])        
-        
+        self.assertEqual('Austria', enDict[enKey])
+
         # if ``instance`` is None, the vocabulary uses the
         # current language of the languagetool
         langtool = getToolByName(self.portal,'portal_languages')
@@ -210,32 +210,32 @@ class TestSimpleVocabulary(PloneTestCase.PloneTestCase):
         self.assertEqual('de', langtool.getPreferredLanguage())
         deDict = vocab.getVocabularyDict()
         # dictionary has to return another title now
-        self.assertEqual('Oesterreich', deDict[enKey], "Vocab Title is not translated")     
-        
+        self.assertEqual('Oesterreich', deDict[enKey], "Vocab Title is not translated")
+
 
     def testGetTermKeyPath(self):
         """A SimpleVocabularyTerm simply returns a list containing it's key
         """
-        
+
         self._createTestVocabulary()
         vocab = self.atvm.teststates
         self.assertEqual(['aut'], vocab.aut.getTermKeyPath())
-        
 
-        
+
+
 def test_suite():
     from unittest import TestSuite, makeSuite
     optionflags = doctest.REPORT_ONLY_FIRST_FAILURE | doctest.ELLIPSIS
-    
+
     suite = TestSuite()
     suite.addTest(makeSuite(TestSimpleVocabulary))
-    
+
     suite.addTest(ZopeDocFileSuite('simplevocabulary.txt',
                                    optionflags=optionflags,
                                    package='Products.ATVocabularyManager.doc',
                                    test_class=TestSimpleVocabulary,
                                    ))
-    
+
     return suite
 
 if __name__ == '__main__':
