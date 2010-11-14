@@ -145,11 +145,6 @@ class TreeVocabulary(SimpleVocabulary):
             )
         return vdict
 
-    # check for linguaplone
-    def _isLinguaPloneInstalled(self):
-        """ checks if LinguaPlone is installed """
-        return self.portal_quickinstaller.isProductInstalled('LinguaPlone')
-
     def showLeafsOnly(self):
         """ indicates if only leaves should be shown """
         if base_hasattr(self,'getShowLeavesOnly'):

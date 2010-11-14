@@ -18,8 +18,15 @@ from zope.interface import implements
 from Products.ATVocabularyManager.config import *
 if HAS_LINGUA_PLONE:
     from Products.LinguaPlone.public import *
+    from Products.LinguaPlone.interfaces import ILinguaPloneProductLayer
 else:
     from Products.Archetypes.atapi import *
+    ILinguaPloneProductLayer = None
+
+try:
+    from plone.browserlayer.utils import registered_layers
+except ImportError:
+    registered_layers = lambda: []   # returns empty list
 
 from AccessControl import ClassSecurityInfo
 from Products.CMFCore.permissions import AddPortalContent
@@ -123,7 +130,8 @@ class SimpleVocabulary(OrderedBaseFolder):
     # check for linguaplone
     def isLinguaPloneInstalled(self):
         """ checks if LinguaPlone is installed """
-        return self.portal_quickinstaller.isProductInstalled('LinguaPlone')
+        return ILinguaPloneProductLayer in registered_layers() \
+               or self.portal_quickinstaller.isProductInstalled('LinguaPlone')
 
     # Methods from Interface IVocabulary
 

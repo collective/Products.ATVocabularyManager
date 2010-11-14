@@ -1,5 +1,5 @@
+import os
 import types
-from Products.ATVocabularyManager.config import TOOL_NAME as ATVOCABULARYTOOL
 from Products.CMFCore.utils import getToolByName
 from imsvdex.vdex import VDEXManager
 

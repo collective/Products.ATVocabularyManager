@@ -2,6 +2,9 @@
 History for Products.ATVocabularyManager
 ========================================
 
+* changed method of dermining if LinguaPlone is installed. Asking QI does not
+  work in Plone4 [naro]
+
 2010-07-16 1.6.0a1
 ==================
 
