@@ -12,29 +12,21 @@ from Products.PloneTestCase import PloneTestCase as ptc
 from Products.PloneTestCase.layer import onsetup
 from Products.CMFCore.utils import getToolByName
 
-PloneTestCase.setupPloneSite(id='plone')
-
 @onsetup
 def installProducts():
-    ZopeTestCase.installProduct('Archetypes')
-    ZopeTestCase.installProduct('MimetypesRegistry')
-    ZopeTestCase.installProduct('PortalTransforms')
-    # to support tests for translated vocabularies
-    ZopeTestCase.installProduct('PloneLanguageTool')
-    ZopeTestCase.installProduct('LinguaPlone')
-
-    ## LinguaPlone install problems...
-    # import Products.LinguaPlone
-    # zcml.load_config('configure.zcml', Products.LinguaPlone)
-    # ZopeTestCase.installProduct('Products.LinguaPlone')
-
     fiveconfigure.debug_mode = True
     zcml.load_config('configure.zcml', Products.ATVocabularyManager)
     fiveconfigure.debug_mode = False
 
-    ZopeTestCase.installProduct(PROJECTNAME)
-
+PloneTestCase.setupPloneSite(id='plone')
 installProducts()
+ZopeTestCase.installProduct('Archetypes')
+ZopeTestCase.installProduct('MimetypesRegistry')
+ZopeTestCase.installProduct('PortalTransforms')
+# to support tests for translated vocabularies
+ZopeTestCase.installProduct('PloneLanguageTool')
+ZopeTestCase.installProduct('LinguaPlone')
+ZopeTestCase.installProduct(PROJECTNAME)
 
 def installWithinPortal(portal):
     qi = getToolByName(portal, 'portal_quickinstaller')

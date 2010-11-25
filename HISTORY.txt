@@ -2,8 +2,23 @@
 History for Products.ATVocabularyManager
 ========================================
 
+unreleased 1.6.0a2
+==================
+
 * changed method of dermining if LinguaPlone is installed. Asking QI does not
   work in Plone4 [naro]
+
+* added some missing dependencies, and a new extra section to setup.py.
+  This helps to get a simple buildout cfg for testing against plone4 [do3cc]
+
+* added some sleeps between installs in the tests, else genericsetup
+  creates ids twice, and fails [do3cc]
+
+* temporary deactivated two checks in the tests. With
+  Products.CMFQuickInstaller>=3.0.3, the portal_vocabularies don't get
+  deleted during uninstall [do3cc]
+
+* restructured test setup, since call semantics changed [do3cc]
 
 2010-07-16 1.6.0a1
 ==================

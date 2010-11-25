@@ -34,10 +34,11 @@ setup(name='Products.ATVocabularyManager',
       packages=['Products', 'Products.ATVocabularyManager'],
       include_package_data = True,
       zip_safe=False,
-      install_requires=['setuptools', 'imsvdex'],
+      install_requires=['setuptools', 'imsvdex', 'zope.i18nmessageid'],
       namespace_packages=['Products'],
       extras_require = dict(
           test = ['interlude', 'Products.LinguaPlone',],
+          plone4 = ['Plone', 'Pillow'],
       ),
 
       )
