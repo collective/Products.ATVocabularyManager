@@ -14,13 +14,13 @@ if (vdex and vdex.filename):
 else:
     print "No upload"
     return printed
-    
+
 vocabname = filename
 # need to normalize the filename using IUserPreferredFileNameNormalizer
 # move this into a view class and get rid of CMFFormController in here
 # meanwhile a quick fix for Windows:
-if '\' in vocabname:
-    vocabname = vocabname[vocabname.rfind('\'):]
+if '\\' in vocabname:
+    vocabname = vocabname[vocabname.rfind('\\'):]
 if vocabname.endswith('.vdex'):
     vocabname = vocabname[:-5]
 
