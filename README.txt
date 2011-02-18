@@ -135,7 +135,8 @@ Copyright/ Author/ Licence
 ==========================
 
 copyright
-    2004-2006 by BlueDynamics Alliance, Klein & Partner KEG, Austria 
+    2010-2011 by BlueDynamics Alliance, Austria, Germany, Switzerland
+    2004-2009 by BlueDynamics Alliance, Klein & Partner KG, Austria 
     and parts eduplone Open Source Business Network EEIG, Austria
     2007-2008 by BlueDynamics Alliance, Klein & Partner KEG, Austria
 
