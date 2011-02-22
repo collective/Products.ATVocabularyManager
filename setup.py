@@ -8,13 +8,8 @@ CLASSIFIERS = [
     'Framework :: Plone',
 ]
 
-mdfile = os.path.join(os.path.dirname(__file__), 'Products',
-                      'ATVocabularyManager', 'profiles', 'default',
-                      'metadata.xml')
-metadata = parse(mdfile)
-assert metadata.documentElement.tagName == "metadata"
-version =  metadata.getElementsByTagName("version")[0].childNodes[0].data
-shortdesc = metadata.getElementsByTagName("description")[0].childNodes[0].data
+version = '1.6'
+shortdesc = 'Vocabulary library Plone. Central, Pluggable, TTW, with IMS VDEX Support'
 readme = open(os.path.join(os.path.dirname(__file__), 'README.txt')).read()
 changes = open(os.path.join(os.path.dirname(__file__),
                             'HISTORY.txt')).read().strip()
@@ -22,13 +17,11 @@ long_description = readme + '\n\nCHANGES\n=======\n\n' +  changes
 
 setup(name='Products.ATVocabularyManager',
       version=version,
-      author='Jens Klein',
-      author_email='jens@bluedynamics.com',
-      maintainer='Jens Klein',
-      maintainer_email='jens@bluedynamics.com',
+      author='BlueDynamics Alliance',
+      author_email='dev@bluedynamics.com',
       classifiers=CLASSIFIERS,
-      keywords='Plone Vocabulary Manager Zope',
-      url='http://plone.org/products/atvocabularymanager',
+      keywords='Plone Vocabulary Manager Zope IMS VDEX Tree Taxonomie Onthology',
+      url='https://svn.plone.org/svn/archetypes/Products.ATVocabularyManager/',
       description=shortdesc,
       long_description=long_description,
       packages=['Products', 'Products.ATVocabularyManager'],
