@@ -9,7 +9,7 @@ RCS-ID $Id: SimpleVocabulary.py 3219 2004-10-29 00:49:03Z zworkb $
 #
 # BSD-like licence, see LICENCE.txt
 #
-__author__  = 'Jens Klein <jens@bluedynamics.com>'
+__author__ = 'Jens Klein <jens@bluedynamics.com>'
 __docformat__ = 'plaintext'
 
 import csv
@@ -40,6 +40,7 @@ from Products.ATVocabularyManager.tools import registerVocabularyContainer
 from Products.ATVocabularyManager.config import TOOL_NAME as VOCABTOOL_NAME
 from Products.ATVocabularyManager.config import PROJECTNAME
 
+
 class SimpleVocabulary(OrderedBaseFolder):
 
     implements(IVocabulary)
@@ -47,16 +48,16 @@ class SimpleVocabulary(OrderedBaseFolder):
     security = ClassSecurityInfo()
     meta_type = 'SimpleVocabulary'
 
-    schema=BaseFolderSchema  + Schema((
+    schema = BaseFolderSchema + Schema((
         StringField('id',
-                    required=1, ## Still actually required, but
+                    required = 1, ## Still actually required, but
                     ## the widget will supply the missing value
                     ## on non-submits
-                    mode="rw",
-                    accessor="getId",
-                    mutator="setId",
-                    default='',
-                    widget=StringWidget(
+                    mode = "rw",
+                    accessor = "getId",
+                    mutator = "setId",
+                    default = '',
+                    widget = StringWidget(
                         label="Vocabulary Name",
                         label_msgid="label_vocab_name",
                         description="Should not contain spaces, underscores or mixed case.",
@@ -66,11 +67,11 @@ class SimpleVocabulary(OrderedBaseFolder):
                     ),
 
         TextField('description',
-                  default='',
-                  required=0,
-                  searchable=0,
-                  accessor="Description",
-                  storage=MetadataStorage(),
+                  default = '',
+                  required = 0,
+                  searchable = 0,
+                  accessor = "Description",
+                  storage = MetadataStorage(),
                   widget = TextAreaWidget(description = "Enter a brief description",
                                           description_msgid = "help_description",
                                           label = "Description",
@@ -81,10 +82,10 @@ class SimpleVocabulary(OrderedBaseFolder):
                   ),
 
         StringField("sortMethod",
-                    default   = SORT_METHOD_LEXICO_VALUES,
-                    required  = 0, # smooth upgrades from 1.0.0-beta2
-                    searchable= 0,
-                    widget    = SelectionWidget(
+                    default = SORT_METHOD_LEXICO_VALUES,
+                    required = 0, # smooth upgrades from 1.0.0-beta2
+                    searchable = 0,
+                    widget = SelectionWidget(
                         label = "Sort method",
                         label_msgid = "label_sort_method",
                         description = "Sort method used for displaying vocabulary terms",
@@ -98,27 +99,27 @@ class SimpleVocabulary(OrderedBaseFolder):
     # Methods for fti modification - better make a mixin class from it?
 
     def allowedContentTypes(self):
-        tt = getToolByName(self,'portal_types')
+        tt = getToolByName(self, 'portal_types')
         cv=self.contentValues()
         if len(cv):
-            tt = getToolByName(self,'portal_types')
-            allowed=[tt[cv[0].meta_type],]
+            tt = getToolByName(self, 'portal_types')
+            allowed=[tt[cv[0].meta_type], ]
         else:
-            vt = getToolByName(self,VOCABTOOL_NAME)
+            vt = getToolByName(self, VOCABTOOL_NAME)
             allowed= vt.allowedContentTypesForContainer(self.meta_type)
         return allowed
 
     def updateRegisteredTypes(self):
         """ updates own fti based on registered containers """
-        tt = getToolByName(self,'portal_types')
+        tt = getToolByName(self, 'portal_types')
         ti = tt[self.meta_type]
 
-        vt = getToolByName(self,VOCABTOOL_NAME)
+        vt = getToolByName(self, VOCABTOOL_NAME)
         allowedmetatypes = vt.allowedMetaTypesForContainer(self.meta_type)
         ti.allowed_content_types=tuple(allowedmetatypes)
 
     security.declareProtected(AddPortalContent, 'invokeFactory')
-    def invokeFactory( self, type_name, id, RESPONSE=None, *args, **kw):
+    def invokeFactory(self, type_name, id, RESPONSE=None, *args, **kw):
         """ Invokes the portal_types tool """
         try:
             return OrderedBaseFolder.invokeFactory(self, type_name, id, RESPONSE, *args, **kw)
@@ -127,14 +128,12 @@ class SimpleVocabulary(OrderedBaseFolder):
             self.updateRegisteredTypes()
             return OrderedBaseFolder.invokeFactory(self, type_name, id, RESPONSE, *args, **kw)
 
-    # check for linguaplone
     def isLinguaPloneInstalled(self):
         """ checks if LinguaPlone is installed """
         return ILinguaPloneProductLayer in registered_layers() \
                or self.portal_quickinstaller.isProductInstalled('LinguaPlone')
 
     # Methods from Interface IVocabulary
-
     def getDisplayList(self, instance):
         """Returns a object of class DisplayList as defined in Products.Archetypes.utils.
 
@@ -142,9 +141,9 @@ class SimpleVocabulary(OrderedBaseFolder):
         The list is sorted accordingly to the sortMethod chosen.
         """
         dl = DisplayList()
-        vdict=self.getVocabularyDict(instance)
+        vdict = self.getVocabularyDict(instance)
         for key in self.getSortedKeys():
-            dl.add(key,vdict[key])
+            dl.add(key, vdict[key])
         return dl
 
     def getVocabularyLines(self, instance=None):
@@ -155,7 +154,7 @@ class SimpleVocabulary(OrderedBaseFolder):
         vdict = self.getVocabularyDict(instance)
 
         for key in self.getSortedKeys():
-            termlist.append( (key, vdict[key]) )
+            termlist.append((key, vdict[key]))
         return termlist
 
     def getVocabularyDict(self, instance=None):
@@ -170,7 +169,7 @@ class SimpleVocabulary(OrderedBaseFolder):
                 lang = instance.getLanguage()
             except AttributeError:
                 # we retrieve the current language
-                langtool = getToolByName(self,'portal_languages')
+                langtool = getToolByName(self, 'portal_languages')
                 lang = langtool.getPreferredLanguage()
             return self._getTranslatedVocabularyDict(lang)
         else:
@@ -179,7 +178,6 @@ class SimpleVocabulary(OrderedBaseFolder):
             for obj in self.contentValues():
                 vdict[obj.getTermKey()] = obj.getTermValue()
             return vdict
-
 
     def _getTranslatedVocabularyDict(self, lang):
         vdict = OrderedDict()
@@ -205,7 +203,7 @@ class SimpleVocabulary(OrderedBaseFolder):
         selected sort method (may be unsorted if method = no sort)
         """
         sortMethod = self.getSortMethod()
-        keys = [term.getVocabularyKey() for term in  self.contentValues()]
+        keys = [term.getVocabularyKey() for term in self.contentValues()]
 
         if not hasattr(self, 'sortMethod'):
             # smooth upgrade from previous releases
@@ -214,18 +212,18 @@ class SimpleVocabulary(OrderedBaseFolder):
         if sortMethod == SORT_METHOD_LEXICO_KEYS:
             keys.sort()
             return keys
+
         if sortMethod == SORT_METHOD_LEXICO_VALUES:
             # returns keys sorted by lexicogarphic order of VALUES
             terms = self.contentValues()
-            terms.sort(lambda x,y: cmp(x.getVocabularyValue(),y.getVocabularyValue()))
+            terms.sort(lambda x, y: cmp(x.getVocabularyValue(), y.getVocabularyValue()))
             return [term.getVocabularyKey() for term in terms]
+
         if sortMethod == SORT_METHOD_FOLDER_ORDER:
             return keys
 
         # fallback
         return keys
-
-
 
     security.declareProtected(AddPortalContent, 'addTerm')
     def addTerm(self, key, value, language=None, termtype=DEFAULT_VOCABULARY_ITEM,
@@ -254,10 +252,9 @@ class SimpleVocabulary(OrderedBaseFolder):
                 raise ValueError, 'type %s is not allowed as vocabularyterm in this context' % termtype
 
 
-        self.invokeFactory(termtype,key)
+        self.invokeFactory(termtype, key)
         self[key].setTitle(value)
         return True
-
 
     security.declareProtected(AddPortalContent, 'importCSV')
     def importCSV(self, csvdata,

@@ -12,7 +12,6 @@ from Testing.ZopeTestCase.zopedoctest import ZopeDocFileSuite
 import common
 
 
-
 class TestSimpleVocabulary(PloneTestCase.PloneTestCase):
 
     def afterSetUp(self):
@@ -21,9 +20,8 @@ class TestSimpleVocabulary(PloneTestCase.PloneTestCase):
 
     def setupSimpleVocabularyContainer(self):
         self.setRoles(['Manager'])
-        self.atvm.invokeFactory('SimpleVocabulary','svtest')
+        self.atvm.invokeFactory('SimpleVocabulary', 'svtest')
         self.atvm.svtest.setTitle('Test Vocabulary')
-
 
     def setupSimpleVocabulary(self):
         self.setupSimpleVocabularyContainer()
@@ -31,15 +29,14 @@ class TestSimpleVocabulary(PloneTestCase.PloneTestCase):
         self.atvm.svtest.key1.setTitle('Value 1')
         self.logout()
 
-
     def testAddTerm(self):
         self.setupSimpleVocabularyContainer()
         svtest = self.atvm.svtest
-        svtest.addTerm('foo','bar')
+        svtest.addTerm('foo', 'bar')
         self.assertEqual(svtest.foo.getVocabularyValue(), 'bar')
         # Test adding a term with a key that matches an attribute that
         # already exists via acquisition
-        svtest.addTerm('author','Author')
+        svtest.addTerm('author', 'Author')
         self.assertEqual(svtest.author.getVocabularyValue(), 'Author')
 
     def testImportCSVwoTitlerow(self):
@@ -51,17 +48,16 @@ class TestSimpleVocabulary(PloneTestCase.PloneTestCase):
 """
         svtest = self.atvm.svtest
         svtest.importCSV(csvdata)
-        vocab=svtest.getVocabularyDict()
+        vocab = svtest.getVocabularyDict()
 
         # first both lines used?
-        self.assertEqual(vocab['key1'],'value1')
-        self.assertEqual(vocab['key2'],'value2')
+        self.assertEqual(vocab['key1'], 'value1')
+        self.assertEqual(vocab['key2'], 'value2')
 
         # there must be an Value value3 with a uuid as key
         for key in vocab.keys():
             if vocab[key] == 'value3':
                 self.failUnless(key!="")
-
 
     def testImportCSVMultilingual(self):
 
@@ -107,7 +103,6 @@ class TestSimpleVocabulary(PloneTestCase.PloneTestCase):
                 frTerm = svtest[key].getTermValue(lang='fr')
                 self.assertEqual(frTerm, 'value3fr')
 
-
     def testImportCSVMultilingualNoTitleRow(self):
 
         self.setupSimpleVocabularyContainer()
@@ -142,7 +137,6 @@ class TestSimpleVocabulary(PloneTestCase.PloneTestCase):
                 enTerm = svtest[key].getTermValue()
                 self.assertEqual(enTerm, 'value3en')
 
-
     def _createTestVocabulary(self):
         """creates a simplevocabulary for testing purposes
         using the utlity methods provided by atvocabularymanager
@@ -158,7 +152,6 @@ class TestSimpleVocabulary(PloneTestCase.PloneTestCase):
             ('fin', u'Finland'))
 
         createSimpleVocabs(self.atvm, testvocabs)
-
 
     def testTranslations(self):
         """Test if SimpleVocabulary works with Linguaplone
@@ -196,7 +189,7 @@ class TestSimpleVocabulary(PloneTestCase.PloneTestCase):
 
         # if ``instance`` is None, the vocabulary uses the
         # current language of the languagetool
-        langtool = getToolByName(self.portal,'portal_languages')
+        langtool = getToolByName(self.portal, 'portal_languages')
         # set available portal languages
         langtool.supported_langs=['en', 'de']
         # per default english is the preferred language
@@ -212,7 +205,6 @@ class TestSimpleVocabulary(PloneTestCase.PloneTestCase):
         # dictionary has to return another title now
         self.assertEqual('Oesterreich', deDict[enKey], "Vocab Title is not translated")
 
-
     def testGetTermKeyPath(self):
         """A SimpleVocabularyTerm simply returns a list containing it's key
         """
@@ -220,7 +212,6 @@ class TestSimpleVocabulary(PloneTestCase.PloneTestCase):
         self._createTestVocabulary()
         vocab = self.atvm.teststates
         self.assertEqual(['aut'], vocab.aut.getTermKeyPath())
-
 
 
 def test_suite():

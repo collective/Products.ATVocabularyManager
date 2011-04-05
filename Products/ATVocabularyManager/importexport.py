@@ -2,7 +2,7 @@
 #
 # BSD-like licence, see LICENCE.txt
 #
-__author__  = 'Jens Klein <jens@bluedynamics.com>'
+__author__ = 'Jens Klein <jens@bluedynamics.com>'
 __docformat__ = 'plaintext'
 import os
 from imsvdex.vdex import VDEXManager
@@ -17,9 +17,10 @@ from Products.GenericSetup.utils import importObjects
 from Products.CMFPlone.utils import normalizeString
 from interfaces import IATVocabularyLibrary
 
+
 class ATVMXMLAdapter(XMLAdapterBase):
     adapts(IATVocabularyLibrary, ISetupEnviron)
-    
+
     name = 'vocabularies'
 
     def _importNode(self, node):
@@ -28,12 +29,12 @@ class ATVMXMLAdapter(XMLAdapterBase):
         if self.environ.shouldPurge():
             self._purgeVocabs()
         self._initVocabs(node)
-        self._logger.info('ATVocabularyManager library imported.')    
-        
+        self._logger.info('ATVocabularyManager library imported.')
+
     def _purgeVocabs(self):
         ids = self.context.contentIds()
         self.context.manage_delObjects(ids)
-        
+
     def _initVocabs(self, node):
         for objnode in node.getElementsByTagName('object'):
             filename = objnode.getAttribute('name')
@@ -48,43 +49,44 @@ class ATVMXMLAdapter(XMLAdapterBase):
                     raise
                 vocabid = vdex.getVocabIdentifier()
                 if not vocabid:
-                    vocabid = filename[:filename.rfind('.')]   
-                vocabname = vocabid             
+                    vocabid = filename[:filename.rfind('.')]
+                vocabname = vocabid
                 if vocabname in self.context.objectIds():
                     self.context.manage_delObjects([vocabname])
                 try:
                     self._logger.info(
                         'Import VDEX file %s with identifier %s' % \
-                        (filename, vocabname)) 
+                        (filename, vocabname))
                     self.context.invokeFactory('VdexFileVocabulary', vocabname)
                 except BadRequest, e:
                     self._logger.warning(
                         'Import VDEX file %s with identifier %s renamed as %s' % \
-                        (filename, vocabid, vocabname))  
+                        (filename, vocabid, vocabname))
                     vocabname = normalizeString(vocabid, context=self.context)
                     if vocabname in self.context.objectIds():
                         self.context.manage_delObjects([vocabname])
                     self.context.invokeFactory('VdexFileVocabulary', vocabname)
-                self.context[vocabname].importXMLBinding(data)                
+                self.context[vocabname].importXMLBinding(data)
             elif filename.endswith('.csv') or filename.endswith('.txt'):
                 # CSV file
-                self._logger.info('CSV import not yet implemented.') 
+                self._logger.info('CSV import not yet implemented.')
             else:
-                self._logger.info('Unknown File Format.') 
-            
+                self._logger.info('Unknown File Format.')
+
 
 def importVocabularies(context):
     """Import vocabularies from an XML file.
     """
     site = context.getSite()
-    tool = getToolByName(site, 'portal_vocabularies')   
+    tool = getToolByName(site, 'portal_vocabularies')
     importObjects(tool, '', context)
+
 
 def exportVocabularies(context):
     """Export vocabularies as an XML file.
     """
     site = context.getSite()
-    tool = getToolByName(site, 'portal_vocabularies')    
+    tool = getToolByName(site, 'portal_vocabularies')
     if tool is None:
         logger = context.getLogger('atvm')
         logger.info('Nothing to export.')

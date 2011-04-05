@@ -10,7 +10,7 @@ provides VDEX compliant vocabulary - using imsvdex python package
 #
 # BSD-like licence, see LICENCE.txt
 #
-__author__  = '''Jens Klein <jens@bluedynamics.com>'''
+__author__ = '''Jens Klein <jens@bluedynamics.com>'''
 __docformat__ = 'plaintext'
 
 from zope.interface import implements
@@ -31,47 +31,49 @@ from imsvdex.vdex import VDEXManager, VDEXError
 IMSVDEXVocabularySchema = Schema((
 
     StringField(
-        name='title',
-        required=1,
-        searchable=1,
-        default='',
-        accessor='Title',
-        widget=StringWidget(
-            label_msgid='label_title',
-            visible={'view' : 'invisible', 'edit' : 'invisible'},
-            i18n_domain='plone',
+        name = 'title',
+        required = 1,
+        searchable = 1,
+        default = '',
+        accessor = 'Title',
+        widget = StringWidget(
+            label_msgid = 'label_title',
+            visible = {'view': 'invisible', 'edit': 'invisible'},
+            i18n_domain = 'plone',
         ),
     ),
     TextField(
         'description',
-        default='',
-        searchable=1,
-        accessor="Description",
-        schemata='default',
-        widget=TextAreaWidget(
-            visible={'view' : 'visible', 'edit' : 'invisible'},
-            label='Description',
-            description="A short summary of the content",
-            label_msgid="label_description",
-            description_msgid="help_description",
-            i18n_domain="plone"),
+        default = '',
+        searchable = 1,
+        accessor = "Description",
+        schemata = 'default',
+        widget = TextAreaWidget(
+            visible = {'view': 'visible', 'edit': 'invisible'},
+            label = 'Description',
+            description = "A short summary of the content",
+            label_msgid = "label_description",
+            description_msgid = "help_description",
+            i18n_domain = "plone"),
     ),
+
     FileField(
-        name='vdex',
-        allowable_content_types=["text/xml"],
-        widget=FileWidget(
-            label="VDEX-XML-Data",
-            label_msgid='IMSVDEXVocabulary_label_vdex',
-            description="upload the IMS Vocabulary Definition Format "
+        name = 'vdex',
+        allowable_content_types = ["text/xml"],
+        widget = FileWidget(
+            label = "VDEX-XML-Data",
+            label_msgid = 'IMSVDEXVocabulary_label_vdex',
+            description = "upload the IMS Vocabulary Definition Format "
                         "compliant XML file into this text field.",
-            description_msgid='IMSVDEXVocabulary_description_vdex',
-            i18n_domain='ATVocabularyManager',
+            description_msgid = 'IMSVDEXVocabulary_description_vdex',
+            i18n_domain = 'ATVocabularyManager',
             allow_file_upload = True,
         ),
-        default_output_type="text/plain",
-        default_content_type="text/xml"
+        default_output_type = "text/plain",
+        default_content_type = "text/xml"
     ),
-),)
+))
+
 
 class IMSVDEXVocabulary(BaseContent):
     """Content type for handling of VDEX compliant vocabulary.
@@ -129,7 +131,7 @@ class IMSVDEXVocabulary(BaseContent):
             return vdict
         manager = self._getManager()
         if manager is None:
-            return { self.getId(): 'no or corrupt vocabulary with name %s' % \
+            return {self.getId(): 'no or corrupt vocabulary with name %s' % \
                                     self.getId()}
         vdict = manager.getVocabularyDict(lang=self._getLanguage())
         vtool.cacheVocabularyDict(self, vdict)
@@ -194,7 +196,7 @@ class IMSVDEXVocabulary(BaseContent):
             # try to get it from PTS
             accepted = getLangPrefs(self.REQUEST)
             if len(accepted) > 0:
-               lang = accepted[0]
+                lang = accepted[0]
             else:
                 # bummer, it cant determine a language
                 lang = 'neutral'
@@ -207,18 +209,18 @@ class IMSVDEXVocabulary(BaseContent):
         if not vdict:
             return
         for key in vdict.keys():
-            if type(vdict[key]) == type((1,2)):
-                value  = vdict[key][0]
+            if type(vdict[key]) == type((1, 2)):
+                value = vdict[key][0]
                 subdict= vdict[key][1] or None
             else:
-                value  = vdict[key]
+                value = vdict[key]
                 subdict= None
             if valueparent:
                 value = '%s - %s' % (valueparent, value)
             if not self.showLeafsOnly() or subdict:
-                displaylist.add(key,value)
+                displaylist.add(key, value)
             if subdict:
-                self._appendToDisplayList(displaylist, subdict,value)
+                self._appendToDisplayList(displaylist, subdict, value)
 
     def SearchableText(self):
         """dont find in live-search"""

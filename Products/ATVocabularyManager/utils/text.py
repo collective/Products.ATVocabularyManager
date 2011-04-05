@@ -1,5 +1,6 @@
 from types import UnicodeType
 
+
 def convertStringToId(s, maxlen=None):
     """
     Converts a string into a Zope-safe ID.
@@ -33,7 +34,7 @@ def convertStringToId(s, maxlen=None):
 
     # remove ALL double-underscores
     while s.find("__") > -1:
-        s = s.replace('__','_')
+        s = s.replace('__', '_')
 
     # trim to maxlength
     if maxlen and len(s) > maxlen:

@@ -8,7 +8,7 @@ RCS-ID $Id: SimpleVocabularyTerm.py 3172 2004-10-13 21:18:00Z yenzenz $
 #
 # BSD-like licence, see LICENCE.txt
 #
-__author__  = 'Jens Klein <jens@bluedynamics.com>'
+__author__ = 'Jens Klein <jens@bluedynamics.com>'
 __docformat__ = 'plaintext'
 
 from zope import event
@@ -37,7 +37,7 @@ class SimpleVocabularyTerm(BaseContent):
     archetype_name = 'Simple Vocabulary Term'
     _at_rename_after_creation = True
 
-    __implements__ = getattr(BaseContent,'__implements__',()) + (IVocabularyTerm,)
+    __implements__ = getattr(BaseContent, '__implements__', ()) + (IVocabularyTerm, )
 
     schema = BaseSchema + Schema((
         StringField('id',
@@ -68,14 +68,13 @@ class SimpleVocabularyTerm(BaseContent):
     )
 
     aliases = {
-        '(Default)' : 'base_view',
-        'view' : 'base_view',
-        'edit' : 'base_edit',
+        '(Default)': 'base_view',
+        'view': 'base_view',
+        'edit': 'base_edit',
     }
 
     # Methods
     # methods from Interface IVocabularTerm
-
 
     def getTermKey(self):
         """
@@ -98,8 +97,7 @@ class SimpleVocabularyTerm(BaseContent):
 
     def getTermKeyPath(self):
         # terms of flat vocabularies can savely return their key
-        return [self.getTermKey(),]
-
+        return [self.getTermKey(), ]
 
     def getVocabularyKey(self):
         ''' returns the key of the field '''
@@ -139,21 +137,17 @@ class SimpleVocabularyTerm(BaseContent):
     edit = update
 
     # uncomment lines below when you need
-    factory_type_information={
-        'allowed_content_types':() ,
+    factory_type_information = {
+        'allowed_content_types': (),
         'allow_discussion': 0,
-        'immediate_view':'simplevocabulary_view',
-        'global_allow':0,
-        'filter_content_types':1,
+        'immediate_view': 'simplevocabulary_view',
+        'global_allow': 0,
+        'filter_content_types': 1,
         }
 
-
-    actions=  (
-
-
-          )
+    actions = ()
 
 
 registerType(SimpleVocabularyTerm, PROJECTNAME)
-registerVocabularyTerm(SimpleVocabularyTerm,'SimpleVocabulary')
+registerVocabularyTerm(SimpleVocabularyTerm, 'SimpleVocabulary')
 registerVocabularyTerm(SimpleVocabularyTerm, 'SortedSimpleVocabulary')

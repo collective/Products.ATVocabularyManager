@@ -6,13 +6,12 @@
 
 """
 
-import os, sys
-import unittest
-
-
 import glob
-from zope.testing import doctest
+import os
+import sys
 import unittest
+
+from zope.testing import doctest
 from Testing.ZopeTestCase import FunctionalDocFileSuite as Suite
 from Products.PloneTestCase import PloneTestCase
 from Products.ATVocabularyManager.tests import PACKAGE_HOME
@@ -29,7 +28,7 @@ OPTIONFLAGS = (doctest.REPORT_ONLY_FIRST_FAILURE |
 #PloneTestCase.installProduct('ATVocabularyManager')
 #PloneTestCase.setupPloneSite(products=['ATVocabularyManager'])
 
-# Using module common to install products and create plone site 
+# Using module common to install products and create plone site
 import common
 
 
@@ -50,9 +49,11 @@ def list_doctests():
     return [filename for filename in
             glob.glob(os.path.sep.join([PACKAGE_HOME, '*.txt']))]
 
+
 def list_nontestbrowser_tests():
     return [filename for filename in list_doctests()
             if os.path.basename(filename) not in REQUIRE_TESTBROWSER]
+
 
 def test_suite():
     # BBB: We can obviously remove this when testbrowser is Plone
@@ -85,4 +86,3 @@ def test_suite():
 
 if __name__ == '__main__':
     unittest.main(defaultTest='test_suite')
-

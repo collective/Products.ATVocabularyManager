@@ -14,7 +14,7 @@
 # this program; if not, write to the Free Software Foundation, Inc., 59 Temple
 # Place, Suite 330, Boston, MA  02111-1307  USA
 #
-__author__  = '''gotcha'''
+__author__ = '''gotcha'''
 __docformat__ = 'plaintext'
 
 
@@ -36,25 +36,24 @@ from Products.ATVocabularyManager.types.simple.vocabulary import SimpleVocabular
 class SortedSimpleVocabulary(SimpleVocabulary):
     security = ClassSecurityInfo()
 
-    __implements__ = getattr(OrderedBaseFolder,'__implements__',()) + (IVocabulary,)
+    __implements__ = getattr(OrderedBaseFolder, '__implements__', ()) + (IVocabulary, )
 
 
     # This name appears in the 'add' box
-    archetype_name             = 'Sorted Simple Vocabulary'
+    archetype_name = 'Sorted Simple Vocabulary'
 
-    meta_type                  = 'SortedSimpleVocabulary'
-    portal_type                = 'SortedSimpleVocabulary'
-    allowed_content_types      = list(getattr(SimpleVocabulary, 'allowed_content_types', []))
-    filter_content_types       = 1
-    global_allow               = 0
-    allow_discussion           = 0
-    #content_icon               = 'SortedSimpleVocabulary.gif'
-    immediate_view             = 'base_view'
-    default_view               = 'base_view'
-    suppl_views                = ()
-    typeDescription            = "SortedSimpleVocabulary"
-    typeDescMsgId              = 'description_edit_sortedsimplevocabulary'
-
+    meta_type = 'SortedSimpleVocabulary'
+    portal_type = 'SortedSimpleVocabulary'
+    allowed_content_types = list(getattr(SimpleVocabulary, 'allowed_content_types', []))
+    filter_content_types = 1
+    global_allow = 0
+    allow_discussion = 0
+    #content_icon = 'SortedSimpleVocabulary.gif'
+    immediate_view = 'base_view'
+    default_view = 'base_view'
+    suppl_views = ()
+    typeDescription = "SortedSimpleVocabulary"
+    typeDescMsgId = 'description_edit_sortedsimplevocabulary'
 
     def getDisplayList(self, instance):
         """ returns a object of class DisplayList as defined in
@@ -62,20 +61,19 @@ class SortedSimpleVocabulary(SimpleVocabulary):
 
             The instance of the content class is given as parameter.
         """
-        vdict=self.getVocabularyDict(instance)
+        vdict = self.getVocabularyDict(instance)
         key_values = []
         for key in vdict.keys():
-            key_values.append((key,vdict[key]))
+            key_values.append((key, vdict[key]))
+
         def cmp_second_term(item1, item2):
             return cmp(item1[1].upper(), item2[1].upper())
+
         key_values.sort(cmp_second_term)
 
         dl = DisplayList(key_values)
         return dl
 
+
 registerType(SortedSimpleVocabulary, PROJECTNAME)
 registerVocabularyContainer(SortedSimpleVocabulary)
-
-
-
-

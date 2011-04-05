@@ -2,7 +2,8 @@ from zope import event
 from zope import interface
 from Products.ATVocabularyManager import interfaces
 from Products.ATVocabularyManager.tools import vocabularylib
-from Products.CMFCore import utils as cmfutils
+#from Products.CMFCore import utils as cmfutils
+
 
 class TermRenamedEvent(object):
     interface.implements(interfaces.ITermRenamedEvent)
@@ -13,6 +14,7 @@ class TermRenamedEvent(object):
         self.term = term
         self.vocabulary = vocabulary
 
+
 class TermDeletedEvent(object):
     interface.implements(interfaces.ITermDeletedEvent)
 
@@ -20,6 +22,7 @@ class TermDeletedEvent(object):
         self.keyword = keyword
         self.term = term
         self.vocabulary = vocabulary
+
 
 def find_toplevel_vocab(obj):
     result = obj
@@ -30,6 +33,7 @@ def find_toplevel_vocab(obj):
         result = result.aq_parent
 
     return None
+
 
 def term_removed_handler(obj, evt):
     vocab = find_toplevel_vocab(obj)

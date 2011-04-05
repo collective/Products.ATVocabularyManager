@@ -4,6 +4,7 @@
 #
 from zope.interface import Interface
 
+
 class IVocabularyTerm(Interface):
     """A VocabularyTerm has a value (which is used to
     display the term) and a key that is used to identify

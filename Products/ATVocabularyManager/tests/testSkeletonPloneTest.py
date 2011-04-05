@@ -5,7 +5,7 @@
 import unittest
 
 
-from Testing import ZopeTestCase
+#from Testing import ZopeTestCase
 from Products.PloneTestCase import PloneTestCase
 
 import common

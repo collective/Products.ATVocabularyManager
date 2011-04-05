@@ -9,11 +9,11 @@ RCS-ID $Id: SimpleVocabulary.py 3219 2004-10-29 00:49:03Z zworkb $
 #
 # BSD-like licence, see LICENCE.txt
 #
-__author__  = 'Jens Klein <jens@bluedynamics.com>'
+__author__ = 'Jens Klein <jens@bluedynamics.com>'
 __docformat__ = 'plaintext'
 
-import csv
-from StringIO import StringIO
+#import csv
+#from StringIO import StringIO
 from zope.interface import implements
 from Products.ATVocabularyManager.config import *
 if HAS_LINGUA_PLONE:
@@ -28,6 +28,7 @@ from Products.ATVocabularyManager.tools import registerVocabularyContainer
 from Products.ATVocabularyManager.config import TOOL_NAME as VOCABTOOL_NAME
 from Products.ATVocabularyManager.config import PROJECTNAME
 
+
 class AliasVocabulary(BaseContent):
 
     implements(IVocabulary)
@@ -35,7 +36,7 @@ class AliasVocabulary(BaseContent):
     security = ClassSecurityInfo()
     meta_type = 'AliasVocabulary'
 
-    schema=BaseFolderSchema  + Schema((
+    schema = BaseFolderSchema + Schema((
         StringField('id',
             required=1, ## Still actually required, but
                         ## the widget will supply the missing value
@@ -81,7 +82,6 @@ class AliasVocabulary(BaseContent):
             ),
         )
     ))
-
 
     def getPossibleTargets(self, instance):
         """ fetch a list of vocabularie w/o AliasVocabulary """

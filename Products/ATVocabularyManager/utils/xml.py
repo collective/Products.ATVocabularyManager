@@ -4,27 +4,32 @@ some helper methods for XML handling
 
 from types import StringTypes
 
-def setAttr(doc,node,key,value):
+
+def setAttr(doc, node, key, value):
     """ little helper to abbrev. the process of setting an XML-Attribute """
     if type(value) not in StringTypes:
-        value=repr(value)
-    attr=doc.createAttribute(key)
+        value = repr(value)
+
+    attr = doc.createAttribute(key)
     node.setAttributeNode(attr)
     node.setAttribute(key, value)
     return attr
 
-def appendNode(doc,parent,key):
+
+def appendNode(doc, parent, key):
     """ little helper to abbrev. the process of creating a simple node """
-    node=doc.createElement(key)
+    node = doc.createElement(key)
     parent.appendChild(node)
     return node
 
-def appendText(doc,parent,key,content):
+
+def appendText(doc, parent, key, content):
     """ little helper to abbrev. the process of creating a text-node """
-    node=appendNode(doc,parent,key)
-    textnode=doc.createTextNode(content)
+    node = appendNode(doc, parent, key)
+    textnode = doc.createTextNode(content)
     node.appendChild(textnode)
     return node
+
 
 def getData(parent):
     data = ""
@@ -43,7 +48,8 @@ def getCDATA(parent):
     # it can handle CDATA Nodes, but return it as a textnode
     return getData(parent)
 
-def getChildrenByTagName(parent,name):
+
+def getChildrenByTagName(parent, name):
     nodes = []
     for child in parent.childNodes:
         if child.nodeType == child.ELEMENT_NODE:

@@ -8,7 +8,7 @@ portal_vocabularytool and to fetch its DisplayList
 #
 # BSD-like licence, see LICENCE.txt
 #
-__author__  = 'Jens Klein <jens@bluedynamics.com>'
+__author__ = 'Jens Klein <jens@bluedynamics.com>'
 __docformat__ = 'plaintext'
 
 import Missing
@@ -18,6 +18,7 @@ from Products.CMFCore.utils import getToolByName
 from Products.Archetypes.interfaces import IVocabulary
 from Products.ATVocabularyManager.types.tree.vocabulary import TreeVocabulary
 from config import TOOL_NAME
+
 
 class NamedVocabulary(object):
 
@@ -82,8 +83,8 @@ class NamedVocabulary(object):
         vt = getToolByName(instance, TOOL_NAME)
         vocab = vt.getVocabularyByName(self.vocab_name)
         if vocab is None:
-            raise KeyError('Vocabulary id not found in '+\
-                             'portal_vocabularies : %s' % self.vocab_name)        
+            raise KeyError('Vocabulary id not found in '+ \
+                'portal_vocabularies : %s' % self.vocab_name)        
         assert(IVocabulary.providedBy(vocab))
         return vocab
 
@@ -109,7 +110,7 @@ class NamedVocabulary(object):
 
         # we can get a list, or just a value
         if not isinstance(terms, (tuple, list)):
-            terms=[terms,]
+            terms=[terms, ]
 
         uc = getToolByName(instance, 'uid_catalog')
 

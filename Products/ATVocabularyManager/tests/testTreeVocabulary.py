@@ -4,7 +4,7 @@
 
 import unittest
 
-from Testing import ZopeTestCase
+#from Testing import ZopeTestCase
 from Products.PloneTestCase import PloneTestCase
 
 from Products.ATVocabularyManager.utils.vocabs import createHierarchicalVocabs
@@ -22,9 +22,8 @@ class TestTreeVocabulary(PloneTestCase.PloneTestCase):
         self.atvm = common.getATVM(self.portal)
         self.loginAsPortalOwner()
 
-
     def setupExampleTreeVocabulary(self):
-        hierarchicalVocabs={}
+        hierarchicalVocabs = {}
 
         hierarchicalVocabs[('regions', 'Some regions in europe')] = {
             ('aut', 'Austria'): {
@@ -33,14 +32,11 @@ class TestTreeVocabulary(PloneTestCase.PloneTestCase):
                 }
             },
             ('ger', 'Germany'): {
-                ('bav', 'Bavaria'):{}
+                ('bav', 'Bavaria'): {}
             },
         }
 
         createHierarchicalVocabs(self.atvm, hierarchicalVocabs)
-
-
-
 
     def test_getTermKeyPath(self):
         """Test for the method term.getTermKeyPath.
@@ -65,7 +61,6 @@ class TestTreeVocabulary(PloneTestCase.PloneTestCase):
         """tests if treevocabulary works fine with linguaplone
         """
         self.setupExampleTreeVocabulary()
-
         self._translateVocabulary()
 
         # a term and it's translation have to provide the same keys
@@ -75,18 +70,15 @@ class TestTreeVocabulary(PloneTestCase.PloneTestCase):
 
         self.assertEqual(aut.getTermKey(), autDe.getTermKey())
 
-
         # check if displaylist are translated correctly
-
-        langtool = getToolByName(self.portal,'portal_languages')
+        langtool = getToolByName(self.portal, 'portal_languages')
 
         # set available portal languages
         langtool.supported_langs=['en', 'de']
 
-        # per default englisch is the preferred language
+        # per default english is the preferred language
         self.assertEqual('en', langtool.getPreferredLanguage())
         enDict = vocab.getVocabularyDict()
-
 
         autUID=vocab.aut.UID()
         # title for austria in english
@@ -103,19 +95,13 @@ class TestTreeVocabulary(PloneTestCase.PloneTestCase):
         germanyUID = vocab.ger.UID()
         self.assertEqual('Germany', deDict[germanyUID][0], "Canonical's is not used for unstranslated vocabularies")
 
-
-
-
     def _translateVocabulary(self):
         """translates the vocabulary 'regions'
         created in ``setupExampleTreeVocabulary``
         """
-
-
         # we need to install 'Linguaplone' to translate
         # vocabularies
         qi = getToolByName(self.portal, 'portal_quickinstaller')
-
 
         lpAvailable = qi.isProductAvailable('LinguaPlone')
         self.failUnless(lpAvailable, "Product LinguaPlone has to be available in INSTANCE_HOME")
@@ -134,8 +120,6 @@ class TestTreeVocabulary(PloneTestCase.PloneTestCase):
         # titles are correctly used as fallbacks
 
 
-
-
 def test_suite():
     from unittest import TestSuite, makeSuite
     suite = TestSuite()
@@ -145,4 +129,3 @@ def test_suite():
 
 if __name__ == '__main__':
     unittest.main(defaultTest='test_suite')
-

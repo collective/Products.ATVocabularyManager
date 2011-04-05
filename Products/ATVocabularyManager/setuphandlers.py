@@ -1,12 +1,15 @@
 from Products.CMFCore.utils import getToolByName
 from Products.ATVocabularyManager.config import TOOL_TITLE
 
+
 def importVarious(self):
+
     if self.readDataFile('atvocabularymanager.txt') is None:
         return
+
     site = self.getSite()
     catalog = getToolByName(site, 'uid_catalog')
-    
+
     idxName = 'getTermKeyPath'
 
     if idxName not in catalog.schema():

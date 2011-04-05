@@ -6,7 +6,7 @@ A Tree Vocabulary is a container for hierachical key/value pairs.
 #
 # BSD-like licence, see LICENCE.txt
 #
-__author__  = 'Jens Klein <jens@bluedynamics.com>'
+__author__ = 'Jens Klein <jens@bluedynamics.com>'
 __docformat__ = 'plaintext'
 
 from Products.ATVocabularyManager.config import *
@@ -16,7 +16,7 @@ else:
     from Products.Archetypes.atapi import *
 
 from AccessControl import ClassSecurityInfo
-from Products.CMFCore.permissions import AddPortalContent
+#from Products.CMFCore.permissions import AddPortalContent
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import base_hasattr
 from Products.Archetypes.utils import OrderedDict
@@ -32,16 +32,16 @@ from Products.ATVocabularyManager.config import PROJECTNAME
 
 schema = SimpleVocabulary.schema + Schema((
     BooleanField('ShowLeavesOnly',
-        widget=BooleanWidget(
-            label="Show leaves only",
-            label_msgid="label_show_leaves_only",
-            description="Check to show only leaves in this vocabulary.",
-            description_msgid="help_show_leaves_only",
-            i18n_domain="atvocabularymanager",
+        widget = BooleanWidget(
+            label = "Show leaves only",
+            label_msgid = "label_show_leaves_only",
+            description = "Check to show only leaves in this vocabulary.",
+            description_msgid = "help_show_leaves_only",
+            i18n_domain = "atvocabularymanager",
         ),
     ),
-)
-)
+))
+
 
 class TreeVocabulary(SimpleVocabulary):
     security = ClassSecurityInfo()
@@ -66,25 +66,29 @@ class TreeVocabulary(SimpleVocabulary):
         """ append subtree to flat display list
         """
         for key in vdict.keys():
-            if type(vdict[key]) == type((1,2)):
-                value  = vdict[key][0]
-                subdict= vdict[key][1] or None
+            if type(vdict[key]) == type((1, 2)):
+                value = vdict[key][0]
+                subdict = vdict[key][1] or None
             else:
-                value  = vdict[key]
-                subdict= None
+                value = vdict[key]
+                subdict = None
             if valueparent and display_parents == 'tree':
                 value = '%s - %s' % (valueparent, value)
             if valueparent and display_parents == 'marker':
                 # Extract any leading -'s from the parent
                 markers = 0
                 for char in valueparent:
-                    if char == '-': markers += 1
-                    else: break
+                    if char == '-':
+                        markers += 1
+                    else:
+                        break
                 value = '%s-- %s' % ('-'*markers, value)
+
             if (not self.showLeafsOnly()) or (not subdict):
-                displaylist.add(key,value)
+                displaylist.add(key, value)
+
             if subdict:
-                self._appendToDisplayList(displaylist,subdict,value,
+                self._appendToDisplayList(displaylist, subdict, value,
                                           display_parents=display_parents)
 
     def getVocabularyDict(self, instance=None):
@@ -100,7 +104,7 @@ class TreeVocabulary(SimpleVocabulary):
                 lang = instance.getLanguage()
             except AttributeError:
                 # we try to retrieve the current language
-                langtool = getToolByName(self,'portal_languages')
+                langtool = getToolByName(self, 'portal_languages')
                 lang = langtool.getPreferredLanguage()
 
             return self._getTranslatedVocabularyDict(lang)
@@ -108,8 +112,6 @@ class TreeVocabulary(SimpleVocabulary):
             # we don't need to care about languages, and can simply
             # return all contentObjects
             return self._getUntranslatedVocabularyDict()
-
-
 
     def _getTranslatedVocabularyDict(self, lang):
         """returns a vocabulary dict using the titles of the
@@ -127,10 +129,9 @@ class TreeVocabulary(SimpleVocabulary):
                 key = obj.getTermKey()
                 # but use the title of the appropriate translation
                 # if it is available (getTermValue is LP aware)
-                vsubdict=obj._getTranslatedVocabularyDict(lang)
+                vsubdict = obj._getTranslatedVocabularyDict(lang)
                 vdict[key] = (obj.getTermValue(lang=lang), vsubdict)
         return vdict
-
 
     def _getUntranslatedVocabularyDict(self):
         """returns a vocabulary dictionary as defined in the interface
@@ -138,23 +139,20 @@ class TreeVocabulary(SimpleVocabulary):
         vdict = OrderedDict()
 
         for obj in self.contentValues():
-            vsubdict=obj._getUntranslatedVocabularyDict()
+            vsubdict = obj._getUntranslatedVocabularyDict()
             vdict[obj.getVocabularyKey()] = ( \
-                obj.getVocabularyValue(),
-                vsubdict
-            )
+                obj.getVocabularyValue(), vsubdict)
         return vdict
 
     def showLeafsOnly(self):
         """ indicates if only leaves should be shown """
-        if base_hasattr(self,'getShowLeavesOnly'):
+        if base_hasattr(self, 'getShowLeavesOnly'):
             return self.getShowLeavesOnly()
         return None
 
     def isFlat(self):
         """ indicates if tree or flat """
         return 0
-
 
 
 registerType(TreeVocabulary, PROJECTNAME)

@@ -10,13 +10,12 @@ from zope.testing import doctest
 from Testing import ZopeTestCase
 from Products.PloneTestCase import PloneTestCase
 
-from Products.CMFCore.utils import getToolByName
+#from Products.CMFCore.utils import getToolByName
 
 import common
 
-
-
 from Products.ATVocabularyManager import doc
+
 
 class TestSearchTreeVocabulary(PloneTestCase.PloneTestCase):
     """
@@ -30,27 +29,24 @@ class TestSearchTreeVocabulary(PloneTestCase.PloneTestCase):
         self.loginAsPortalOwner()
 
 
-
 def test_suite():
     from unittest import TestSuite
     from Testing.ZopeTestCase.zopedoctest import ZopeDocFileSuite
 
-
-
     optionflags = doctest.REPORT_ONLY_FIRST_FAILURE | doctest.ELLIPSIS
     suites = []
-    
+
     scriptTests = ['search_treevocabulary.txt',
                    ]
 
 
     for test in scriptTests:
-        suites.append(  ZopeDocFileSuite(test,
+        suites.append(ZopeDocFileSuite(test,
                                          optionflags=optionflags,
                                          package='Products.ATVocabularyManager.doc',
                                          test_class=TestSearchTreeVocabulary,
                                          ))
-    return TestSuite( suites )
+    return TestSuite(suites)
 
 
 ##code-section module-footer #fill in your manual code here
@@ -58,4 +54,3 @@ def test_suite():
 
 if __name__ == '__main__':
     unittest.main(defaultTest='test_suite')
-
