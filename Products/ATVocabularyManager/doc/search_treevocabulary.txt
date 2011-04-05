@@ -10,6 +10,7 @@ imagine the following vocabulary:
 
    * electrical
    * mechanical
+
      * otto engine
      * diesel engine
 
@@ -20,8 +21,7 @@ You can skip this tutorial if you are no developer and simply
 want to learn how to do hierarchy-aware searches on your content type.
 This is demonstrated in the Product ATVocabularyManagerExample_
 
-::
-_ATVocabularyManagerExample: https://svn.plone.org/svn/archetypes/ATVocabularyManagerExample/trunk
+.. _ATVocabularyManagerExample: https://svn.plone.org/svn/archetypes/ATVocabularyManagerExample/trunk
 
 
 
