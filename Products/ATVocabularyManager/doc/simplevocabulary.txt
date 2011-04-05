@@ -1,4 +1,3 @@
-=================
 Simple Vocabulary
 =================
 
@@ -6,7 +5,7 @@ Simple vocabularies are flat vocabularies.
 
 
 Creating a simple vocabulary
-============================
+----------------------------
 
 SimpleVocabularies can be created in the vocabulary library:
 
@@ -25,7 +24,7 @@ the vocabulary library
 
 
 Creating simple vocabulary terms
-================================
+--------------------------------
 
 Simple vocabularies can only contain SimpleVocabularyTerms.
 
@@ -51,7 +50,7 @@ has been successfull.
 
 
 Batch creation
---------------
+++++++++++++++
 
 For creating simple vocabularies in python code you can use 
 a convenience method atvm provides for you:
@@ -73,7 +72,7 @@ This needs to be fed with a dictionary in the following format::
 
 
 Sorting
-=======
+-------
 
 You can define the sort order of the vocabularyterms within a
 simplevocabulary by choosing one of the values in `Sort method`.
@@ -109,7 +108,7 @@ Sorting by folder position
 
 
 Linguaplone Support
-===================
+-------------------
 
 Simple vocabularies have full Linguaplone Support, but also work
 w/o having Linguaplone installed::
@@ -133,7 +132,7 @@ XXX go on porting the tests/testSimpleVocabulary testTranslations here
 
 
 Sorting
--------
++++++++
 
 Also sorting on translated vocabularies works as excepted:
 XXX write tests for the following 

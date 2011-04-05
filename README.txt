@@ -2,8 +2,10 @@
 ATVocabularyManager: a vocabulary managing portal tool for Plone
 ================================================================
 
-Overview:
-=========
+.. contents::
+
+Overview
+========
 
 - ATVocabularyManager offers central through the Plone management of
   dynamic vocabularies.
@@ -56,20 +58,19 @@ You can do hierachy-aware searches on treevocabularies (for more information on
 this see doc/search_treevocabulary.txt) attention: curently certain changes in 
 the term hierachy require a catalog rebuild (see Limitations).
 
+
 Installation
 ============
 
-Put the egg in your buildout or include it manual. In Plone go to portal_setup 
-and 
+See docs/INSTALL.txt.
 
-To speed up ATVocabularyManager you might want to associate it with a 
-Cache-Manager.
+To speed up ATVocabularyManager you might want to associate it with a Cache-Manager.
 
 
 Dependencies
 ============
 
-- Archetypes 1.5.x 
+- Archetypes 1.5.x and above.
 
 - Targets with Plone 3.1+
 
@@ -77,22 +78,19 @@ Dependencies
   easy_install imsvdex - )
 
 - Linguaplone (optional: for tests and multilingual vocabularies)
- 
+
+
 Tests
 =====
 
 If you're using a buildout run the tests using
- 
-   bin/instance test -s Products.ATVocabularyManager
- 
-To run a certain testmodule run
- 
-   bin/instance test -s Products.ATVocabularyManager -m testSimpleVocabulary
- 
-Todo
-====
 
-- UI work 
+   bin/instance test -s Products.ATVocabularyManager
+
+To run a certain testmodule run
+
+   bin/instance test -s Products.ATVocabularyManager -m testSimpleVocabulary
+
 
 
 Limitations
@@ -111,9 +109,8 @@ Creation/Edit of VDEX TTW is difficult.
 Known Bugs
 ==========
 
-- UI does not show in all cases vocabulary/items properly.
-
-Feel free to add bugs in here!
+- Check the issue-tracker: http://plone.org/products/atvocabularymanager/issues
+  Feel free to add bugs in here!
 
 
 Support
@@ -122,6 +119,7 @@ Usally the authors are offering professional support. The classical well-working
 community support is found at the mailing-lists and IRC-channels announced at
 plone.org:http://plone.org
 
+
 Credits
 =======
  Several parts code was created for the ZUCCARO project.
@@ -129,28 +127,3 @@ Credits
  Research Online) is a database framework for the Humanities developed
  by the Bibliotheca Hertziana, Max Planck Institute for Art History
  For further information: "zuccaro.biblhertz.it":http://zuccaro.biblhertz.it/
-
-
-Copyright/ Author/ Licence
-==========================
-
-copyright
-    2010-2011 by BlueDynamics Alliance, Austria, Germany, Switzerland
-
-    2004-2009 by BlueDynamics Alliance, Klein & Partner KG, Austria 
-    and parts eduplone Open Source Business Network EEIG, Austria
-
-    2007-2008 by BlueDynamics Alliance, Klein & Partner KEG, Austria
-
-author
-   Jens Klein <jens@bluedynamics.com>
-
-contributions
-   Harald Friessnegger 'frisi': i18n, cleanup, more cleanup of hierachical
-   vocabularies (see HISTORY.txt), Spanky, et al
-
-more contributions 
-   several people committed smaller fixes and translations, thank you all!
-
-license 
-   This software is under a BSD-like Licence. See separate file LICENCE.txt

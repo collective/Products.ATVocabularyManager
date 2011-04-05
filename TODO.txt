@@ -1,36 +1,39 @@
-tasks:
-========
-      
-  - create an issue: simplevocabs do not get alphabetically ordered,
-    nore do they use the order defined by getObjectPositionInParent
-    (see issue #4)
+TODO
+====
 
-  - drop the try
-    from Products.Archetypes.interfaces.vocabulary import IVocabularyTerm
+Tasks
+-----
 
-  - we should add the parameter 'lang' to IVocabularyTerm.getTermValue
-    [jens] agrees, but we should make it optional (normally translations should happen transparently)
+- create an issue: simplevocabs do not get alphabetically ordered,
+  nore do they use the order defined by getObjectPositionInParent
+  (see issue #4)
 
-  - move getTermPath to separate hierarchicalvocabulary interface?
-    [hf] this would allow us to differentiate hierarchical vocabularies by their interface
-         we'd should to make namedvocbaulary.getKeyPathForTerms aware of this too then...
+- drop the try
+  from Products.Archetypes.interfaces.vocabulary import IVocabularyTerm
 
-  - (missing in alias) mark methods getVocabularyValue and getVocabularyKey as deprecated
-    and use the methods getTermValue and getTermKey instead
-    [jens] XXX
+- we should add the parameter 'lang' to IVocabularyTerm.getTermValue
+  [jens] agrees, but we should make it optional (normally translations should happen transparently)
 
-  - use zope3 interfaces for terms
-    useful for example in NamedVocabulary.getKeyPathForTerms (see comment there)
+- move getTermPath to separate hierarchicalvocabulary interface?
+  [hf] this would allow us to differentiate hierarchical vocabularies by their interface
+  we'd should to make namedvocbaulary.getKeyPathForTerms aware of this too then.
 
-  - resolve TODOs (XXX, FIXME) marked in the code ;-)
+- (missing in alias) mark methods getVocabularyValue and getVocabularyKey as deprecated
+  and use the methods getTermValue and getTermKey instead
+  [jens] XXX
+
+- use zope3 interfaces for terms
+  useful for example in NamedVocabulary.getKeyPathForTerms (see comment there)
+
+- resolve TODOs (XXX, FIXME) marked in the code ;-)
 
 
-ideas for features:
-=====================
+Ideas for features
+------------------
 
 
 selection-depth
--------------------
++++++++++++++++
 
 basic idea:
     fields can specify selection depth (0 unlimited, 1 first level, 2 seconde level, etc)
@@ -42,7 +45,7 @@ why do we need that:
 
 
 variable displaylists
-----------------------
++++++++++++++++++++++
 
 basic idea:
 	field can specify which attribute of the vocabularyterms is used for the
@@ -58,7 +61,7 @@ risks/drawbacks:
 
 
 caching displaylists
-----------------------
+++++++++++++++++++++
 
 basic idea:
     caching of displaylists and vocabularydicts using ZCacheable (the only thing we'd
@@ -77,26 +80,25 @@ why do we need that:
 
 
 generic setup support
-----------------------
++++++++++++++++++++++
 
-basic idea:
+basic idea
     vdex already can be ex and imported to xml. we shoud realize it for simple 
     and term too 
     [jens] decision needed: use vdex, some own xml or better atxml from marshall 
-           or just simple Excel importable CSV?)
-           
-    Jens decision is: vdex (implemented import) or csv (todo). 
+    or just simple Excel importable CSV?)
+    Jens decision is: vdex (implemented import) or csv (todo).
 
 
-mixins:
--------
+mixins
+++++++
     common hierarchic functionality of vdex and tree and possibly other types
     should be coded in a mixin.
     code and test once, use everywhere
 
 
 catalog updates
-----------------
++++++++++++++++
 
 current limitation:
 
@@ -116,14 +118,11 @@ need to reindex objects in uid_catalog and portal_catalog:
 
 
 in portal_catalog for indexes used by content types
-    the worse problem is to reindex the objects that define custom
-    indexes on their path-methods.
-    we don't know which catalog they use (could be portal_catalog, but
-    also any other)
+    the worse problem is to reindex the objects that define custom indexes on their path-methods.
+    we don't know which catalog they use (could be portal_catalog, but also any other)
 
     brainstorming:
 
       - store catalog and index in vocab or the atvmtool
       - provide a hook somewhere that can be implemented
-      - maybe use references instead of text-linefields
-        to be able to find out which content uses a certain term.
+      - maybe use references instead of text-linefields to be able to find out which content uses a certain term.

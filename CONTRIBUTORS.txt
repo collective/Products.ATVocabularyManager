@@ -1,0 +1,23 @@
+Author
+======
+
+- Jens Klein <jens@bluedynamics.com>
+
+- Major contributions by Harald Friessnegger 'frisi': i18n, cleanup,
+  more cleanup of hierachical vocabularies.
+
+
+Contributors
+============
+
+Several people committed smaller fixes and translations, thank you all!
+
+- andrewburkhalter -  <andrewb@onenw.org>
+- do3cc
+- fRiSi <harald.webmeisterei.com>
+- gotcha <gotcha@bubblenet.be>
+- jensens <jens@bluedynamics.com>
+- naro <novotny.radim@gmail.com>
+- rocky <rocky@serverzen.com>
+- thet <raggam-nl@adm.at>
+- Wouter Vanden Hove, <wouter@wvhconsulting.org>

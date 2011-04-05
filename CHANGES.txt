@@ -1,0 +1,224 @@
+Changelog
+=========
+
+
+1.7 (unreleased)
+----------------
+
+- Update metadata-files and folder-structure to current conventions. [WouterVH]
+
+- Add `z3c.autoinclude` entry point for automatic ZCML loading in Plone 3.3+.
+  [WouterVH]
+
+- Add MANIFEST.in to include top-level \*.txt-files. [WouterVH]
+
+
+1.6 - 2011-02-22
+----------------
+
+- Don't fetch version and shortdesc from metadata.xml - this is wrong. [jensens]
+
+
+1.6.0a2 - 2011-02-18
+--------------------
+
+- Changed method of dermining if LinguaPlone is installed. Asking QI does not
+  work in Plone4. [naro]
+
+- Added some missing dependencies, and a new extra section to setup.py.
+  This helps to get a simple buildout cfg for testing against plone4. [do3cc]
+
+- Added some sleeps between installs in the tests, else genericsetup
+  creates ids twice, and fails. [do3cc]
+
+- Temporary deactivated two checks in the tests. With
+  Products.CMFQuickInstaller>=3.0.3, the portal_vocabularies don't get
+  deleted during uninstall. [do3cc]
+
+- Restructured test setup, since call semantics changed. [do3cc]
+
+
+1.6.0a1 - 2010-07-16
+--------------------
+
+- Fixed deprecated API call to registerType without Package Name. Works now for
+  Plone4. [thet]
+
+- Added Products.LinguaPlone as test dependency to extras_require and begun
+  fixing tests. [thet]
+
+- Removed old slow VDEX implementation; added stub for import/export of vocabs
+  with generixsetup; added support for vdex import with genericsetup. [jensens]
+
+
+1.4.2 - 2008-06-04
+------------------
+
+- Added spanish translations provided by Diego Municio
+  Cfr. http://plone.org/products/atvocabularymanager/issues/39.
+
+- Merged in Duke's patch for multilingual csv import for simple vocabularies.
+  Cfr. http://plone.org/products/atvocabularymanager/issues/53. [fRiSi]
+
+- Fixed test setup so ATVM is set up using the new GS profile added by naro.
+  (tested with plone 3.1.1 buildout)
+  this fixes http://plone.org/products/atvocabularymanager/issues/52
+
+- Got rid of tests.framework. [fRiSi]
+
+- Added imsvdex as a required dependency in setup.py which makes it unnecessary
+  to ``easy_install imsvdex`` for people using buildout. [fRiSi]
+
+- Added GenericSetup profile, removed Install.py. [naro]
+
+
+before 1.4
+----------
+
+- Workaround for  #46 Upload from Windows/IE creates wrong ID. [jensens]
+
+- Made new VdexFileVocabulary as default for upload form. [jensens]
+
+- Add alternative vdex vocabulary, much faster. [jensens]
+
+- Added convinience method to vocabulary library (tool) which returns
+  a dictionary with key=vocbaulary id and value=title of vocabulary (language
+  aware. [jensens]
+
+- Added convinience function to make it easier to fetch a value from a
+  vocabulary dictionary (utils.vocabs.fetchValueByKeyFromVocabularyDict). [jensens]
+
+- Adding css handles to various elements of portal_vocabulary user
+  interface, so that if desired, one can easily dumb down the user
+  interface for less technical clients with css, but not override the template
+  [andrewburkhalter]
+
+- Language negotation to make sure the cache is language aware. [jensens]
+
+- In types/simple/vocabulary.py, applied patch of issue #4
+  (sorting of simple vocabularies) [fRiSi]
+
+- In doc/simplevocabulary.txt, add doctest testing the sorting of simplevocabularies
+  sorting might not yet work with translated vocabularies. I added a section to
+  test this, but did not yet write the tests there. [fRiSi]
+
+- event.py, configure.zcml, interfaces.py, types/simple/term.py. [rocky]
+
+- "renamed events" are now fired when the title of any term is updated. [rocky]
+
+- "deleted events" are now fired when a term is deleted from a
+  vocabulary; this particular feature will only work when running on
+  Zope 2.9 or higher (note: this doesn't make ATVM dependent on Zope 2.9)
+  [rocky]
+
+- types/tree/vocabulary.py, types/simple/vocabulary.py
+  replaced ``if not instance is None:`` with a try-except.
+  if you are on a type that is not linguaplone enabled,
+  and using a vocabulary you got an error when creating an
+  object of this type because getLanguage raised an AttributeError. [fRiSi]
+
+- types/tree/term.py
+  to fix http://plone.org/products/atvocabularymanager/issues/26
+  in the meantime i solved the problem with the "hack solution"
+  to take away the IVocabulary interface from the term that is
+  extending the vocabulary. [fRiSi]
+  (see the issue above for more information.)
+
+- Makefile
+  added a new target `clean` that removes stale pyc files and ``-~`` backup
+  files [fRiSi]
+
+- namedvocabulary.py used to not add the keypath of a term if the search for a
+  term uid in uid-catalog returned more than one value. proceeding and just taking
+  the first result is better than silently ignoring the path for this item. [fRiSi]
+
+- In Extensions/Install.py, did a cleaner check for BadRequest Error in case the tool already
+  existed at install time (also added basic tests for installing/uninstalling/and
+  reinstalling the product. [fRiSi]
+
+- In Extensions/Install.py, self.portal.portal_properties.navtree_properties.metaTypesNotToList
+  is a tuple by default (on a freshly created plonesite)
+  ATVM creates a list at installation time and removes the tool from this list at
+  uninstallation. If other products get installed between installing
+  and uninstalling, they possibly change metaTypesNotToList back to a tuple again.
+  changed the installer and uninstaller to operate on and return a tuple here.
+  (should fix http://plone.org/products/atvocabularymanager/issues/10) [fRiSi]
+
+- tests/testATVocabularyManager.py
+  tests for the installation and uninstallation of the product.
+  agreed with jens that we could do a zexp of the vocabularies at uninstallation
+  in case this was done by accident.
+  (http://plone.org/products/atvocabularymanager/issues/22/) [fRiSi]
+
+- types/simple/term.py: removed bug, which stops me from adding new terms. [jensens]
+
+- In types/simple/term.py, SimpleVocabularyTerms now return the canoncial's id
+  as key. This differs from the current behaviour but is essential for translated
+  vocabularies. [fRiSi]
+
+- In types/simple/term.py,getTermKeyPath now returns a list containing the key of
+  the term, not it's uid. This is consistent with the interface. [fRiSi]
+
+- types/simple/vocabulary.py, types/tree/vocabulary.py
+  GetVocabularyDict now uses instance.getLanguage in favour of
+  portal_lanuages.getPreferredLanguage (otherwhise passing instance would be
+  useless in most cases)
+
+- tests/testSimpleVocabulary.py: Added a test that checks if translations return
+  the same key and if dictionaries are translated.
+
+- backports.py
+
+  - Improved the docstrings to be more explicit.
+
+  - getTermKey now states that all translations of a term
+    have the same key.
+
+  - getTermValue: now has an optional ``lang`` parameter
+    making ``--kwargs`` needless.
+
+
+- Add sorted simple vocabulary [gotcha]
+
+- Run i18ndude and update fr and nl [gotcha]
+
+
+- Merged branch supporting catalog searches on hierarchical vocabularies to trunk
+  (https://svn.plone.org/svn/archetypes/ATVocabularyManager/branches/treevocab-frisi)
+  [fRiSi]
+
+- Merged current trunk into this branch. [fRiSi]
+
+- Utils/vocabs.py
+  utility methods for batch creating vocabularies.[fRiSi]
+
+- types/simple/term.py types/tree/term.py
+  Marked methods getVocabularyValue and getVocabularyKey as deprecated and used those
+  defined in IVocabularyTerm to make terms implement their interface. [fRiSi]
+
+- types/tree/vocabulary.py types/simple/vocabulary.py
+  Improved linguaplone support and also added a testcase. [fRiSi]
+
+- tests/testTreeVocabulary.py
+  Testing if treevocabulary is linguaplone aware. [fRiSi]
+
+- doc/search_treevocabulary.txt: A doctest explaining how ATVM performs searches
+  on hierarchical vocabularies, and how to enable them for your content type.
+  [fRiSi]
+
+- Added dutch translations, thanks to Atopia. [jladage]
+
+- AllowedTypesByIface is broken, it seems - adding manual override to fix this
+  in ATVM. [optilude]
+
+- Removed workflows from ATVM types on installation. [ferri]
+
+- Added brazilian portuguese translation and portal_vocabularies title i18n
+  support. [ferri]
+
+- Added i18n and Czech translation. [naro]
+
+- Uncommented code in Install.py to make portal_vocabularylib not show in the
+  navigation tree. [panjunyong]
+
+- Use StringWidget instead of IDWidget for Simple vocaublary term. [panjunyong]
