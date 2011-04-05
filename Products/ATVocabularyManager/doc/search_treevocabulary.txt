@@ -7,11 +7,11 @@ searchable using a treevocabulary field.
 imagine the following vocabulary:
 
  engine-type
- 
+
    * electrical
    * mechanical
      * otto engine
-     * diesel engine    
+     * diesel engine
 
 a search for engine==mechanical should return all entries
 for otto and diesel engines
@@ -35,7 +35,7 @@ provided by ATVM::
   >>> from Products.CMFCore.utils import getToolByName
   >>> atvm = getToolByName(self.portal, 'portal_vocabularies')    
   >>> from Products.ATVocabularyManager.utils.vocabs import createHierarchicalVocabs
-  
+
   >>> dictionary = {
   ...     ('electrical', 'electrical engines'): {},
   ...     ('mechanical', 'mechanial engines'): {
@@ -46,8 +46,8 @@ provided by ATVM::
   >>> hierarchicalVocabs = {}
   >>> hierarchicalVocabs[('enginetypes', 'Diffetent types of engines')] = dictionary
   >>> createHierarchicalVocabs(atvm, hierarchicalVocabs)
-  
-  
+
+
 
 now we've got our vocabulary available::
 
@@ -71,7 +71,7 @@ and can be obtained using the method ``getTermKey``
   >>> ottomotor = engines.mechanical.otto
   >>> ottomotor.getTermKey() == ottomotor.UID()
   True
-  
+
 
 A ``TreeVocabularyTerm`` implements the method ``getTermKeyPath``
 that returns a list of vocabularyterm-keys of the term itself
@@ -80,7 +80,7 @@ and all the terms in the hierarchy above it.
   >>> ottoPath = ottomotor.getTermKeyPath()
   >>> engines.mechanical.getTermKey() in ottoPath
   True
-  
+
 
 
 Each VocabularyTerm is indexed using a KeywordIndex on
@@ -94,10 +94,10 @@ our ottomotor term can be found searching for the ottomotor uid::
   >>> uid_catalog = getToolByName(self.portal, 'uid_catalog')
   >>> uid_catalog(getTermKeyPath=ottomotor.UID())[0].getObject()
   <TreeVocabularyTerm at .../enginetypes/mechanical/otto>
-  
+
 a search for a machanical engine returns 3 vocabularies:
 the ottomotor, the dieselengine and the term for mechanicalengine too::
-  
+
   >>> result = uid_catalog(getTermKeyPath=engines.mechanical.UID())
   >>> [brain.id for brain in result]
   ['mechanical', 'diesel', 'otto']
@@ -137,7 +137,7 @@ All you need to do is to implement a method that uses the
 ``getKeyPathForTerms`` method and define it as index method::
 
   # .. somewhere in the schemadefinition
-  
+
   ReferenceField(
     name='myfield',
     widget=...
@@ -147,7 +147,7 @@ All you need to do is to implement a method that uses the
   ),
 
   # .. somewhere in your content type definition
-  
+
   define someIndexMethod(self):
     """used to index myfield
     """

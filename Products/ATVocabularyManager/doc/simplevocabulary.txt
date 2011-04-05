@@ -13,7 +13,7 @@ SimpleVocabularies can be created in the vocabulary library:
   >>> atvm = self.portal.portal_vocabularies
   >>> self.setRoles(['Manager'])
   >>> _ = atvm.invokeFactory('SimpleVocabulary', 'testvocab', title="test vocabulary")
-  
+
 You can fetch a vocabulary calling ``getVocabularyByName`` on
 the vocabulary library
 
@@ -28,11 +28,11 @@ Creating simple vocabulary terms
 ================================
 
 Simple vocabularies can only contain SimpleVocabularyTerms.
- 
+
   >>> simple.allowedContentTypes()
   [<FactoryTypeInformation at /plone/portal_types/SimpleVocabularyTerm>]
-  
-  
+
+
 You can add terms using ``invokeFactory`` or the method
 ``addTerm``::
 
@@ -47,7 +47,7 @@ has been successfull.
   False
   >>> simple.getDisplayList(self)
   <DisplayList [('term1', ''), ('term2', 'first time')] at ...>
-  
+
 
 
 Batch creation
@@ -72,8 +72,6 @@ This needs to be fed with a dictionary in the following format::
 
 
 
-         
-
 Sorting
 =======
 
@@ -86,7 +84,7 @@ The default sort order is alphabetically by Vales (Title)::
   ['getObjPositionInParent', 'lexicographic_values', 'lexicographic_keys']
   >>> sorting.getSortMethod()
   'lexicographic_values'
-  
+
 
 Sorting by Values
 
@@ -99,7 +97,7 @@ Sorting by keys
   >>> sorting.setSortMethod(SORT_METHOD_LEXICO_KEYS)
   >>> sorting.getDisplayList(self)
   <DisplayList [('a', 'Zeppelin'), ('c', 'Alpha'), ('y', 'Charly')] at ...>
-  
+
 Sorting by folder position
 
   >>> sorting.listFolderContents()
@@ -139,14 +137,11 @@ Sorting
 
 Also sorting on translated vocabularies works as excepted:
 XXX write tests for the following 
-* keys are the same for every language, so sorting by key should 
-  result in the same order in every language
-  
+
+* keys are the same for every language, so sorting by key should result in the same order in every language
+
 * sorting on title might result in completely differnt order
 
 * sorting on position in folder might be differnt to, since translations have their separate order
 
 
-
-
-  
