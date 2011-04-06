@@ -3,7 +3,14 @@
 # BSD-like licence, see LICENCE.txt
 #
 import os
-from Globals import package_home
+
+try:
+    from App.Common import package_home
+except ImportError:
+    # not sure that we still need to support this
+    from Globals import package_home
+
+
 from Products.CMFCore import utils as cmfutils
 from Products.CMFCore import DirectoryView
 
