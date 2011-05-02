@@ -2,8 +2,10 @@ Changelog
 =========
 
 
-1.7 (unreleased)
-----------------
+1.6.1 (2011-05-02)
+------------------
+
+- Avoid deprecation warnings [WouterVH]
 
 - Update metadata-files and folder-structure to current conventions. [WouterVH]
 
