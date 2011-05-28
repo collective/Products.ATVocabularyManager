@@ -31,7 +31,7 @@ class NamedVocabulary(object):
     # Add a class variable to avoid migration issues
     display_parents = 'tree'
 
-    def __init__(self, vocabname, display_parents='tree'):
+    def __init__(self, vocabname=None, display_parents='tree'):
         self.vocab_name = vocabname
         self.display_parents = display_parents
 
