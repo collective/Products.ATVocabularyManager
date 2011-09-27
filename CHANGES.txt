@@ -8,7 +8,17 @@ Changelog
 - Avoid breaking the import of *.zexp-files when an vocabularies don't exist
   anymore, but instantiated object still exist in the import-file.
   [WouterVH]
-
+  
+- Added field 'showTermPath' for vdex vocabularies, to manually turn of the 
+  term path. [jensens] [hpeteragitator]
+  
+- Added field 'showLeafsOnly' for vdex vocabularies, to change if only the leaf
+  of the vocabulary tree can be selected. [jensens] [hpeteragitator]
+  
+- Refactored getDisplayList for vdex vocabularies [jensens] [hpeteragitator]
+  
+- Run i18ndude and updated german translations [hpeteragitator]
+  
 
 1.6.1 (2011-05-02)
 ------------------

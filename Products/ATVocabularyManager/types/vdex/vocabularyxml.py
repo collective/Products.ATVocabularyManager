@@ -28,6 +28,8 @@ from Products.ATVocabularyManager.config import PROJECTNAME
 from zope.interface import implements
 from imsvdex.vdex import VDEXManager, VDEXError
 
+from Products.ATContentTypes import ATCTMessageFactory as _
+
 IMSVDEXVocabularySchema = Schema((
 
     StringField(
@@ -37,7 +39,7 @@ IMSVDEXVocabularySchema = Schema((
         default = '',
         accessor = 'Title',
         widget = StringWidget(
-            label_msgid = 'label_title',
+            label=_(u'label_title', default=u'Title'),
             visible = {'view': 'invisible', 'edit': 'invisible'},
             i18n_domain = 'plone',
         ),
@@ -50,10 +52,8 @@ IMSVDEXVocabularySchema = Schema((
         schemata = 'default',
         widget = TextAreaWidget(
             visible = {'view': 'visible', 'edit': 'invisible'},
-            label = 'Description',
-            description = "A short summary of the content",
-            label_msgid = "label_description",
-            description_msgid = "help_description",
+            label=_(u'label_description', default=u'Description'),
+            description=_(u'help_description', default=u'A short summary of the content'),
             i18n_domain = "plone"),
     ),
 
@@ -61,19 +61,32 @@ IMSVDEXVocabularySchema = Schema((
         name = 'vdex',
         allowable_content_types = ["text/xml"],
         widget = FileWidget(
-            label = "VDEX-XML-Data",
-            label_msgid = 'IMSVDEXVocabulary_label_vdex',
-            description = "upload the IMS Vocabulary Definition Format "
-                        "compliant XML file into this text field.",
-            description_msgid = 'IMSVDEXVocabulary_description_vdex',
-            i18n_domain = 'ATVocabularyManager',
+            label=_(u'IMSVDEXVocabulary_label_vdex', default=u'VDEX-XML-Data'),
+            description=_(u'IMSVDEXVocabulary_description_vdex', 
+                            default=u'upload the IMS Vocabulary Definition Format '
+                            'compliant XML file into this text field.'),
             allow_file_upload = True,
         ),
         default_output_type = "text/plain",
         default_content_type = "text/xml"
     ),
+    BooleanField(
+        name = 'showTermPath',
+        default = True,
+        widget = BooleanWidget(
+            label=_(u'label_showTermPath', default=u'Show Term Path'),
+            visible = {'view': 'visible', 'edit': 'visible'},
+        ),
+    ),
+    BooleanField(
+        name = 'showLeafsOnly',
+        default = True,
+        widget = BooleanWidget(
+            label=_(u'label_showLeafsOnly', default=u'Show Leafs Only'),
+            visible = {'view': 'visible', 'edit': 'visible'},
+        ),
+    ),
 ))
-
 
 class IMSVDEXVocabulary(BaseContent):
     """Content type for handling of VDEX compliant vocabulary.
@@ -99,7 +112,6 @@ class IMSVDEXVocabulary(BaseContent):
             return manager
         return manager.getVocabName()
 
-
     security.declareProtected(permissions.View, 'getDisplayList')
     def getDisplayList(self, instance):
         """ returns an object of class DisplayList as defined in
@@ -108,7 +120,20 @@ class IMSVDEXVocabulary(BaseContent):
             The instance of the content class is given as parameter.
         """
         dl = DisplayList()
-        self._appendToDisplayList(dl, self.getVocabularyDict(instance), None)
+        tree = self.getVocabularyDict(instance)
+                        
+        def build_display_list(current, valueparent):
+            for key in current:
+                value, part = current[key]
+                if valueparent and self.getShowTermPath():
+                    value = '%s &rarr; %s' % (valueparent, value)
+                leafs_only = self.getShowLeafsOnly()
+                is_leaf = part is None
+                if (is_leaf and leafs_only) or (not leafs_only):
+                    dl.add(key, value)
+                build_display_list(part or {}, value)
+
+        build_display_list(tree, None)
         return dl
 
     def getVocabularyDict(self, instance):
@@ -201,26 +226,6 @@ class IMSVDEXVocabulary(BaseContent):
                 # bummer, it cant determine a language
                 lang = 'neutral'
         return lang and lang[:2] or None
-
-    security.declarePrivate('_appendToDisplayList')
-    def _appendToDisplayList(self, displaylist, vdict, valueparent):
-        """ append subtree to flat display list
-        """
-        if not vdict:
-            return
-        for key in vdict.keys():
-            if type(vdict[key]) == type((1, 2)):
-                value = vdict[key][0]
-                subdict= vdict[key][1] or None
-            else:
-                value = vdict[key]
-                subdict= None
-            if valueparent:
-                value = '%s - %s' % (valueparent, value)
-            if not self.showLeafsOnly() or subdict:
-                displaylist.add(key, value)
-            if subdict:
-                self._appendToDisplayList(displaylist, subdict, value)
 
     def SearchableText(self):
         """dont find in live-search"""
