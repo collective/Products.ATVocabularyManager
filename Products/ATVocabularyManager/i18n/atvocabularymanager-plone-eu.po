@@ -25,6 +25,9 @@ msgstr "IMS VDEX Hiztegia"
 msgid "Simple Vocabulary"
 msgstr "Hiztegi arrunta"
 
+msgid "Simple Vocabulary Term"
+msgstr ""
+
 msgid "Sorted Simple Vocabulary"
 msgstr "Ordenatutako hiztegi arrunta"
 

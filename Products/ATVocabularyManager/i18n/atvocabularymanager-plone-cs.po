@@ -27,6 +27,9 @@ msgstr "Slovník IMS VDEX"
 msgid "Simple Vocabulary"
 msgstr "Jednoduchý slovník"
 
+msgid "Simple Vocabulary Term"
+msgstr ""
+
 msgid "Sorted Simple Vocabulary"
 msgstr "Jednoduchý setříděný slovník"
 

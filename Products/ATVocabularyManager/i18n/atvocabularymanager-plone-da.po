@@ -17,17 +17,20 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: plone\n"
 
-msgid "Simple Vocabulary"
-msgstr "Simpel emneordsliste"
-
-msgid "Sorted Simple Vocabulary"
-msgstr "Sorteret emneordsliste"
-
 msgid "Alias Vocabulary"
 msgstr "Alias emneordsliste"
 
 msgid "IMS VDEX Vocabulary"
 msgstr "IMS VDEX emneordsliste"
+
+msgid "Simple Vocabulary"
+msgstr "Simpel emneordsliste"
+
+msgid "Simple Vocabulary Term"
+msgstr ""
+
+msgid "Sorted Simple Vocabulary"
+msgstr "Sorteret emneordsliste"
 
 msgid "Tree Vocabulary"
 msgstr "Emneordsliste i træ"

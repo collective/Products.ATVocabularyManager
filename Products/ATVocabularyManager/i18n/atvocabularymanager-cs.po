@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: atvocabularymanager-cs\n"
-"POT-Creation-Date: 2006-08-21 12:28+0000\n"
+"POT-Creation-Date: 2011-09-27 14:12+0000\n"
 "PO-Revision-Date: 2007-02-09 08:21+0100\n"
 "Last-Translator: Radim Novotny <novotny.radim@gmail.com>\n"
 "Language-Team: Czech <info@surecase.org>\n"
@@ -19,89 +19,127 @@ msgstr ""
 "X-Generator: KBabel 1.10.2\n"
 
 #. Default: "Add New Vocabulary"
-#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt:66
 msgid "Add New Vocabulary"
 msgstr "Přidat nový slovník"
 
+#: ../profiles/default/types/AliasVocabulary.xml
 msgid "Alias Vocabulary"
 msgstr "Odkaz na jiný slovník"
 
 #. Default: "Delete"
-#: ../skins/ATVocabularyManager/simplevocabulary_view.pt
+#: ../skins/ATVocabularyManager/simplevocabulary_view.pt:110
 msgid "Delete"
 msgstr "Smazat"
 
 msgid "IMS VDEX Vocabulary"
 msgstr "Slovník IMS VDEX"
 
+#: ../profiles/default/types/VdexFileVocabulary.xml
+msgid "IMS VDEX Vocabulary File"
+msgstr ""
+
+#. Default: "upload the IMS Vocabulary Definition Format compliant XML file into this text field."
+#: ../types/vdex/vocabularyxml.py:65
+msgid "IMSVDEXVocabulary_description_vdex"
+msgstr ""
+
+#. Default: "VDEX-XML-Data"
+#: ../types/vdex/vocabularyxml.py:64
+msgid "IMSVDEXVocabulary_label_vdex"
+msgstr ""
+
 #. Default: "Import"
-#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt:94
 msgid "Import"
 msgstr "Importovat"
 
 #. Default: "New"
-#: ../skins/ATVocabularyManager/simplevocabulary_view.pt
+#: ../skins/ATVocabularyManager/simplevocabulary_view.pt:78
 msgid "New"
 msgstr "Nový"
 
 #. Default: "Save"
-#: ../skins/ATVocabularyManager/simplevocabulary_view.pt
+#: ../skins/ATVocabularyManager/simplevocabulary_view.pt:79
 msgid "Save"
 msgstr "Uložit"
 
+#: ../profiles/default/types/SimpleVocabulary.xml
 msgid "Simple Vocabulary"
 msgstr "Jednoduchý slovník"
 
+#: ../profiles/default/types/SimpleVocabularyTerm.xml
+msgid "Simple Vocabulary Term"
+msgstr ""
+
+#: ../profiles/default/types/SortedSimpleVocabulary.xml
 msgid "Sorted Simple Vocabulary"
 msgstr "Jednoduchý setříděný slovník"
 
+#: ../profiles/default/types/TreeVocabulary.xml
 msgid "Tree Vocabulary"
 msgstr "Stromový slovník"
 
+#: ../profiles/default/types/TreeVocabularyTerm.xml
 msgid "Tree Vocabulary Term"
 msgstr "Položka stromového slovníku"
 
 #. Default: "Vocabulary Libary"
-#: tools/vocabularylib.py
+#: ../profiles/default/controlpanel.xml
+#: ../profiles/default/types/VocabularyLibrary.xml
 msgid "Vocabulary Library"
 msgstr "Správa slovníků"
 
+#: ../profiles/default/actionicons.xml
+msgid "Vocabulary library"
+msgstr ""
+
+#. Default: "A not-so-basic CMF Content implementation with Dublin Core\n      Metadata included"
+#: ../profiles/default/types/AliasVocabulary.xml
+msgid "aliasvocabulary_description"
+msgstr ""
+
 #. Default: "There are currently no terms in this folder."
-#: ../skins/ATVocabularyManager/simplevocabulary_view.pt
+#: ../skins/ATVocabularyManager/simplevocabulary_view.pt:124
 msgid "description_no_terms_in_folder"
 msgstr "Zatím nejsou definovány žádné termíny"
 
 #. Default: "There are currently no vocabularies in this library."
-#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt:224
 msgid "description_no_vocabularies_in_library"
 msgstr "V této knihovně nejsou definovány žádné slovníky."
 
 #. Default: "Here you can upload <strong>IMS Vocabulary Definition Exchange</strong> compliant XML-files. Read more about <a href=\"http://www.imsglobal.org/\">IMS</a> and the <a href=\"http://www.imsglobal.org/\">VDEX-Specifications</a>."
-#: ../skins/ATVocabularyManager/vdex_upload.cpt
-#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+#: ../skins/ATVocabularyManager/vdex_upload.cpt:13
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt:86
 msgid "description_vdex_upload"
 msgstr "Zde můžete importovat XML soubory, vyhovující standardu <strong>IMS Vocabulary Definition Exchange</strong>. Na uvedených odkazech.získáte více informací o <a href=\"http://www.imsglobal.org/\">IMS</a> a <a href=\"http://www.imsglobal.org/\">VDEX-Specifikaci</a>."
 
 #. Default: "This page lists the custom vocabularies."
-#: ../skins/ATVocabularyManager/simplevocabulary_view.pt
-#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+#: ../skins/ATVocabularyManager/simplevocabulary_view.pt:31
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt:26
 msgid "description_vocabulary_tool"
 msgstr "Na této stránce můžete pracovat s definicemi uživatelských slovníků"
 
 #. Default: "Currently defined Key/value pairs:"
-#: ../skins/ATVocabularyManager/simplevocabulary_view.pt
+#: ../skins/ATVocabularyManager/simplevocabulary_view.pt:84
 msgid "heading_defined_pairs"
 msgstr "Definovány jsou tyto slovníky:"
 
 #. Default: "Listed vocabularies:"
-#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt:104
 msgid "heading_listed_vocabularies"
 msgstr "Slovníky:"
 
 #. Default: "Upload new VDEX"
-#: ../skins/ATVocabularyManager/vdex_upload.cpt
+#: ../skins/ATVocabularyManager/vdex_upload.cpt:12
 msgid "heading_vdex_upload"
 msgstr "Importovat nový VDEX slovník"
+
+#. Default: "A short summary of the content"
+#: ../types/vdex/vocabularyxml.py:56
+msgid "help_description"
+msgstr ""
 
 #. Default: "Should not contain spaces, underscores or mixed case."
 #: types/simple/term.py
@@ -113,29 +151,49 @@ msgstr "Nesmí obsahovat mezery, podtžítka, pomlčky, tečky a další speciá
 msgid "help_vocab_name"
 msgstr "Nesmí obsahovat mezery, podtžítka, pomlčky, tečky a další speciální znaky. Používejte jen malá písmena."
 
+#. Default: "Description"
+#: ../types/vdex/vocabularyxml.py:55
+msgid "label_description"
+msgstr ""
+
 #. Default: "Key"
 #: types/simple/term.py
 msgid "label_key"
 msgstr "Klíč"
 
 #. Default: "Select"
-#: ../skins/ATVocabularyManager/simplevocabulary_view.pt
-#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+#: ../skins/ATVocabularyManager/simplevocabulary_view.pt:48
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt:50
 msgid "label_select"
 msgstr "Vyberte"
 
 #. Default: "Select all items"
-#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt:121
 msgid "label_select_all_items"
 msgstr "Vybrat všechny položky"
 
 #. Default: "Select type"
-#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt:41
 msgid "label_select_type"
 msgstr "Vyberte typ"
 
+#. Default: "Show Leafs Only"
+#: ../types/vdex/vocabularyxml.py:85
+msgid "label_showLeafsOnly"
+msgstr ""
+
+#. Default: "Show Term Path"
+#: ../types/vdex/vocabularyxml.py:77
+msgid "label_showTermPath"
+msgstr ""
+
+#. Default: "Title"
+#: ../types/vdex/vocabularyxml.py:42
+msgid "label_title"
+msgstr ""
+
 #. Default: "Up to Vocabulary Manager Overview"
-#: ../skins/ATVocabularyManager/simplevocabulary_view.pt
+#: ../skins/ATVocabularyManager/simplevocabulary_view.pt:24
 msgid "label_up_to_vocabulary_manager_overview"
 msgstr "Zpět na přehled správce slovníků"
 
@@ -145,7 +203,7 @@ msgid "label_value"
 msgstr "Hodnota"
 
 #. Default: "VDEX-Upload"
-#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt:85
 msgid "label_vdex_upload"
 msgstr "Import VDEX"
 
@@ -155,37 +213,72 @@ msgid "label_vocab_name"
 msgstr "Název slovníku"
 
 #. Default: "Add new vocabulary"
-#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt:32
 msgid "legend_add_vocabulary"
 msgstr "Přidat nový slovník"
 
 #. Default: "Import"
-#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt:78
 msgid "legent_import"
 msgstr "Import"
 
 #. Default: "ID"
-#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt:133
 msgid "listingheader_id"
 msgstr "ID"
 
 #. Default: "Title"
-#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt:136
 msgid "listingheader_title"
 msgstr "Nadpis"
 
 #. Default: "Type"
-#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt:139
 msgid "listingheader_type"
 msgstr "Typ"
 
+#. Default: "An ordered base folder implementation"
+#: ../profiles/default/types/SimpleVocabulary.xml
+msgid "simplevocabulary_description"
+msgstr ""
+
+#. Default: "A not-so-basic CMF Content implementation with Dublin Core\n      Metadata included"
+#: ../profiles/default/types/SimpleVocabularyTerm.xml
+msgid "simplevocabularyterm_description"
+msgstr ""
+
+#. Default: "An ordered base folder implementation"
+#: ../profiles/default/types/SortedSimpleVocabulary.xml
+msgid "sortedsimplevocabulary_description"
+msgstr ""
+
 #. Default: "submit"
-#: ../skins/ATVocabularyManager/vdex_upload.cpt
+#: ../skins/ATVocabularyManager/vdex_upload.cpt:28
 msgid "submit"
 msgstr "Odeslat"
 
 #. Default: "Content listing"
-#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt:113
 msgid "summary_content_listing"
 msgstr "Výpis obsahu"
+
+#. Default: "An ordered base folder implementation"
+#: ../profiles/default/types/TreeVocabulary.xml
+msgid "treevocabulary_description"
+msgstr ""
+
+#. Default: "Term inside of a TreeVocabulary or as an subterm"
+#: ../profiles/default/types/TreeVocabularyTerm.xml
+msgid "treevocabularyterm_description"
+msgstr ""
+
+#. Default: "Content type for handling of VDEX compliant vocabulary."
+#: ../profiles/default/types/VdexFileVocabulary.xml
+msgid "vdexvocabularyfile_description"
+msgstr ""
+
+#. Default: "This tool contains dynamic vocabularies to be used by Archetypes\n      fields. It has methods to register special/custom vocabulary\n      types"
+#: ../profiles/default/types/VocabularyLibrary.xml
+msgid "vocabularylibrary_description"
+msgstr ""
 

@@ -26,6 +26,9 @@ msgstr "Vocabulário IMS VDEX"
 msgid "Simple Vocabulary"
 msgstr "Vocabulário Simples"
 
+msgid "Simple Vocabulary Term"
+msgstr ""
+
 msgid "Sorted Simple Vocabulary"
 msgstr ""
 

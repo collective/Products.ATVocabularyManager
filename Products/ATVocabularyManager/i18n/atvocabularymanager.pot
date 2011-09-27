@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2006-08-21 12:28+0000\n"
+"POT-Creation-Date: 2011-09-27 14:12+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,92 +17,121 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: atvocabularymanager\n"
 
-#. Default: "Add New Vocabulary"
-#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt:66
 msgid "Add New Vocabulary"
 msgstr ""
 
+#: ../profiles/default/types/AliasVocabulary.xml
 msgid "Alias Vocabulary"
 msgstr ""
 
-#. Default: "Delete"
-#: ../skins/ATVocabularyManager/simplevocabulary_view.pt
+#: ../skins/ATVocabularyManager/simplevocabulary_view.pt:110
 msgid "Delete"
 msgstr ""
 
 msgid "IMS VDEX Vocabulary"
 msgstr ""
 
-#. Default: "Import"
-#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+#: ../profiles/default/types/VdexFileVocabulary.xml
+msgid "IMS VDEX Vocabulary File"
+msgstr ""
+
+#. Default: "upload the IMS Vocabulary Definition Format compliant XML file into this text field."
+#: ../types/vdex/vocabularyxml.py:65
+msgid "IMSVDEXVocabulary_description_vdex"
+msgstr ""
+
+#. Default: "VDEX-XML-Data"
+#: ../types/vdex/vocabularyxml.py:64
+msgid "IMSVDEXVocabulary_label_vdex"
+msgstr ""
+
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt:94
 msgid "Import"
 msgstr ""
 
-#. Default: "New"
-#: ../skins/ATVocabularyManager/simplevocabulary_view.pt
+#: ../skins/ATVocabularyManager/simplevocabulary_view.pt:78
 msgid "New"
 msgstr ""
 
-#. Default: "Save"
-#: ../skins/ATVocabularyManager/simplevocabulary_view.pt
+#: ../skins/ATVocabularyManager/simplevocabulary_view.pt:79
 msgid "Save"
 msgstr ""
 
+#: ../profiles/default/types/SimpleVocabulary.xml
 msgid "Simple Vocabulary"
 msgstr ""
 
+#: ../profiles/default/types/SimpleVocabularyTerm.xml
 msgid "Simple Vocabulary Term"
 msgstr ""
 
+#: ../profiles/default/types/SortedSimpleVocabulary.xml
 msgid "Sorted Simple Vocabulary"
 msgstr ""
 
+#: ../profiles/default/types/TreeVocabulary.xml
 msgid "Tree Vocabulary"
 msgstr ""
 
+#: ../profiles/default/types/TreeVocabularyTerm.xml
 msgid "Tree Vocabulary Term"
 msgstr ""
 
-#. Default: "Vocabulary Libary"
-#: tools/vocabularylib.py
+#: ../profiles/default/controlpanel.xml
+#: ../profiles/default/types/VocabularyLibrary.xml
 msgid "Vocabulary Library"
 msgstr ""
 
+#: ../profiles/default/actionicons.xml
+msgid "Vocabulary library"
+msgstr ""
+
+#. Default: "A not-so-basic CMF Content implementation with Dublin Core\n      Metadata included"
+#: ../profiles/default/types/AliasVocabulary.xml
+msgid "aliasvocabulary_description"
+msgstr ""
+
 #. Default: "There are currently no terms in this folder."
-#: ../skins/ATVocabularyManager/simplevocabulary_view.pt
+#: ../skins/ATVocabularyManager/simplevocabulary_view.pt:124
 msgid "description_no_terms_in_folder"
 msgstr ""
 
 #. Default: "There are currently no vocabularies in this library."
-#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt:224
 msgid "description_no_vocabularies_in_library"
 msgstr ""
 
 #. Default: "Here you can upload <strong>IMS Vocabulary Definition Exchange</strong> compliant XML-files. Read more about <a href=\"http://www.imsglobal.org/\">IMS</a> and the <a href=\"http://www.imsglobal.org/\">VDEX-Specifications</a>."
-#: ../skins/ATVocabularyManager/vdex_upload.cpt
-#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+#: ../skins/ATVocabularyManager/vdex_upload.cpt:13
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt:86
 msgid "description_vdex_upload"
 msgstr ""
 
 #. Default: "This page lists the custom vocabularies."
-#: ../skins/ATVocabularyManager/simplevocabulary_view.pt
-#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+#: ../skins/ATVocabularyManager/simplevocabulary_view.pt:31
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt:26
 msgid "description_vocabulary_tool"
 msgstr ""
 
 #. Default: "Currently defined Key/value pairs:"
-#: ../skins/ATVocabularyManager/simplevocabulary_view.pt
+#: ../skins/ATVocabularyManager/simplevocabulary_view.pt:84
 msgid "heading_defined_pairs"
 msgstr ""
 
 #. Default: "Listed vocabularies:"
-#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt:104
 msgid "heading_listed_vocabularies"
 msgstr ""
 
 #. Default: "Upload new VDEX"
-#: ../skins/ATVocabularyManager/vdex_upload.cpt
+#: ../skins/ATVocabularyManager/vdex_upload.cpt:12
 msgid "heading_vdex_upload"
+msgstr ""
+
+#. Default: "A short summary of the content"
+#: ../types/vdex/vocabularyxml.py:56
+msgid "help_description"
 msgstr ""
 
 #. Default: "Should not contain spaces, underscores or mixed case."
@@ -115,39 +144,49 @@ msgstr ""
 msgid "help_vocab_name"
 msgstr ""
 
+#. Default: "Description"
+#: ../types/vdex/vocabularyxml.py:55
+msgid "label_description"
+msgstr ""
+
 #. Default: "Key"
 #: types/simple/term.py
 msgid "label_key"
 msgstr ""
 
-#. Default: "Show Leaves Only"
-#: types/tree/vocabulary.py
-msgid "label_show_leaves_only"
-msgstr ""
-
-#. Default: "Check to show only leaves in this vocabulary."
-#: types/tree/vocabulary.py
-msgid "help_show_leaves_only"
-msgstr ""
-
 #. Default: "Select"
-#: ../skins/ATVocabularyManager/simplevocabulary_view.pt
-#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+#: ../skins/ATVocabularyManager/simplevocabulary_view.pt:48
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt:50
 msgid "label_select"
 msgstr ""
 
 #. Default: "Select all items"
-#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt:121
 msgid "label_select_all_items"
 msgstr ""
 
 #. Default: "Select type"
-#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt:41
 msgid "label_select_type"
 msgstr ""
 
+#. Default: "Show Leafs Only"
+#: ../types/vdex/vocabularyxml.py:85
+msgid "label_showLeafsOnly"
+msgstr ""
+
+#. Default: "Show Term Path"
+#: ../types/vdex/vocabularyxml.py:77
+msgid "label_showTermPath"
+msgstr ""
+
+#. Default: "Title"
+#: ../types/vdex/vocabularyxml.py:42
+msgid "label_title"
+msgstr ""
+
 #. Default: "Up to Vocabulary Manager Overview"
-#: ../skins/ATVocabularyManager/simplevocabulary_view.pt
+#: ../skins/ATVocabularyManager/simplevocabulary_view.pt:24
 msgid "label_up_to_vocabulary_manager_overview"
 msgstr ""
 
@@ -157,7 +196,7 @@ msgid "label_value"
 msgstr ""
 
 #. Default: "VDEX-Upload"
-#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt:85
 msgid "label_vdex_upload"
 msgstr ""
 
@@ -167,72 +206,71 @@ msgid "label_vocab_name"
 msgstr ""
 
 #. Default: "Add new vocabulary"
-#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt:32
 msgid "legend_add_vocabulary"
 msgstr ""
 
 #. Default: "Import"
-#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt:78
 msgid "legent_import"
 msgstr ""
 
 #. Default: "ID"
-#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt:133
 msgid "listingheader_id"
 msgstr ""
 
 #. Default: "Title"
-#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt:136
 msgid "listingheader_title"
 msgstr ""
 
 #. Default: "Type"
-#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt:139
 msgid "listingheader_type"
 msgstr ""
 
-#. Default: "submit"
-#: ../skins/ATVocabularyManager/vdex_upload.cpt
+#. Default: "An ordered base folder implementation"
+#: ../profiles/default/types/SimpleVocabulary.xml
+msgid "simplevocabulary_description"
+msgstr ""
+
+#. Default: "A not-so-basic CMF Content implementation with Dublin Core\n      Metadata included"
+#: ../profiles/default/types/SimpleVocabularyTerm.xml
+msgid "simplevocabularyterm_description"
+msgstr ""
+
+#. Default: "An ordered base folder implementation"
+#: ../profiles/default/types/SortedSimpleVocabulary.xml
+msgid "sortedsimplevocabulary_description"
+msgstr ""
+
+#: ../skins/ATVocabularyManager/vdex_upload.cpt:28
 msgid "submit"
 msgstr ""
 
 #. Default: "Content listing"
-#: ../skins/ATVocabularyManager/vocabularytool_view.cpt
+#: ../skins/ATVocabularyManager/vocabularytool_view.cpt:113
 msgid "summary_content_listing"
 msgstr ""
 
-
-#. Default: "Vocabulary Folder Order"
-#: ../config.py
-msgid "sort_method_folder_order"
+#. Default: "An ordered base folder implementation"
+#: ../profiles/default/types/TreeVocabulary.xml
+msgid "treevocabulary_description"
 msgstr ""
 
-#. Default: "Lexicographic sort by values"
-#: ../config.py
-msgid "sort_method_lexi_value"
+#. Default: "Term inside of a TreeVocabulary or as an subterm"
+#: ../profiles/default/types/TreeVocabularyTerm.xml
+msgid "treevocabularyterm_description"
 msgstr ""
 
-#. Default: "Lexicographic sort by keys"
-#: ../config.py
-msgid "sort_method_lexi_keys"
+#. Default: "Content type for handling of VDEX compliant vocabulary."
+#: ../profiles/default/types/VdexFileVocabulary.xml
+msgid "vdexvocabularyfile_description"
 msgstr ""
 
-#. Default: "Sort method"
-#: ../types/simple/vocabulary.py
-msgid "label_sort_method"
+#. Default: "This tool contains dynamic vocabularies to be used by Archetypes\n      fields. It has methods to register special/custom vocabulary\n      types"
+#: ../profiles/default/types/VocabularyLibrary.xml
+msgid "vocabularylibrary_description"
 msgstr ""
 
-#. Default: "Sort method used for displaying vocabulary terms"
-#: ../types/simple/vocabulary.py
-msgid "help_sort_method"
-msgstr ""
-
-#. Default: "Target"
-#: ../types/alias/vocabulary.py
-msgid "label_target"
-msgstr ""
-
-#. Default: "Select target vocabulary."
-#: ../types/alias/vocabulary.py
-msgid "help_target"
-msgstr ""

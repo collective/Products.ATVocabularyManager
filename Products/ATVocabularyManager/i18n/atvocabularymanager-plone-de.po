@@ -16,20 +16,20 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: plone\n"
 
-msgid "Vocabulary Library"
-msgstr "Vokabular Bibliothek"
-
-msgid "Simple Vocabulary"
-msgstr "Einfaches Vokabular"
-
-msgid "Sorted Simple Vocabulary"
-msgstr "Einfaches sortiertes Vokabular"
-
 msgid "Alias Vocabulary"
 msgstr "Alias Vokabular"
 
 msgid "IMS VDEX Vocabulary"
 msgstr "IMS VDEX Vokabular"
+
+msgid "Simple Vocabulary"
+msgstr "Einfaches Vokabular"
+
+msgid "Simple Vocabulary Term"
+msgstr ""
+
+msgid "Sorted Simple Vocabulary"
+msgstr "Einfaches sortiertes Vokabular"
 
 msgid "Tree Vocabulary"
 msgstr "Baumvokabular"
