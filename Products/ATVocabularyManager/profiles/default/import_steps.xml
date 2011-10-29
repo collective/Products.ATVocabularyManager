@@ -9,7 +9,7 @@
 	<import-step id="atvocabularymanager-various" version="20080722-01"
 		title="ATVocabularyManager various"
 		handler="Products.ATVocabularyManager.setuphandlers.importVarious">
-		<dependency name="toolset" />
+		<dependency step="toolset" />
 		Additional import steps
 	</import-step>
 </import-steps>
