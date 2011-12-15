@@ -18,6 +18,11 @@ Changelog
 - Refactored getDisplayList for vdex vocabularies [jensens] [hpeteragitator]
   
 - Run i18ndude and updated german translations [hpeteragitator]
+
+- Let createSimpleVocabs accept dictionary keys as tuples of (id, title) (like
+  createHierarchicalVocabs already does), to enable one to give the vocabulary
+  a title.
+  [jcbrand]
   
 
 1.6.1 (2011-05-02)
