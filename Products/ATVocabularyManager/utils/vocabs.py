@@ -36,13 +36,21 @@ def createSimpleVocabs(atvm, simpleVocabDictionary):
             ('fin', u'Finland'),
     )
     """
-
     for vkey in simpleVocabDictionary.keys():
+        if isinstance(vkey, (list, tuple)):
+            title = vkey[1]
+            vocabname = vkey[0]
+        else:
+            title = None
+            vocabname = vkey
+
         # create vocabulary if it doesn't exist:
-        vocabname = vkey
         if not hasattr(atvm, vocabname):
-            # print >>out, "adding vocabulary %s" % vocabname
-            atvm.invokeFactory('SimpleVocabulary', vocabname)
+            if title is not None:
+                atvm.invokeFactory('SimpleVocabulary', vocabname, title=title)
+            else:
+                atvm.invokeFactory('SimpleVocabulary', vocabname)
+
         vocab = atvm[vocabname]
         for (ikey, value) in simpleVocabDictionary[vkey]:
             if not hasattr(vocab, ikey):
