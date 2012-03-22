@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.6.2 (unreleased)
+1.6.2 (2012-03-22)
 ------------------
 
 - Avoid breaking the import of *.zexp-files when an vocabularies don't exist
