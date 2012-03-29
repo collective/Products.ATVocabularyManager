@@ -1,5 +1,12 @@
 *.mo
 *.pyc
+*.swp
 Products.ATVocabularyManager.egg-info
 bin/
 eggs/
+.installed.cfg
+.mr.developer.cfg
+develop-eggs/
+docs/Makefile
+docs/make.bat
+parts/
