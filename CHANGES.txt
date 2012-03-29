@@ -10,6 +10,9 @@ Changelog
 - Update and cleanup the test code for PEP8 and pyflakes, fix deprecation
   warnings, remove ZopeTestCase. [pjstevns]
 
+- Update the content-types for current Plone practice (GS, FTI). This 
+  probably makes things compatible with plone4+ only. [pjstevns]
+
 
 1.6.2 (2012-03-22)
 ------------------
