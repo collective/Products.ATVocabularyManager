@@ -3,16 +3,9 @@
 __author__ = """Harald Friessnegger <harald at webmeisterei(dot) com>"""
 __docformat__ = 'plaintext'
 
-
-import unittest
 import doctest
 from Products.PloneTestCase import PloneTestCase
-
-#from Products.CMFCore.utils import getToolByName
-
 import common
-
-from Products.ATVocabularyManager import doc
 
 
 class TestSearchTreeVocabulary(PloneTestCase.PloneTestCase):
@@ -48,9 +41,4 @@ def test_suite():
         ))
     return TestSuite(suites)
 
-
-##code-section module-footer #fill in your manual code here
-##/code-section module-footer
-
-if __name__ == '__main__':
-    unittest.main(defaultTest='test_suite')
+#EOF

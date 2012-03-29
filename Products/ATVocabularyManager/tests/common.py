@@ -3,9 +3,9 @@ from Products.PloneTestCase import PloneTestCase
 
 import Products.ATVocabularyManager
 
-from Products.ATVocabularyManager.config import *
+from Products.ATVocabularyManager.config import PROJECTNAME, TOOL_NAME
 
-from Products.Five import zcml
+from Zope2.App import zcml
 from Products.Five import fiveconfigure
 
 #from Products.PloneTestCase import PloneTestCase as ptc
