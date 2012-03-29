@@ -2,7 +2,6 @@
 # Skeleton PloneTestCase
 #
 
-import unittest
 import doctest
 
 from Products.CMFCore.utils import getToolByName
