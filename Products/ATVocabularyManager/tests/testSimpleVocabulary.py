@@ -16,9 +16,9 @@ class TestSimpleVocabulary(PloneTestCase.PloneTestCase):
     def afterSetUp(self):
         common.installWithinPortal(self.portal)
         self.atvm = common.getATVM(self.portal)
+        self.loginAsPortalOwner()
 
     def setupSimpleVocabularyContainer(self):
-        self.setRoles(['Manager'])
         self.atvm.invokeFactory('SimpleVocabulary', 'svtest')
         self.atvm.svtest.setTitle('Test Vocabulary')
 
