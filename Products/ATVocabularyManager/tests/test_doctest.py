@@ -5,9 +5,7 @@ __docformat__ = 'plaintext'
 
 
 import unittest
-
-from zope.testing import doctest
-from Testing import ZopeTestCase
+import doctest
 from Products.PloneTestCase import PloneTestCase
 
 #from Products.CMFCore.utils import getToolByName
@@ -36,16 +34,18 @@ def test_suite():
     optionflags = doctest.REPORT_ONLY_FIRST_FAILURE | doctest.ELLIPSIS
     suites = []
 
-    scriptTests = ['search_treevocabulary.txt',
-                   ]
-
+    scriptTests = [
+        'tool.txt',
+        'search_treevocabulary.txt',
+    ]
 
     for test in scriptTests:
-        suites.append(ZopeDocFileSuite(test,
-                                         optionflags=optionflags,
-                                         package='Products.ATVocabularyManager.doc',
-                                         test_class=TestSearchTreeVocabulary,
-                                         ))
+        suites.append(ZopeDocFileSuite(
+            test,
+            optionflags=optionflags,
+            package='Products.ATVocabularyManager.doc',
+            test_class=TestSearchTreeVocabulary,
+        ))
     return TestSuite(suites)
 
 
