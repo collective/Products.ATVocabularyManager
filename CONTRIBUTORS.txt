@@ -21,3 +21,4 @@ Several people committed smaller fixes and translations, thank you all!
 - rocky <rocky@serverzen.com>
 - thet <raggam-nl@adm.at>
 - Wouter Vanden Hove, <wouter@wvhconsulting.org>
+- Paul J Stevens, <paul@nfg.nl>
