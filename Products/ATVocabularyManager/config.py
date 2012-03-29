@@ -16,7 +16,7 @@ TOOL_NAME = 'portal_vocabularies'
 TOOL_TITLE = 'Vocabulary Library'
 TOOL_META = 'VocabularyLibrary'
 
-ADD_CONTENT_PERMISSION = 'Add ATVocabularyManager content'
+ADD_CONTENT_PERMISSION = "Add portal content"
 
 DEFAULT_VOCABULARY_CONTAINER = 'SimpleVocabulary'
 DEFAULT_VOCABULARY_ITEM = 'SimpleVocabularyTerm'

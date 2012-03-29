@@ -10,11 +10,6 @@
       
   <adapter factory=".importexport.ATVMXMLAdapter" />
 
-  <permission 
-	id="atvm.VocabularyManager"
-        title="Add ATVocabularyManager content"
-	/>
-
   <genericsetup:registerProfile
       name="default"
       title="ATVocabularyManager"

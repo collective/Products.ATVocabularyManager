@@ -1,8 +1,0 @@
-<?xml version="1.0"?>
-<rolemap>
-	<permissions>
-		<permission name="Add ATVocabularyManager content" acquire="True">
-			<role name="Manager"/>
-		</permission>
-	</permissions>
-</rolemap>
