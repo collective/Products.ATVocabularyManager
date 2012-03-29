@@ -1,3 +1,5 @@
 *.mo
 *.pyc
 Products.ATVocabularyManager.egg-info
+bin/
+eggs/
