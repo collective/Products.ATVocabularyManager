@@ -114,23 +114,6 @@ class VocabularyLibrary(UniqueObject, OrderedBaseFolder, Cacheable):
 
 
     #Methods
-    def allowedContentTypesForContainer(self, containername):
-        """ return all allowed fti for a containertype """
-        tt = getToolByName(self, 'portal_types')
-
-        if not containername in _vocabterm_types.keys():
-            return []
-
-        allowed = [tt[tn] for tn in [klass.meta_type \
-                    for klass in _vocabterm_types[containername]]]
-
-        return allowed
-
-    def allowedMetaTypesForContainer(self, containername):
-        """ return all allowed meta_types's for a containertype """
-        allowed = self.allowedContentTypesForContainer(containername)
-        return [fti.content_meta_type for fti in allowed]
-
     def getVocabularyByName(self, vocabname):
         """ returns a vocabulary or None if no vocab with this name found """
         if shasattr(self, vocabname):

@@ -8,13 +8,13 @@
       fields. It has methods to register special/custom vocabulary
       types
       </property>
- <property name="content_icon">folder_icon.gif</property>
+ <property name="icon_expr">string:${portal_url}/folder_icon.gif</property>
  <property name="content_meta_type">VocabularyLibrary</property>
  <property name="product">ATVocabularyManager</property>
  <property name="factory">addVocabularyLibrary</property>
  <property name="immediate_view">vocabularytool_view</property>
  <property name="global_allow">False</property>
- <property name="filter_content_types">False</property>
+ <property name="filter_content_types">True</property>
  <property name="allowed_content_types">
    <element value="AliasVocabulary"/>
    <element value="SimpleVocabulary"/>

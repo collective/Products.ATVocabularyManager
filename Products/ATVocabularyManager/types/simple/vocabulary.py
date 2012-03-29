@@ -96,38 +96,6 @@ class SimpleVocabulary(OrderedBaseFolder):
                     ),
     ))
 
-    # Methods for fti modification - better make a mixin class from it?
-
-    def allowedContentTypes(self):
-        tt = getToolByName(self, 'portal_types')
-        cv=self.contentValues()
-        if len(cv):
-            tt = getToolByName(self, 'portal_types')
-            allowed=[tt[cv[0].meta_type], ]
-        else:
-            vt = getToolByName(self, VOCABTOOL_NAME)
-            allowed= vt.allowedContentTypesForContainer(self.meta_type)
-        return allowed
-
-    def updateRegisteredTypes(self):
-        """ updates own fti based on registered containers """
-        tt = getToolByName(self, 'portal_types')
-        ti = tt[self.meta_type]
-
-        vt = getToolByName(self, VOCABTOOL_NAME)
-        allowedmetatypes = vt.allowedMetaTypesForContainer(self.meta_type)
-        ti.allowed_content_types=tuple(allowedmetatypes)
-
-    security.declareProtected(AddPortalContent, 'invokeFactory')
-    def invokeFactory(self, type_name, id, RESPONSE=None, *args, **kw):
-        """ Invokes the portal_types tool """
-        try:
-            return OrderedBaseFolder.invokeFactory(self, type_name, id, RESPONSE, *args, **kw)
-        except:
-            # at this point the whole isnt 100% clean and needs slight refactoring
-            self.updateRegisteredTypes()
-            return OrderedBaseFolder.invokeFactory(self, type_name, id, RESPONSE, *args, **kw)
-
     def isLinguaPloneInstalled(self):
         """ checks if LinguaPlone is installed """
         return ILinguaPloneProductLayer in registered_layers() \
