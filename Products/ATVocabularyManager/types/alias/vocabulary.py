@@ -24,7 +24,6 @@ else:
 from AccessControl import ClassSecurityInfo
 from Products.CMFCore.utils import getToolByName
 from Products.Archetypes.interfaces import IVocabulary
-from Products.ATVocabularyManager.tools import registerVocabularyContainer
 from Products.ATVocabularyManager.config import TOOL_NAME as VOCABTOOL_NAME
 from Products.ATVocabularyManager.config import PROJECTNAME
 
@@ -123,5 +122,4 @@ class AliasVocabulary(BaseContent):
         return target.showLeafsOnly()
 
 registerType(AliasVocabulary, PROJECTNAME)
-registerVocabularyContainer(AliasVocabulary)
 # end of class AliasVocabulary

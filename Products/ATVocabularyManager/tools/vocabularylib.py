@@ -28,21 +28,6 @@ from Products.ATVocabularyManager.config import PROJECTNAME
 from Products.ATVocabularyManager.interfaces import IATVocabularyLibrary
 from Products.Archetypes.utils import shasattr
 
-### note: use Archetypes registry infrastructure in future
-_vocabterm_types = {}
-
-
-def registerVocabularyTerm(klass, container_name=DEFAULT_VOCABULARY_CONTAINER):
-    """register a IVocabularyTerm implementing class and map it to container """
-    if not container_name in _vocabterm_types.keys():
-        _vocabterm_types[container_name] = []
-    _vocabterm_types[container_name].append(klass)
-
-
-def registerVocabularyContainer(klass):
-    """ (deprecated) register a IVocabulary implementing class """
-    pass
-
 
 ### note: derive somewhere in future from BaseTool
 class VocabularyLibrary(UniqueObject, OrderedBaseFolder, Cacheable):
@@ -70,7 +55,6 @@ class VocabularyLibrary(UniqueObject, OrderedBaseFolder, Cacheable):
     ),
     )
 
-    #toolconstructors have no id argument, the id is fixed
     def __init__(self):
         OrderedBaseFolder.__init__(self, TOOL_NAME)
 

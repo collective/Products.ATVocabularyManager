@@ -90,12 +90,10 @@ def createHierarchicalVocabs(atvm, hierarchicalVocabDictionary):
 
         newTerm = vocabulary[id]
 
-
         for key, value in subDictionary.iteritems():
             createVocabularyTerms(newTerm, key[0], key[1], value)
 
         newTerm.reindexObject()
-
 
     for vkey in hierarchicalVocabDictionary.keys():
         # create vocabulary if it doesn't exist:
@@ -103,14 +101,15 @@ def createHierarchicalVocabs(atvm, hierarchicalVocabDictionary):
 
         if not hasattr(atvm, vocabname[0]):
             # just to be sure, normally vocabulary is created in Install.py
-            atvm.invokeFactory('TreeVocabulary', vocabname[0], title=vocabname[1])
+            atvm.invokeFactory('TreeVocabulary',
+                               vocabname[0], title=vocabname[1])
 
         # new terms will be created, title changes in dictionary won't affect
         # existing terms
         vocab = atvm[vocabname[0]]
+        tree = hierarchicalVocabDictionary[vkey]
 
-
-        for (id, title), value in hierarchicalVocabDictionary[vkey].iteritems():
+        for (id, title), value in tree.iteritems():
             if not hasattr(vocab, id):
                 createVocabularyTerms(vocab, id, title, value)
         vocab.reindexObject()
@@ -122,13 +121,13 @@ def loadVdexVocabs(site, directory, files, remove=True):
         # load file
         vdexpath = os.path.join(directory, filename)
         if not (os.path.exists(vdexpath) and os.path.isfile(vdexpath)):
-            raise ValueError, \
-                  'No valid VDEX import file provided at %s.' % vdexpath
+            raise ValueError(
+                  'No valid VDEX import file provided at %s.' % vdexpath)
         try:
             data = open(vdexpath, 'r').read()
         except Exception, e:
-            raise ValueError, 'Problems while reading VDEX import file ' +\
-                              'provided at %s\n%s\n.' % (vdexpath, str(e))
+            raise ValueError('Problems while reading VDEX import file ' +\
+                             'provided at %s\n%s\n.' % (vdexpath, str(e)))
         vdex = VDEXManager(data)
         vocabname = vdex.getVocabIdentifier()
         if vocabname in atvm.contentIds():

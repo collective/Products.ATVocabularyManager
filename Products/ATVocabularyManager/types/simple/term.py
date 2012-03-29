@@ -26,7 +26,6 @@ except ImportError:
     from Products.ATVocabularyManager.backports import IVocabularyTerm
 
 from Products.Archetypes.debug import deprecated
-from Products.ATVocabularyManager.tools import registerVocabularyTerm
 from Products.ATVocabularyManager.event import find_toplevel_vocab, TermRenamedEvent
 from Products.ATVocabularyManager.config import PROJECTNAME
 
@@ -149,5 +148,4 @@ class SimpleVocabularyTerm(BaseContent):
 
 
 registerType(SimpleVocabularyTerm, PROJECTNAME)
-registerVocabularyTerm(SimpleVocabularyTerm, 'SimpleVocabulary')
-registerVocabularyTerm(SimpleVocabularyTerm, 'SortedSimpleVocabulary')
+#EOF

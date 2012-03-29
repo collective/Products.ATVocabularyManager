@@ -36,8 +36,6 @@ from Products.Archetypes.utils import make_uuid
 from Products.Archetypes.utils import DisplayList
 from Products.Archetypes.utils import OrderedDict
 
-from Products.ATVocabularyManager.tools import registerVocabularyContainer
-from Products.ATVocabularyManager.config import TOOL_NAME as VOCABTOOL_NAME
 from Products.ATVocabularyManager.config import PROJECTNAME
 
 
@@ -48,7 +46,7 @@ class SimpleVocabulary(OrderedBaseFolder):
     security = ClassSecurityInfo()
     meta_type = 'SimpleVocabulary'
 
-    schema = BaseFolderSchema + Schema((
+    schema = BaseFolderSchema.copy() + Schema((
         StringField('id',
                     required = 1, ## Still actually required, but
                     ## the widget will supply the missing value
@@ -279,5 +277,4 @@ class SimpleVocabulary(OrderedBaseFolder):
 
 
 registerType(SimpleVocabulary, PROJECTNAME)
-registerVocabularyContainer(SimpleVocabulary)
 # end of class SimpleVocabulary

@@ -2,8 +2,6 @@
 # Test for TreeVocabulary
 #
 
-import unittest
-
 from Products.PloneTestCase import PloneTestCase
 from Products.ATVocabularyManager.utils.vocabs import createHierarchicalVocabs
 from Products.CMFCore.utils import getToolByName

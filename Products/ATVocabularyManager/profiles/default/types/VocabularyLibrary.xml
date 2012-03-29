@@ -22,7 +22,6 @@
    <element value="TreeVocabulary"/>
    <element value="VdexFileVocabulary"/>
  </property>
- <property name="allow_discussion">False</property>
  <alias from="(Default)" to="base_view"/>
  <alias from="edit" to="base_edit"/>
  <alias from="index.html" to="(Default)"/>

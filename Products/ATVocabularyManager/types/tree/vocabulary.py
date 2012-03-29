@@ -25,7 +25,6 @@ try:
 except ImportError:
     from Products.Archetypes.utils import DisplayList
 
-from Products.ATVocabularyManager.tools import registerVocabularyContainer
 from Products.ATVocabularyManager.types.simple import SimpleVocabulary
 from Products.ATVocabularyManager.config import PROJECTNAME
 
@@ -156,5 +155,4 @@ class TreeVocabulary(SimpleVocabulary):
 
 
 registerType(TreeVocabulary, PROJECTNAME)
-registerVocabularyContainer(TreeVocabulary)
 # end of class TreeVocabulary
