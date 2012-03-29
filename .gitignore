@@ -10,3 +10,4 @@ develop-eggs/
 docs/Makefile
 docs/make.bat
 parts/
+var/
