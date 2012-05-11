@@ -28,7 +28,6 @@ from AccessControl import ClassSecurityInfo
 
 from Products.Archetypes.interfaces.vocabulary import IVocabulary
 
-from Products.ATVocabularyManager.tools import registerVocabularyContainer
 from Products.ATVocabularyManager.config import PROJECTNAME
 from Products.ATVocabularyManager.types.simple.vocabulary import SimpleVocabulary
 
@@ -76,4 +75,3 @@ class SortedSimpleVocabulary(SimpleVocabulary):
 
 
 registerType(SortedSimpleVocabulary, PROJECTNAME)
-registerVocabularyContainer(SortedSimpleVocabulary)

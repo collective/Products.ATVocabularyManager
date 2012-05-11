@@ -1,20 +1,11 @@
 #
 # Test for TreeVocabulary
 #
-import unittest
 from time import sleep
 
-#from Testing import ZopeTestCase
 from Products.PloneTestCase import PloneTestCase
-#from Products.Five import zcml
-
-import Products.ATVocabularyManager
-from Products.ATVocabularyManager.config import *
-
+from Products.ATVocabularyManager.config import PROJECTNAME
 from Products.CMFCore.utils import getToolByName
-
-
-import common
 
 
 class TestATVocabularyManager(PloneTestCase.PloneTestCase):
@@ -44,7 +35,7 @@ class TestATVocabularyManager(PloneTestCase.PloneTestCase):
         self.qi.installProduct(PROJECTNAME)
         self.failUnless(self.qi.isProductInstalled(PROJECTNAME))
 
-        sleep(1) # Else the ids are too similar and reinstall will fail. Oh well
+        sleep(1)  # Else the ids are too similar and reinstall will fail.
         #reinstallProducts
         self.qi.reinstallProducts([PROJECTNAME, ])
         self.failUnless(self.qi.isProductInstalled(PROJECTNAME))
@@ -73,8 +64,8 @@ class TestATVocabularyManager(PloneTestCase.PloneTestCase):
         # XXX CMFQuickInstallerTool 3.0.3 does not delete the portal items any
         # any longer if Folderish. Asked eleddy and jens what they think about
         # the implications here(feature/bug) [do3cc]
-        #self.assertRaises(AttributeError, getToolByName, self.portal, 'portal_vocabularies')
-
+        #self.assertRaises(AttributeError, getToolByName,
+        #                  self.portal, 'portal_vocabularies')
 
         #install the product again
         sleep(1)
@@ -88,7 +79,8 @@ class TestATVocabularyManager(PloneTestCase.PloneTestCase):
         #self.failUnless(foo is None)
 
     def test_zexpOfVocabulariesAtUninstall(self):
-        """vocabulariees get deleted together with the tool at product uninstallation.
+        """vocabulariees get deleted together with the tool at product
+        uninstallation.
 
         as a kind of safetybelt a zexp of all vocabularies gets created
         when atvm gets uninstalled (in case this was done by accident)
@@ -103,7 +95,6 @@ class TestATVocabularyManager(PloneTestCase.PloneTestCase):
 
         self.loginAsPortalOwner()
 
-
         #install the product
         self.qi.installProduct(PROJECTNAME)
 
@@ -117,7 +108,6 @@ class TestATVocabularyManager(PloneTestCase.PloneTestCase):
         sleep(1)
         self.qi.reinstallProducts([PROJECTNAME, ])
 
-
         #the tool and the vocabularies are still there
         atvm = getToolByName(self.portal, 'portal_vocabularies')
 
@@ -127,11 +117,4 @@ class TestATVocabularyManager(PloneTestCase.PloneTestCase):
         self.assertEqual(foo.bar.Title(), 'Some test')
 
 
-def test_suite():
-    from unittest import TestSuite, makeSuite
-    suite = TestSuite()
-    suite.addTest(makeSuite(TestATVocabularyManager))
-    return suite
-
-if __name__ == '__main__':
-    unittest.main(defaultTest='test_suite')
+#EOF

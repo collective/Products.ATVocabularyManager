@@ -24,8 +24,6 @@ except ImportError:
 #from zope.interface import noLongerProvides
 from Products.Archetypes.debug import deprecated
 #from Products.Archetypes.interfaces.vocabulary import IVocabulary
-from Products.ATVocabularyManager.tools import registerVocabularyContainer
-from Products.ATVocabularyManager.tools import registerVocabularyTerm
 from Products.ATVocabularyManager.types.simple import SimpleVocabularyTerm
 from Products.ATVocabularyManager.types.tree import TreeVocabulary
 from Products.ATVocabularyManager.config import PROJECTNAME
@@ -120,7 +118,4 @@ class TreeVocabularyTerm(TreeVocabulary, SimpleVocabularyTerm):
 
 
 registerType(TreeVocabularyTerm, PROJECTNAME)
-registerVocabularyContainer(TreeVocabularyTerm)
-registerVocabularyTerm(TreeVocabularyTerm, 'TreeVocabulary')
-registerVocabularyTerm(TreeVocabularyTerm, 'TreeVocabularyTerm')
 # end of class TreeVocabularyTerm

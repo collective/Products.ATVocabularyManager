@@ -5,7 +5,15 @@ Changelog
 1.6.3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add and update some files to support a stand-alone buildout. [pjstevns]
+
+- Update and cleanup the test code for PEP8 and pyflakes, fix deprecation
+  warnings, remove ZopeTestCase. [pjstevns]
+
+- Update the content-types for current Plone practice (GS, FTI). This 
+  probably makes things compatible with plone4+ only. [pjstevns]
+
+- Bind Content-types to Default workflow. [pjstevns]
 
 
 1.6.2 (2012-03-22)

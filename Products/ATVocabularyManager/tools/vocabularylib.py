@@ -28,21 +28,6 @@ from Products.ATVocabularyManager.config import PROJECTNAME
 from Products.ATVocabularyManager.interfaces import IATVocabularyLibrary
 from Products.Archetypes.utils import shasattr
 
-### note: use Archetypes registry infrastructure in future
-_vocabterm_types = {}
-
-
-def registerVocabularyTerm(klass, container_name=DEFAULT_VOCABULARY_CONTAINER):
-    """register a IVocabularyTerm implementing class and map it to container """
-    if not container_name in _vocabterm_types.keys():
-        _vocabterm_types[container_name] = []
-    _vocabterm_types[container_name].append(klass)
-
-
-def registerVocabularyContainer(klass):
-    """ (deprecated) register a IVocabulary implementing class """
-    pass
-
 
 ### note: derive somewhere in future from BaseTool
 class VocabularyLibrary(UniqueObject, OrderedBaseFolder, Cacheable):
@@ -70,7 +55,6 @@ class VocabularyLibrary(UniqueObject, OrderedBaseFolder, Cacheable):
     ),
     )
 
-    #toolconstructors have no id argument, the id is fixed
     def __init__(self):
         OrderedBaseFolder.__init__(self, TOOL_NAME)
 
@@ -114,23 +98,6 @@ class VocabularyLibrary(UniqueObject, OrderedBaseFolder, Cacheable):
 
 
     #Methods
-    def allowedContentTypesForContainer(self, containername):
-        """ return all allowed fti for a containertype """
-        tt = getToolByName(self, 'portal_types')
-
-        if not containername in _vocabterm_types.keys():
-            return []
-
-        allowed = [tt[tn] for tn in [klass.meta_type \
-                    for klass in _vocabterm_types[containername]]]
-
-        return allowed
-
-    def allowedMetaTypesForContainer(self, containername):
-        """ return all allowed meta_types's for a containertype """
-        allowed = self.allowedContentTypesForContainer(containername)
-        return [fti.content_meta_type for fti in allowed]
-
     def getVocabularyByName(self, vocabname):
         """ returns a vocabulary or None if no vocab with this name found """
         if shasattr(self, vocabname):
