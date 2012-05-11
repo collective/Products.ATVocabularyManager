@@ -13,6 +13,8 @@ Changelog
 - Update the content-types for current Plone practice (GS, FTI). This 
   probably makes things compatible with plone4+ only. [pjstevns]
 
+- Bind Content-types to Default workflow. [pjstevns]
+
 
 1.6.2 (2012-03-22)
 ------------------
