@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: atvocabularymanager-cs\n"
-"POT-Creation-Date: 2012-11-09 16:19+0000\n"
+"POT-Creation-Date: 2012-11-09 16:35+0000\n"
 "PO-Revision-Date: 2006-03-22 18:28+0100\n"
 "Last-Translator: Sander van Geloven <info@atopia.nl>\n"
 "Language-Team: Sander van Geloven <info@atopia.nl>\n"
@@ -142,6 +142,11 @@ msgstr "Getoonde vocabulaires:"
 msgid "heading_vdex_upload"
 msgstr "Upload nieuw VDEX"
 
+#. Default: "Check to show only leaves in this vocabulary."
+#: ../types/tree/vocabulary.py:37
+msgid "help_show_leaves_only"
+msgstr ""
+
 #. Default: "Sort method used for displaying vocabulary terms"
 #: ../types/simple/vocabulary.py:89
 msgid "help_sort_method"
@@ -186,6 +191,11 @@ msgstr ""
 msgid "label_showTermPath"
 msgstr ""
 
+#. Default: "Show leaves only"
+#: ../types/tree/vocabulary.py:35
+msgid "label_show_leaves_only"
+msgstr ""
+
 #. Default: "Sort method"
 #: ../types/simple/vocabulary.py:87
 msgid "label_sort_method"
@@ -209,7 +219,6 @@ msgstr "VDEX-Upload"
 
 #. Default: "Vocabulary Name"
 #: ../types/simple/vocabulary.py:60
-#, fuzzy
 msgid "label_vocab_name"
 msgstr "Vocabulaire naam"
 
@@ -278,7 +287,7 @@ msgstr ""
 msgid "vdexvocabularyfile_description"
 msgstr ""
 
-#. Default: "This tool contains dynamic vocabularies to be used by Archetypes\n      fields. It has methods to register special/custom vocabulary\n      types"
+#. Default: "This tool contains dynamic vocabularies to be used by Archetypes fields. It has methods to register special/custom vocabulary types"
 #: ../profiles/default/types/VocabularyLibrary.xml
 msgid "vocabularylibrary_description"
 msgstr ""

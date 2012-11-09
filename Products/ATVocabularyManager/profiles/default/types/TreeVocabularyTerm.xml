@@ -4,8 +4,7 @@
    i18n:domain="atvocabularymanager">
  <property name="title" i18n:translate="">Tree Vocabulary Term</property>
  <property
-    name="description" i18n:translate="treevocabularyterm_description"> Term inside of a TreeVocabulary or as an subterm
-      </property>
+    name="description" i18n:translate="treevocabularyterm_description">Term inside of a TreeVocabulary or as an subterm</property>
  <property name="content_icon">folder_icon.gif</property>
  <property name="content_meta_type">TreeVocabularyTerm</property>
  <property name="product">ATVocabularyManager</property>

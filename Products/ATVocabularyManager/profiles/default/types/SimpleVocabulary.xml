@@ -4,9 +4,7 @@
    i18n:domain="atvocabularymanager">
  <property name="title" i18n:translate="">Simple Vocabulary</property>
  <property
-    name="description" i18n:translate="simplevocabulary_description">
-    	This vocabulary type can contain every type of term.
-    </property>
+    name="description" i18n:translate="simplevocabulary_description">This vocabulary type can contain every type of term.</property>
  <property name="content_icon">folder_icon.gif</property>
  <property name="content_meta_type">SimpleVocabulary</property>
  <property name="product">ATVocabularyManager</property>

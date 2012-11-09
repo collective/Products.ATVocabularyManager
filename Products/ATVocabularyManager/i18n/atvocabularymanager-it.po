@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-11-09 16:19+0000\n"
+"POT-Creation-Date: 2012-11-09 16:35+0000\n"
 "PO-Revision-Date: 2012-11-19 14:57+0001\n"
 "Last-Translator: Luca Fabbri <keul@redturtle.it>\n"
 "Language-Team: RedTurtle Technology <sviluppoplone@redturtle.it>\n"
@@ -135,6 +135,11 @@ msgstr "Vocabolari trovati:"
 msgid "heading_vdex_upload"
 msgstr "Carica nuovo VDEX"
 
+#. Default: "Check to show only leaves in this vocabulary."
+#: ../types/tree/vocabulary.py:37
+msgid "help_show_leaves_only"
+msgstr "Seleziona per mostrare solo le foglie di questo vocabolario"
+
 #. Default: "Sort method used for displaying vocabulary terms"
 #: ../types/simple/vocabulary.py:89
 msgid "help_sort_method"
@@ -178,6 +183,11 @@ msgstr "Mostra solo foglie"
 #: ../types/vdex/vocabularyxml.py:76
 msgid "label_showTermPath"
 msgstr "Mostra percorso del termine"
+
+#. Default: "Show leaves only"
+#: ../types/tree/vocabulary.py:35
+msgid "label_show_leaves_only"
+msgstr "Mostra solo foglie"
 
 #. Default: "Sort method"
 #: ../types/simple/vocabulary.py:87
@@ -232,7 +242,6 @@ msgstr "Tipo"
 
 #. Default: "This vocabulary type can contain every type of term."
 #: ../profiles/default/types/SimpleVocabulary.xml
-#, fuzzy
 msgid "simplevocabulary_description"
 msgstr "Questo vocabolario può contenere tutti i tipi di termini."
 
@@ -258,7 +267,7 @@ msgstr "Contenuti"
 #. Default: "A vocabulary for hierachical key/value pairs"
 #: ../profiles/default/types/TreeVocabulary.xml
 msgid "treevocabulary_description"
-msgstr "Un vocabolario per coppire chiave/valore gerarchiche"
+msgstr "Un vocabolario per coppie chiave/valore gerarchiche"
 
 #. Default: "Term inside of a TreeVocabulary or as an subterm"
 #: ../profiles/default/types/TreeVocabularyTerm.xml
@@ -270,7 +279,7 @@ msgstr "Termine di un TreeVocabulary o un sottotermine"
 msgid "vdexvocabularyfile_description"
 msgstr "Contenuto per gestire vocabolary in formato VDEX"
 
-#. Default: "This tool contains dynamic vocabularies to be used by Archetypes\n      fields. It has methods to register special/custom vocabulary\n      types"
+#. Default: "This tool contains dynamic vocabularies to be used by Archetypes fields. It has methods to register special/custom vocabulary types"
 #: ../profiles/default/types/VocabularyLibrary.xml
 msgid "vocabularylibrary_description"
 msgstr ""

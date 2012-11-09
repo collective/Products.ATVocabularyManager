@@ -4,9 +4,7 @@
    i18n:domain="atvocabularymanager">
  <property name="title" i18n:translate="">Simple Vocabulary Term</property>
  <property
-    name="description" i18n:translate="simplevocabularyterm_description">
-    	A basic key/value term for a vocabulary implementation
-    </property>
+    name="description" i18n:translate="simplevocabularyterm_description">A basic key/value term for a vocabulary implementation</property>
  <property name="content_icon">document_icon.gif</property>
  <property name="content_meta_type">SimpleVocabularyTerm</property>
  <property name="product">ATVocabularyManager</property>

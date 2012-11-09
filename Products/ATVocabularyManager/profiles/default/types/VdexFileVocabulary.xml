@@ -4,8 +4,7 @@
    i18n:domain="atvocabularymanager">
  <property name="title" i18n:translate="">IMS VDEX Vocabulary File</property>
  <property
-    name="description" i18n:translate="vdexvocabularyfile_description">Content type for handling of VDEX compliant vocabulary.
-      </property>
+    name="description" i18n:translate="vdexvocabularyfile_description">Content type for handling of VDEX compliant vocabulary.</property>
  <property name="content_icon">document_icon.gif</property>
  <property name="content_meta_type">VdexFileVocabulary</property>
  <property name="product">ATVocabularyManager</property>

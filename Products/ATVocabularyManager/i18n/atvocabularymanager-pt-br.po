@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: atvocabularymanager-pt-br-1.0.0\n"
-"POT-Creation-Date: 2012-11-09 16:19+0000\n"
+"POT-Creation-Date: 2012-11-09 16:35+0000\n"
 "PO-Revision-Date: 2005-10-13 09:31-0300\n"
 "Last-Translator: Jean Rodrigo Ferri <jeanrodrigoferri@yahoo.com.br>\n"
 "Language-Team: TcheZope.org <tchezope@yahoogroups.com>\n"
@@ -106,7 +106,6 @@ msgstr ""
 
 #. Default: "There are currently no terms in this folder."
 #: ../skins/ATVocabularyManager/simplevocabulary_view.pt:124
-#, fuzzy
 msgid "description_no_terms_in_folder"
 msgstr "Atualmente não existe nenhum vocabulário nesta coleção."
 
@@ -118,7 +117,6 @@ msgstr ""
 #. Default: "Here you can upload <strong>IMS Vocabulary Definition Exchange</strong> compliant XML-files. Read more about <a href=\"http://www.imsglobal.org/\">IMS</a> and the <a href=\"http://www.imsglobal.org/\">VDEX-Specifications</a>."
 #: ../skins/ATVocabularyManager/vdex_upload.cpt:13
 #: ../skins/ATVocabularyManager/vocabularytool_view.cpt:86
-#, fuzzy
 msgid "description_vdex_upload"
 msgstr "Aqui você pode carregar arquivos XML de acordo com as <strong>Definições de Troca para Vocabulários do IMS</strong>. Leia mais sobre o <a href=\"http://www.imsglobal.org/\">IMS</a> e as <a href=\"http://www.imsglobal.org/\">Especificações VDEX</a>."
 
@@ -142,6 +140,11 @@ msgstr "Vocabulários listados:"
 #: ../skins/ATVocabularyManager/vdex_upload.cpt:12
 msgid "heading_vdex_upload"
 msgstr "Carregar novo VDEX"
+
+#. Default: "Check to show only leaves in this vocabulary."
+#: ../types/tree/vocabulary.py:37
+msgid "help_show_leaves_only"
+msgstr ""
 
 #. Default: "Sort method used for displaying vocabulary terms"
 #: ../types/simple/vocabulary.py:89
@@ -187,6 +190,11 @@ msgstr ""
 msgid "label_showTermPath"
 msgstr ""
 
+#. Default: "Show leaves only"
+#: ../types/tree/vocabulary.py:35
+msgid "label_show_leaves_only"
+msgstr ""
+
 #. Default: "Sort method"
 #: ../types/simple/vocabulary.py:87
 msgid "label_sort_method"
@@ -210,7 +218,6 @@ msgstr "Carregar VDEX"
 
 #. Default: "Vocabulary Name"
 #: ../types/simple/vocabulary.py:60
-#, fuzzy
 msgid "label_vocab_name"
 msgstr "Nome do vocabulário"
 
@@ -279,7 +286,7 @@ msgstr ""
 msgid "vdexvocabularyfile_description"
 msgstr ""
 
-#. Default: "This tool contains dynamic vocabularies to be used by Archetypes\n      fields. It has methods to register special/custom vocabulary\n      types"
+#. Default: "This tool contains dynamic vocabularies to be used by Archetypes fields. It has methods to register special/custom vocabulary types"
 #: ../profiles/default/types/VocabularyLibrary.xml
 msgid "vocabularylibrary_description"
 msgstr ""

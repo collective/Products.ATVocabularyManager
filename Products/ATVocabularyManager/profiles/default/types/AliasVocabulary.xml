@@ -4,9 +4,7 @@
    i18n:domain="atvocabularymanager">
  <property name="title" i18n:translate="">Alias Vocabulary</property>
  <property
-    name="description" i18n:translate="aliasvocabulary_description">
-    	A vocabulary that can points to any other registered vocabulary-type.
-    </property>
+    name="description" i18n:translate="aliasvocabulary_description">A vocabulary that can points to any other registered vocabulary-type.</property>
  <property name="content_icon">document_icon.gif</property>
  <property name="content_meta_type">AliasVocabulary</property>
  <property name="product">ATVocabularyManager</property>
