@@ -27,6 +27,7 @@ from Products.Archetypes.debug import deprecated
 from Products.ATVocabularyManager.types.simple import SimpleVocabularyTerm
 from Products.ATVocabularyManager.types.tree import TreeVocabulary
 from Products.ATVocabularyManager.config import PROJECTNAME
+from Products.ATVocabularyManager import messageFactory as _ 
 
 
 class TreeVocabularyTerm(TreeVocabulary, SimpleVocabularyTerm):
@@ -47,14 +48,12 @@ class TreeVocabularyTerm(TreeVocabulary, SimpleVocabularyTerm):
             accessor = "getId",
             mutator = "setId",
             default = '',
+            size=50,
             widget = IdWidget(
-                label = "Key",
-                label_msgid = "label_key",
-                description = "Should not contain spaces, underscores or mixed "
-                    "case. This key is for export purposes only. Plone uses "
-                    "as internal key the object's UID.",
-                description_msgid = "help_key",
-                i18n_domain = "atvocabularymanager"),
+                label=_("label_key", default=u"Key"),
+                description=_("help_vocab_name",
+                              default="Should not contain spaces, underscores or mixed case."),
+                ),
             ),
 
         StringField('title',
@@ -63,9 +62,8 @@ class TreeVocabularyTerm(TreeVocabulary, SimpleVocabularyTerm):
             default = '',
             accessor = 'Title',
             widget = StringWidget(
-                label = "Value",
-                label_msgid = "label_value",
-                i18n_domain = "atvocabularymanager"),
+                label=_("label_value", default=u"Value"),
+            ),
         )),
     )
 

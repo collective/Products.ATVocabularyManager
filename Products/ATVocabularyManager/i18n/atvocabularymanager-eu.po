@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ATVocabularyManager\n"
-"POT-Creation-Date: 2011-09-27 14:12+0000\n"
+"POT-Creation-Date: 2012-11-09 16:19+0000\n"
 "PO-Revision-Date: 2006-09-07 09:45+0100\n"
 "Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
 "Language-Team: BASQUE <eu@li.org>\n"
@@ -30,20 +30,17 @@ msgstr "Alias hiztegia"
 msgid "Delete"
 msgstr "Ezabatu"
 
-msgid "IMS VDEX Vocabulary"
-msgstr "IMS VDEX Hiztegia"
-
 #: ../profiles/default/types/VdexFileVocabulary.xml
 msgid "IMS VDEX Vocabulary File"
 msgstr ""
 
 #. Default: "upload the IMS Vocabulary Definition Format compliant XML file into this text field."
-#: ../types/vdex/vocabularyxml.py:65
+#: ../types/vdex/vocabularyxml.py:64
 msgid "IMSVDEXVocabulary_description_vdex"
 msgstr ""
 
 #. Default: "VDEX-XML-Data"
-#: ../types/vdex/vocabularyxml.py:64
+#: ../types/vdex/vocabularyxml.py:63
 msgid "IMSVDEXVocabulary_label_vdex"
 msgstr ""
 
@@ -51,6 +48,14 @@ msgstr ""
 #: ../skins/ATVocabularyManager/vocabularytool_view.cpt:94
 msgid "Import"
 msgstr "Inportatu"
+
+#: ../config.py:39
+msgid "Lexicographic sort by keys"
+msgstr ""
+
+#: ../config.py:38
+msgid "Lexicographic sort by values"
+msgstr ""
 
 #. Default: "New"
 #: ../skins/ATVocabularyManager/simplevocabulary_view.pt:78
@@ -82,17 +87,18 @@ msgstr "Zuhaitz-erako hiztegia"
 msgid "Tree Vocabulary Term"
 msgstr "Zuhaitz erako hiztegiaren elementua"
 
+#: ../config.py:37
+msgid "Vocabulary Folder Order"
+msgstr ""
+
 #. Default: "Vocabulary Libary"
+#: ../profiles/default/actionicons.xml
 #: ../profiles/default/controlpanel.xml
 #: ../profiles/default/types/VocabularyLibrary.xml
 msgid "Vocabulary Library"
 msgstr "Hiztegien kudeatzailea"
 
-#: ../profiles/default/actionicons.xml
-msgid "Vocabulary library"
-msgstr ""
-
-#. Default: "A not-so-basic CMF Content implementation with Dublin Core\n      Metadata included"
+#. Default: "A vocabulary that can points to any other registered vocabulary-type."
 #: ../profiles/default/types/AliasVocabulary.xml
 msgid "aliasvocabulary_description"
 msgstr ""
@@ -134,28 +140,21 @@ msgstr "Zerrendatutako hiztegiak"
 msgid "heading_vdex_upload"
 msgstr "VDEX bat kargatu"
 
-#. Default: "A short summary of the content"
-#: ../types/vdex/vocabularyxml.py:56
-msgid "help_description"
+#. Default: "Sort method used for displaying vocabulary terms"
+#: ../types/simple/vocabulary.py:89
+msgid "help_sort_method"
 msgstr ""
 
 #. Default: "Should not contain spaces, underscores or mixed case."
-#: types/simple/term.py
-msgid "help_key"
-msgstr "Arau sakratuak: ez hutsunerik, ezta letra larririk ere"
-
-#. Default: "Should not contain spaces, underscores or mixed case."
-#: types/alias/vocabulary.py
+#: ../types/simple/term.py:53
+#: ../types/simple/vocabulary.py:62
+#: ../types/tree/term.py:54
 msgid "help_vocab_name"
 msgstr "Arau sakratuak: ez hutsunerik, ezta letra larririk ere"
 
-#. Default: "Description"
-#: ../types/vdex/vocabularyxml.py:55
-msgid "label_description"
-msgstr ""
-
 #. Default: "Key"
-#: types/simple/term.py
+#: ../types/simple/term.py:52
+#: ../types/tree/term.py:53
 msgid "label_key"
 msgstr "Gakoa"
 
@@ -176,18 +175,18 @@ msgid "label_select_type"
 msgstr "Mota aukeratu"
 
 #. Default: "Show Leafs Only"
-#: ../types/vdex/vocabularyxml.py:85
+#: ../types/vdex/vocabularyxml.py:84
 msgid "label_showLeafsOnly"
 msgstr ""
 
 #. Default: "Show Term Path"
-#: ../types/vdex/vocabularyxml.py:77
+#: ../types/vdex/vocabularyxml.py:76
 msgid "label_showTermPath"
 msgstr ""
 
-#. Default: "Title"
-#: ../types/vdex/vocabularyxml.py:42
-msgid "label_title"
+#. Default: "Sort method"
+#: ../types/simple/vocabulary.py:87
+msgid "label_sort_method"
 msgstr ""
 
 #. Default: "Up to Vocabulary Manager Overview"
@@ -196,7 +195,8 @@ msgid "label_up_to_vocabulary_manager_overview"
 msgstr "Hiztegien kudeatzailera joan"
 
 #. Default: "Value"
-#: types/simple/term.py
+#: ../types/simple/term.py:63
+#: ../types/tree/term.py:65
 msgid "label_value"
 msgstr "Balioa"
 
@@ -205,8 +205,9 @@ msgstr "Balioa"
 msgid "label_vdex_upload"
 msgstr "VDEXa kargatu"
 
-#. Default: "Vocabulary name"
-#: types/alias/vocabulary.py
+#. Default: "Vocabulary Name"
+#: ../types/simple/vocabulary.py:60
+#, fuzzy
 msgid "label_vocab_name"
 msgstr "Hiztegi izena"
 
@@ -235,17 +236,17 @@ msgstr "Izenburua"
 msgid "listingheader_type"
 msgstr "Mota"
 
-#. Default: "An ordered base folder implementation"
+#. Default: "This vocabulary type can contain every type of term."
 #: ../profiles/default/types/SimpleVocabulary.xml
 msgid "simplevocabulary_description"
 msgstr ""
 
-#. Default: "A not-so-basic CMF Content implementation with Dublin Core\n      Metadata included"
+#. Default: "A basic key/value term for a vocabulary implementation"
 #: ../profiles/default/types/SimpleVocabularyTerm.xml
 msgid "simplevocabularyterm_description"
 msgstr ""
 
-#. Default: "An ordered base folder implementation"
+#. Default: "A vocabulary implementation where terms are sorted"
 #: ../profiles/default/types/SortedSimpleVocabulary.xml
 msgid "sortedsimplevocabulary_description"
 msgstr ""
@@ -260,7 +261,7 @@ msgstr "Bidali"
 msgid "summary_content_listing"
 msgstr "Edukia"
 
-#. Default: "An ordered base folder implementation"
+#. Default: "A vocabulary for hierachical key/value pairs"
 #: ../profiles/default/types/TreeVocabulary.xml
 msgid "treevocabulary_description"
 msgstr ""

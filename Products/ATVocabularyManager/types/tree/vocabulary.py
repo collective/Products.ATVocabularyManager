@@ -27,7 +27,7 @@ except ImportError:
 
 from Products.ATVocabularyManager.types.simple import SimpleVocabulary
 from Products.ATVocabularyManager.config import PROJECTNAME
-
+from Products.ATVocabularyManager import messageFactory as _
 
 schema = SimpleVocabulary.schema + Schema((
     BooleanField('ShowLeavesOnly',

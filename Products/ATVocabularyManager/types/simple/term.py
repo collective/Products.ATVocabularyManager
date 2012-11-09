@@ -28,7 +28,7 @@ except ImportError:
 from Products.Archetypes.debug import deprecated
 from Products.ATVocabularyManager.event import find_toplevel_vocab, TermRenamedEvent
 from Products.ATVocabularyManager.config import PROJECTNAME
-
+from Products.ATVocabularyManager import messageFactory as _ 
 
 class SimpleVocabularyTerm(BaseContent):
     security = ClassSecurityInfo()
@@ -47,24 +47,23 @@ class SimpleVocabularyTerm(BaseContent):
             accessor="getId",
             mutator="setId",
             default='',
+            size=50,
             widget=StringWidget(
-                label="Key",
-                label_msgid="label_key",
-                description="Should not contain spaces, underscores or mixed case. ",
-                description_msgid="help_key",
-                i18n_domain="atvocabularymanager"),
+                label=_("label_key", default=u"Key"),
+                description=_("help_vocab_name",
+                              default="Should not contain spaces, underscores or mixed case."),
             ),
+        ),
         StringField('title',
             required=1,
             searchable=0,
             default='',
             accessor='Title',
             widget=StringWidget(
-                label="Value",
-                label_msgid="label_value",
-                i18n_domain="atvocabularymanager"),
-        )),
-    )
+                label=_("label_value", default=u"Value"),
+            ),
+        )
+    ))
 
     aliases = {
         '(Default)': 'base_view',

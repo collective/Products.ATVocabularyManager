@@ -1,6 +1,7 @@
 #!/bin/sh
 
-i18ndude rebuild-pot --pot atvocabularymanager.pot --create atvocabularymanager --merge manual.pot ../
+#i18ndude rebuild-pot --pot atvocabularymanager.pot --create atvocabularymanager --merge manual.pot ../
+i18ndude rebuild-pot --pot atvocabularymanager.pot --create atvocabularymanager ../
 i18ndude sync --pot  atvocabularymanager.pot atvocabularymanager-??.po
 i18ndude sync --pot  atvocabularymanager.pot atvocabularymanager-??-??.po
 

@@ -5,7 +5,9 @@
    i18n:domain="atvocabularymanager">
  <property name="title" i18n:translate="">Sorted Simple Vocabulary</property>
  <property
-    name="description" i18n:translate="sortedsimplevocabulary_description"> An ordered base folder implementation </property>
+    name="description" i18n:translate="sortedsimplevocabulary_description">
+    	A vocabulary implementation where terms are sorted
+    </property>
  <property name="content_icon">folder_icon.gif</property>
  <property name="content_meta_type">SortedSimpleVocabulary</property>
  <property name="product">ATVocabularyManager</property>
@@ -25,11 +27,6 @@
  <action title="Edit" action_id="edit" category="object"
     condition_expr="not:object/@@plone_lock_info/is_locked_for_current_user"
     url_expr="string:${object_url}/edit" visible="True">
-  <permission value="Modify portal content"/>
- </action>
- <action title="Properties" action_id="metadata" category="object"
-    condition_expr="" url_expr="string:${object_url}/properties"
-    visible="True">
   <permission value="Modify portal content"/>
  </action>
  <action title="References" action_id="references" category="object"

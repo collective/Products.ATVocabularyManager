@@ -1,234 +1,229 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 msgid ""
 msgstr ""
-"Project-Id-Version: ATVocabularyManager\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2012-11-09 16:19+0000\n"
-"PO-Revision-Date: 2007-03-30 14:36+0100\n"
-"Last-Translator: Diego Municio García <dmunicio@gmail.com>\n"
-"Language-Team: Spanish <spanish@nobody.com>\n"
+"PO-Revision-Date: 2012-11-19 14:57+0001\n"
+"Last-Translator: Luca Fabbri <keul@redturtle.it>\n"
+"Language-Team: RedTurtle Technology <sviluppoplone@redturtle.it>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
-"Language-Code: es\n"
-"Language-Name: Español\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: it\n"
+"Language-Name: Italian\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: atvocabularymanager\n"
-"X-Is-Fallback-For: es-ar es-bo es-cl es-co es-cr es-do es-ec es-es es-sv es-gt es-hn es-mx es-ni es-pa es-py es-pe es-pr es-us es-uy es-ve\n"
 
-#. Default: "Add New Vocabulary"
 #: ../skins/ATVocabularyManager/vocabularytool_view.cpt:66
 msgid "Add New Vocabulary"
-msgstr "Añadir Nuevo Vocabulario"
+msgstr "Aggiunti nuovo vocabolario"
 
 #: ../profiles/default/types/AliasVocabulary.xml
 msgid "Alias Vocabulary"
-msgstr "Vocabulario de Aliases"
+msgstr "Vocabolario Alias"
 
-#. Default: "Delete"
 #: ../skins/ATVocabularyManager/simplevocabulary_view.pt:110
 msgid "Delete"
-msgstr "Eliminar"
+msgstr "Elimina"
 
 #: ../profiles/default/types/VdexFileVocabulary.xml
 msgid "IMS VDEX Vocabulary File"
-msgstr ""
+msgstr "File Vocabolario IMS VDEX"
 
 #. Default: "upload the IMS Vocabulary Definition Format compliant XML file into this text field."
 #: ../types/vdex/vocabularyxml.py:64
 msgid "IMSVDEXVocabulary_description_vdex"
-msgstr ""
+msgstr "carica il file XML compatibile col formato IMS Vocabulary Definition in questo campo."
 
 #. Default: "VDEX-XML-Data"
 #: ../types/vdex/vocabularyxml.py:63
 msgid "IMSVDEXVocabulary_label_vdex"
 msgstr ""
 
-#. Default: "Import"
 #: ../skins/ATVocabularyManager/vocabularytool_view.cpt:94
 msgid "Import"
-msgstr "Importar"
+msgstr "Importa"
 
 #: ../config.py:39
 msgid "Lexicographic sort by keys"
-msgstr ""
+msgstr "Ordimaneto lessicografico per chiavi"
 
 #: ../config.py:38
 msgid "Lexicographic sort by values"
-msgstr ""
+msgstr "Ordimaneto lessicografico per valori"
 
-#. Default: "New"
 #: ../skins/ATVocabularyManager/simplevocabulary_view.pt:78
 msgid "New"
-msgstr "Nuevo"
+msgstr "Nuovo"
 
-#. Default: "Save"
 #: ../skins/ATVocabularyManager/simplevocabulary_view.pt:79
 msgid "Save"
-msgstr "Salvar"
+msgstr "Salva"
 
 #: ../profiles/default/types/SimpleVocabulary.xml
 msgid "Simple Vocabulary"
-msgstr "Vocabulario Simple"
+msgstr "Vocabolario Semplice"
 
 #: ../profiles/default/types/SimpleVocabularyTerm.xml
 msgid "Simple Vocabulary Term"
-msgstr "Término de Vocabulario Simple"
+msgstr "Termine per Vocabolario Semplice"
 
 #: ../profiles/default/types/SortedSimpleVocabulary.xml
 msgid "Sorted Simple Vocabulary"
-msgstr "Vocabulario Simple Ordenado"
+msgstr "Vocabolario Semplice Ordinato"
 
 #: ../profiles/default/types/TreeVocabulary.xml
 msgid "Tree Vocabulary"
-msgstr "Vocabulario en Árbol"
+msgstr "Vocabolario ad Albero"
 
 #: ../profiles/default/types/TreeVocabularyTerm.xml
 msgid "Tree Vocabulary Term"
-msgstr "Término de Vocabulario en Árbol"
+msgstr "Termine per Vocabolario ad Albero"
 
 #: ../config.py:37
 msgid "Vocabulary Folder Order"
-msgstr ""
+msgstr "Ordine della cartella vocabolario"
 
-#. Default: "Vocabulary Libary"
 #: ../profiles/default/actionicons.xml
 #: ../profiles/default/controlpanel.xml
 #: ../profiles/default/types/VocabularyLibrary.xml
 msgid "Vocabulary Library"
-msgstr "Librería de Vocabularios"
+msgstr "Libreria Vocabolari"
 
 #. Default: "A vocabulary that can points to any other registered vocabulary-type."
 #: ../profiles/default/types/AliasVocabulary.xml
 msgid "aliasvocabulary_description"
-msgstr ""
+msgstr "Un vocabolario che può puntare ad un qualunque altro tipo di vocabolario registrato."
 
 #. Default: "There are currently no terms in this folder."
 #: ../skins/ATVocabularyManager/simplevocabulary_view.pt:124
 msgid "description_no_terms_in_folder"
-msgstr "Actualmente no existe ningún término en esta carpeta."
+msgstr "Non ci sono elementi in questa cartella."
 
 #. Default: "There are currently no vocabularies in this library."
 #: ../skins/ATVocabularyManager/vocabularytool_view.cpt:224
 msgid "description_no_vocabularies_in_library"
-msgstr "Actualmente no existe ningún vocabulario en esta librería."
+msgstr "Non ci sono vocabolari in questa libreria."
 
 #. Default: "Here you can upload <strong>IMS Vocabulary Definition Exchange</strong> compliant XML-files. Read more about <a href=\"http://www.imsglobal.org/\">IMS</a> and the <a href=\"http://www.imsglobal.org/\">VDEX-Specifications</a>."
 #: ../skins/ATVocabularyManager/vdex_upload.cpt:13
 #: ../skins/ATVocabularyManager/vocabularytool_view.cpt:86
 msgid "description_vdex_upload"
-msgstr "Desde aquí puede subir archivos XML compatibles con la especificación <strong>IMS Vocabulary Definition Exchange (IMS VDEX)</strong>. Puede leer más acerca de <a href=\"http://www.imsglobal.org/\">IMS</a> y las <a href=\"http://www.imsglobal.org/\">especificaciones VDEX</a>."
+msgstr "Qui puoi caricare un file XML compatibile col formato <strong>IMS Vocabulary Definition Exchange</strong>.Leggi altre informazioni relativamente a <a href=\"http://www.imsglobal.org/\">IMS</a> e le <a href=\"http://www.imsglobal.org/\">Specifications VDEX</a>."
 
 #. Default: "This page lists the custom vocabularies."
 #: ../skins/ATVocabularyManager/simplevocabulary_view.pt:31
 #: ../skins/ATVocabularyManager/vocabularytool_view.cpt:26
 msgid "description_vocabulary_tool"
-msgstr "Esta página muestra los vocabularios personalizados."
+msgstr "Questa pagina mostra i vocabolari personalizzati."
 
 #. Default: "Currently defined Key/value pairs:"
 #: ../skins/ATVocabularyManager/simplevocabulary_view.pt:84
 msgid "heading_defined_pairs"
-msgstr "Parejas clave/valor definidas actualmente:"
+msgstr "Coppie chiave/valore correntemente definite:"
 
 #. Default: "Listed vocabularies:"
 #: ../skins/ATVocabularyManager/vocabularytool_view.cpt:104
 msgid "heading_listed_vocabularies"
-msgstr "Vocabularios listados:"
+msgstr "Vocabolari trovati:"
 
 #. Default: "Upload new VDEX"
 #: ../skins/ATVocabularyManager/vdex_upload.cpt:12
 msgid "heading_vdex_upload"
-msgstr "Subir nuevo VDEX"
+msgstr "Carica nuovo VDEX"
 
 #. Default: "Sort method used for displaying vocabulary terms"
 #: ../types/simple/vocabulary.py:89
 msgid "help_sort_method"
-msgstr ""
+msgstr "Metodo di ordinamento usato per visualizzare i termini"
 
 #. Default: "Should not contain spaces, underscores or mixed case."
 #: ../types/simple/term.py:53
 #: ../types/simple/vocabulary.py:62
 #: ../types/tree/term.py:54
 msgid "help_vocab_name"
-msgstr "Debe evitar introducir espacios, guiones bajos o mezclas de ambos."
+msgstr "Non dovrebbe contenere spazi, trattini bassi o maiuscole/minuscole mischiate"
 
 #. Default: "Key"
 #: ../types/simple/term.py:52
 #: ../types/tree/term.py:53
 msgid "label_key"
-msgstr "Clave"
+msgstr "Chiave"
 
 #. Default: "Select"
 #: ../skins/ATVocabularyManager/simplevocabulary_view.pt:48
 #: ../skins/ATVocabularyManager/vocabularytool_view.cpt:50
 msgid "label_select"
-msgstr "Seleccionar"
+msgstr "Seleziona"
 
 #. Default: "Select all items"
 #: ../skins/ATVocabularyManager/vocabularytool_view.cpt:121
 msgid "label_select_all_items"
-msgstr "Seleccionar todos los ítems"
+msgstr "Seleziona tutti"
 
 #. Default: "Select type"
 #: ../skins/ATVocabularyManager/vocabularytool_view.cpt:41
 msgid "label_select_type"
-msgstr "Seleccionar tipo"
+msgstr "Seleziona tipo"
 
 #. Default: "Show Leafs Only"
 #: ../types/vdex/vocabularyxml.py:84
 msgid "label_showLeafsOnly"
-msgstr ""
+msgstr "Mostra solo foglie"
 
 #. Default: "Show Term Path"
 #: ../types/vdex/vocabularyxml.py:76
 msgid "label_showTermPath"
-msgstr ""
+msgstr "Mostra percorso del termine"
 
 #. Default: "Sort method"
 #: ../types/simple/vocabulary.py:87
 msgid "label_sort_method"
-msgstr ""
+msgstr "Criterio di ordinamento"
 
 #. Default: "Up to Vocabulary Manager Overview"
 #: ../skins/ATVocabularyManager/simplevocabulary_view.pt:24
 msgid "label_up_to_vocabulary_manager_overview"
-msgstr "Subir a la vista de administración del vocabulario"
+msgstr "Torna alla gestione dei vocabolari"
 
 #. Default: "Value"
 #: ../types/simple/term.py:63
 #: ../types/tree/term.py:65
 msgid "label_value"
-msgstr "Valor"
+msgstr "Valore"
 
 #. Default: "VDEX-Upload"
 #: ../skins/ATVocabularyManager/vocabularytool_view.cpt:85
 msgid "label_vdex_upload"
-msgstr "Subir VDEX"
+msgstr "Caricamento VDEX"
 
 #. Default: "Vocabulary Name"
 #: ../types/simple/vocabulary.py:60
-#, fuzzy
 msgid "label_vocab_name"
-msgstr "Nombre del vocabulario"
+msgstr "Nome vocabolario"
 
 #. Default: "Add new vocabulary"
 #: ../skins/ATVocabularyManager/vocabularytool_view.cpt:32
 msgid "legend_add_vocabulary"
-msgstr "Añadir nuevo vocabulario"
+msgstr "Aggiungi nuovo vocabolario"
 
 #. Default: "Import"
 #: ../skins/ATVocabularyManager/vocabularytool_view.cpt:78
 msgid "legent_import"
-msgstr "Importar"
+msgstr "Importa"
 
 #. Default: "ID"
 #: ../skins/ATVocabularyManager/vocabularytool_view.cpt:133
 msgid "listingheader_id"
-msgstr "ID"
+msgstr ""
 
 #. Default: "Title"
 #: ../skins/ATVocabularyManager/vocabularytool_view.cpt:136
 msgid "listingheader_title"
-msgstr "Título"
+msgstr "Titolo"
 
 #. Default: "Type"
 #: ../skins/ATVocabularyManager/vocabularytool_view.cpt:139
@@ -237,46 +232,48 @@ msgstr "Tipo"
 
 #. Default: "This vocabulary type can contain every type of term."
 #: ../profiles/default/types/SimpleVocabulary.xml
+#, fuzzy
 msgid "simplevocabulary_description"
-msgstr ""
+msgstr "Questo vocabolario può contenere tutti i tipi di termini."
 
 #. Default: "A basic key/value term for a vocabulary implementation"
 #: ../profiles/default/types/SimpleVocabularyTerm.xml
 msgid "simplevocabularyterm_description"
-msgstr ""
+msgstr "Un termine chiave/valore per l'implementazione del vocabolario"
 
 #. Default: "A vocabulary implementation where terms are sorted"
 #: ../profiles/default/types/SortedSimpleVocabulary.xml
 msgid "sortedsimplevocabulary_description"
-msgstr ""
+msgstr "Un'implementazione di vocabolario dove i termini sono ordinati"
 
-#. Default: "submit"
 #: ../skins/ATVocabularyManager/vdex_upload.cpt:28
 msgid "submit"
-msgstr "Enviar"
+msgstr "invia"
 
 #. Default: "Content listing"
 #: ../skins/ATVocabularyManager/vocabularytool_view.cpt:113
 msgid "summary_content_listing"
-msgstr "Listado de contenidos"
+msgstr "Contenuti"
 
 #. Default: "A vocabulary for hierachical key/value pairs"
 #: ../profiles/default/types/TreeVocabulary.xml
 msgid "treevocabulary_description"
-msgstr ""
+msgstr "Un vocabolario per coppire chiave/valore gerarchiche"
 
 #. Default: "Term inside of a TreeVocabulary or as an subterm"
 #: ../profiles/default/types/TreeVocabularyTerm.xml
 msgid "treevocabularyterm_description"
-msgstr ""
+msgstr "Termine di un TreeVocabulary o un sottotermine"
 
 #. Default: "Content type for handling of VDEX compliant vocabulary."
 #: ../profiles/default/types/VdexFileVocabulary.xml
 msgid "vdexvocabularyfile_description"
-msgstr ""
+msgstr "Contenuto per gestire vocabolary in formato VDEX"
 
 #. Default: "This tool contains dynamic vocabularies to be used by Archetypes\n      fields. It has methods to register special/custom vocabulary\n      types"
 #: ../profiles/default/types/VocabularyLibrary.xml
 msgid "vocabularylibrary_description"
 msgstr ""
+"Questo tool contiene vocabolari dinamici per essere usati con campi Archetpyes.\n"
+"Ha metodi per registrare/gestire vocabolari personalizzati"
 

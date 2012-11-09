@@ -26,6 +26,7 @@ from Products.ATVocabularyManager.config import *
 from Products.ATVocabularyManager.config import PROJECTNAME
 from zope.interface import implements
 from imsvdex.vdex import VDEXManager, VDEXError
+from Products.Archetypes import PloneMessageFactory as PMF
 
 from Products.ATContentTypes import ATCTMessageFactory as _
 
@@ -38,9 +39,8 @@ IMSVDEXVocabularySchema = Schema((
         default = '',
         accessor = 'Title',
         widget = StringWidget(
-            label=_(u'label_title', default=u'Title'),
+            label=PMF(u'label_title', default=u'Title'),
             visible = {'view': 'invisible', 'edit': 'invisible'},
-            i18n_domain = 'plone',
         ),
     ),
     TextField(
@@ -51,9 +51,9 @@ IMSVDEXVocabularySchema = Schema((
         schemata = 'default',
         widget = TextAreaWidget(
             visible = {'view': 'visible', 'edit': 'invisible'},
-            label=_(u'label_description', default=u'Description'),
-            description=_(u'help_description', default=u'A short summary of the content'),
-            i18n_domain = "plone"),
+            label=PMF(u'label_description', default=u'Description'),
+            description=PMF(u'help_description', default=u'A short summary of the content'),
+        ),
     ),
 
     FileField(

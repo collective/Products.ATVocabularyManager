@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-09-27 14:12+0000\n"
+"POT-Creation-Date: 2012-11-09 16:19+0000\n"
 "PO-Revision-Date: 2006-12-10 19:59+0100\n"
 "Last-Translator: Anton Stonor <anton@headnet.dk>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,20 +31,17 @@ msgstr "Alias emneordsliste"
 msgid "Delete"
 msgstr "Slet"
 
-msgid "IMS VDEX Vocabulary"
-msgstr "IMS VDEX emneordsliste"
-
 #: ../profiles/default/types/VdexFileVocabulary.xml
 msgid "IMS VDEX Vocabulary File"
 msgstr ""
 
 #. Default: "upload the IMS Vocabulary Definition Format compliant XML file into this text field."
-#: ../types/vdex/vocabularyxml.py:65
+#: ../types/vdex/vocabularyxml.py:64
 msgid "IMSVDEXVocabulary_description_vdex"
 msgstr ""
 
 #. Default: "VDEX-XML-Data"
-#: ../types/vdex/vocabularyxml.py:64
+#: ../types/vdex/vocabularyxml.py:63
 msgid "IMSVDEXVocabulary_label_vdex"
 msgstr ""
 
@@ -52,6 +49,14 @@ msgstr ""
 #: ../skins/ATVocabularyManager/vocabularytool_view.cpt:94
 msgid "Import"
 msgstr "Importer"
+
+#: ../config.py:39
+msgid "Lexicographic sort by keys"
+msgstr ""
+
+#: ../config.py:38
+msgid "Lexicographic sort by values"
+msgstr ""
 
 #. Default: "New"
 #: ../skins/ATVocabularyManager/simplevocabulary_view.pt:78
@@ -83,17 +88,18 @@ msgstr "Hierakisk emneordsliste"
 msgid "Tree Vocabulary Term"
 msgstr "Hierakisk emneord"
 
+#: ../config.py:37
+msgid "Vocabulary Folder Order"
+msgstr ""
+
 #. Default: "Vocabulary Libary"
+#: ../profiles/default/actionicons.xml
 #: ../profiles/default/controlpanel.xml
 #: ../profiles/default/types/VocabularyLibrary.xml
 msgid "Vocabulary Library"
 msgstr "Emneordslister"
 
-#: ../profiles/default/actionicons.xml
-msgid "Vocabulary library"
-msgstr ""
-
-#. Default: "A not-so-basic CMF Content implementation with Dublin Core\n      Metadata included"
+#. Default: "A vocabulary that can points to any other registered vocabulary-type."
 #: ../profiles/default/types/AliasVocabulary.xml
 msgid "aliasvocabulary_description"
 msgstr ""
@@ -135,28 +141,21 @@ msgstr "Emneordslister"
 msgid "heading_vdex_upload"
 msgstr "Upload en ny VDEX-fil"
 
-#. Default: "A short summary of the content"
-#: ../types/vdex/vocabularyxml.py:56
-msgid "help_description"
+#. Default: "Sort method used for displaying vocabulary terms"
+#: ../types/simple/vocabulary.py:89
+msgid "help_sort_method"
 msgstr ""
 
 #. Default: "Should not contain spaces, underscores or mixed case."
-#: types/simple/term.py
-msgid "help_key"
-msgstr "Må ikke indeholde mellemrum, underscores eller en blanding af store og små bogstaver."
-
-#. Default: "Should not contain spaces, underscores or mixed case."
-#: types/alias/vocabulary.py
+#: ../types/simple/term.py:53
+#: ../types/simple/vocabulary.py:62
+#: ../types/tree/term.py:54
 msgid "help_vocab_name"
 msgstr "Må ikke indeholde mellemrum, underscores eller en blanding af store og små bogstaver."
 
-#. Default: "Description"
-#: ../types/vdex/vocabularyxml.py:55
-msgid "label_description"
-msgstr ""
-
 #. Default: "Key"
-#: types/simple/term.py
+#: ../types/simple/term.py:52
+#: ../types/tree/term.py:53
 msgid "label_key"
 msgstr "Nøgle"
 
@@ -177,18 +176,18 @@ msgid "label_select_type"
 msgstr "Vælg type"
 
 #. Default: "Show Leafs Only"
-#: ../types/vdex/vocabularyxml.py:85
+#: ../types/vdex/vocabularyxml.py:84
 msgid "label_showLeafsOnly"
 msgstr ""
 
 #. Default: "Show Term Path"
-#: ../types/vdex/vocabularyxml.py:77
+#: ../types/vdex/vocabularyxml.py:76
 msgid "label_showTermPath"
 msgstr ""
 
-#. Default: "Title"
-#: ../types/vdex/vocabularyxml.py:42
-msgid "label_title"
+#. Default: "Sort method"
+#: ../types/simple/vocabulary.py:87
+msgid "label_sort_method"
 msgstr ""
 
 #. Default: "Up to Vocabulary Manager Overview"
@@ -197,7 +196,8 @@ msgid "label_up_to_vocabulary_manager_overview"
 msgstr "Til emneordsforsiden"
 
 #. Default: "Value"
-#: types/simple/term.py
+#: ../types/simple/term.py:63
+#: ../types/tree/term.py:65
 msgid "label_value"
 msgstr "Værdi"
 
@@ -206,8 +206,9 @@ msgstr "Værdi"
 msgid "label_vdex_upload"
 msgstr "VDEX-upload"
 
-#. Default: "Vocabulary name"
-#: types/alias/vocabulary.py
+#. Default: "Vocabulary Name"
+#: ../types/simple/vocabulary.py:60
+#, fuzzy
 msgid "label_vocab_name"
 msgstr "Navn på emneordsliste"
 
@@ -236,17 +237,17 @@ msgstr "Titel"
 msgid "listingheader_type"
 msgstr "Type"
 
-#. Default: "An ordered base folder implementation"
+#. Default: "This vocabulary type can contain every type of term."
 #: ../profiles/default/types/SimpleVocabulary.xml
 msgid "simplevocabulary_description"
 msgstr ""
 
-#. Default: "A not-so-basic CMF Content implementation with Dublin Core\n      Metadata included"
+#. Default: "A basic key/value term for a vocabulary implementation"
 #: ../profiles/default/types/SimpleVocabularyTerm.xml
 msgid "simplevocabularyterm_description"
 msgstr ""
 
-#. Default: "An ordered base folder implementation"
+#. Default: "A vocabulary implementation where terms are sorted"
 #: ../profiles/default/types/SortedSimpleVocabulary.xml
 msgid "sortedsimplevocabulary_description"
 msgstr ""
@@ -261,7 +262,7 @@ msgstr "gem"
 msgid "summary_content_listing"
 msgstr "Liste over indhold"
 
-#. Default: "An ordered base folder implementation"
+#. Default: "A vocabulary for hierachical key/value pairs"
 #: ../profiles/default/types/TreeVocabulary.xml
 msgid "treevocabulary_description"
 msgstr ""

@@ -10,6 +10,8 @@ except ImportError:
     # not sure that we still need to support this
     from Globals import package_home
 
+from zope.i18nmessageid import MessageFactory
+messageFactory = MessageFactory('atvocabularymanager')
 
 from Products.CMFCore import utils as cmfutils
 from Products.CMFCore import DirectoryView
@@ -22,7 +24,6 @@ from Products.ATVocabularyManager.namedvocabulary import NamedVocabulary
 DirectoryView.registerDirectory(SKINS_DIR, GLOBALS)
 DirectoryView.registerDirectory(os.path.join(SKINS_DIR, 'ATVocabularyManager'),
                                 GLOBALS)
-
 
 def initialize(context):
     ##Import Types here to register them

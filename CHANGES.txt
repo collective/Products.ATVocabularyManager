@@ -15,6 +15,9 @@ Changelog
 
 - Bind Content-types to Default workflow. [pjstevns]
 
+- Removed long deprecated "Properties" tab in types [keul]
+
+- Added italian translation [keul]
 
 1.6.2 (2012-03-22)
 ------------------
