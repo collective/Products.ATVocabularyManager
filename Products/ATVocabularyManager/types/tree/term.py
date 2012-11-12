@@ -16,10 +16,6 @@ else:
     from Products.Archetypes.atapi import *
 
 from AccessControl import ClassSecurityInfo
-try:
-    from Products.Archetypes.interfaces.vocabulary import IVocabularyTerm
-except ImportError:
-    from Products.ATVocabularyManager.backports import IVocabularyTerm
 
 #from zope.interface import noLongerProvides
 from Products.Archetypes.debug import deprecated
@@ -33,8 +29,6 @@ from Products.ATVocabularyManager import messageFactory as _
 class TreeVocabularyTerm(TreeVocabulary, SimpleVocabularyTerm):
     """ Term inside of a TreeVocabulary or as an subterm
     """
-
-    __implements__ = getattr(TreeVocabulary, '__implements__', ()) + (IVocabularyTerm, )
 
     security = ClassSecurityInfo()
     meta_type = 'TreeVocabularyTerm'

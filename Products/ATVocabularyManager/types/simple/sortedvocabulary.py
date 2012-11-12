@@ -35,9 +35,6 @@ from Products.ATVocabularyManager.types.simple.vocabulary import SimpleVocabular
 class SortedSimpleVocabulary(SimpleVocabulary):
     security = ClassSecurityInfo()
 
-    __implements__ = getattr(OrderedBaseFolder, '__implements__', ()) + (IVocabulary, )
-
-
     # This name appears in the 'add' box
     archetype_name = 'Sorted Simple Vocabulary'
 

@@ -20,10 +20,6 @@ else:
     from Products.Archetypes.atapi import *
 
 from AccessControl import ClassSecurityInfo
-try:
-    from Products.Archetypes.interfaces.vocabulary import IVocabularyTerm
-except ImportError:
-    from Products.ATVocabularyManager.backports import IVocabularyTerm
 
 from Products.Archetypes.debug import deprecated
 from Products.ATVocabularyManager.event import find_toplevel_vocab, TermRenamedEvent
@@ -35,8 +31,6 @@ class SimpleVocabularyTerm(BaseContent):
     portal_type = meta_type = 'SimpleVocabularyTerm'
     archetype_name = 'Simple Vocabulary Term'
     _at_rename_after_creation = True
-
-    __implements__ = getattr(BaseContent, '__implements__', ()) + (IVocabularyTerm, )
 
     schema = BaseSchema + Schema((
         StringField('id',
