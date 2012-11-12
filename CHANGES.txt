@@ -21,6 +21,8 @@ Changelog
 
 - Added italian translation [keul]
 
+- Removed old-styles Zope2 interfaces [keul]
+
 1.6.2 (2012-03-22)
 ------------------
 
