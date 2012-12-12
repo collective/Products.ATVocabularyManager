@@ -8,7 +8,7 @@ def read(*rnames):
 version = '1.6.3.dev0'
 
 long_description = (
-    read('README.txt')
+    read('README.rst')
     + '\n' +
     read('docs', 'LICENSE.txt')
     + '\n' +
@@ -66,7 +66,7 @@ setup(name='Products.ATVocabularyManager',
       'Taxonomy Onthology',
       author='BlueDynamics Alliance',
       author_email='dev@bluedynamics.com',
-      url='https://svn.plone.org/svn/archetypes/Products.ATVocabularyManager/',
+      url='https://github.com/collective/Products.ATVocabularyManager',
       #license='GPL version 2',
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['Products'],

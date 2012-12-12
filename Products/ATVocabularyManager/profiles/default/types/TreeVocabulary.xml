@@ -4,7 +4,7 @@
    i18n:domain="atvocabularymanager">
  <property name="title" i18n:translate="">Tree Vocabulary</property>
  <property
-    name="description" i18n:translate="treevocabulary_description"> An ordered base folder implementation </property>
+    name="description" i18n:translate="treevocabulary_description">A vocabulary for hierachical key/value pairs</property>
  <property name="content_icon">folder_icon.gif</property>
  <property name="content_meta_type">TreeVocabulary</property>
  <property name="product">ATVocabularyManager</property>
@@ -15,7 +15,6 @@
  <property name="allowed_content_types">
 	 <element value="TreeVocabularyTerm"/>
  </property>
-
  <property name="allow_discussion">False</property>
  <alias from="(Default)" to="base_view"/>
  <alias from="edit" to="base_edit"/>
@@ -27,11 +26,6 @@
  <action title="Edit" action_id="edit" category="object"
     condition_expr="not:object/@@plone_lock_info/is_locked_for_current_user"
     url_expr="string:${object_url}/edit" visible="True">
-  <permission value="Modify portal content"/>
- </action>
- <action title="Properties" action_id="metadata" category="object"
-    condition_expr="" url_expr="string:${object_url}/properties"
-    visible="True">
   <permission value="Modify portal content"/>
  </action>
  <action title="References" action_id="references" category="object"

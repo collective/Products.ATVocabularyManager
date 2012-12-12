@@ -4,8 +4,7 @@
    i18n:domain="atvocabularymanager">
  <property name="title" i18n:translate="">Alias Vocabulary</property>
  <property
-    name="description" i18n:translate="aliasvocabulary_description">A not-so-basic CMF Content implementation with Dublin Core
-      Metadata included</property>
+    name="description" i18n:translate="aliasvocabulary_description">A vocabulary that can points to any other registered vocabulary-type.</property>
  <property name="content_icon">document_icon.gif</property>
  <property name="content_meta_type">AliasVocabulary</property>
  <property name="product">ATVocabularyManager</property>
@@ -27,11 +26,6 @@
  <action title="Edit" action_id="edit" category="object"
     condition_expr="not:object/@@plone_lock_info/is_locked_for_current_user"
     url_expr="string:${object_url}/edit" visible="True">
-  <permission value="Modify portal content"/>
- </action>
- <action title="Properties" action_id="metadata" category="object"
-    condition_expr="" url_expr="string:${object_url}/properties"
-    visible="True">
   <permission value="Modify portal content"/>
  </action>
  <action title="References" action_id="references" category="object"

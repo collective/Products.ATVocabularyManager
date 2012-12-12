@@ -14,7 +14,6 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: plone\n"
 
-#, fuzzy
 msgid "Alias Vocabulary"
 msgstr "Vocabulario de Alias"
 

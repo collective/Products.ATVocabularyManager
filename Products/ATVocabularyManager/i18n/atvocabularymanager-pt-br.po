@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: atvocabularymanager-pt-br-1.0.0\n"
-"POT-Creation-Date: 2011-09-27 14:12+0000\n"
+"POT-Creation-Date: 2012-11-09 16:35+0000\n"
 "PO-Revision-Date: 2005-10-13 09:31-0300\n"
 "Last-Translator: Jean Rodrigo Ferri <jeanrodrigoferri@yahoo.com.br>\n"
 "Language-Team: TcheZope.org <tchezope@yahoogroups.com>\n"
@@ -31,20 +31,17 @@ msgstr "Apelido de Vocabulário"
 msgid "Delete"
 msgstr "Apagar"
 
-msgid "IMS VDEX Vocabulary"
-msgstr "Vocabulário IMS VDEX"
-
 #: ../profiles/default/types/VdexFileVocabulary.xml
 msgid "IMS VDEX Vocabulary File"
 msgstr ""
 
 #. Default: "upload the IMS Vocabulary Definition Format compliant XML file into this text field."
-#: ../types/vdex/vocabularyxml.py:65
+#: ../types/vdex/vocabularyxml.py:64
 msgid "IMSVDEXVocabulary_description_vdex"
 msgstr ""
 
 #. Default: "VDEX-XML-Data"
-#: ../types/vdex/vocabularyxml.py:64
+#: ../types/vdex/vocabularyxml.py:63
 msgid "IMSVDEXVocabulary_label_vdex"
 msgstr ""
 
@@ -52,6 +49,14 @@ msgstr ""
 #: ../skins/ATVocabularyManager/vocabularytool_view.cpt:94
 msgid "Import"
 msgstr "Importar"
+
+#: ../config.py:39
+msgid "Lexicographic sort by keys"
+msgstr ""
+
+#: ../config.py:38
+msgid "Lexicographic sort by values"
+msgstr ""
 
 #. Default: "New"
 #: ../skins/ATVocabularyManager/simplevocabulary_view.pt:78
@@ -83,24 +88,24 @@ msgstr "Vocabulário em Árvore"
 msgid "Tree Vocabulary Term"
 msgstr "Termo do Vocabulário em Árvore"
 
+#: ../config.py:37
+msgid "Vocabulary Folder Order"
+msgstr ""
+
 #. Default: "Vocabulary Libary"
+#: ../profiles/default/actionicons.xml
 #: ../profiles/default/controlpanel.xml
 #: ../profiles/default/types/VocabularyLibrary.xml
 msgid "Vocabulary Library"
 msgstr "Coleção de Vocabulários"
 
-#: ../profiles/default/actionicons.xml
-msgid "Vocabulary library"
-msgstr ""
-
-#. Default: "A not-so-basic CMF Content implementation with Dublin Core\n      Metadata included"
+#. Default: "A vocabulary that can points to any other registered vocabulary-type."
 #: ../profiles/default/types/AliasVocabulary.xml
 msgid "aliasvocabulary_description"
 msgstr ""
 
 #. Default: "There are currently no terms in this folder."
 #: ../skins/ATVocabularyManager/simplevocabulary_view.pt:124
-#, fuzzy
 msgid "description_no_terms_in_folder"
 msgstr "Atualmente não existe nenhum vocabulário nesta coleção."
 
@@ -112,7 +117,6 @@ msgstr ""
 #. Default: "Here you can upload <strong>IMS Vocabulary Definition Exchange</strong> compliant XML-files. Read more about <a href=\"http://www.imsglobal.org/\">IMS</a> and the <a href=\"http://www.imsglobal.org/\">VDEX-Specifications</a>."
 #: ../skins/ATVocabularyManager/vdex_upload.cpt:13
 #: ../skins/ATVocabularyManager/vocabularytool_view.cpt:86
-#, fuzzy
 msgid "description_vdex_upload"
 msgstr "Aqui você pode carregar arquivos XML de acordo com as <strong>Definições de Troca para Vocabulários do IMS</strong>. Leia mais sobre o <a href=\"http://www.imsglobal.org/\">IMS</a> e as <a href=\"http://www.imsglobal.org/\">Especificações VDEX</a>."
 
@@ -137,28 +141,26 @@ msgstr "Vocabulários listados:"
 msgid "heading_vdex_upload"
 msgstr "Carregar novo VDEX"
 
-#. Default: "A short summary of the content"
-#: ../types/vdex/vocabularyxml.py:56
-msgid "help_description"
+#. Default: "Check to show only leaves in this vocabulary."
+#: ../types/tree/vocabulary.py:37
+msgid "help_show_leaves_only"
+msgstr ""
+
+#. Default: "Sort method used for displaying vocabulary terms"
+#: ../types/simple/vocabulary.py:89
+msgid "help_sort_method"
 msgstr ""
 
 #. Default: "Should not contain spaces, underscores or mixed case."
-#: types/simple/term.py
-msgid "help_key"
-msgstr "Não deve conter espaços, sub-linhas ou caracteres de caixa alta."
-
-#. Default: "Should not contain spaces, underscores or mixed case."
-#: types/alias/vocabulary.py
+#: ../types/simple/term.py:53
+#: ../types/simple/vocabulary.py:62
+#: ../types/tree/term.py:54
 msgid "help_vocab_name"
 msgstr "Não deve conter espaços, sub-linhas ou caracteres de caixa alta."
 
-#. Default: "Description"
-#: ../types/vdex/vocabularyxml.py:55
-msgid "label_description"
-msgstr ""
-
 #. Default: "Key"
-#: types/simple/term.py
+#: ../types/simple/term.py:52
+#: ../types/tree/term.py:53
 msgid "label_key"
 msgstr "Chave"
 
@@ -179,18 +181,23 @@ msgid "label_select_type"
 msgstr "Selecionar o tipo"
 
 #. Default: "Show Leafs Only"
-#: ../types/vdex/vocabularyxml.py:85
+#: ../types/vdex/vocabularyxml.py:84
 msgid "label_showLeafsOnly"
 msgstr ""
 
 #. Default: "Show Term Path"
-#: ../types/vdex/vocabularyxml.py:77
+#: ../types/vdex/vocabularyxml.py:76
 msgid "label_showTermPath"
 msgstr ""
 
-#. Default: "Title"
-#: ../types/vdex/vocabularyxml.py:42
-msgid "label_title"
+#. Default: "Show leaves only"
+#: ../types/tree/vocabulary.py:35
+msgid "label_show_leaves_only"
+msgstr ""
+
+#. Default: "Sort method"
+#: ../types/simple/vocabulary.py:87
+msgid "label_sort_method"
 msgstr ""
 
 #. Default: "Up to Vocabulary Manager Overview"
@@ -199,7 +206,8 @@ msgid "label_up_to_vocabulary_manager_overview"
 msgstr "Subir para a Apresentação do Gerenciamento de Vocabulários"
 
 #. Default: "Value"
-#: types/simple/term.py
+#: ../types/simple/term.py:63
+#: ../types/tree/term.py:65
 msgid "label_value"
 msgstr "Valor"
 
@@ -208,8 +216,8 @@ msgstr "Valor"
 msgid "label_vdex_upload"
 msgstr "Carregar VDEX"
 
-#. Default: "Vocabulary name"
-#: types/alias/vocabulary.py
+#. Default: "Vocabulary Name"
+#: ../types/simple/vocabulary.py:60
 msgid "label_vocab_name"
 msgstr "Nome do vocabulário"
 
@@ -238,17 +246,17 @@ msgstr ""
 msgid "listingheader_type"
 msgstr ""
 
-#. Default: "An ordered base folder implementation"
+#. Default: "This vocabulary type can contain every type of term."
 #: ../profiles/default/types/SimpleVocabulary.xml
 msgid "simplevocabulary_description"
 msgstr ""
 
-#. Default: "A not-so-basic CMF Content implementation with Dublin Core\n      Metadata included"
+#. Default: "A basic key/value term for a vocabulary implementation"
 #: ../profiles/default/types/SimpleVocabularyTerm.xml
 msgid "simplevocabularyterm_description"
 msgstr ""
 
-#. Default: "An ordered base folder implementation"
+#. Default: "A vocabulary implementation where terms are sorted"
 #: ../profiles/default/types/SortedSimpleVocabulary.xml
 msgid "sortedsimplevocabulary_description"
 msgstr ""
@@ -263,7 +271,7 @@ msgstr "enviar"
 msgid "summary_content_listing"
 msgstr ""
 
-#. Default: "An ordered base folder implementation"
+#. Default: "A vocabulary for hierachical key/value pairs"
 #: ../profiles/default/types/TreeVocabulary.xml
 msgid "treevocabulary_description"
 msgstr ""
@@ -278,7 +286,7 @@ msgstr ""
 msgid "vdexvocabularyfile_description"
 msgstr ""
 
-#. Default: "This tool contains dynamic vocabularies to be used by Archetypes\n      fields. It has methods to register special/custom vocabulary\n      types"
+#. Default: "This tool contains dynamic vocabularies to be used by Archetypes fields. It has methods to register special/custom vocabulary types"
 #: ../profiles/default/types/VocabularyLibrary.xml
 msgid "vocabularylibrary_description"
 msgstr ""

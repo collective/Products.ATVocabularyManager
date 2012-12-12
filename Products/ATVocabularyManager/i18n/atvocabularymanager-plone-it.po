@@ -1,0 +1,43 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2005-10-06 21:07+0000\n"
+"PO-Revision-Date: 2012-11-19 14:57+0001\n"
+"Last-Translator: Luca Fabbri <keul@redturtle.it>\n"
+"Language-Team: RedTurtle Technology <sviluppoplone@redturtle.it>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: it\n"
+"Language-Name: Italian\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: plone\n"
+
+msgid "Alias Vocabulary"
+msgstr "Vocabolario Alias"
+
+msgid "IMS VDEX Vocabulary"
+msgstr "Vocabolario IMS VDEX"
+
+msgid "Simple Vocabulary"
+msgstr "Vocabolario Semplice"
+
+msgid "Simple Vocabulary Term"
+msgstr "Termine per Vocabolario Semplice"
+
+msgid "Sorted Simple Vocabulary"
+msgstr "Vocabolario Semplice Ordinato"
+
+msgid "Tree Vocabulary"
+msgstr "Vocabolario ad Albero"
+
+msgid "Tree Vocabulary Term"
+msgstr "Termine per Vocabolario ad Albero"
+
+msgid "Vocabulary Library"
+msgstr "Libreria Vocabolari"
+

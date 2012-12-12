@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: atvocabularymanager-cs\n"
-"POT-Creation-Date: 2011-09-27 14:12+0000\n"
+"POT-Creation-Date: 2012-11-09 16:35+0000\n"
 "PO-Revision-Date: 2006-03-22 18:28+0100\n"
 "Last-Translator: Sander van Geloven <info@atopia.nl>\n"
 "Language-Team: Sander van Geloven <info@atopia.nl>\n"
@@ -32,20 +32,17 @@ msgstr "Alias vocabulaire"
 msgid "Delete"
 msgstr "Verwijderen"
 
-msgid "IMS VDEX Vocabulary"
-msgstr "IMS VDEX vocabulaire"
-
 #: ../profiles/default/types/VdexFileVocabulary.xml
 msgid "IMS VDEX Vocabulary File"
 msgstr ""
 
 #. Default: "upload the IMS Vocabulary Definition Format compliant XML file into this text field."
-#: ../types/vdex/vocabularyxml.py:65
+#: ../types/vdex/vocabularyxml.py:64
 msgid "IMSVDEXVocabulary_description_vdex"
 msgstr ""
 
 #. Default: "VDEX-XML-Data"
-#: ../types/vdex/vocabularyxml.py:64
+#: ../types/vdex/vocabularyxml.py:63
 msgid "IMSVDEXVocabulary_label_vdex"
 msgstr ""
 
@@ -53,6 +50,14 @@ msgstr ""
 #: ../skins/ATVocabularyManager/vocabularytool_view.cpt:94
 msgid "Import"
 msgstr "Importeren"
+
+#: ../config.py:39
+msgid "Lexicographic sort by keys"
+msgstr ""
+
+#: ../config.py:38
+msgid "Lexicographic sort by values"
+msgstr ""
 
 #. Default: "New"
 #: ../skins/ATVocabularyManager/simplevocabulary_view.pt:78
@@ -84,17 +89,18 @@ msgstr "Boom Vocabulaire"
 msgid "Tree Vocabulary Term"
 msgstr "Boom Vocabulaire Term"
 
+#: ../config.py:37
+msgid "Vocabulary Folder Order"
+msgstr ""
+
 #. Default: "Vocabulary Libary"
+#: ../profiles/default/actionicons.xml
 #: ../profiles/default/controlpanel.xml
 #: ../profiles/default/types/VocabularyLibrary.xml
 msgid "Vocabulary Library"
 msgstr "Vocabulaire Bibliotheek"
 
-#: ../profiles/default/actionicons.xml
-msgid "Vocabulary library"
-msgstr ""
-
-#. Default: "A not-so-basic CMF Content implementation with Dublin Core\n      Metadata included"
+#. Default: "A vocabulary that can points to any other registered vocabulary-type."
 #: ../profiles/default/types/AliasVocabulary.xml
 msgid "aliasvocabulary_description"
 msgstr ""
@@ -136,28 +142,26 @@ msgstr "Getoonde vocabulaires:"
 msgid "heading_vdex_upload"
 msgstr "Upload nieuw VDEX"
 
-#. Default: "A short summary of the content"
-#: ../types/vdex/vocabularyxml.py:56
-msgid "help_description"
+#. Default: "Check to show only leaves in this vocabulary."
+#: ../types/tree/vocabulary.py:37
+msgid "help_show_leaves_only"
+msgstr ""
+
+#. Default: "Sort method used for displaying vocabulary terms"
+#: ../types/simple/vocabulary.py:89
+msgid "help_sort_method"
 msgstr ""
 
 #. Default: "Should not contain spaces, underscores or mixed case."
-#: types/simple/term.py
-msgid "help_key"
-msgstr "Mag geen spaties, underscores of een mengvorm bevatten."
-
-#. Default: "Should not contain spaces, underscores or mixed case."
-#: types/alias/vocabulary.py
+#: ../types/simple/term.py:53
+#: ../types/simple/vocabulary.py:62
+#: ../types/tree/term.py:54
 msgid "help_vocab_name"
 msgstr "Mag geen spaties, underscores of een mengvorm bevatten."
 
-#. Default: "Description"
-#: ../types/vdex/vocabularyxml.py:55
-msgid "label_description"
-msgstr ""
-
 #. Default: "Key"
-#: types/simple/term.py
+#: ../types/simple/term.py:52
+#: ../types/tree/term.py:53
 msgid "label_key"
 msgstr "Sleutel"
 
@@ -178,18 +182,23 @@ msgid "label_select_type"
 msgstr "Selecteer type"
 
 #. Default: "Show Leafs Only"
-#: ../types/vdex/vocabularyxml.py:85
+#: ../types/vdex/vocabularyxml.py:84
 msgid "label_showLeafsOnly"
 msgstr ""
 
 #. Default: "Show Term Path"
-#: ../types/vdex/vocabularyxml.py:77
+#: ../types/vdex/vocabularyxml.py:76
 msgid "label_showTermPath"
 msgstr ""
 
-#. Default: "Title"
-#: ../types/vdex/vocabularyxml.py:42
-msgid "label_title"
+#. Default: "Show leaves only"
+#: ../types/tree/vocabulary.py:35
+msgid "label_show_leaves_only"
+msgstr ""
+
+#. Default: "Sort method"
+#: ../types/simple/vocabulary.py:87
+msgid "label_sort_method"
 msgstr ""
 
 #. Default: "Up to Vocabulary Manager Overview"
@@ -198,7 +207,8 @@ msgid "label_up_to_vocabulary_manager_overview"
 msgstr "Omhoog naar Vocabulaire Manager Overzicht"
 
 #. Default: "Value"
-#: types/simple/term.py
+#: ../types/simple/term.py:63
+#: ../types/tree/term.py:65
 msgid "label_value"
 msgstr "Waarde"
 
@@ -207,8 +217,8 @@ msgstr "Waarde"
 msgid "label_vdex_upload"
 msgstr "VDEX-Upload"
 
-#. Default: "Vocabulary name"
-#: types/alias/vocabulary.py
+#. Default: "Vocabulary Name"
+#: ../types/simple/vocabulary.py:60
 msgid "label_vocab_name"
 msgstr "Vocabulaire naam"
 
@@ -237,17 +247,17 @@ msgstr "Titel"
 msgid "listingheader_type"
 msgstr "Type"
 
-#. Default: "An ordered base folder implementation"
+#. Default: "This vocabulary type can contain every type of term."
 #: ../profiles/default/types/SimpleVocabulary.xml
 msgid "simplevocabulary_description"
 msgstr ""
 
-#. Default: "A not-so-basic CMF Content implementation with Dublin Core\n      Metadata included"
+#. Default: "A basic key/value term for a vocabulary implementation"
 #: ../profiles/default/types/SimpleVocabularyTerm.xml
 msgid "simplevocabularyterm_description"
 msgstr ""
 
-#. Default: "An ordered base folder implementation"
+#. Default: "A vocabulary implementation where terms are sorted"
 #: ../profiles/default/types/SortedSimpleVocabulary.xml
 msgid "sortedsimplevocabulary_description"
 msgstr ""
@@ -262,7 +272,7 @@ msgstr "versturen"
 msgid "summary_content_listing"
 msgstr "Inhoud"
 
-#. Default: "An ordered base folder implementation"
+#. Default: "A vocabulary for hierachical key/value pairs"
 #: ../profiles/default/types/TreeVocabulary.xml
 msgid "treevocabulary_description"
 msgstr ""
@@ -277,7 +287,7 @@ msgstr ""
 msgid "vdexvocabularyfile_description"
 msgstr ""
 
-#. Default: "This tool contains dynamic vocabularies to be used by Archetypes\n      fields. It has methods to register special/custom vocabulary\n      types"
+#. Default: "This tool contains dynamic vocabularies to be used by Archetypes fields. It has methods to register special/custom vocabulary types"
 #: ../profiles/default/types/VocabularyLibrary.xml
 msgid "vocabularylibrary_description"
 msgstr ""

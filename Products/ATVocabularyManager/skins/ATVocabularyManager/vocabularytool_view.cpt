@@ -102,10 +102,10 @@
         </div>
 
         <h2 i18n:translate="heading_listed_vocabularies">Listed vocabularies:</h2>
-        <form   name="folderContentsForm"
-                method="post"
-                action="folder_object"
-                tal:attributes="action here_url">
+        <form name="folderContentsForm"
+              method="post"
+              action="folder_object"
+              tal:attributes="action here_url">
 
         <metal:listing define-macro="folder_listing"
                        tal:define="canModifyFolderContent is_editable;

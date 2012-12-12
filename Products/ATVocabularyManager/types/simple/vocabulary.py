@@ -35,9 +35,10 @@ from Products.Archetypes.interfaces import IVocabulary
 from Products.Archetypes.utils import make_uuid
 from Products.Archetypes.utils import DisplayList
 from Products.Archetypes.utils import OrderedDict
+from Products.Archetypes import PloneMessageFactory as PMF
 
 from Products.ATVocabularyManager.config import PROJECTNAME
-
+from Products.ATVocabularyManager import messageFactory as _ 
 
 class SimpleVocabulary(OrderedBaseFolder):
 
@@ -56,11 +57,11 @@ class SimpleVocabulary(OrderedBaseFolder):
                     mutator = "setId",
                     default = '',
                     widget = StringWidget(
-                        label="Vocabulary Name",
-                        label_msgid="label_vocab_name",
-                        description="Should not contain spaces, underscores or mixed case.",
-                        description_msgid="help_vocab_name",
-                        i18n_domain="atvocabularymanager"
+                        label=_("label_vocab_name",
+                                default=u"Vocabulary Name"),
+                        description=_("help_vocab_name",
+                                      default=u"Should not contain spaces, underscores or mixed case."),
+                        size=50,
                         ),
                     ),
 
@@ -70,12 +71,11 @@ class SimpleVocabulary(OrderedBaseFolder):
                   searchable = 0,
                   accessor = "Description",
                   storage = MetadataStorage(),
-                  widget = TextAreaWidget(description = "Enter a brief description",
-                                          description_msgid = "help_description",
-                                          label = "Description",
-                                          label_msgid = "label_description",
+                  widget = TextAreaWidget(label=PMF("label_description",
+                                                    default=u"Description"),
+                                          description=PMF("help_description",
+                                                          default=u"Enter a brief description"),
                                           rows = 5,
-                                          i18n_domain = "plone"
                                           ),
                   ),
 
@@ -84,14 +84,13 @@ class SimpleVocabulary(OrderedBaseFolder):
                     required = 0, # smooth upgrades from 1.0.0-beta2
                     searchable = 0,
                     widget = SelectionWidget(
-                        label = "Sort method",
-                        label_msgid = "label_sort_method",
-                        description = "Sort method used for displaying vocabulary terms",
-                        description_msgid = "help_sort_method",
-                        i18n_domain = "atvocabularymanager",
-                        ),
-                    vocabulary = VOCABULARY_SORT_ORDERS
+                        label = _("label_sort_method",
+                                  default=u"Sort method"),
+                        description = _("help_sort_method",
+                                        default=u"Sort method used for displaying vocabulary terms"),
                     ),
+                    vocabulary = VOCABULARY_SORT_ORDERS,
+        ),
     ))
 
     def isLinguaPloneInstalled(self):

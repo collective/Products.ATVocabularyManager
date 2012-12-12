@@ -27,16 +27,15 @@ except ImportError:
 
 from Products.ATVocabularyManager.types.simple import SimpleVocabulary
 from Products.ATVocabularyManager.config import PROJECTNAME
-
+from Products.ATVocabularyManager import messageFactory as _
 
 schema = SimpleVocabulary.schema + Schema((
     BooleanField('ShowLeavesOnly',
         widget = BooleanWidget(
-            label = "Show leaves only",
-            label_msgid = "label_show_leaves_only",
-            description = "Check to show only leaves in this vocabulary.",
-            description_msgid = "help_show_leaves_only",
-            i18n_domain = "atvocabularymanager",
+            label = _("label_show_leaves_only",
+                      default=u"Show leaves only"),
+            description = _("help_show_leaves_only",
+                            default=u"Check to show only leaves in this vocabulary."),
         ),
     ),
 ))

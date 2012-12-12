@@ -1,7 +1,6 @@
 Changelog
 =========
 
-
 1.6.3 (unreleased)
 ------------------
 
@@ -15,11 +14,19 @@ Changelog
 
 - Bind Content-types to Default workflow. [pjstevns]
 
+- Removed long deprecated "Properties" tab in types [keul]
+
+- Refactoring of the i18n structure (new translations, and no more needs of a
+  manual.pot file) [keul]
+
+- Added italian translation [keul]
+
+- Removed old-styles Zope2 interfaces [keul]
 
 1.6.2 (2012-03-22)
 ------------------
 
-- Avoid breaking the import of *.zexp-files when an vocabularies don't exist
+- Avoid breaking the import of \*.zexp-files when an vocabularies don't exist
   anymore, but instantiated object still exist in the import-file.
   [WouterVH]
   
