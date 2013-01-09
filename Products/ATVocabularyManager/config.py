@@ -4,7 +4,8 @@
 #
 
 from Products.Archetypes.utils import DisplayList
-from Products.ATVocabularyManager import messageFactory as _ 
+from Products.ATVocabularyManager import messageFactory as _
+from pkg_resources import DistributionNotFound
 
 # package configuration
 
@@ -34,15 +35,19 @@ SORT_METHOD_LEXICO_VALUES = "lexicographic_values"
 SORT_METHOD_LEXICO_KEYS = "lexicographic_keys"
 
 VOCABULARY_SORT_ORDERS = DisplayList((
-    ('getObjPositionInParent', _('Vocabulary Folder Order'), 'sort_method_folder_order'),
-    ('lexicographic_values', _('Lexicographic sort by values'), 'sort_method_lexi_value'),
-    ('lexicographic_keys', _('Lexicographic sort by keys'), 'sort_method_lexi_keys'),
+    ('getObjPositionInParent', _('Vocabulary Folder Order'),
+     'sort_method_folder_order'),
+    ('lexicographic_values', _('Lexicographic sort by values'),
+     'sort_method_lexi_value'),
+    ('lexicographic_keys', _('Lexicographic sort by keys'),
+     'sort_method_lexi_keys'),
     ))
 
 # LinguaPlone addon?
+import pkg_resources
 try:
-    import Products.LinguaPlone
-except ImportError:
+    pkg_resources.get_distribution("Products.LinguaPlone")
+except DistributionNotFound:
     HAS_LINGUA_PLONE = False
 else:
     HAS_LINGUA_PLONE = True

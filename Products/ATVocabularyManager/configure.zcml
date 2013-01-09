@@ -17,5 +17,27 @@
       description=""
       provides="Products.GenericSetup.interfaces.EXTENSION"
   />
-
+  <genericsetup:importStep
+      name="atvm-vocabularies"
+      title="Vocabularies (ATVM)"
+      description="Import custom roles and non-default role-permission mappings."
+      handler="Products.GenericSetup.rolemap.importRolemap"
+      >
+      <depends name="toolset"/>
+  </genericsetup:importStep>
+  <genericsetup:importStep
+      name="atvocabularymanager-various"
+      title="ATVocabularyManager various"
+      description=""
+      handler="Products.ATVocabularyManager.setuphandlers.importVarious"
+      >
+      <depends name="toolset"/>
+  </genericsetup:importStep>
+<!-- TODO -->
+<!--   <genericsetup:exportStep -->
+<!--       name="atvm-vocabularies" -->
+<!--       title="Vocabularies (ATVM)" -->
+<!--       description="" -->
+<!--       handler="Products.ATVocabularyManager.importexport.exportVocabularies" -->
+<!--       /> -->
 </configure> 

@@ -75,7 +75,6 @@ class NamedVocabulary(object):
         vocab = self.getVocabulary(instance)
         return vocab.showLeafsOnly(instance)
 
-
     security.declarePrivate('getVocabulary')
     def getVocabulary(self, instance):
         """ return the vocabulary by name from atvocabularymanager
@@ -83,7 +82,7 @@ class NamedVocabulary(object):
         vt = getToolByName(instance, TOOL_NAME)
         vocab = vt.getVocabularyByName(self.vocab_name)
         if vocab is None:
-            raise KeyError('Vocabulary id not found in '+ \
+            raise KeyError('Vocabulary id not found in ' + \
                 'portal_vocabularies : %s' % self.vocab_name)        
         assert(IVocabulary.providedBy(vocab))
         return vocab
@@ -100,7 +99,6 @@ class NamedVocabulary(object):
         # XXX testcase: provide None, an empty list, treeterms, keys
         # maybe even wrong keys (of (non)existing objects, but no terms)
 
-
         # keywordindex is satisfied with an empty list
         keypath = []
 
@@ -110,7 +108,7 @@ class NamedVocabulary(object):
 
         # we can get a list, or just a value
         if not isinstance(terms, (tuple, list)):
-            terms=[terms, ]
+            terms = [terms, ]
 
         uc = getToolByName(instance, 'uid_catalog')
 
