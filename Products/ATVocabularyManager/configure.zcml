@@ -21,6 +21,7 @@
       description=""
       provides="Products.GenericSetup.interfaces.EXTENSION"
   />
+  <include file="upgrades.zcml"/>
   <genericsetup:importStep
       name="atvm-vocabularies"
       title="Vocabularies (ATVM)"

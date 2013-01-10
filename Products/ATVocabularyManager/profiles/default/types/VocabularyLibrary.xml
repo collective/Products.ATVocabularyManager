@@ -19,7 +19,7 @@
    <element value="TreeVocabulary"/>
    <element value="VdexFileVocabulary"/>
  </property>
- <alias from="(Default)" to="base_view"/>
+ <alias from="(Default)" to="vocabularytool_view"/>
  <alias from="edit" to="base_edit"/>
  <alias from="index.html" to="(Default)"/>
  <alias from="properties" to="base_metadata"/>
