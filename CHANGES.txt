@@ -23,6 +23,11 @@ Changelog
 
 - Removed old-styles Zope2 interfaces [keul]
 
+- Move old i18n folder to current locales [toutpt]
+
+- Add fetchValuePathFromVDict to get path in tree vocabulary [toutpt]
+
+
 1.6.2 (2012-03-22)
 ------------------
 
