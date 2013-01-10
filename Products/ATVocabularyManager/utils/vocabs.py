@@ -22,6 +22,28 @@ def fetchValueByKeyFromVocabularyDict(searchedkey, vdict):
     return None
 
 
+def fetchValuePathFromVDict(searchedkey, vdict, path=""):
+    """recursive find of a key in the vocabulary dictionary tree.
+    (key = uid111, vdict) -> uid1/uid11/uid111
+    """
+
+    for key in vdict.keys():
+        newpath = path + '/' + key
+        if key == searchedkey:
+            return newpath
+
+        elif vdict[key] not in types.StringTypes:
+            if not vdict[key][1]:
+                continue
+            rpath = fetchValuePathFromVDict(searchedkey,
+                                            vdict[key][1],
+                                            path=newpath)
+            if rpath is not None:
+                return rpath
+
+    return None
+
+
 def createSimpleVocabs(atvm, simpleVocabDictionary):
     """
     creates simple ATVM vocabularies out of tuples stored in the dictionary
