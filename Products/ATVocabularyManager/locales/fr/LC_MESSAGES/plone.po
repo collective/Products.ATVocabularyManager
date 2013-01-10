@@ -15,6 +15,7 @@ msgstr ""
 "Language-Name: French\n"
 "Preferred-Encodings: latin1 utf-8\n"
 "Domain: plone\n"
+"X-Is-Fallback-For: fr-be fr-ca fr-lu fr-mc fr-ch fr-fr\n"
 
 msgid "Alias Vocabulary"
 msgstr "Alias de vocabulaire"
@@ -26,10 +27,10 @@ msgid "Simple Vocabulary"
 msgstr "Vocabulaire simple"
 
 msgid "Simple Vocabulary Term"
-msgstr ""
+msgstr "Terme de vocabulaire simple"
 
 msgid "Sorted Simple Vocabulary"
-msgstr "Vocabulaire Simple Trié"
+msgstr "Vocabulaire Simple TriÃ©"
 
 msgid "Tree Vocabulary"
 msgstr "Vocabulaire arborescent"
@@ -38,5 +39,5 @@ msgid "Tree Vocabulary Term"
 msgstr "Terme de vocabulaire arborescent"
 
 msgid "Vocabulary Library"
-msgstr "Bibliothèque de vocabulaires"
+msgstr "BibliothÃ¨que de vocabulaires"
 

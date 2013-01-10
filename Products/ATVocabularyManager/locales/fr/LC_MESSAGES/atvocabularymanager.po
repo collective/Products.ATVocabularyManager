@@ -34,17 +34,17 @@ msgstr "Supprimer"
 
 #: ../profiles/default/types/VdexFileVocabulary.xml
 msgid "IMS VDEX Vocabulary File"
-msgstr ""
+msgstr "Fichier de vocabulaire IMS VDEX"
 
 #. Default: "upload the IMS Vocabulary Definition Format compliant XML file into this text field."
 #: ../types/vdex/vocabularyxml.py:64
 msgid "IMSVDEXVocabulary_description_vdex"
-msgstr ""
+msgstr "Télécharger (up) un fichier de vocabulaire conforme au format XML dans ce champ texte."
 
 #. Default: "VDEX-XML-Data"
 #: ../types/vdex/vocabularyxml.py:63
 msgid "IMSVDEXVocabulary_label_vdex"
-msgstr ""
+msgstr "Données XML-VDEX"
 
 #. Default: "Import"
 #: ../skins/ATVocabularyManager/vocabularytool_view.cpt:94
@@ -53,11 +53,11 @@ msgstr "Importer"
 
 #: ../config.py:39
 msgid "Lexicographic sort by keys"
-msgstr ""
+msgstr "Vocabulaire trié sur les clés"
 
 #: ../config.py:38
 msgid "Lexicographic sort by values"
-msgstr ""
+msgstr "Vocabulaire trié sur les valeurs"
 
 #. Default: "New"
 #: ../skins/ATVocabularyManager/simplevocabulary_view.pt:78
@@ -67,7 +67,7 @@ msgstr "Nouveau"
 #. Default: "Save"
 #: ../skins/ATVocabularyManager/simplevocabulary_view.pt:79
 msgid "Save"
-msgstr "Sauver"
+msgstr "Enregistrer"
 
 #: ../profiles/default/types/SimpleVocabulary.xml
 msgid "Simple Vocabulary"
@@ -75,7 +75,7 @@ msgstr "Vocabulaire Simple"
 
 #: ../profiles/default/types/SimpleVocabularyTerm.xml
 msgid "Simple Vocabulary Term"
-msgstr ""
+msgstr "Terme de vocabulaire simple"
 
 #: ../profiles/default/types/SortedSimpleVocabulary.xml
 msgid "Sorted Simple Vocabulary"
@@ -91,7 +91,7 @@ msgstr "Mot de Vocabulaire en Arbre"
 
 #: ../config.py:37
 msgid "Vocabulary Folder Order"
-msgstr ""
+msgstr "Dossier Vocabulaire Ordonné"
 
 #. Default: "Vocabulary Libary"
 #: ../profiles/default/actionicons.xml
@@ -103,7 +103,7 @@ msgstr "Bibliothèque de Vocabulaires"
 #. Default: "A vocabulary that can points to any other registered vocabulary-type."
 #: ../profiles/default/types/AliasVocabulary.xml
 msgid "aliasvocabulary_description"
-msgstr ""
+msgstr "Un vocabulaire qui peut pointer sur n'importe quel autre type de vocabulaire enregistré."
 
 #. Default: "There are currently no terms in this folder."
 #: ../skins/ATVocabularyManager/simplevocabulary_view.pt:124
@@ -145,12 +145,12 @@ msgstr "Uploader un nouveau VDEX"
 #. Default: "Check to show only leaves in this vocabulary."
 #: ../types/tree/vocabulary.py:37
 msgid "help_show_leaves_only"
-msgstr ""
+msgstr "Cocher pour n'afficher que les feuilles de ce vocabulaire."
 
 #. Default: "Sort method used for displaying vocabulary terms"
 #: ../types/simple/vocabulary.py:89
 msgid "help_sort_method"
-msgstr ""
+msgstr "Méthode de tri utilisée pour afficher les termes du vocabulaire"
 
 #. Default: "Should not contain spaces, underscores or mixed case."
 #: ../types/simple/term.py:53
@@ -184,22 +184,22 @@ msgstr "Sélectionner le type"
 #. Default: "Show Leafs Only"
 #: ../types/vdex/vocabularyxml.py:84
 msgid "label_showLeafsOnly"
-msgstr ""
+msgstr "Afficher uniquement les feuilles"
 
 #. Default: "Show Term Path"
 #: ../types/vdex/vocabularyxml.py:76
 msgid "label_showTermPath"
-msgstr ""
+msgstr "Afficher le chemin du terme"
 
 #. Default: "Show leaves only"
 #: ../types/tree/vocabulary.py:35
 msgid "label_show_leaves_only"
-msgstr ""
+msgstr "Afficher uniquements les feuilles"
 
 #. Default: "Sort method"
 #: ../types/simple/vocabulary.py:87
 msgid "label_sort_method"
-msgstr ""
+msgstr "Méthode de tri"
 
 #. Default: "Up to Vocabulary Manager Overview"
 #: ../skins/ATVocabularyManager/simplevocabulary_view.pt:24
@@ -250,17 +250,17 @@ msgstr "Type"
 #. Default: "This vocabulary type can contain every type of term."
 #: ../profiles/default/types/SimpleVocabulary.xml
 msgid "simplevocabulary_description"
-msgstr ""
+msgstr "Ce type de vocabulaire peut contenir tout type de terme."
 
 #. Default: "A basic key/value term for a vocabulary implementation"
 #: ../profiles/default/types/SimpleVocabularyTerm.xml
 msgid "simplevocabularyterm_description"
-msgstr ""
+msgstr "Un terme de base clé/valeur"
 
 #. Default: "A vocabulary implementation where terms are sorted"
 #: ../profiles/default/types/SortedSimpleVocabulary.xml
 msgid "sortedsimplevocabulary_description"
-msgstr ""
+msgstr "Un vocabulaire ou les termes sont triés"
 
 #. Default: "submit"
 #: ../skins/ATVocabularyManager/vdex_upload.cpt:28
@@ -275,20 +275,20 @@ msgstr "Liste du contenu"
 #. Default: "A vocabulary for hierachical key/value pairs"
 #: ../profiles/default/types/TreeVocabulary.xml
 msgid "treevocabulary_description"
-msgstr ""
+msgstr "Un vocabulaire avec des paires clés/valeurs hiérarchiques"
 
 #. Default: "Term inside of a TreeVocabulary or as an subterm"
 #: ../profiles/default/types/TreeVocabularyTerm.xml
 msgid "treevocabularyterm_description"
-msgstr ""
+msgstr "Terme dans un vocabulaire arborescent ou en tant que sous terme"
 
 #. Default: "Content type for handling of VDEX compliant vocabulary."
 #: ../profiles/default/types/VdexFileVocabulary.xml
 msgid "vdexvocabularyfile_description"
-msgstr ""
+msgstr "Type permettant de gérer un vocabulaire conforme au format VDEX."
 
 #. Default: "This tool contains dynamic vocabularies to be used by Archetypes fields. It has methods to register special/custom vocabulary types"
 #: ../profiles/default/types/VocabularyLibrary.xml
 msgid "vocabularylibrary_description"
-msgstr ""
+msgstr "Ce tool contient des vocabulaires dynamiques à utiliser dans un champ Archetypes. Il a des méthodes pour ajouter/modifier différents types de vocabulaires."
 
