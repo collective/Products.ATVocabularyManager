@@ -33,7 +33,7 @@
           <form name="vocabularyForm"
                 method="post"
                 action="folder_object"
-                tal:attributes="action here_url">
+                tal:attributes="action context/absolute_url">
 
             <!-- Add Term pulldown -->
             <div class="field">
@@ -105,10 +105,10 @@
         <form name="folderContentsForm"
               method="post"
               action="folder_object"
-              tal:attributes="action here_url">
+              tal:attributes="action context/absolute_url">
 
         <metal:listing define-macro="folder_listing"
-                       tal:define="canModifyFolderContent is_editable;
+                       tal:define="canModifyFolderContent context/@@plone_context_state/is_editable;
                                    batch python:context.getFolderContents({'sort_on': 'getId'});">
           <table class="listing"
                  summary="Content listing"
@@ -143,8 +143,12 @@
               </metal:block>
             </thead>
             <metal:block tal:condition="batch|not:standalone|nothing">
-            <tbody tal:define="arrowUp portal/arrowUp.gif;
+            <tbody tal:define="portal context/@@plone_portal_state/portal;
+                               arrowUp portal/arrowUp.gif;
                                arrowDown portal/arrowDown.gif;
+                               normalizeString nocall:context/@@plone/normalizeString;
+                               utool nocall:portal/portal_url;
+                               wtool context/portal_workflow;
                                getRelativeContentURL nocall:utool/getRelativeContentURL
                                ">
                 <tal:items tal:repeat="item batch">
@@ -205,7 +209,7 @@
             </table>
 
         <input type="hidden" name="orig_template"
-               tal:attributes="value template_id"/>
+               tal:attributes="value template/getId"/>
         <tal:buttons i18n:domain="plone" tal:repeat="button actions/folder_buttons|nothing">
           <input class="context"
                  type="submit"

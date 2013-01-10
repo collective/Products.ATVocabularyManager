@@ -2,7 +2,7 @@
 <object name="portal_skins">
  <object name="ATVocabularyManager" meta_type="Filesystem Directory View"
     directory="Products.ATVocabularyManager:skins/ATVocabularyManager"/>
- <skin-path name="Plone Default">
+ <skin-path name="*">
   <layer name="ATVocabularyManager" after="custom" />
  </skin-path>
 </object>

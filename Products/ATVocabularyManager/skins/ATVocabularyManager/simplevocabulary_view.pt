@@ -36,7 +36,7 @@
           <form name="vocabularyForm"
                 method="post"
                 action="folder_object"
-                tal:attributes="action here_url"
+                tal:attributes="action context/absolute_url"
                 tal:define="batch python:here.batchedFolderContents(suppressHiddenFiles=1);">
 
             <select id="select_add_term"
