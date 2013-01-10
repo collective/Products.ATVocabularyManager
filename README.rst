@@ -1,6 +1,7 @@
-================================================================
+Introduction
+============
+
 ATVocabularyManager: a vocabulary managing portal tool for Plone
-================================================================
 
 .. contents::
 
@@ -24,10 +25,10 @@ Overview
 - ATVocabularyManager supports:
 
   simple flat key 
-     value vocabularies,
+     value vocabularies
 
   tree like 
-     hierachical vocabularies (see Limitations),
+     hierachical vocabularies (see Limitations)
 
   IMS Vocabulary Definition Exchange Format (VDEX) aware vocabularies
      with XML Import and Export. VDEX is i18n-aware by its nature and does 
@@ -62,35 +63,21 @@ the term hierachy require a catalog rebuild (see Limitations).
 Installation
 ============
 
-See docs/INSTALL.txt.
+This addon can be installed has any other addons. please follow official
+documentation_
 
-To speed up ATVocabularyManager you might want to associate it with a Cache-Manager.
+.. _documentation: http://plone.org/documentation/kb/installing-add-ons-quick-how-to
+
+To speed up ATVocabularyManager you might want to associate it with a
+Cache-Manager.
 
 
 Dependencies
-============
+------------
 
-- Archetypes 1.5.x and above.
-
-- Targets with Plone 3.1+
-
-- imsvdex (usally it get fetched automatically as dependency, otherwise 
-  easy_install imsvdex - )
-
-- Linguaplone (optional: for tests and multilingual vocabularies)
-
-
-Tests
-=====
-
-If you're using a buildout run the tests using
-
-   bin/instance test -s Products.ATVocabularyManager
-
-To run a certain testmodule run
-
-   bin/instance test -s Products.ATVocabularyManager -m testSimpleVocabulary
-
+- Products.Archetypes
+- imsvdex
+- [Products.Linguaplone] optional
 
 
 Limitations
@@ -109,7 +96,7 @@ Creation/Edit of VDEX TTW is difficult.
 Known Bugs
 ==========
 
-- Check the issue-tracker: http://plone.org/products/atvocabularymanager/issues
+- Check the issue-tracker: https://github.com/collective/Products.ATVocabularyManager/issues
   Feel free to add bugs in here!
 
 
@@ -122,8 +109,31 @@ plone.org:http://plone.org
 
 Credits
 =======
- Several parts code was created for the ZUCCARO project.
- ZUCCARO (Zope-based Universally Configurable Classes for Academic
- Research Online) is a database framework for the Humanities developed
- by the Bibliotheca Hertziana, Max Planck Institute for Art History
- For further information: "zuccaro.biblhertz.it":http://zuccaro.biblhertz.it/
+
+Several parts code was created for the ZUCCARO project.
+ZUCCARO (Zope-based Universally Configurable Classes for Academic
+Research Online) is a database framework for the Humanities developed
+by the Bibliotheca Hertziana, Max Planck Institute for Art History
+For further information: "zuccaro.biblhertz.it":http://zuccaro.biblhertz.it/
+
+People
+------
+
+- pjstevns
+- keul
+- toutpt
+- WouterVH
+- jensens
+- hpeteragitator
+- jcbrand
+- do3cc
+- thet
+- fRiSi
+- naro
+- andrewburkhalter
+- rocky
+- gotcha
+- jladage
+- ferri
+- optilude
+- panjunyong
