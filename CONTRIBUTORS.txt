@@ -1,19 +1,16 @@
-Author
-======
+Credits
+=======
 
-- Jens Klein <jens@bluedynamics.com>
+Several parts code was created for the ZUCCARO project.
+ZUCCARO (Zope-based Universally Configurable Classes for Academic
+Research Online) is a database framework for the Humanities developed
+by the Bibliotheca Hertziana, Max Planck Institute for Art History
+For further information: "zuccaro.biblhertz.it":http://zuccaro.biblhertz.it/
 
-- Major contributions by Harald Friessnegger 'frisi': i18n, cleanup,
-  more cleanup of hierachical vocabularies.
+People
+------
 
-
-Contributors
-============
-
-Several people committed smaller fixes and translations, thank you all!
-
-- andrewburkhalter -  <andrewb@onenw.org>
-- do3cc
+- Jens Klein <jens@bluedynamics.com> (author)
 - fRiSi <harald.webmeisterei.com>
 - gotcha <gotcha@bubblenet.be>
 - jensens <jens@bluedynamics.com>
@@ -22,3 +19,5 @@ Several people committed smaller fixes and translations, thank you all!
 - thet <raggam-nl@adm.at>
 - Wouter Vanden Hove, <wouter@wvhconsulting.org>
 - Paul J Stevens, <paul@nfg.nl>
+- JeanMichel FRANCOIS, <toutpt@gmail.com>
+- andrewburkhalter -  <andrewb@onenw.org>

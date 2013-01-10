@@ -106,34 +106,3 @@ Usally the authors are offering professional support. The classical well-working
 community support is found at the mailing-lists and IRC-channels announced at
 plone.org:http://plone.org
 
-
-Credits
-=======
-
-Several parts code was created for the ZUCCARO project.
-ZUCCARO (Zope-based Universally Configurable Classes for Academic
-Research Online) is a database framework for the Humanities developed
-by the Bibliotheca Hertziana, Max Planck Institute for Art History
-For further information: "zuccaro.biblhertz.it":http://zuccaro.biblhertz.it/
-
-People
-------
-
-- pjstevns
-- keul
-- toutpt
-- WouterVH
-- jensens
-- hpeteragitator
-- jcbrand
-- do3cc
-- thet
-- fRiSi
-- naro
-- andrewburkhalter
-- rocky
-- gotcha
-- jladage
-- ferri
-- optilude
-- panjunyong
