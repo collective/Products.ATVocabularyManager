@@ -27,6 +27,8 @@ Changelog
 
 - Add fetchValuePathFromVDict to get path in tree vocabulary [toutpt]
 
+- Extract install_requires to separate variable. [pjstevns]
+
 
 1.6.2 (2012-03-22)
 ------------------

@@ -39,7 +39,7 @@ install_requires = [
     'zope.component',
     'zope.container',
     'zope.event',
-    'zope.i18nmessageid'
+    'zope.i18nmessageid',
     'zope.interface',
     'zope.lifecycleevent',
     'zope.site',
@@ -76,11 +76,7 @@ setup(name='Products.ATVocabularyManager',
           test=['interlude', 'Products.LinguaPlone', ],
           plone4=['Plone', 'Pillow'],
       ),
-      install_requires=[
-          'setuptools',
-          'imsvdex',
-          'zope.i18nmessageid'
-      ],
+      install_requires=install_requires,
       entry_points="""
       [z3c.autoinclude.plugin]
       target = plone
