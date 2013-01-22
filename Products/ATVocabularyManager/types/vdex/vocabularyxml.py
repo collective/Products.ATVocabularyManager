@@ -26,6 +26,7 @@ from Products.ATVocabularyManager.config import *
 from Products.ATVocabularyManager.config import PROJECTNAME
 from zope.interface import implements
 from imsvdex.vdex import VDEXManager, VDEXError
+import HTMLParser
 from Products.Archetypes import PloneMessageFactory as PMF
 
 from Products.ATContentTypes import ATCTMessageFactory as _
@@ -61,7 +62,7 @@ IMSVDEXVocabularySchema = Schema((
         allowable_content_types = ["text/xml"],
         widget = FileWidget(
             label=_(u'IMSVDEXVocabulary_label_vdex', default=u'VDEX-XML-Data'),
-            description=_(u'IMSVDEXVocabulary_description_vdex', 
+            description=_(u'IMSVDEXVocabulary_description_vdex',
                             default=u'upload the IMS Vocabulary Definition Format '
                             'compliant XML file into this text field.'),
             allow_file_upload = True,
@@ -120,12 +121,13 @@ class IMSVDEXVocabulary(BaseContent):
         """
         dl = DisplayList()
         tree = self.getVocabularyDict(instance)
-                        
+        html = HTMLParser.HTMLParser()
+
         def build_display_list(current, valueparent):
             for key in current:
                 value, part = current[key]
                 if valueparent and self.getShowTermPath():
-                    value = '%s &rarr; %s' % (valueparent, value)
+                    value = html.unescape('%s &rarr; %s' % (valueparent, value))
                 leafs_only = self.getShowLeafsOnly()
                 is_leaf = part is None
                 if (is_leaf and leafs_only) or (not leafs_only):
