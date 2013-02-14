@@ -4,7 +4,8 @@ Changelog
 1.6.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fixed simplevocabulary_view and set as default view for SimpleVocabulary
+  and SortedSimpleVocabulary [petschki]
 
 
 1.6.3 (2013-01-16)
@@ -15,7 +16,7 @@ Changelog
 - Update and cleanup the test code for PEP8 and pyflakes, fix deprecation
   warnings, remove ZopeTestCase. [pjstevns]
 
-- Update the content-types for current Plone practice (GS, FTI). This 
+- Update the content-types for current Plone practice (GS, FTI). This
   probably makes things compatible with plone4+ only. [pjstevns]
 
 - Bind Content-types to Default workflow. [pjstevns]
@@ -42,22 +43,22 @@ Changelog
 - Avoid breaking the import of \*.zexp-files when an vocabularies don't exist
   anymore, but instantiated object still exist in the import-file.
   [WouterVH]
-  
-- Added field 'showTermPath' for vdex vocabularies, to manually turn of the 
+
+- Added field 'showTermPath' for vdex vocabularies, to manually turn of the
   term path. [jensens] [hpeteragitator]
-  
+
 - Added field 'showLeafsOnly' for vdex vocabularies, to change if only the leaf
   of the vocabulary tree can be selected. [jensens] [hpeteragitator]
-  
+
 - Refactored getDisplayList for vdex vocabularies [jensens] [hpeteragitator]
-  
+
 - Run i18ndude and updated german translations [hpeteragitator]
 
 - Let createSimpleVocabs accept dictionary keys as tuples of (id, title) (like
   createHierarchicalVocabs already does), to enable one to give the vocabulary
   a title.
   [jcbrand]
-  
+
 
 1.6.1 (2011-05-02)
 ------------------
