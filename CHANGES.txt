@@ -7,6 +7,9 @@ Changelog
 - Fixed simplevocabulary_view and set as default view for SimpleVocabulary
   and SortedSimpleVocabulary [petschki]
 
+- Add 'empty_first_item' and 'custom_empty_first_item' extra params to NamedVocabulary
+  for getting empty item on top of the display list [simahawk]
+
 
 1.6.3 (2013-01-16)
 ------------------
