@@ -21,6 +21,10 @@ Overview
   Archetypes Schema, import NamedVocabulary from this Product and create
   your vocabulary with id myvocabulary in 'portal_vocabularies' tool
   (available through Plone Site-Setup).
+  NamedVocabulary accepts two extra arguments:
+
+    - ``empty_first_item``, needs a boolean for getting an empty item on top of the list, defaults to False;
+    - ``custom_empty_first_item``, needs a list of tuple containing a custom first item, defaults to None.
 
 - ATVocabularyManager supports:
 

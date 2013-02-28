@@ -16,6 +16,7 @@ from zope.interface import implements
 from AccessControl import ClassSecurityInfo
 from Products.CMFCore.utils import getToolByName
 from Products.Archetypes.interfaces import IVocabulary
+from Products.Archetypes import atapi
 from Products.ATVocabularyManager.types.tree.vocabulary import TreeVocabulary
 from config import TOOL_NAME
 
@@ -24,16 +25,25 @@ class NamedVocabulary(object):
 
     implements(IVocabulary)
 
-    vocab_name= None
+    vocab_name = None
 
     security = ClassSecurityInfo()
     security.setDefaultAccess('allow')
     # Add a class variable to avoid migration issues
     display_parents = 'tree'
+    # enable an empty item as first element
+    empty_first_item = False
+    # provide a custom first item for the empty item
+    custom_empty_first_item = None
 
-    def __init__(self, vocabname=None, display_parents='tree'):
+    def __init__(self, vocabname=None,
+                       display_parents='tree',
+                       empty_first_item=False,
+                       custom_empty_first_item=None):
         self.vocab_name = vocabname
         self.display_parents = display_parents
+        self.empty_first_item = empty_first_item
+        self.custom_empty_first_item = custom_empty_first_item
 
     security.declarePublic('getDisplayList')
     def getDisplayList(self, instance):
@@ -44,9 +54,14 @@ class NamedVocabulary(object):
         """
         vocab = self.getVocabulary(instance)
         if isinstance(vocab, TreeVocabulary):
-            return vocab.getDisplayList(instance,
-                                    display_parents=self.display_parents)
-        return vocab.getDisplayList(instance)
+            dlist = vocab.getDisplayList(instance,
+                                         display_parents=self.display_parents)
+        else:
+            dlist = vocab.getDisplayList(instance)
+        if self.empty_first_item:
+            item = self.custom_empty_first_item or [(u'', u'--'), ]
+            dlist = atapi.DisplayList(item) + dlist
+        return dlist
 
     security.declarePublic('getVocabularyDict')
     def getVocabularyDict(self, instance):
