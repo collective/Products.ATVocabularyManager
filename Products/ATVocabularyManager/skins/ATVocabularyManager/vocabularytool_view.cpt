@@ -33,7 +33,7 @@
           <form name="vocabularyForm"
                 method="post"
                 action="folder_object"
-                tal:attributes="action context/absolute_url">
+                tal:attributes="action string:${context/absolute_url}/createObject">
 
             <!-- Add Term pulldown -->
             <div class="field">
@@ -68,7 +68,7 @@
                    name="folder_factories:method"
                    value="Add New Vocabulary"
                    tabindex=""
-                   i18n:attributes="value"  
+                   i18n:attributes="value"
                    tal:define="ttype python: num_types==1 and here.translate(types[0].Title())"
                    tal:condition="python: num_types"
                    tal:attributes="tabindex tabindex/next|nothing;" />
@@ -85,15 +85,15 @@
                 <label i18n:translate="label_vdex_upload">VDEX-Upload</label>
         <div class="formHelp" i18n:translate="description_vdex_upload">Here you can upload <strong>IMS Vocabulary Definition Exchange</strong> compliant
            XML-files. Read more about <a href="http://www.imsglobal.org/">IMS</a> and the <a href="http://www.imsglobal.org/">VDEX-Specifications</a>.</div>
-                <input type="file" 
-                       id="vdex" 
-                       name="vdex" 
+                <input type="file"
+                       id="vdex"
+                       name="vdex"
                        size="20"
                 />
                </div>
-               <input type="submit" 
+               <input type="submit"
                       class="standalone"
-                      name="submit" 
+                      name="submit"
                       id="submit"
                       i18n:attributes="value"
                       value="Import" />
@@ -138,7 +138,7 @@
                   <th class="nosort"
                       >&nbsp;<tal:type i18n:translate="listingheader_type"
                       >Type</tal:type>&nbsp;</th>
-                    
+
                 </tr>
               </metal:block>
             </thead>
@@ -223,7 +223,7 @@
                                  tabindex tabindex/next;
                                  class python:test((button['id'] == 'paste'), 'standalone', 'context')" />
         </tal:buttons>
-      
+
 
         <p class="discreet"
            tal:condition="not: batch"
