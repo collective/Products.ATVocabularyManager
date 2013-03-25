@@ -1,17 +1,25 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
     xmlns:i18n="http://namespaces.zope.org/i18n"
     i18n_domain="atvocabularymanager">
 
   <i18n:registerTranslations directory="locales" />
 
   <subscriber
+      zcml:condition="not-have plone-4"
       for=".types.simple.term.SimpleVocabularyTerm
-           zope.app.container.interfaces.IObjectRemovedEvent"
+            zope.app.container.interfaces.IObjectRemovedEvent"
       handler=".event.term_removed_handler"
       />
-      
+  <subscriber
+      zcml:condition="have plone-4"
+      for=".types.simple.term.SimpleVocabularyTerm
+            zope.lifecycleevent.interfaces.IObjectRemovedEvent"
+      handler=".event.term_removed_handler"
+      />
+
   <adapter factory=".importexport.ATVMXMLAdapter" />
 
   <genericsetup:registerProfile
@@ -45,4 +53,4 @@
 <!--       description="" -->
 <!--       handler="Products.ATVocabularyManager.importexport.exportVocabularies" -->
 <!--       /> -->
-</configure> 
+</configure>

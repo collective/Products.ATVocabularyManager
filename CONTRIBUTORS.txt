@@ -21,3 +21,4 @@ People
 - Paul J Stevens, <paul@nfg.nl>
 - JeanMichel FRANCOIS, <toutpt@gmail.com>
 - andrewburkhalter -  <andrewb@onenw.org>
+- Mathieu Le Marec - Pasquet (kiorky), <kiorky@cryptelium.net>

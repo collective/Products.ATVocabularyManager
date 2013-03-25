@@ -10,6 +10,8 @@ Changelog
 - Add 'empty_first_item' and 'custom_empty_first_item' extra params to NamedVocabulary
   for getting empty item on top of the display list [simahawk]
 
+- Compatibility with plone 4.3 [kiorky]
+
 
 1.6.3 (2013-01-16)
 ------------------
