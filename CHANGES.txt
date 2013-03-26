@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.6.4 (unreleased)
+1.6.4 (2013-03-26)
 ------------------
 
 - Fixed simplevocabulary_view and set as default view for SimpleVocabulary
