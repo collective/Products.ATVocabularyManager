@@ -5,6 +5,9 @@ ATVocabularyManager: a vocabulary managing portal tool for Plone
 
 .. contents::
 
+.. image:: https://secure.travis-ci.org/collective/Products.ATVocabularyManager.png
+    :target: http://travis-ci.org/collective/Products.ATVocabularyManager
+
 Overview
 ========
 
