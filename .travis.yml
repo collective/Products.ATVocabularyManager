@@ -29,6 +29,6 @@ install:
   - mkdir -p buildout-cache/eggs
   - mkdir -p buildout-cache/downloads
   - python bootstrap.py -c travis.cfg
-  - bin/buildout -N -t 3 -c travis-4.3.x.cfg_tmpl
+  - bin/buildout -N -t 3 -c travis.cfg
 
 script: bin/$TARGET
