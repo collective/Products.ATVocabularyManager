@@ -1,5 +1,6 @@
-include *.txt
-include *.rst
+include *.txt *.cfg *.rst
 
 recursive-include docs *
 recursive-include Products *
+
+global-exclude *pyc
