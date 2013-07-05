@@ -55,7 +55,7 @@ class VocabularyLibrary(UniqueObject, OrderedBaseFolder, Cacheable):
     ),
     )
 
-    def __init__(self):
+    def __init__(self, id='ignored'):
         OrderedBaseFolder.__init__(self, TOOL_NAME)
 
     # caches
