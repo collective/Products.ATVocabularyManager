@@ -4,7 +4,8 @@ Changelog
 1.6.5 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Added an ignored, optional id to the __init__ of portal_vocabularies, to make it
+  possible to import it from GenericSetup. [regebro]
 
 
 1.6.4 (2013-03-26)
