@@ -216,7 +216,7 @@
                  tabindex=""
                  tal:condition="python:(button['id'] != 'change_state' and batch) or (here.cb_dataValid and button['id'] == 'paste')"
                  i18n:attributes="value"
-                 tal:attributes="value button/name;
+                 tal:attributes="value button/title;
                                  name button/url;
                                  tabindex tabindex/next|nothing;
                                  class python:test((button['id'] == 'paste'), 'standalone', 'context')" />

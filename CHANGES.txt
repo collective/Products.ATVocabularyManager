@@ -4,8 +4,13 @@ Changelog
 1.6.5 (unreleased)
 ------------------
 
+- Fixed vocabularytool_view folder actions buttons display by passing title
+  instead of name
+  [ichim-david]
+
 - Append nothing to tabsindex expression in order to avoid errors for Plone 4.x
   [ichim-david]
+  
 - Added an ignored, optional id to the __init__ of portal_vocabularies, to make it
   possible to import it from GenericSetup. [regebro]
 
