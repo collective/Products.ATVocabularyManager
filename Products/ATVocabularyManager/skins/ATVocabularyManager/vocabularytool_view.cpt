@@ -218,7 +218,7 @@
                  i18n:attributes="value"
                  tal:attributes="value button/name;
                                  name button/url;
-                                 tabindex tabindex/next;
+                                 tabindex tabindex/next|nothing;
                                  class python:test((button['id'] == 'paste'), 'standalone', 'context')" />
         </tal:buttons>
 
