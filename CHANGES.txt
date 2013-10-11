@@ -4,6 +4,10 @@ Changelog
 1.6.5 (unreleased)
 ------------------
 
+- Fix simplevocabulary_view folder actions by including p.protect.authenticator
+  in form.
+  [tmog]
+
 - Fixed vocabularytool_view folder actions buttons display by passing title
   instead of name
   [ichim-david]

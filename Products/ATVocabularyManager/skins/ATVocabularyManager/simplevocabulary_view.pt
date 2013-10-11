@@ -69,6 +69,8 @@
                                        value python:context.translate(button['title'], domain='plone')" />
             </tal:block>
 
+	    <input tal:replace="structure context/@@authenticator/authenticator" />
+
             </form>
 
         </tal:foldercontents>
