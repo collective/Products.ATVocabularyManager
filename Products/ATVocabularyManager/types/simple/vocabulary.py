@@ -15,6 +15,8 @@ __docformat__ = 'plaintext'
 import csv
 from StringIO import StringIO
 from zope.interface import implements
+from zope.component import getMultiAdapter
+from zope.component.interfaces import ComponentLookupError
 from Products.ATVocabularyManager.config import *
 if HAS_LINGUA_PLONE:
     from Products.LinguaPlone.public import *
@@ -185,7 +187,12 @@ class SimpleVocabulary(OrderedBaseFolder):
             return [term.getVocabularyKey() for term in terms]
 
         if sortMethod == SORT_METHOD_FOLDER_ORDER:
-            return keys
+            try:
+                contentListing = getMultiAdapter((self, self.REQUEST), name=u'folderListing')()
+            except ComponentLookupError:
+                # still Plone 3 compatible
+                contentListing = self.getFolderContents()
+            return [term.getObject().getVocabularyKey() for term in contentListing]
 
         # fallback
         return keys
@@ -268,7 +275,6 @@ class SimpleVocabulary(OrderedBaseFolder):
                 self.addTerm(key, value, termtype=termtype, silentignore=silentignore)
 
                 if len(languages) > 0:
-                    terms = []
                     self[key].setLanguage(languages[0])
                     if len(row) > 2:
                         for col in range(2, len(row)):
