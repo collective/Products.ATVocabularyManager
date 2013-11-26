@@ -18,6 +18,8 @@ Changelog
 - Added an ignored, optional id to the __init__ of portal_vocabularies, to make it
   possible to import it from GenericSetup. [regebro]
 
+- Fix SimpleVocabulary sorting issue: sometimes order in folder were ignored
+  [keul]
 
 1.6.4 (2013-03-26)
 ------------------
