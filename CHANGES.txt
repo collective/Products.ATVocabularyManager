@@ -8,7 +8,7 @@ Changelog
   in form.
   [tmog]
 
-- Fix vocabularytool_view folderactions by including p.protect.authenticator
+- Fix vocabularytool_view folder actions by including p.protect.authenticator
   in form.
   [alecghica]
 
