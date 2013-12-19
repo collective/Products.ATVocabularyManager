@@ -107,6 +107,8 @@
               action="folder_object"
               tal:attributes="action context/absolute_url">
 
+        <input tal:replace="structure context/@@authenticator/authenticator" />
+
         <metal:listing define-macro="folder_listing"
                        tal:define="canModifyFolderContent context/@@plone_context_state/is_editable;
                                    batch python:context.getFolderContents({'sort_on': 'getId'});">
