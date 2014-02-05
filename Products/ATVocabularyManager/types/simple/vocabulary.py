@@ -109,7 +109,7 @@ class SimpleVocabulary(OrderedBaseFolder):
         """
         dl = DisplayList()
         vdict = self.getVocabularyDict(instance)
-        for key in self.getSortedKeys():
+        for key in self.getSortedKeys(instance):
             dl.add(key, vdict[key])
         return dl
 
@@ -164,13 +164,20 @@ class SimpleVocabulary(OrderedBaseFolder):
 
     # some supporting methods
 
-    def getSortedKeys(self):
+    def getSortedKeys(self, instance=None):
         """ returns a list of keys sorted accordingly to the
 
         selected sort method (may be unsorted if method = no sort)
         """
         sortMethod = self.getSortMethod()
-        keys = [term.getVocabularyKey() for term in self.contentValues()]
+        context = self
+        if self.isLinguaPloneInstalled() and instance:
+            lang_instance = instance.getLanguage()
+            langtool = getToolByName(self, 'portal_languages')
+            lang_canonical = langtool.getPreferredLanguage()
+            context = context.getTranslation(lang_instance)
+
+        keys = [term.getVocabularyKey() for term in context.contentValues()]
 
         if not hasattr(self, 'sortMethod'):
             # smooth upgrade from previous releases
@@ -182,16 +189,16 @@ class SimpleVocabulary(OrderedBaseFolder):
 
         if sortMethod == SORT_METHOD_LEXICO_VALUES:
             # returns keys sorted by lexicogarphic order of VALUES
-            terms = self.contentValues()
+            terms = context.contentValues()
             terms.sort(lambda x, y: cmp(x.getVocabularyValue(), y.getVocabularyValue()))
             return [term.getVocabularyKey() for term in terms]
 
         if sortMethod == SORT_METHOD_FOLDER_ORDER:
             try:
-                contentListing = getMultiAdapter((self, self.REQUEST), name=u'folderListing')()
+                contentListing = getMultiAdapter((context, context.REQUEST), name=u'folderListing')()
             except ComponentLookupError:
                 # still Plone 3 compatible
-                contentListing = self.getFolderContents()
+                contentListing = context.getFolderContents()
             return [term.getObject().getVocabularyKey() for term in contentListing]
 
         # fallback
