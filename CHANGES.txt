@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.6.5 (unreleased)
+1.6.5 (2014-02-06)
 ------------------
 
 - Fix simplevocabulary_view folder actions by including p.protect.authenticator
