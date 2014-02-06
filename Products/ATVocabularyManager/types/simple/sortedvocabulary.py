@@ -26,8 +26,6 @@ else:
 
 from AccessControl import ClassSecurityInfo
 
-from Products.Archetypes.interfaces.vocabulary import IVocabulary
-
 from Products.ATVocabularyManager.config import PROJECTNAME
 from Products.ATVocabularyManager.types.simple.vocabulary import SimpleVocabulary
 

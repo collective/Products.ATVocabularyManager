@@ -14,7 +14,6 @@ __author__ = '''Jens Klein <jens@bluedynamics.com>'''
 __docformat__ = 'plaintext'
 
 from zope.interface import implements
-from StringIO import StringIO
 from types import StringTypes
 from AccessControl import ClassSecurityInfo
 from Products.PlacelessTranslationService.Negotiator import getLangPrefs
@@ -24,7 +23,6 @@ from Products.Archetypes.atapi import *
 from Products.Archetypes.interfaces import IVocabulary
 from Products.ATVocabularyManager.config import *
 from Products.ATVocabularyManager.config import PROJECTNAME
-from zope.interface import implements
 from imsvdex.vdex import VDEXManager, VDEXError
 import HTMLParser
 from Products.Archetypes import PloneMessageFactory as PMF

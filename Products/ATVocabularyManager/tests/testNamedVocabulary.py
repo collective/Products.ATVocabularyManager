@@ -2,15 +2,10 @@
 # Skeleton PloneTestCase
 #
 
-import doctest
-
-from Products.CMFCore.utils import getToolByName
-from Products.PloneTestCase import PloneTestCase
-from Testing.ZopeTestCase.zopedoctest import ZopeDocFileSuite
-
-from Products.ATVocabularyManager import NamedVocabulary
-
 import common
+import doctest
+from Products.PloneTestCase import PloneTestCase
+from Products.ATVocabularyManager import NamedVocabulary
 
 
 class TestNamedVocabulary(PloneTestCase.PloneTestCase):

@@ -7,7 +7,7 @@ import doctest
 from Products.CMFCore.utils import getToolByName
 from Products.PloneTestCase import PloneTestCase
 from Testing.ZopeTestCase.zopedoctest import ZopeDocFileSuite
-
+from Products.ATVocabularyManager import config
 import common
 
 
@@ -37,6 +37,17 @@ class TestSimpleVocabulary(PloneTestCase.PloneTestCase):
         # already exists via acquisition
         svtest.addTerm('author', 'Author')
         self.assertEqual(svtest.author.getVocabularyValue(), 'Author')
+
+    def testFolderSortedVocabulary(self):
+        self.setupSimpleVocabularyContainer()
+        svtest = self.atvm.svtest
+        svtest.setSortMethod(config.SORT_METHOD_FOLDER_ORDER)
+        svtest.addTerm('foo', 'bar')
+        svtest.addTerm('baz', 'qux')
+        self.assertEquals(svtest.getSortedKeys(), ['foo', 'baz'])
+        svtest.moveObjectsUp('baz')
+        getToolByName(svtest, 'plone_utils').reindexOnReorder(svtest)
+        self.assertEquals(svtest.getSortedKeys(), ['baz', 'foo'])
 
     def testImportCSVwoTitlerow(self):
         self.setupSimpleVocabularyContainer()

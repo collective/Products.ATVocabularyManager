@@ -17,7 +17,6 @@ from Products.CMFCore import utils as cmfutils
 from Products.CMFCore import DirectoryView
 
 from Products.Archetypes.atapi import *
-from Products.Archetypes.utils import capitalize
 from Products.ATVocabularyManager.config import *
 from Products.ATVocabularyManager.namedvocabulary import NamedVocabulary
 
