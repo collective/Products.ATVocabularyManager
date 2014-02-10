@@ -171,11 +171,11 @@ class SimpleVocabulary(OrderedBaseFolder):
         """
         sortMethod = self.getSortMethod()
         context = self
-        if self.isLinguaPloneInstalled() and instance:
+        if self.isLinguaPloneInstalled():
             lang_instance = instance.getLanguage()
-            langtool = getToolByName(self, 'portal_languages')
-            lang_canonical = langtool.getPreferredLanguage()
             context = context.getTranslation(lang_instance)
+            if not context:
+                context = self
 
         keys = [term.getVocabularyKey() for term in context.contentValues()]
 
