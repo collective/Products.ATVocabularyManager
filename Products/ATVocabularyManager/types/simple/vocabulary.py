@@ -171,7 +171,7 @@ class SimpleVocabulary(OrderedBaseFolder):
         """
         sortMethod = self.getSortMethod()
         context = self
-        if self.isLinguaPloneInstalled():
+        if instance and self.isLinguaPloneInstalled():
             lang_instance = instance.getLanguage()
             context = context.getTranslation(lang_instance)
             if not context:
