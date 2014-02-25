@@ -102,7 +102,8 @@ class SimpleVocabulary(OrderedBaseFolder):
 
     # Methods from Interface IVocabulary
     def getDisplayList(self, instance):
-        """Returns a object of class DisplayList as defined in Products.Archetypes.utils.
+        """Returns a object of class DisplayList as defined in
+        Products.Archetypes.utils.
 
         The instance of the content class is given as parameter.
         The list is sorted accordingly to the sortMethod chosen.
@@ -149,9 +150,7 @@ class SimpleVocabulary(OrderedBaseFolder):
     def _getTranslatedVocabularyDict(self, lang):
         vdict = OrderedDict()
         for obj in self.contentValues():
-            # we only use the canonical objects
-            if obj.isCanonical():
-                vdict[obj.getTermKey()] = obj.getTermValue(lang)
+            vdict[obj.getTermKey()] = obj.getTermValue(lang)
         return vdict
 
     def isFlat(self):
@@ -171,11 +170,14 @@ class SimpleVocabulary(OrderedBaseFolder):
         """
         sortMethod = self.getSortMethod()
         context = self
-        if instance and self.isLinguaPloneInstalled():
-            lang_instance = instance.getLanguage()
-            context = context.getTranslation(lang_instance)
-            if not context:
-                context = self
+        if self.isLinguaPloneInstalled():
+            from Products.LinguaPlone.interfaces import ITranslatable
+            if instance and ITranslatable.providedBy(instance):
+                lang = instance.getLanguage()
+            else:
+                langtool = getToolByName(self, 'portal_languages')
+                lang = langtool.getPreferredLanguage()
+            context = context.getTranslation(lang) or self
 
         keys = [term.getVocabularyKey() for term in context.contentValues()]
 
@@ -190,16 +192,17 @@ class SimpleVocabulary(OrderedBaseFolder):
         if sortMethod == SORT_METHOD_LEXICO_VALUES:
             # returns keys sorted by lexicogarphic order of VALUES
             terms = context.contentValues()
-            terms.sort(lambda x, y: cmp(x.getVocabularyValue(), y.getVocabularyValue()))
+            terms.sort(lambda x, y: cmp(x.getTermValue(), y.getTermValue()))
             return [term.getVocabularyKey() for term in terms]
 
         if sortMethod == SORT_METHOD_FOLDER_ORDER:
             try:
-                contentListing = getMultiAdapter((context, context.REQUEST), name=u'folderListing')()
+                contentListing = getMultiAdapter(
+                    (context, context.REQUEST), name=u'folderListing')()
             except ComponentLookupError:
                 # still Plone 3 compatible
                 contentListing = context.getFolderContents()
-            return [term.getObject().getVocabularyKey() for term in contentListing]
+            return [term.getObject().getTermKey() for term in contentListing]
 
         # fallback
         return keys
@@ -218,15 +221,16 @@ class SimpleVocabulary(OrderedBaseFolder):
             returns True if addition worked
         """
 
-        if self.getVocabularyDict().has_key(key):
+        if key in self.getVocabularyDict():
             if silentignore:
                 return False
-            raise KeyError, 'key %s already exist in vocabulary %s ' % (key, self.title_or_id())
+            raise KeyError('key %s already exist in vocabulary %s ' % (
+                key, self.title_or_id()))
 
         allowed = [fti.content_meta_type for fti in self.allowedContentTypes()]
         if not termtype in allowed:
-            if termtype == DEFAULT_VOCABULARY_ITEM and len(allowed)==1:
-                termtype=allowed[0].meta_type
+            if termtype == DEFAULT_VOCABULARY_ITEM and len(allowed) == 1:
+                termtype = allowed[0].meta_type
             else:
                 raise ValueError, 'type %s is not allowed as vocabularyterm in this context' % termtype
 

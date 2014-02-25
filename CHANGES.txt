@@ -7,6 +7,8 @@ Changelog
 - Fix crash and cleanup in SimpleVocabulary when editing untranslated canonical 
   content
   [pjstevns]
+- Extend tests on translated SimpleVocabulary and fix regressions
+  [pjstevns]
 
 
 1.6.6 (2014-02-06)

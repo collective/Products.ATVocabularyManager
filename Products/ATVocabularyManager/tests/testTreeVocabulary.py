@@ -4,7 +4,6 @@
 
 from Products.PloneTestCase import PloneTestCase
 from Products.ATVocabularyManager.utils.vocabs import createHierarchicalVocabs
-from Products.ATVocabularyManager.utils.vocabs import createSimpleVocabs
 from Products.CMFCore.utils import getToolByName
 
 import common
@@ -53,74 +52,7 @@ class TestTreeVocabulary(PloneTestCase.PloneTestCase):
         self.assertEqual(correctPath, path,
                          "getTermKeyPath does not return the correct path")
 
-    def testSimpleTranslation(self):
-        """test if simplevocabulary works fine with linguaplone
-        """
-        simpleVocabs = dict(
-            states=(
-                ('aut', u'Austria'),
-                ('ger', u'Germany'),
-                ('nor', u'Norway'),
-                ('fin', u'Finland'),
-            ))
-        createSimpleVocabs(self.atvm, simpleVocabs)
-
-        self._translateSimpleVocabulary()
-        vocab = self.atvm.getVocabularyByName('states')
-
-        langtool = getToolByName(self.portal, 'portal_languages')
-        langtool.supported_langs = ['en', 'de']
-
-        # per default english is the preferred language
-        self.assertEqual('en', langtool.getPreferredLanguage())
-        enDict = vocab.getVocabularyDict()
-
-        # title for austria in english
-        self.assertEqual('Austria', enDict.get('aut'))
-
-        # switch to german
-        vocab.REQUEST['set_language'] = 'de'
-        langtool.setLanguageBindings()
-        self.assertEqual('de', langtool.getPreferredLanguage())
-        deDict = vocab.getVocabularyDict()
-        self.assertEqual('Oesterreich', deDict.get('aut'))
-
-        # create additional states but NOT in english
-        simpleVocabs = dict(
-            states=(
-                ('nld', u'Niederlanden'),
-            ))
-        createSimpleVocabs(self.atvm, simpleVocabs)
-        vocab.nld.setLanguage('de')
-        vocab.nld.addTranslation('en', title='Netherlands')
-        deDict = vocab.getVocabularyDict()
-        self.assertEqual('Niederlanden', deDict.get('nld'))
-
-        vocab.REQUEST['set_language'] = 'en'
-        langtool.setLanguageBindings()
-        enDict = vocab.getVocabularyDict()
-        self.assertEqual('Netherlands', enDict.get('nld'))
-
-    def _translateSimpleVocabulary(self):
-        # we need to install 'Linguaplone' to translate
-        # vocabularies
-        qi = getToolByName(self.portal, 'portal_quickinstaller')
-
-        lpAvailable = qi.isProductAvailable('LinguaPlone')
-        self.failUnless(
-            lpAvailable,
-            "Product LinguaPlone has to be available in INSTANCE_HOME")
-
-        if not qi.isProductInstalled('LinguaPlone'):
-            qi.installProduct('LinguaPlone')
-
-        states = self.atvm.getVocabularyByName('states')
-        states.aut.setLanguage('en')
-        states.aut.addTranslation('de', title='Oesterreich')
-        states.ger.setLanguage('en')
-        states.ger.addTranslation('de', title='Deutschland')
-
-    def testTreeTranslation(self):
+    def testTranslations(self):
         """tests if treevocabulary works fine with linguaplone
         """
         self.setupExampleTreeVocabulary()

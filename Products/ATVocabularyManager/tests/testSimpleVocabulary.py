@@ -1,4 +1,4 @@
-#
+# -*- coding: utf-8 -*-
 # Skeleton PloneTestCase
 #
 
@@ -8,6 +8,7 @@ from Products.CMFCore.utils import getToolByName
 from Products.PloneTestCase import PloneTestCase
 from Testing.ZopeTestCase.zopedoctest import ZopeDocFileSuite
 from Products.ATVocabularyManager import config
+from Products.Archetypes.utils import DisplayList
 import common
 
 
@@ -224,6 +225,59 @@ class TestSimpleVocabulary(PloneTestCase.PloneTestCase):
         # dictionary has to return another title now
         self.assertEqual('Oesterreich', deDict[enKey],
                          "Vocab Title is not translated")
+
+    def testDisplayList(self):
+        """test if simplevocabulary works fine with linguaplone
+        """
+
+        self._createTestVocabulary()
+
+        self._translateSimpleVocabulary()
+        vocab = self.atvm.teststates
+
+        langtool = getToolByName(self.portal, 'portal_languages')
+        langtool.supported_langs = ['en', 'de']
+
+        enVdict = vocab.getVocabularyDict()
+        self.assertEquals(len(enVdict), 4)
+
+        # switch to DE
+        vocab.REQUEST['set_language'] = 'de'
+        langtool.setLanguageBindings()
+
+        deVocab = vocab.getTranslation('de')
+        deVdict = deVocab.getVocabularyDict()
+        # only two terms have been translated
+        self.assertEquals(len(deVdict), 2)
+
+        dl = vocab.getDisplayList(self.atvm)
+        self.assertTrue(isinstance(dl, DisplayList))
+
+        deVocab = vocab.getTranslation('de')
+        dl = deVocab.getDisplayList(self.atvm)
+        self.assertTrue(isinstance(dl, DisplayList))
+        self.assertEqual(dl.getValue('aut'), 'Oesterreich')
+
+    def _translateSimpleVocabulary(self):
+        # we need to install 'Linguaplone' to translate
+        # vocabularies
+        qi = getToolByName(self.portal, 'portal_quickinstaller')
+
+        lpAvailable = qi.isProductAvailable('LinguaPlone')
+        self.failUnless(
+            lpAvailable,
+            "Product LinguaPlone has to be available in INSTANCE_HOME")
+
+        if not qi.isProductInstalled('LinguaPlone'):
+            qi.installProduct('LinguaPlone')
+
+        states = self.atvm.getVocabularyByName('teststates')
+        states.setLanguage('en')
+        states.addTranslation('de', title=u'Länder')
+        states.aut.setLanguage('en')
+        states.aut.addTranslation('de', title='Oesterreich')
+        states.ger.setLanguage('en')
+        states.ger.addTranslation('de', title='Deutschland')
 
     def testGetTermKeyPath(self):
         """A SimpleVocabularyTerm simply returns a list containing it's key
