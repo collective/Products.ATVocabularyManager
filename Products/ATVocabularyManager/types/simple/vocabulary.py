@@ -172,10 +172,10 @@ class SimpleVocabulary(OrderedBaseFolder):
         context = self
         if self.isLinguaPloneInstalled():
             from Products.LinguaPlone.interfaces import ITranslatable
+            langtool = getToolByName(self, 'portal_languages')
             if instance and ITranslatable.providedBy(instance):
-                lang = instance.getLanguage()
+                lang = instance.getLanguage() or langtool.getPreferredLanguage()
             else:
-                langtool = getToolByName(self, 'portal_languages')
                 lang = langtool.getPreferredLanguage()
             context = context.getTranslation(lang) or self
 
