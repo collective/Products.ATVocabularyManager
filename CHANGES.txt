@@ -10,6 +10,8 @@ Changelog
 - Extend tests on translated SimpleVocabulary and fix regressions
   [pjstevns]
 
+- return preferred language if lp and item is lang neutral
+  [agitator]
 
 1.6.6 (2014-02-06)
 ------------------
