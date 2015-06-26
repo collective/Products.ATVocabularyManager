@@ -13,7 +13,6 @@ __docformat__ = 'plaintext'
 
 from zope.interface import implements
 from AccessControl import ClassSecurityInfo
-#from Acquisition import aq_base
 from OFS.Cache import Cacheable
 from Products.PlacelessTranslationService.Negotiator import getLangPrefs
 from Products.CMFCore.utils import getToolByName
@@ -21,8 +20,9 @@ from Products.CMFCore.utils import UniqueObject
 from Products.CMFCore.permissions import ModifyPortalContent
 from Products.CMFCore.permissions import View
 from Products.Archetypes.atapi import *
-#from Products.Archetypes.interfaces.vocabulary import IVocabulary
+
 from Products.ATVocabularyManager.config import TOOL_NAME
+from Products.ATVocabularyManager.config import TOOL_TITLE
 from Products.ATVocabularyManager.config import PROJECTNAME
 from Products.ATVocabularyManager.interfaces import IATVocabularyLibrary
 from Products.Archetypes.utils import shasattr
@@ -56,6 +56,7 @@ class VocabularyLibrary(UniqueObject, OrderedBaseFolder, Cacheable):
 
     def __init__(self, id='ignored'):
         OrderedBaseFolder.__init__(self, TOOL_NAME)
+        self.setTitle(TOOL_TITLE)
 
     # caches
     security.declarePrivate('cachedVocabularyDict')
@@ -126,6 +127,16 @@ class VocabularyLibrary(UniqueObject, OrderedBaseFolder, Cacheable):
         for id in self.contentIds():
             res[id] = self[id].Title()
         return res
+
+    # Tool should not be indexed
+
+    security.declareProtected(ModifyPortalContent, 'indexObject')
+    def indexObject(self):
+        pass
+
+    security.declareProtected(ModifyPortalContent, 'reindexObjectSecurity')
+    def reindexObjectSecurity(self, skip_self=False):
+        pass
 
 
 registerType(VocabularyLibrary, PROJECTNAME)

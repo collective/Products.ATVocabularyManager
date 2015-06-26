@@ -13,6 +13,9 @@ Changelog
 - return preferred language if lp and item is lang neutral
   [agitator]
 
+- Plone5 compatibility
+  [tomgross]
+
 1.6.6 (2014-02-06)
 ------------------
 
