@@ -21,12 +21,12 @@ def test_suite():
         'simplevocabulary.txt',
     ]
 
-    for test in []: #scriptTests:
+    for test in scriptTests:
         suites.append(layered(doctest.DocFileSuite(
             test,
             optionflags=optionflags,
             package='Products.ATVocabularyManager.doc',
-        )), layer=AT_FUNCTIONAL_TESTING)
+        ), layer=AT_FUNCTIONAL_TESTING))
     return TestSuite(suites)
 
 #EOF

@@ -1,8 +1,10 @@
 #
 # Test for TreeVocabulary
 #
+import unittest
 
 from Products.ATVocabularyManager.tests.common import ATVocTestCase
+from Products.ATVocabularyManager.tests.common import HAS_LP
 from Products.ATVocabularyManager.utils.vocabs import createHierarchicalVocabs
 from Products.CMFCore.utils import getToolByName
 from plone import api
@@ -50,10 +52,19 @@ class TestTreeVocabulary(ATVocTestCase):
         self.assertEqual(correctPath, path,
                          "getTermKeyPath does not return the correct path")
 
+    @unittest.skipUnless(HAS_LP, 'requires LinguaPlone')
     def testTranslations(self):
         """tests if treevocabulary works fine with linguaplone
         """
-        self._translateTreeVocabulary()
+        # translates the vocabulary 'regions'
+        # created in ``setupExampleTreeVocabulary``
+        # we do not completely translate the vocabulary, to see if canonical
+        # titles are correctly used as fallbacks
+        regions = self.atvm.getVocabularyByName('regions')
+        regions.aut.setLanguage('en')
+        regions.aut.addTranslation('de', title='Oesterreich')
+        regions.aut.tyr.setLanguage('en')
+        regions.aut.tyr.addTranslation('de', title='Tirol')
 
         # a term and it's translation have to provide the same keys
         vocab = self.atvm.getVocabularyByName('regions')
@@ -89,30 +100,5 @@ class TestTreeVocabulary(ATVocTestCase):
         self.assertEqual(
             'Germany', deDict[germanyUID][0],
             "Canonical's is not used for unstranslated vocabularies")
-
-    def _translateTreeVocabulary(self):
-        """translates the vocabulary 'regions'
-        created in ``setupExampleTreeVocabulary``
-        """
-        # we need to install 'Linguaplone' to translate
-        # vocabularies
-        qi = getToolByName(self.portal, 'portal_quickinstaller')
-
-        lpAvailable = qi.isProductAvailable('LinguaPlone')
-        self.failUnless(
-            lpAvailable,
-            "Product LinguaPlone has to be available in INSTANCE_HOME")
-
-        if not qi.isProductInstalled('LinguaPlone'):
-            qi.installProduct('LinguaPlone')
-
-        regions = self.atvm.getVocabularyByName('regions')
-        regions.aut.setLanguage('en')
-        regions.aut.addTranslation('de', title='Oesterreich')
-        regions.aut.tyr.setLanguage('en')
-        regions.aut.tyr.addTranslation('de', title='Tirol')
-
-        # we do not completely translate the vocabulary, to see if canonical
-        # titles are correctly used as fallbacks
 
 #EOF

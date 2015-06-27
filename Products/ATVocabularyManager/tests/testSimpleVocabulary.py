@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 #
+import unittest
 
 from Products.CMFCore.utils import getToolByName
 from Products.ATVocabularyManager.tests.common import ATVocTestCase
+from Products.ATVocabularyManager.tests.common import HAS_LP
 from Products.ATVocabularyManager import config
 from Products.Archetypes.utils import DisplayList
 from plone import api
@@ -65,16 +67,8 @@ class TestSimpleVocabulary(ATVocTestCase):
             if vocab[key] == 'value3':
                 self.failUnless(key != "")
 
+    @unittest.skipUnless(HAS_LP, 'requires LinguaPlone')
     def testImportCSVMultilingual(self):
-
-        qi = getToolByName(self.portal, 'portal_quickinstaller')
-        lpAvailable = qi.isProductAvailable('LinguaPlone')
-        self.failUnless(
-            lpAvailable,
-            "Product LinguaPlone has to be available in INSTANCE_HOME")
-        if not qi.isProductInstalled('LinguaPlone'):
-            qi.installProduct('LinguaPlone')
-
         self.setupSimpleVocabularyContainer()
 
         csvdata = """\
@@ -112,8 +106,8 @@ class TestSimpleVocabulary(ATVocTestCase):
                 frTerm = svtest[key].getTermValue(lang='fr')
                 self.assertEqual(frTerm, 'value3fr')
 
+    @unittest.skipUnless(HAS_LP, 'requires LinguaPlone')
     def testImportCSVMultilingualNoTitleRow(self):
-
         self.setupSimpleVocabularyContainer()
 
         # Regardless of what data the user provides, it's assumed to be
@@ -156,30 +150,21 @@ class TestSimpleVocabulary(ATVocTestCase):
                 createSimpleVocabs
 
         self.loginAsPortalOwner()
-        testvocabs = {}
-        testvocabs['teststates'] = (
+        testvocabs = {'teststates': (
             ('aut', u'Austria'),
             ('ger', u'Germany'),
             ('nor', u'Norway'),
-            ('fin', u'Finland'))
+            ('fin', u'Finland'))}
 
         createSimpleVocabs(self.atvm, testvocabs)
 
+    @unittest.skipUnless(HAS_LP, 'requires LinguaPlone')
     def testTranslations(self):
         """Test if SimpleVocabulary works with Linguaplone
         """
 
         self._createTestVocabulary()
         vocab = self.atvm.teststates
-        # we need to install 'LinguaPlone' to translate
-        # vocabularies
-        qi = getToolByName(self.portal, 'portal_quickinstaller')
-        lpAvailable = qi.isProductAvailable('LinguaPlone')
-        self.failUnless(
-            lpAvailable,
-            "Product LinguaPlone has to be available in INSTANCE_HOME")
-        if not qi.isProductInstalled('LinguaPlone'):
-            qi.installProduct('LinguaPlone')
 
         # translate some of our testvocabularies
         vocab.aut.setLanguage('en')
@@ -221,6 +206,7 @@ class TestSimpleVocabulary(ATVocTestCase):
         self.assertEqual('Oesterreich', deDict[enKey],
                          "Vocab Title is not translated")
 
+    @unittest.skipUnless(HAS_LP, 'requires LinguaPlone')
     def testDisplayList(self):
         """test if simplevocabulary works fine with linguaplone
         """
@@ -253,19 +239,8 @@ class TestSimpleVocabulary(ATVocTestCase):
         self.assertTrue(isinstance(dl, DisplayList))
         self.assertEqual(dl.getValue('aut'), 'Oesterreich')
 
+    @unittest.skipUnless(HAS_LP, 'requires LinguaPlone')
     def _translateSimpleVocabulary(self):
-        # we need to install 'Linguaplone' to translate
-        # vocabularies
-        qi = getToolByName(self.portal, 'portal_quickinstaller')
-
-        lpAvailable = qi.isProductAvailable('LinguaPlone')
-        self.failUnless(
-            lpAvailable,
-            "Product LinguaPlone has to be available in INSTANCE_HOME")
-
-        if not qi.isProductInstalled('LinguaPlone'):
-            qi.installProduct('LinguaPlone')
-
         states = self.atvm.getVocabularyByName('teststates')
         states.setLanguage('en')
         states.addTranslation('de', title=u'Länder')
@@ -281,4 +256,5 @@ class TestSimpleVocabulary(ATVocTestCase):
         self._createTestVocabulary()
         vocab = self.atvm.teststates
         self.assertEqual(['aut'], vocab.aut.getTermKeyPath())
+
 #EOF
