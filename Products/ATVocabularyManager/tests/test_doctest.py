@@ -4,20 +4,8 @@ __author__ = """Harald Friessnegger <harald at webmeisterei(dot) com>"""
 __docformat__ = 'plaintext'
 
 import doctest
-from Products.PloneTestCase import PloneTestCase
-import common
-
-
-class TestSearchTreeVocabulary(PloneTestCase.PloneTestCase):
-    """
-    """
-
-    def afterSetUp(self):
-        """installs dependencies and defines atvm
-        """
-        common.installWithinPortal(self.portal)
-        self.atvm = common.getATVM(self.portal)
-        self.loginAsPortalOwner()
+from Products.ATVocabularyManager.tests.common import AT_FUNCTIONAL_TESTING
+from plone.testing import layered
 
 
 def test_suite():
@@ -33,13 +21,12 @@ def test_suite():
         'simplevocabulary.txt',
     ]
 
-    for test in scriptTests:
-        suites.append(ZopeDocFileSuite(
+    for test in []: #scriptTests:
+        suites.append(layered(doctest.DocFileSuite(
             test,
             optionflags=optionflags,
             package='Products.ATVocabularyManager.doc',
-            test_class=TestSearchTreeVocabulary,
-        ))
+        )), layer=AT_FUNCTIONAL_TESTING)
     return TestSuite(suites)
 
 #EOF

@@ -1,43 +1,36 @@
-from Testing import ZopeTestCase
-from Products.PloneTestCase import PloneTestCase
-
-import Products.ATVocabularyManager
-
+from plone.app.testing import bbb
+from plone.app.testing import FunctionalTesting, applyProfile
+from Products.GenericSetup import EXTENSION, profile_registry
 from Products.ATVocabularyManager.config import PROJECTNAME, TOOL_NAME
-
-try:
-    from Zope2.App import zcml
-except ImportError:
-    from Products.Five import zcml
-
-from Products.Five import fiveconfigure
-
-#from Products.PloneTestCase import PloneTestCase as ptc
-from Products.PloneTestCase.layer import onsetup
-from Products.CMFCore.utils import getToolByName
+from plone.testing import z2
 
 
-@onsetup
-def installProducts():
-    fiveconfigure.debug_mode = True
-    zcml.load_config('configure.zcml', Products.ATVocabularyManager)
-    fiveconfigure.debug_mode = False
+class ATTestCaseFixture(bbb.PloneTestCaseFixture):
 
-PloneTestCase.setupPloneSite(id='plone')
-installProducts()
-ZopeTestCase.installProduct('Archetypes')
-ZopeTestCase.installProduct('MimetypesRegistry')
-ZopeTestCase.installProduct('PortalTransforms')
-# to support tests for translated vocabularies
-ZopeTestCase.installProduct('PloneLanguageTool')
-ZopeTestCase.installProduct('LinguaPlone')
-ZopeTestCase.installProduct(PROJECTNAME)
+    defaultBases = (bbb.PTC_FIXTURE,)
 
+    def setUpZope(self, app, configurationContext):
+        # load i18n fallback domain
+        import Products.ATVocabularyManager
+        self.loadZCML("configure.zcml", package=Products.ATVocabularyManager)
 
-def installWithinPortal(portal):
+    def setUpPloneSite(self, portal):
+        applyProfile(portal, 'Products.ATVocabularyManager:default')
+
+AT_FIXTURE = ATTestCaseFixture()
+AT_FUNCTIONAL_TESTING = FunctionalTesting(bases=(AT_FIXTURE,),
+                                          name='ATVocabularyManager:Functional')
+
+class ATVocTestCase(bbb.PloneTestCase):
+    """ Simple ATVocabularyManager test case
+    """
+
+    layer = AT_FUNCTIONAL_TESTING
+
+def x_installWithinPortal(portal):
     qi = getToolByName(portal, 'portal_quickinstaller')
     qi.installProduct(PROJECTNAME)
 
 
-def getATVM(portal):
+def x_getATVM(portal):
     return portal[TOOL_NAME]

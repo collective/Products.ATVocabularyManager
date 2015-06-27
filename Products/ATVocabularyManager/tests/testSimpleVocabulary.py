@@ -2,17 +2,16 @@
 #
 
 from Products.CMFCore.utils import getToolByName
-from Products.PloneTestCase import PloneTestCase
+from Products.ATVocabularyManager.tests.common import ATVocTestCase
 from Products.ATVocabularyManager import config
 from Products.Archetypes.utils import DisplayList
-import common
+from plone import api
 
 
-class TestSimpleVocabulary(PloneTestCase.PloneTestCase):
+class TestSimpleVocabulary(ATVocTestCase):
 
     def afterSetUp(self):
-        common.installWithinPortal(self.portal)
-        self.atvm = common.getATVM(self.portal)
+        self.atvm = api.portal.get_tool(name='portal_vocabularies')
         self.loginAsPortalOwner()
 
     def setupSimpleVocabularyContainer(self):

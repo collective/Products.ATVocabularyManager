@@ -2,19 +2,20 @@
 # Test for TreeVocabulary
 #
 
-from Products.PloneTestCase import PloneTestCase
+from Products.ATVocabularyManager.tests.common import ATVocTestCase
 from Products.ATVocabularyManager.utils.vocabs import createHierarchicalVocabs
 from Products.CMFCore.utils import getToolByName
+from plone import api
 
 import common
 
 
-class TestTreeVocabulary(PloneTestCase.PloneTestCase):
+class TestTreeVocabulary(ATVocTestCase):
 
     def afterSetUp(self):
-        common.installWithinPortal(self.portal)
-        self.atvm = common.getATVM(self.portal)
+        self.atvm = api.portal.get_tool(name='portal_vocabularies')
         self.loginAsPortalOwner()
+        self.setupExampleTreeVocabulary()
 
     def setupExampleTreeVocabulary(self):
         hierarchicalVocabs = {}
@@ -40,7 +41,6 @@ class TestTreeVocabulary(PloneTestCase.PloneTestCase):
         elsewhere.
         """
 
-        self.setupExampleTreeVocabulary()
         vocab = self.atvm.getVocabularyByName('regions')
 
         autUID = vocab.aut.UID()
@@ -55,7 +55,6 @@ class TestTreeVocabulary(PloneTestCase.PloneTestCase):
     def testTranslations(self):
         """tests if treevocabulary works fine with linguaplone
         """
-        self.setupExampleTreeVocabulary()
         self._translateTreeVocabulary()
 
         # a term and it's translation have to provide the same keys
