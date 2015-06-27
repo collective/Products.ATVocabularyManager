@@ -13,6 +13,7 @@ class ATTestCaseFixture(bbb.PloneTestCaseFixture):
         # load i18n fallback domain
         import Products.ATVocabularyManager
         self.loadZCML("configure.zcml", package=Products.ATVocabularyManager)
+        z2.installProduct(app, 'Products.ATVocabularyManager')
 
     def setUpPloneSite(self, portal):
         applyProfile(portal, 'Products.ATVocabularyManager:default')

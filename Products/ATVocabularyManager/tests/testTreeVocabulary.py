@@ -7,14 +7,12 @@ from Products.ATVocabularyManager.utils.vocabs import createHierarchicalVocabs
 from Products.CMFCore.utils import getToolByName
 from plone import api
 
-import common
-
 
 class TestTreeVocabulary(ATVocTestCase):
 
     def afterSetUp(self):
         self.atvm = api.portal.get_tool(name='portal_vocabularies')
-        self.loginAsPortalOwner()
+        self.setRoles(['Manager',])
         self.setupExampleTreeVocabulary()
 
     def setupExampleTreeVocabulary(self):

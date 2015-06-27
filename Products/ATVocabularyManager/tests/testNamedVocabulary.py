@@ -6,9 +6,8 @@ from Products.ATVocabularyManager import NamedVocabulary
 class TestNamedVocabulary(ATVocTestCase):
 
     def afterSetUp(self):
-        common.installWithinPortal(self.portal)
         self.atvm = api.portal.get_tool(name='portal_vocabularies')
-        self.loginAsPortalOwner()
+        self.setRoles(['Manager',])
 
     def setupSimpleVocabularyContainer(self):
         self.vname = 'svtest'
