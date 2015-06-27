@@ -5,6 +5,7 @@ __docformat__ = 'plaintext'
 
 import doctest
 from Products.ATVocabularyManager.tests.common import AT_FUNCTIONAL_TESTING
+from Products.ATVocabularyManager.tests.common import createTestVocabulary
 from plone.testing import layered
 
 
@@ -16,7 +17,6 @@ def test_suite():
     suites = []
 
     scriptTests = [
-        'tool.txt',
         'search_treevocabulary.txt',
         'simplevocabulary.txt',
     ]
@@ -25,6 +25,7 @@ def test_suite():
         suites.append(layered(doctest.DocFileSuite(
             test,
             optionflags=optionflags,
+            globs={'createTestVocabulary': createTestVocabulary},
             package='Products.ATVocabularyManager.doc',
         ), layer=AT_FUNCTIONAL_TESTING))
     return TestSuite(suites)

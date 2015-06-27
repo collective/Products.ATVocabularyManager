@@ -142,21 +142,6 @@ class TestSimpleVocabulary(ATVocTestCase):
                 enTerm = svtest[key].getTermValue()
                 self.assertEqual(enTerm, 'value3en')
 
-    def _createTestVocabulary(self):
-        """creates a simplevocabulary for testing purposes
-        using the utlity methods provided by atvocabularymanager
-        """
-        from Products.ATVocabularyManager.utils.vocabs import\
-                createSimpleVocabs
-
-        self.loginAsPortalOwner()
-        testvocabs = {'teststates': (
-            ('aut', u'Austria'),
-            ('ger', u'Germany'),
-            ('nor', u'Norway'),
-            ('fin', u'Finland'))}
-
-        createSimpleVocabs(self.atvm, testvocabs)
 
     @unittest.skipUnless(HAS_LP, 'requires LinguaPlone')
     def testTranslations(self):

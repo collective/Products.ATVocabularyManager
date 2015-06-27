@@ -9,8 +9,12 @@ Creating a simple vocabulary
 
 SimpleVocabularies can be created in the vocabulary library:
 
-  >>> atvm = self.portal.portal_vocabularies
-  >>> self.setRoles(['Manager'])
+  >>> portal = layer['portal']
+  >>> from Products.CMFCore.utils import getToolByName
+  >>> atvm = getToolByName(portal, 'portal_vocabularies')
+
+  >>> from plone.app.testing import TEST_USER_ID, setRoles
+  >>> setRoles(layer['portal'], TEST_USER_ID, ['Manager'])
   >>> _ = atvm.invokeFactory('SimpleVocabulary', 'testvocab', title="test vocabulary")
 
 You can fetch a vocabulary calling ``getVocabularyByName`` on
@@ -44,7 +48,7 @@ has been successfull.
 
   >>> simple.addTerm('term2', 'second time', silentignore=True)
   False
-  >>> simple.getDisplayList(self)
+  >>> simple.getDisplayList(portal)
   <DisplayList [('term1', ''), ('term2', 'first time')] at ...>
 
 
@@ -87,14 +91,14 @@ The default sort order is alphabetically by Vales (Title)::
 
 Sorting by Values
 
-  >>> sorting.getDisplayList(self)
+  >>> sorting.getDisplayList(portal)
   <DisplayList [('c', 'Alpha'), ('y', 'Charly'), ('a', 'Zeppelin')] at ...>
 
 Sorting by keys
 
   >>> from Products.ATVocabularyManager.config import SORT_METHOD_LEXICO_KEYS
   >>> sorting.setSortMethod(SORT_METHOD_LEXICO_KEYS)
-  >>> sorting.getDisplayList(self)
+  >>> sorting.getDisplayList(portal)
   <DisplayList [('a', 'Zeppelin'), ('c', 'Alpha'), ('y', 'Charly')] at ...>
 
 Sorting by folder position
@@ -103,7 +107,7 @@ Sorting by folder position
   [<SimpleVocabularyTerm .../sorting/c>, <SimpleVocabularyTerm .../sorting/a>, <SimpleVocabularyTerm .../sorting/y>]
   >>> from Products.ATVocabularyManager.config import SORT_METHOD_FOLDER_ORDER
   >>> sorting.setSortMethod(SORT_METHOD_FOLDER_ORDER)
-  >>> sorting.getDisplayList(self)
+  >>> sorting.getDisplayList(portal)
   <DisplayList [('c', 'Alpha'), ('a', 'Zeppelin'), ('y', 'Charly')] ...>
 
 
@@ -113,15 +117,17 @@ Linguaplone Support
 Simple vocabularies have full Linguaplone Support, but also work
 w/o having Linguaplone installed::
 
-  >>> self.portal.portal_quickinstaller.isProductInstalled('LinguaPlone')
+  >>> portal.portal_quickinstaller.isProductInstalled('LinguaPlone')
   False
 
 If Linguaplone is not installed, our vocabulary works
 without causing troubles
 
-  >>> self._createTestVocabulary()
-  >>> vocab = self.atvm.teststates
-  >>> vocab.getVocabularyDict(vocab)
+  >>> from plone import api
+  >>> atvm = api.portal.get_tool(name='portal_vocabularies')
+  >>> createTestVocabulary(atvm)
+  >>> vocab = atvm.teststates
+  >>> dict(vocab.getVocabularyDict(vocab))
   {'ger': 'Germany', 'fin': 'Finland', 'aut': 'Austria', 'nor': 'Norway'}
 
 
