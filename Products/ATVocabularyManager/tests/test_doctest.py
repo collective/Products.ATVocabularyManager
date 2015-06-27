@@ -30,6 +30,7 @@ def test_suite():
     scriptTests = [
         'tool.txt',
         'search_treevocabulary.txt',
+        'simplevocabulary.txt',
     ]
 
     for test in scriptTests:

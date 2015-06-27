@@ -1,12 +1,8 @@
 # -*- coding: utf-8 -*-
-# Skeleton PloneTestCase
 #
-
-import doctest
 
 from Products.CMFCore.utils import getToolByName
 from Products.PloneTestCase import PloneTestCase
-from Testing.ZopeTestCase.zopedoctest import ZopeDocFileSuite
 from Products.ATVocabularyManager import config
 from Products.Archetypes.utils import DisplayList
 import common
@@ -286,21 +282,4 @@ class TestSimpleVocabulary(PloneTestCase.PloneTestCase):
         self._createTestVocabulary()
         vocab = self.atvm.teststates
         self.assertEqual(['aut'], vocab.aut.getTermKeyPath())
-
-
-def test_suite():
-    from unittest import TestSuite, makeSuite
-    optionflags = doctest.REPORT_ONLY_FIRST_FAILURE | doctest.ELLIPSIS
-
-    suite = TestSuite()
-    suite.addTest(makeSuite(TestSimpleVocabulary))
-
-    suite.addTest(ZopeDocFileSuite('simplevocabulary.txt',
-                                   optionflags=optionflags,
-                                   package='Products.ATVocabularyManager.doc',
-                                   test_class=TestSimpleVocabulary,
-                                   ))
-
-    return suite
-
 #EOF

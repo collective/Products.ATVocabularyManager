@@ -1,9 +1,4 @@
-#
-# Skeleton PloneTestCase
-#
-
 import common
-import doctest
 from Products.PloneTestCase import PloneTestCase
 from Products.ATVocabularyManager import NamedVocabulary
 
@@ -69,15 +64,4 @@ class TestNamedVocabulary(PloneTestCase.PloneTestCase):
         # and we have an empty item on top
         self.failUnless(custom_item in dlist.items())
         self.assertEqual(custom_item, dlist.items()[0])
-
-
-def test_suite():
-    from unittest import TestSuite, makeSuite
-    optionflags = doctest.REPORT_ONLY_FIRST_FAILURE | doctest.ELLIPSIS
-
-    suite = TestSuite()
-    suite.addTest(makeSuite(TestNamedVocabulary))
-
-    return suite
-
 #EOF
