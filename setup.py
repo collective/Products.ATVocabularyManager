@@ -75,7 +75,7 @@ setup(name='Products.ATVocabularyManager',
       include_package_data=True,
       zip_safe=False,
       extras_require=dict(
-          test=['interlude', 'Products.LinguaPlone', ],
+          test=['interlude', 'Products.LinguaPlone', 'Products.PloneTestCase'],
           plone4=['Plone', 'Pillow'],
       ),
       install_requires=install_requires,
