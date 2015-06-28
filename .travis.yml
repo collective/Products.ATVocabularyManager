@@ -5,7 +5,6 @@ python:
 matrix:
  - PLONE_VERSION=4.2
  - PLONE_VERSION=4.3
- - PLONE_VERSION=4.3
  - PLONE_VERSION=5.0
 env:
   - TARGET=test
@@ -36,6 +35,6 @@ install:
   - mkdir -p buildout-cache/eggs
   - mkdir -p buildout-cache/downloads
   - python bootstrap-buildout.py
-  - bin/buildout -N -t 3 -c travis-$PLONE_VERSION.x.cfg
+  - bin/buildout -N -t 3 -c "travis-$PLONE_VERSION.x.cfg"
 
 script: bin/$TARGET
