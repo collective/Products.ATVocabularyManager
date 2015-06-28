@@ -25,10 +25,13 @@ class ATTestCaseFixture(bbb.PloneTestCaseFixture):
         z2.installProduct(app, 'Products.ATVocabularyManager')
         if HAS_LP:
 	    import Products.LinguaPlone
+            self.loadZCML("configure.zcml", package=Products.LinguaPlone)
             z2.installProduct(app, 'Products.LinguaPlone')
 
     def setUpPloneSite(self, portal):
         applyProfile(portal, 'Products.ATVocabularyManager:default')
+        if HAS_LP:
+            applyProfile(portal, 'Products.LinguaPlone:LinguaPlone')
 
 AT_FIXTURE = ATTestCaseFixture()
 AT_FUNCTIONAL_TESTING = FunctionalTesting(bases=(AT_FIXTURE,),

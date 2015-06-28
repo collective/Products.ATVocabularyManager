@@ -117,6 +117,8 @@ Linguaplone Support
 Simple vocabularies have full Linguaplone Support, but also work
 w/o having Linguaplone installed::
 
+  >>> if portal.portal_quickinstaller.isProductInstalled('LinguaPlone'):
+  ...    portal.portal_quickinstaller.uninstallProducts(['LinguaPlone'])
   >>> portal.portal_quickinstaller.isProductInstalled('LinguaPlone')
   False
 
