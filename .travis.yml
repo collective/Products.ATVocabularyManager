@@ -3,13 +3,13 @@ python:
  - 2.7
 env:
   matrix:
-   - PLONE_VERSION=4.2
-   - PLONE_VERSION=4.3
-   - PLONE_VERSION=5.0
+   - PLONE_VERSION=4.2 BOOTSTRAP_SCRIPT=bootstrap.py
+   - PLONE_VERSION=4.3 BOOTSTRAP_SCRIPT=bootstrap.py
+   - PLONE_VERSION=5.0 BOOTSTRAP_SCRIPT=bootstrap-buildout.py
 install:
   - mkdir -p buildout-cache/eggs
   - mkdir -p buildout-cache/downloads
-  - python bootstrap-buildout.py
-  - bin/buildout -N -t 3 -c "travis-$PLONE_VERSION.x.cfg"
+  - python "$BOOTSTRAP_SCRIPT" -c "travis-$PLONE_VERSION.x.cfg"
+  - bin/buildout -N -t 5 -c "travis-$PLONE_VERSION.x.cfg"
 
 script: bin/test
