@@ -8,13 +8,6 @@
   <i18n:registerTranslations directory="locales" />
 
   <subscriber
-      zcml:condition="not-have plone-4"
-      for=".types.simple.term.SimpleVocabularyTerm
-            zope.app.container.interfaces.IObjectRemovedEvent"
-      handler=".event.term_removed_handler"
-      />
-  <subscriber
-      zcml:condition="have plone-4"
       for=".types.simple.term.SimpleVocabularyTerm
             zope.lifecycleevent.interfaces.IObjectRemovedEvent"
       handler=".event.term_removed_handler"
