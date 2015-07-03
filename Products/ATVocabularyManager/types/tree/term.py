@@ -17,14 +17,14 @@ else:
 
 from AccessControl import ClassSecurityInfo
 
-#from zope.interface import noLongerProvides
 from Products.Archetypes.debug import deprecated
-#from Products.Archetypes.interfaces.vocabulary import IVocabulary
 from Products.ATVocabularyManager.types.simple import SimpleVocabularyTerm
 from Products.ATVocabularyManager.types.tree import TreeVocabulary
 from Products.ATVocabularyManager.config import PROJECTNAME
 from Products.ATVocabularyManager import messageFactory as _ 
+from Products.ATVocabularyManager.interfaces import ITreeVocabularyTerm
 
+from zope.interface import implements
 
 class TreeVocabularyTerm(TreeVocabulary, SimpleVocabularyTerm):
     """ Term inside of a TreeVocabulary or as an subterm
@@ -32,6 +32,7 @@ class TreeVocabularyTerm(TreeVocabulary, SimpleVocabularyTerm):
 
     security = ClassSecurityInfo()
     meta_type = 'TreeVocabularyTerm'
+    implements(ITreeVocabularyTerm)
 
     schema = BaseSchema + Schema((
         StringField('id',

@@ -24,13 +24,16 @@ from AccessControl import ClassSecurityInfo
 from Products.Archetypes.debug import deprecated
 from Products.ATVocabularyManager.event import find_toplevel_vocab, TermRenamedEvent
 from Products.ATVocabularyManager.config import PROJECTNAME
-from Products.ATVocabularyManager import messageFactory as _ 
+from Products.ATVocabularyManager import messageFactory as _
+from Products.ATVocabularyManager.interfaces import ISimpleVocabularyTerm
+from zope.interface import implements
 
 class SimpleVocabularyTerm(BaseContent):
     security = ClassSecurityInfo()
     portal_type = meta_type = 'SimpleVocabularyTerm'
     archetype_name = 'Simple Vocabulary Term'
     _at_rename_after_creation = True
+    implements(ISimpleVocabularyTerm)
 
     schema = BaseSchema + Schema((
         StringField('id',

@@ -16,18 +16,17 @@ else:
     from Products.Archetypes.atapi import *
 
 from AccessControl import ClassSecurityInfo
-#from Products.CMFCore.permissions import AddPortalContent
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.utils import base_hasattr
 from Products.Archetypes.utils import OrderedDict
-try:
-    from Products.Archetypes.lib.vocabulary import DisplayList
-except ImportError:
-    from Products.Archetypes.utils import DisplayList
+from Products.Archetypes.utils import DisplayList
+from Products.ATVocabularyManager.interfaces import ITreeVocabulary
 
 from Products.ATVocabularyManager.types.simple import SimpleVocabulary
 from Products.ATVocabularyManager.config import PROJECTNAME
 from Products.ATVocabularyManager import messageFactory as _
+
+from zope.interface import implements
 
 schema = SimpleVocabulary.schema + Schema((
     BooleanField('ShowLeavesOnly',
@@ -42,11 +41,13 @@ schema = SimpleVocabulary.schema + Schema((
 
 
 class TreeVocabulary(SimpleVocabulary):
+    """ A tree vocabulary
+    """
+
     security = ClassSecurityInfo()
-
     schema = schema
-
     meta_type = 'TreeVocabulary'
+    implements(ITreeVocabulary)
 
     def getDisplayList(self, instance, display_parents='tree'):
         """ returns an object of class DisplayList as defined in

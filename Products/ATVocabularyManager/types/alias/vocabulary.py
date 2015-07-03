@@ -12,8 +12,6 @@ RCS-ID $Id: SimpleVocabulary.py 3219 2004-10-29 00:49:03Z zworkb $
 __author__ = 'Jens Klein <jens@bluedynamics.com>'
 __docformat__ = 'plaintext'
 
-#import csv
-#from StringIO import StringIO
 from zope.interface import implements
 from Products.ATVocabularyManager.config import *
 if HAS_LINGUA_PLONE:
@@ -26,11 +24,12 @@ from Products.CMFCore.utils import getToolByName
 from Products.Archetypes.interfaces import IVocabulary
 from Products.ATVocabularyManager.config import TOOL_NAME as VOCABTOOL_NAME
 from Products.ATVocabularyManager.config import PROJECTNAME
+from Products.ATVocabularyManager.interfaces import IAliasVocabulary
 
 
 class AliasVocabulary(BaseContent):
 
-    implements(IVocabulary)
+    implements(IAliasVocabulary)
 
     security = ClassSecurityInfo()
     meta_type = 'AliasVocabulary'

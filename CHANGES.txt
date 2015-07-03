@@ -7,6 +7,7 @@ Changelog
 - Fix crash and cleanup in SimpleVocabulary when editing untranslated canonical 
   content
   [pjstevns]
+
 - Extend tests on translated SimpleVocabulary and fix regressions
   [pjstevns]
 
@@ -14,6 +15,9 @@ Changelog
   [agitator]
 
 - Plone5 compatibility
+  [tomgross]
+
+- Added interfaces for all vocabularies and terms
   [tomgross]
 
 1.6.6 (2014-02-06)

@@ -28,6 +28,8 @@ from AccessControl import ClassSecurityInfo
 
 from Products.ATVocabularyManager.config import PROJECTNAME
 from Products.ATVocabularyManager.types.simple.vocabulary import SimpleVocabulary
+from zope.interface import implements
+from Products.ATVocabularyManager.interfaces import ISortedSimpleVocabulary
 
 
 class SortedSimpleVocabulary(SimpleVocabulary):
@@ -42,12 +44,12 @@ class SortedSimpleVocabulary(SimpleVocabulary):
     filter_content_types = 1
     global_allow = 0
     allow_discussion = 0
-    #content_icon = 'SortedSimpleVocabulary.gif'
     immediate_view = 'base_view'
     default_view = 'base_view'
     suppl_views = ()
     typeDescription = "SortedSimpleVocabulary"
     typeDescMsgId = 'description_edit_sortedsimplevocabulary'
+    implements(ISortedSimpleVocabulary)
 
     def getDisplayList(self, instance):
         """ returns a object of class DisplayList as defined in

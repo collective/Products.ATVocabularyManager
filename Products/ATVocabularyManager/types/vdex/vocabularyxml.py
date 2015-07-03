@@ -20,7 +20,7 @@ from Products.PlacelessTranslationService.Negotiator import getLangPrefs
 from Products.CMFCore  import permissions
 from Products.CMFCore.utils import getToolByName
 from Products.Archetypes.atapi import *
-from Products.Archetypes.interfaces import IVocabulary
+from Products.ATVocabularyManager.interfaces import IMSVDEXVocabulary
 from Products.ATVocabularyManager.config import *
 from Products.ATVocabularyManager.config import PROJECTNAME
 from imsvdex.vdex import VDEXManager, VDEXError
@@ -89,7 +89,7 @@ IMSVDEXVocabularySchema = Schema((
 class IMSVDEXVocabulary(BaseContent):
     """Content type for handling of VDEX compliant vocabulary.
     """
-    implements(IVocabulary)
+    implements(IMSVDEXVocabulary)
     security = ClassSecurityInfo()
     meta_type = 'VdexFileVocabulary'
     schema = BaseSchema.copy() + IMSVDEXVocabularySchema.copy()

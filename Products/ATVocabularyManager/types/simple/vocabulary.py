@@ -25,15 +25,10 @@ else:
     from Products.Archetypes.atapi import *
     ILinguaPloneProductLayer = None
 
-try:
-    from plone.browserlayer.utils import registered_layers
-except ImportError:
-    registered_layers = lambda: []   # returns empty list
-
+from plone.browserlayer.utils import registered_layers
 from AccessControl import ClassSecurityInfo
 from Products.CMFCore.permissions import AddPortalContent
 from Products.CMFCore.utils import getToolByName
-from Products.Archetypes.interfaces import IVocabulary
 from Products.Archetypes.utils import make_uuid
 from Products.Archetypes.utils import DisplayList
 from Products.Archetypes.utils import OrderedDict
@@ -41,10 +36,11 @@ from Products.Archetypes import PloneMessageFactory as PMF
 
 from Products.ATVocabularyManager.config import PROJECTNAME
 from Products.ATVocabularyManager import messageFactory as _ 
+from Products.ATVocabularyManager.interfaces import ISimpleVocabulary
 
 class SimpleVocabulary(OrderedBaseFolder):
 
-    implements(IVocabulary)
+    implements(ISimpleVocabulary)
 
     security = ClassSecurityInfo()
     meta_type = 'SimpleVocabulary'
