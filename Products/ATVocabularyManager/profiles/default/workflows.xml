@@ -37,8 +37,5 @@
 		<type type_id="VdexVocabulary">
 			<bound-workflow workflow_id="(Default)"/>
 		</type>
-		<type type_id="VocabularyLibrary">
-			<bound-workflow workflow_id="(Default)"/>
-		</type>
 	</bindings>
 </object>
