@@ -25,32 +25,18 @@ long_description = (
     )
 
 install_requires = [
-    'ZODB3',
     'imsvdex',
     'plone.api',
-    'plone.app.layout',
-    'plone.app.registry',
-    'plone.app.uuid',
-    'plone.app.z3cform',
-    'plone.indexer',
-    'plone.registry',
-    'plone.z3cform',
     'setuptools',
-    'zope.annotation',
-    'zope.component',
-    'zope.container',
-    'zope.event',
-    'zope.i18nmessageid',
-    'zope.interface',
-    'zope.lifecycleevent',
-    'zope.site',
+    'Products.Archetypes',
+    'Products.CMFPlone',
 ]
 
 
 setup(name='Products.ATVocabularyManager',
       version=version,
-      description="Vocabulary library Plone. Central, Pluggable, " \
-      "TTW, with IMS VDEX Support",
+      description="Vocabulary library Plone. Central, Pluggable, "
+                  "TTW, with IMS VDEX Support",
       long_description=long_description,
       classifiers=[
           "Framework :: Plone",
@@ -64,8 +50,8 @@ setup(name='Products.ATVocabularyManager',
           "Programming Language :: Python",
           #"License :: OSI Approved :: GNU General Public License (GPL)",
       ],
-      keywords='Plone Vocabulary Manager Zope IMS VDEX Tree ' \
-      'Taxonomy Onthology',
+      keywords='Plone Vocabulary Manager Zope IMS VDEX Tree '
+               'Taxonomy Onthology',
       author='BlueDynamics Alliance',
       author_email='dev@bluedynamics.com',
       url='https://github.com/collective/Products.ATVocabularyManager',
@@ -83,5 +69,4 @@ setup(name='Products.ATVocabularyManager',
       entry_points="""
       [z3c.autoinclude.plugin]
       target = plone
-      """,
-     )
+      """)
