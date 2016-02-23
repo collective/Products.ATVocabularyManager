@@ -1,8 +1,6 @@
 from zope import event
 from zope import interface
 from Products.ATVocabularyManager import interfaces
-from Products.ATVocabularyManager.tools import vocabularylib
-#from Products.CMFCore import utils as cmfutils
 
 
 class TermRenamedEvent(object):
@@ -26,11 +24,10 @@ class TermDeletedEvent(object):
 
 def find_toplevel_vocab(obj):
     result = obj
-    while hasattr(result, 'aq_parent'):
-        if isinstance(result.aq_parent.aq_base,
-                      vocabularylib.VocabularyLibrary):
+    while getattr(result, 'aq_parent', None) is not None:
+        result = obj.aq_parent
+        if interfaces.IVocabulary.providedBy(result):
             return result
-        result = result.aq_parent
 
     return None
 
