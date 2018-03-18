@@ -4,7 +4,9 @@ Changelog
 1.6.8 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- List types using allowedContentTypes instead of getAllowedTypes
+  for compatibility with Plone 5.1.
+  [davisagli]
 
 
 1.6.7 (2015-07-30)

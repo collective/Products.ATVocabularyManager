@@ -6,7 +6,7 @@
 <body>
 
     <div metal:fill-slot="prefs_configlet_main"
-         tal:define="contentTypes python: here.getAllowedTypes();
+         tal:define="contentTypes python: here.allowedContentTypes();
                      contentTypeIds python:[t.getId() for t in contentTypes];
                      num_types python: len(contentTypes)">
 
