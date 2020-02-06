@@ -14,7 +14,6 @@ __docformat__ = 'plaintext'
 from zope.interface import implements
 from AccessControl import ClassSecurityInfo
 from OFS.Cache import Cacheable
-from Products.PlacelessTranslationService.Negotiator import getLangPrefs
 from Products.CMFCore.utils import getToolByName
 from Products.CMFCore.utils import UniqueObject
 from Products.CMFCore.permissions import ModifyPortalContent
@@ -26,6 +25,11 @@ from Products.ATVocabularyManager.config import TOOL_TITLE
 from Products.ATVocabularyManager.config import PROJECTNAME
 from Products.ATVocabularyManager.interfaces import IATVocabularyLibrary
 from Products.Archetypes.utils import shasattr
+
+try:
+    from Products.PlacelessTranslationService.Negotiator import getLangPrefs
+except:
+    from plone.i18n.negotiate.ptsnegotiator import getLangPrefs
 
 
 ### note: derive somewhere in future from BaseTool

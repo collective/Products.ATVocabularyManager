@@ -16,7 +16,6 @@ __docformat__ = 'plaintext'
 from zope.interface import implements
 from types import StringTypes
 from AccessControl import ClassSecurityInfo
-from Products.PlacelessTranslationService.Negotiator import getLangPrefs
 from Products.CMFCore  import permissions
 from Products.CMFCore.utils import getToolByName
 from Products.Archetypes.atapi import *
@@ -28,6 +27,12 @@ import HTMLParser
 from Products.Archetypes import PloneMessageFactory as PMF
 
 from Products.ATContentTypes import ATCTMessageFactory as _
+
+try:
+    from Products.PlacelessTranslationService.Negotiator import getLangPrefs
+except:
+    from plone.i18n.negotiate.ptsnegotiator import getLangPrefs
+
 
 IMSVDEXVocabularySchema = Schema((
 
